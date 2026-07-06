@@ -1,0 +1,326 @@
+[2026-07-02 22:05:54] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-02 22:05:54] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139373-139373
+[2026-07-02 22:05:54] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-02 22:05:54] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-02 22:05:54] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-02 22:09:10] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-02 22:09:10] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139375-139375
+[2026-07-02 22:09:11] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-02 22:09:11] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=0, high=4)
+[2026-07-02 22:09:11] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-02 22:24:25] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-02 22:24:25] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139379-139379
+[2026-07-02 22:24:25] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-02 22:24:25] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=0, high=6)
+[2026-07-02 22:24:25] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-02 22:27:20] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-02 22:27:20] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139381-139381
+[2026-07-02 22:27:21] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-02 22:27:21] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-02 22:27:21] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-02 22:30:09] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-02 22:30:09] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139383-139383
+[2026-07-02 22:30:09] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-02 22:30:09] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=0, high=4)
+[2026-07-02 22:30:09] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-02 22:32:50] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-02 22:32:50] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139383-139383
+[2026-07-02 22:32:50] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-02 22:32:50] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=0, high=4)
+[2026-07-02 22:32:51] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-02 22:35:36] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-02 22:35:36] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139383-139383
+[2026-07-02 22:35:36] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-02 22:35:36] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=0, high=4)
+[2026-07-02 22:35:36] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 12:32:36] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:32:36] INFO     | recommendation_engine | Evaluating recommendations: COLDBPRD snaps 32543-32543
+[2026-07-03 12:32:36] INFO     | recommendation_engine | Recommendations complete: 9 findings (critical=0, high=7)
+[2026-07-03 12:32:36] INFO     | recommendation_engine | Stored 9 recommendations to DB
+[2026-07-03 12:33:02] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:33:02] INFO     | recommendation_engine | Evaluating recommendations: DMSDB snaps 2788-2788
+[2026-07-03 12:33:02] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-03 12:33:02] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-03 12:33:18] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:33:18] INFO     | recommendation_engine | Evaluating recommendations: GTWPRD snaps 39713-39713
+[2026-07-03 12:33:18] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:33:18] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=0, high=4)
+[2026-07-03 12:33:18] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 12:33:21] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:33:21] INFO     | recommendation_engine | Evaluating recommendations: JRVSDB snaps 81615-81615
+[2026-07-03 12:33:21] INFO     | recommendation_engine | Recommendations complete: 9 findings (critical=0, high=6)
+[2026-07-03 12:33:21] INFO     | recommendation_engine | Stored 9 recommendations to DB
+[2026-07-03 12:34:15] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:34:15] INFO     | recommendation_engine | Evaluating recommendations: COLDBPRD snaps 32544-32544
+[2026-07-03 12:34:15] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=0, high=5)
+[2026-07-03 12:34:15] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 12:35:29] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:35:29] INFO     | recommendation_engine | Evaluating recommendations: JRVSDB snaps 81616-81616
+[2026-07-03 12:35:30] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=0, high=5)
+[2026-07-03 12:35:30] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 12:35:34] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:35:34] INFO     | recommendation_engine | Evaluating recommendations: DMSDB snaps 2790-2790
+[2026-07-03 12:35:34] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-03 12:35:35] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-03 12:35:42] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:35:42] INFO     | recommendation_engine | Evaluating recommendations: GTWPRD snaps 39714-39714
+[2026-07-03 12:35:43] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:35:43] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=0, high=5)
+[2026-07-03 12:35:43] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 12:35:52] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:35:52] INFO     | recommendation_engine | Evaluating recommendations: COLDBPRD snaps 32545-32545
+[2026-07-03 12:35:53] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=0, high=4)
+[2026-07-03 12:35:53] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 12:37:42] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:37:42] INFO     | recommendation_engine | Evaluating recommendations: JRVSDB snaps 81617-81617
+[2026-07-03 12:37:42] INFO     | recommendation_engine | Recommendations complete: 8 findings (critical=0, high=6)
+[2026-07-03 12:37:42] INFO     | recommendation_engine | Stored 8 recommendations to DB
+[2026-07-03 12:37:54] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:37:54] INFO     | recommendation_engine | Evaluating recommendations: DMSDB snaps 2792-2792
+[2026-07-03 12:37:54] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-03 12:37:55] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-03 12:37:58] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:37:58] INFO     | recommendation_engine | Evaluating recommendations: GTWPRD snaps 39715-39715
+[2026-07-03 12:37:58] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:37:58] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=0, high=3)
+[2026-07-03 12:37:59] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 12:38:21] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:38:21] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116865-116865
+[2026-07-03 12:38:21] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:38:21] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 12:38:21] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 12:40:21] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:40:21] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116866-116866
+[2026-07-03 12:40:21] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:40:21] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 12:40:21] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 12:40:37] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:40:37] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139373-139373
+[2026-07-03 12:40:37] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:40:37] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-03 12:40:37] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-03 12:42:01] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:42:01] INFO     | recommendation_engine | Evaluating recommendations: PAYMENTS snaps 61679-61679
+[2026-07-03 12:42:01] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 12:42:01] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 12:42:14] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:42:14] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116867-116867
+[2026-07-03 12:42:14] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:42:14] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=1, high=4)
+[2026-07-03 12:42:14] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 12:43:23] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:43:23] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139377-139377
+[2026-07-03 12:43:24] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:43:24] INFO     | recommendation_engine | Recommendations complete: 3 findings (critical=0, high=2)
+[2026-07-03 12:43:24] INFO     | recommendation_engine | Stored 3 recommendations to DB
+[2026-07-03 12:47:04] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:47:04] INFO     | recommendation_engine | Evaluating recommendations: PAYMENTS snaps 61680-61680
+[2026-07-03 12:47:04] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 12:47:04] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 12:47:18] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:47:18] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139381-139381
+[2026-07-03 12:47:18] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:47:18] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-03 12:47:18] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-03 12:50:17] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:50:17] INFO     | recommendation_engine | Evaluating recommendations: ONE_LMS snaps 139381-139381
+[2026-07-03 12:50:17] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 12:50:17] INFO     | recommendation_engine | Recommendations complete: 4 findings (critical=0, high=3)
+[2026-07-03 12:50:17] INFO     | recommendation_engine | Stored 4 recommendations to DB
+[2026-07-03 12:51:10] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 12:51:10] INFO     | recommendation_engine | Evaluating recommendations: PAYMENTS snaps 61681-61681
+[2026-07-03 12:51:10] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=1, high=6)
+[2026-07-03 12:51:10] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 15:39:51] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 15:39:51] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116868-116868
+[2026-07-03 15:39:51] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 15:39:51] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 15:39:51] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 15:41:40] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 15:41:40] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116869-116869
+[2026-07-03 15:41:40] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 15:41:40] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 15:41:41] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 15:43:19] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 15:43:19] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116871-116871
+[2026-07-03 15:43:19] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 15:43:19] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 15:43:19] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 15:45:04] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 15:45:04] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116872-116872
+[2026-07-03 15:45:04] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 15:45:04] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 15:45:04] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 15:53:15] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 15:53:15] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116873-116873
+[2026-07-03 15:53:15] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 15:53:15] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 15:53:15] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 15:55:04] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 15:55:04] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116874-116874
+[2026-07-03 15:55:05] INFO     | recommendation_engine | Recommendations complete: 9 findings (critical=1, high=5)
+[2026-07-03 15:55:05] INFO     | recommendation_engine | Stored 9 recommendations to DB
+[2026-07-03 15:56:54] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 15:56:54] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116875-116875
+[2026-07-03 15:56:54] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 15:56:54] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 15:56:55] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:07:40] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:07:40] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116876-116876
+[2026-07-03 16:07:40] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:07:40] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 16:07:41] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:09:19] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:09:19] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116877-116877
+[2026-07-03 16:09:19] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:09:19] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 16:09:19] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:11:03] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:11:03] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116878-116878
+[2026-07-03 16:11:03] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:11:03] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 16:11:03] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:12:50] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:12:50] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116879-116879
+[2026-07-03 16:12:50] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:12:50] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 16:12:50] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:19:22] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:19:22] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116880-116880
+[2026-07-03 16:19:22] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:19:22] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=4)
+[2026-07-03 16:19:22] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:21:11] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:21:11] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116881-116881
+[2026-07-03 16:21:11] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:21:11] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:21:11] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:22:58] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:22:58] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116882-116882
+[2026-07-03 16:22:58] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:22:58] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:22:58] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:24:43] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:24:43] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116883-116883
+[2026-07-03 16:24:43] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:24:43] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:24:43] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:26:27] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:26:27] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116884-116884
+[2026-07-03 16:26:27] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 16:26:28] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:26:28] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:28:10] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:28:10] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116885-116885
+[2026-07-03 16:28:10] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:28:11] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:30:03] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:30:03] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116886-116886
+[2026-07-03 16:30:03] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:30:03] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:31:52] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:31:52] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116887-116887
+[2026-07-03 16:31:52] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:31:52] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:33:41] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:33:41] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116888-116888
+[2026-07-03 16:33:41] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:33:41] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:35:33] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:35:33] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116889-116889
+[2026-07-03 16:35:33] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:35:33] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:37:18] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:37:18] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116890-116890
+[2026-07-03 16:37:18] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:37:18] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:39:06] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:39:06] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116891-116891
+[2026-07-03 16:39:06] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:39:06] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:40:53] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:40:53] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116892-116892
+[2026-07-03 16:40:53] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:40:53] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:42:44] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:42:44] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116893-116893
+[2026-07-03 16:42:44] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:42:44] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:44:35] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:44:35] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116894-116894
+[2026-07-03 16:44:35] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:44:35] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:46:34] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:46:34] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116895-116895
+[2026-07-03 16:46:34] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 16:46:34] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 16:48:27] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:48:27] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116896-116896
+[2026-07-03 16:48:27] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:48:27] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:50:20] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:50:20] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116897-116897
+[2026-07-03 16:50:21] INFO     | recommendation_engine | Recommendations complete: 8 findings (critical=2, high=4)
+[2026-07-03 16:50:21] INFO     | recommendation_engine | Stored 8 recommendations to DB
+[2026-07-03 16:52:14] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:52:14] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116898-116898
+[2026-07-03 16:52:14] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=1, high=5)
+[2026-07-03 16:52:14] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 16:54:08] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:54:08] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116899-116899
+[2026-07-03 16:54:08] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:54:08] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:56:03] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:56:03] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116900-116900
+[2026-07-03 16:56:03] INFO     | recommendation_engine | Recommendations complete: 7 findings (critical=2, high=4)
+[2026-07-03 16:56:03] INFO     | recommendation_engine | Stored 7 recommendations to DB
+[2026-07-03 16:57:59] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:57:59] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116901-116901
+[2026-07-03 16:58:00] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:58:00] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 16:59:51] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 16:59:51] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116902-116902
+[2026-07-03 16:59:51] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 16:59:51] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 17:01:41] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:01:41] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116903-116903
+[2026-07-03 17:01:41] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 17:01:41] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 17:03:29] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:03:29] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116904-116904
+[2026-07-03 17:03:29] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 17:03:30] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 17:05:17] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:05:17] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116905-116905
+[2026-07-03 17:05:17] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 17:05:17] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 17:07:07] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:07:07] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116906-116906
+[2026-07-03 17:07:07] INFO     | recommendation_engine | Recommendations complete: 5 findings (critical=1, high=3)
+[2026-07-03 17:07:08] INFO     | recommendation_engine | Stored 5 recommendations to DB
+[2026-07-03 17:08:58] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:08:58] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116907-116907
+[2026-07-03 17:08:58] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 17:08:58] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 17:10:43] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:10:43] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116908-116908
+[2026-07-03 17:10:43] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 17:10:43] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 17:12:31] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:12:31] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116909-116909
+[2026-07-03 17:12:31] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 17:12:31] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 17:14:19] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:14:19] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116910-116910
+[2026-07-03 17:14:19] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=2, high=4)
+[2026-07-03 17:14:19] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 17:16:07] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:16:07] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116911-116911
+[2026-07-03 17:16:07] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 17:16:07] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 17:16:07] INFO     | recommendation_engine | Stored 6 recommendations to DB
+[2026-07-03 17:18:03] INFO     | recommendation_engine | Loaded 42 recommendation rules from C:\AWR_Insight_Portal_v2\rules/recommendation_rules_v2.json
+[2026-07-03 17:18:03] INFO     | recommendation_engine | Evaluating recommendations: NEODBPRD snaps 116912-116912
+[2026-07-03 17:18:03] WARNING  | recommendation_engine | SQL metrics fetch failed: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+[2026-07-03 17:18:03] INFO     | recommendation_engine | Recommendations complete: 6 findings (critical=1, high=4)
+[2026-07-03 17:18:04] INFO     | recommendation_engine | Stored 6 recommendations to DB
