@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %} — Queue Monitor{% endblock %}
+
+{% block content %}
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+  <h1 style="font-size:1.2rem;margin:0">⚙️ Processing Queue Monitor</h1>
+  <div id="live-summary" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    {% set all_items = queues.values() | sum(start=[]) %}
+    {% set t_pending    = all_items | selectattr("status","eq","PENDING")    | list | length %}
+    {% set t_processing = all_items | selectattr("status","eq","PROCESSING") | list | length %}
+    {% set t_done       = all_items | selectattr("status","eq","DONE")       | list | length %}
+    {% set t_failed     = all_items | selectattr("status","eq","FAILED")     | list | length %}
+    <span id="ctr-pending"    class="badge badge-pending">{{ t_pending }} pending</span>
+    <span id="ctr-processing" class="badge badge-processing" {% if not t_processing %}style="display:none"{% endif %}>{{ t_processing }} processing</span>
+    <span id="ctr-done"       class="badge badge-done">{{ t_done }} done</span>
+    <span id="ctr-failed"     class="badge badge-failed" {% if not t_failed %}style="display:none"{% endif %}>{{ t_failed }} failed</span>
+    <span id="ctr-dbs"        class="badge" style="background:var(--primary,#4f8ef7);color:#fff">{{ queues | length }} DB(s)</span>
+    <span id="live-dot" title="Live" style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;margin-left:4px"></span>
+  </div>
+</div>
+
+<div id="db-name-strip" style="margin-bottom:14px;font-size:.8rem;color:var(--text2)">
+  Databases: <span id="db-name-list">{{ queues.keys() | join(", ") or "—" }}</span>
+</div>
+
+{# ══ AWR QUEUES ══════════════════════════════════════════════════════ #}
+<div style="font-size:.8rem;color:var(--text2);font-weight:600;letter-spacing:.05em;margin-bottom:8px">AWR QUEUES</div>
+
+{% for db, items in queues.items() %}
+{% set pending    = items | selectattr("status","eq","PENDING")    | list | length %}
+{% set processing = items | selectattr("status","eq","PROCESSING") | list | length %}
+{% set done       = items | selectattr("status","eq","DONE")       | list | length %}
+{% set failed     = items | selectattr("status","eq","FAILED")     | list | length %}
+<div class="card" style="margin-bottom:12px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+    <h2>{{ db }}</h2>
+    <div style="display:flex;gap:6px">
+      <span class="badge badge-pending">{{ pending }} pending</span>
+      {% if processing %}<span class="badge badge-processing">{{ processing }} processing</span>{% endif %}
+      <span class="badge badge-done">{{ done }} done</span>
+      {% if failed %}<span class="badge badge-failed">{{ failed }} failed</span>{% endif %}
+    </div>
+  </div>
+  {% if failed > 0 %}
+  <form method="post" action="/queues/retry/{{ db }}" style="margin-bottom:10px">
+    <button type="submit" class="btn btn-danger btn-sm">🔄 Retry Failed ({{ failed }})</button>
+  </form>
+  {% endif %}
+  {% if items %}
+  <table>
+    <thead><tr><th>File</th><th>Status</th><th>Queued</th><th>Processed</th><th>Error</th></tr></thead>
+    <tbody>
+    {% for item in items[-20:] | reverse %}
+    <tr>
+      <td style="max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="{{ item.filepath }}">
+        {% set fname = item.filepath | basename %}
+        {% if item.status == "FAILED" %}
+          <code style="color:var(--danger,#ef4444);font-weight:600">{{ fname }}</code>
+        {% else %}
+          <code>{{ fname }}</code>
+        {% endif %}
+      </td>
+      <td><span class="badge badge-{{ item.status | lower }}">{{ item.status }}</span></td>
+      <td style="font-size:.78rem;color:var(--text2)">{{ item.get('queued_at','')[:16] or '—' }}</td>
+      <td style="font-size:.78rem;color:var(--text2)">
+        {{ item.get('processed_at','')[:16] if item.get('processed_at') else '—' }}
+      </td>
+      <td style="font-size:.78rem;color:var(--danger,#ef4444);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+          title="{{ item.get('error','') or '' }}">
+        {% if item.status == "FAILED" and item.get('error') %}⚠ {{ (item.get('error',''))[:100] }}{% else %}—{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:var(--text2);font-size:.85rem">Queue is empty.</p>
+  {% endif %}
+</div>
+{% endfor %}
+
+{% if not queues %}
+<div class="card">
+  <p style="color:var(--text2)">No AWR queue files found.</p>
+</div>
+{% endif %}
+
+{# ══ SAR QUEUES ══════════════════════════════════════════════════════ #}
+<div style="font-size:.8rem;color:var(--text2);font-weight:600;letter-spacing:.05em;margin:16px 0 8px">SAR QUEUES</div>
+
+{% for host, items in sar_queues.items() %}
+{% set s_pending    = items | selectattr("status","eq","PENDING")    | list | length %}
+{% set s_processing = items | selectattr("status","eq","PROCESSING") | list | length %}
+{% set s_done       = items | selectattr("status","eq","DONE")       | list | length %}
+{% set s_failed     = items | selectattr("status","eq","FAILED")     | list | length %}
+<div class="card" style="margin-bottom:12px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+    <h2>🖥️ {{ host }}</h2>
+    <div style="display:flex;gap:6px">
+      <span class="badge badge-pending">{{ s_pending }} pending</span>
+      {% if s_processing %}<span class="badge badge-processing">{{ s_processing }} processing</span>{% endif %}
+      <span class="badge badge-done">{{ s_done }} done</span>
+      {% if s_failed %}<span class="badge badge-failed">{{ s_failed }} failed</span>{% endif %}
+    </div>
+  </div>
+  {% if items %}
+  <table>
+    <thead><tr><th>File</th><th>Type</th><th>Status</th><th>Queued</th><th>Processed</th><th>Error</th></tr></thead>
+    <tbody>
+    {% for item in items[-20:] | reverse %}
+    <tr>
+      <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="{{ item.filepath }}">
+        {% set fname = item.filepath | basename %}
+        {% if item.status == "FAILED" %}
+          <code style="color:var(--danger,#ef4444);font-weight:600">{{ fname }}</code>
+        {% else %}
+          <code>{{ fname }}</code>
+        {% endif %}
+      </td>
+      <td style="font-size:.78rem">
+        <span class="badge" style="background:{% if item.get('file_type')=='binary_converted' %}#1a237e{% else %}#1b5e20{% endif %};color:#fff">
+          {{ 'binary' if item.get('file_type')=='binary_converted' else 'text' }}
+        </span>
+      </td>
+      <td><span class="badge badge-{{ item.status | lower }}">{{ item.status }}</span></td>
+      <td style="font-size:.78rem;color:var(--text2)">{{ item.get('queued_at','')[:16] or '—' }}</td>
+      <td style="font-size:.78rem;color:var(--text2)">
+        {{ item.get('processed_at','')[:16] if item.get('processed_at') else '—' }}
+      </td>
+      <td style="font-size:.78rem;color:var(--danger,#ef4444);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+          title="{{ item.get('error','') or '' }}">
+        {% if item.status == "FAILED" and item.get('error') %}⚠ {{ (item.get('error',''))[:80] }}{% else %}—{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:var(--text2);font-size:.85rem">Queue is empty.</p>
+  {% endif %}
+</div>
+{% endfor %}
+
+{% if not sar_queues %}
+<div class="card">
+  <p style="color:var(--text2)">No SAR queue files found. Drop SAR files into sar_drop\&lt;HOSTNAME&gt;\ to get started.</p>
+</div>
+{% endif %}
+
+<script>
+(function () {
+  const INTERVAL_MS = 10000;
+
+  function setOrHide(id, count, label) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = count + ' ' + label;
+    el.style.display = (count === 0 && (id === 'ctr-processing' || id === 'ctr-failed'))
+      ? 'none' : '';
+  }
+
+  function pulse() {
+    const dot = document.getElementById('live-dot');
+    if (!dot) return;
+    dot.style.background = '#facc15';
+    setTimeout(() => dot.style.background = '#22c55e', 400);
+  }
+
+  async function refresh() {
+    try {
+      const res  = await fetch('/api/queue/stats');
+      if (!res.ok) return;
+      const data = await res.json();
+      setOrHide('ctr-pending',    data.pending,    'pending');
+      setOrHide('ctr-processing', data.processing, 'processing');
+      setOrHide('ctr-done',       data.done,       'done');
+      setOrHide('ctr-failed',     data.failed,     'failed');
+      const dbEl = document.getElementById('ctr-dbs');
+      if (dbEl) dbEl.textContent = (data.db_count || 0) + ' DB(s)';
+      const nameEl = document.getElementById('db-name-list');
+      if (nameEl) nameEl.textContent = (data.db_names || []).join(', ') || '—';
+      pulse();
+    } catch (_) {}
+  }
+
+  setInterval(refresh, INTERVAL_MS);
+})();
+</script>
+{% endblock %}

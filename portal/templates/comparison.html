@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% block title %} — Comparison Setup{% endblock %}
+{% block content %}
+<h1 style="font-size:1.2rem;margin-bottom:16px">🔄 AWR Comparison Tag Setup</h1>
+{% if message %}<div class="msg {{ 'ok' if '✅' in message else 'err' }}">{{ message }}</div>{% endif %}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div class="card" id="tag-form-card"><h2 id="form-title">Create Comparison Tag</h2>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:12px">
+    Create a <em>baseline</em> (before fix) and a <em>current</em> (after fix) tag for the same database, then open the Comparison dashboard in Grafana.
+  </p>
+  <form method="post" id="tag-form">
+    {# hidden field — set to tag_name when editing, empty when creating #}
+    <input type="hidden" name="edit_original_tag" id="edit_original_tag" value="">
+    <label>Database</label>
+    <div style="display:flex;gap:8px;align-items:flex-end">
+      <div style="flex:1">
+        <select name="dbname" id="f-dbname" required>
+          <option value="">-- Select --</option>
+          {% for db in dbs %}<option>{{ db }}</option>{% endfor %}
+        </select>
+      </div>
+      <button type="button" class="btn btn-sm"
+              style="padding:6px 14px;white-space:nowrap;margin-bottom:0"
+              onclick="loadInstances(document.getElementById('f-dbname').value)">
+        🔄 Load
+      </button>
+    </div>
+    <label>Instance</label>
+    <select name="instance" id="f-instance" required>
+      <option value="">-- Select DB first --</option>
+    </select>
+    <label>Tag Name</label>
+    <input type="text" name="tag_name" id="f-tag_name" placeholder="e.g. Before index on ORDERS" required>
+    <label>Tag Type</label>
+    <select name="tag_type" id="f-tag_type" required>
+      <option value="baseline">baseline (Before Fix)</option>
+      <option value="current">current (After Fix)</option>
+    </select>
+    <div class="form-row">
+      <div>
+        <label>Start Snap</label>
+        <select name="snap_start" id="f-snap_start" required style="font-family:monospace;font-size:.82rem">
+          <option value="">-- Select Instance first --</option>
+        </select>
+      </div>
+      <div>
+        <label>End Snap</label>
+        <select name="snap_end" id="f-snap_end" required style="font-family:monospace;font-size:.82rem">
+          <option value="">-- Select Instance first --</option>
+        </select>
+      </div>
+    </div>
+    <label>Notes (optional)</label>
+    <input type="text" name="notes" id="f-notes" placeholder="e.g. Added composite index on ORDERS(CUST_ID, STATUS)">
+    <br>
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <button type="submit" class="btn btn-primary" id="form-submit-btn">Save Tag</button>
+      <button type="button" class="btn" id="form-cancel-btn"
+              style="display:none;background:var(--surface2,#333)"
+              onclick="resetForm()">Cancel Edit</button>
+    </div>
+  </form>
+</div>
+<div class="card"><h2>Existing Tags</h2>
+  {% if tags %}
+  <table><thead><tr><th>DB</th><th>Instance</th><th>Tag</th><th>Type</th><th>Snaps</th><th>Notes</th><th>Actions</th></tr></thead><tbody>
+  {% for t in tags %}
+  <tr>
+    <td>{{ t.dbname }}</td>
+    <td>{{ t.instance or '-' }}</td>
+    <td>{{ t.tag_name }}</td>
+    <td><span class="badge badge-{{ 'done' if t.tag_type=='baseline' else 'pending' }}">{{ t.tag_type }}</span></td>
+    <td style="font-size:.8rem"><code>{{ t.snap_start }}-{{ t.snap_end }}</code></td>
+    <td style="font-size:.8rem;color:var(--text2)">{{ t.notes or '-' }}</td>
+    <td style="white-space:nowrap">
+      <button class="btn btn-sm"
+              style="font-size:.72rem;padding:2px 8px;margin-right:4px"
+              onclick="editTag('{{ t.dbname }}','{{ t.instance or '' }}','{{ t.tag_name }}','{{ t.tag_type }}','{{ t.snap_start }}','{{ t.snap_end }}','{{ t.notes or '' }}')">
+        ✏️ Edit
+      </button>
+      <form method="post" action="/comparison/delete" style="display:inline"
+            onsubmit="return confirm('Delete tag \'{{ t.tag_name }}\' for {{ t.dbname }}?')">
+        <input type="hidden" name="dbname"    value="{{ t.dbname }}">
+        <input type="hidden" name="tag_name"  value="{{ t.tag_name }}">
+        <input type="hidden" name="tag_type"  value="{{ t.tag_type }}">
+        <button type="submit" class="btn btn-sm btn-danger" style="font-size:.72rem;padding:2px 8px">
+          🗑 Delete
+        </button>
+      </form>
+    </td>
+  </tr>{% endfor %}
+  </tbody></table>
+
+  {# ── Open Dashboard — group baseline+current pairs by DB/instance ── #}
+  {% set seen = namespace(pairs=[]) %}
+  {% for b in tags if b.tag_type == 'baseline' %}
+    {% for c in tags if c.tag_type == 'current' and c.dbname == b.dbname and c.instance == b.instance %}
+      {% set pair_key = b.dbname ~ '|' ~ b.instance %}
+      {% if pair_key not in seen.pairs %}
+        {% set _ = seen.pairs.append(pair_key) %}
+        <div style="margin-top:10px;padding:10px;background:var(--surface2,#1e2130);border-radius:6px;font-size:.85rem">
+          <strong>{{ b.dbname }}</strong> / {{ b.instance }} &nbsp;—&nbsp;
+          <span style="color:var(--primary,#4f8ef7)">Baseline:</span> {{ b.tag_name }}
+          &nbsp;vs&nbsp;
+          <span style="color:#81c784">Current:</span> {{ c.tag_name }}
+          &nbsp;&nbsp;
+          <a href="http://localhost:3000/d/awr-comparison?var-baseline_tag={{ b.tag_name }}&var-current_tag={{ c.tag_name }}"
+             target="_blank" class="btn btn-sm btn-primary"
+             style="font-size:.75rem;padding:3px 10px;text-decoration:none">
+            📊 Open Comparison Dashboard ↗
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% else %}<p style="color:var(--text2);font-size:.85rem">No tags yet. Create a baseline and current tag to enable comparison.</p>{% endif %}
+</div></div>
+
+<script>
+async function loadInstances(dbname, preselectInstance) {
+  const instSel = document.getElementById('f-instance');
+  if (!dbname) {
+    instSel.innerHTML = '<option value="">-- Select DB first --</option>';
+    loadSnaps('', ''); return;
+  }
+  instSel.innerHTML = '<option value="">Loading…</option>';
+  try {
+    const res  = await fetch('/api/instances?dbname=' + encodeURIComponent(dbname));
+    const data = await res.json();
+    instSel.innerHTML = '<option value="">-- Select --</option>' +
+      data.map(i => `<option value="${i}" ${i === preselectInstance ? 'selected' : ''}>${i}</option>`).join('');
+    if (preselectInstance) loadSnaps(dbname, preselectInstance);
+  } catch(e) {
+    instSel.innerHTML = '<option value="">Error loading instances</option>';
+  }
+}
+
+async function loadSnaps(dbname, instance, preselectStart, preselectEnd) {
+  const startSel = document.getElementById('f-snap_start');
+  const endSel   = document.getElementById('f-snap_end');
+  const blank = '<option value="">-- Select Instance first --</option>';
+  if (!dbname || !instance) {
+    startSel.innerHTML = blank; endSel.innerHTML = blank; return;
+  }
+  startSel.innerHTML = '<option value="">Loading…</option>';
+  endSel.innerHTML   = '<option value="">Loading…</option>';
+  try {
+    const res  = await fetch('/api/snaps?dbname=' + encodeURIComponent(dbname) + '&instance=' + encodeURIComponent(instance));
+    const data = await res.json();
+    if (!data.length) {
+      startSel.innerHTML = '<option value="">No snaps found</option>';
+      endSel.innerHTML   = '<option value="">No snaps found</option>'; return;
+    }
+    const buildOptions = (preselect) =>
+      '<option value="">-- Select --</option>' +
+      data.map(s =>
+        `<option value="${s.snap_id}" ${s.snap_id == preselect ? 'selected' : ''}>` +
+        `${s.snap_id} \u2014 ${s.snap_time}</option>`
+      ).join('');
+    startSel.innerHTML = buildOptions(preselectStart || '');
+    endSel.innerHTML   = buildOptions(preselectEnd   || '');
+  } catch(e) {
+    startSel.innerHTML = '<option value="">Error: ' + e.message + '</option>';
+    endSel.innerHTML   = '<option value="">Error: ' + e.message + '</option>';
+  }
+}
+
+document.getElementById('f-instance').addEventListener('change', function() {
+  loadSnaps(document.getElementById('f-dbname').value, this.value);
+});
+
+function editTag(dbname, instance, tagName, tagType, snapStart, snapEnd, notes) {
+  document.getElementById('f-dbname').value              = dbname;
+  document.getElementById('f-tag_name').value            = tagName;
+  document.getElementById('f-tag_type').value            = tagType;
+  document.getElementById('f-notes').value               = notes;
+  document.getElementById('edit_original_tag').value     = tagName;
+  document.getElementById('form-title').textContent      = '✏️ Edit Tag: ' + tagName;
+  document.getElementById('form-submit-btn').textContent = 'Update Tag';
+  document.getElementById('form-cancel-btn').style.display = 'inline-block';
+  loadInstances(dbname, instance).then(() => loadSnaps(dbname, instance, snapStart, snapEnd));
+  document.getElementById('tag-form-card').scrollIntoView({behavior:'smooth'});
+}
+
+function resetForm() {
+  document.getElementById('tag-form').reset();
+  document.getElementById('edit_original_tag').value     = '';
+  document.getElementById('form-title').textContent      = 'Create Comparison Tag';
+  document.getElementById('form-submit-btn').textContent = 'Save Tag';
+  document.getElementById('form-cancel-btn').style.display = 'none';
+  document.getElementById('f-instance').innerHTML = '<option value="">-- Select DB first --</option>';
+  loadSnaps('', '');
+}
+</script>
+{% endblock %}

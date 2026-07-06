@@ -1,0 +1,806 @@
+{% extends "base.html" %}
+{% block title %} — Settings{% endblock %}
+
+{% block content %}
+<style>
+/* ── Layout ── */
+.settings-layout{display:grid;grid-template-columns:200px 1fr;gap:0;min-height:calc(100vh - 130px)}
+.settings-nav{background:var(--surface);border-right:1px solid var(--border);padding:16px 0}
+.settings-nav a{display:block;padding:10px 20px;color:var(--text2);font-size:.9rem;
+                text-decoration:none;border-left:3px solid transparent;transition:.15s}
+.settings-nav a:hover{color:var(--text);background:var(--surface2)}
+.settings-nav a.active{color:var(--accent);border-left-color:var(--accent);
+                        background:var(--surface2);font-weight:600}
+.settings-nav .nav-section{font-size:.72rem;color:var(--text2);letter-spacing:.1em;
+                            text-transform:uppercase;padding:16px 20px 4px;opacity:.6}
+.settings-body{padding:28px 32px;overflow-y:auto}
+
+/* ── Section panels ── */
+.s-panel{display:none}.s-panel.active{display:block}
+.s-title{font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:4px}
+.s-desc{font-size:.85rem;color:var(--text2);margin-bottom:20px}
+.s-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+        padding:20px;margin-bottom:16px}
+.s-card-title{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:14px;
+              display:flex;align-items:center;gap:8px}
+
+/* ── Form elements ── */
+.s-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.s-row.full{grid-template-columns:1fr}
+.s-row.three{grid-template-columns:1fr 1fr 1fr}
+.s-field{display:flex;flex-direction:column;gap:4px}
+.s-label{font-size:.78rem;color:var(--text2)}
+.s-input{background:var(--surface2);border:1px solid var(--border);color:var(--text);
+         padding:8px 10px;border-radius:var(--radius);font-size:.85rem;outline:none;width:100%}
+.s-input:focus{border-color:var(--accent)}
+.s-select{background:var(--surface2);border:1px solid var(--border);color:var(--text);
+          padding:8px 10px;border-radius:var(--radius);font-size:.85rem;outline:none;width:100%}
+.s-textarea{background:var(--surface2);border:1px solid var(--border);color:var(--text);
+            padding:8px 10px;border-radius:var(--radius);font-size:.82rem;outline:none;
+            width:100%;font-family:monospace;resize:vertical;min-height:70px}
+
+/* ── Toggle switch ── */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;
+            padding:12px 0;border-bottom:1px solid var(--border)}
+.toggle-row:last-child{border-bottom:none}
+.toggle-label{font-size:.85rem;color:var(--text)}
+.toggle-sub{font-size:.75rem;color:var(--text2);margin-top:2px}
+.toggle{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:var(--surface2);border:1px solid var(--border);
+               border-radius:12px;cursor:pointer;transition:.2s}
+.toggle-slider:before{content:'';position:absolute;width:18px;height:18px;left:2px;top:2px;
+                       background:var(--text2);border-radius:50%;transition:.2s}
+.toggle input:checked + .toggle-slider{background:var(--accent);border-color:var(--accent)}
+.toggle input:checked + .toggle-slider:before{transform:translateX(20px);background:#000}
+
+/* ── Mode cards ── */
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.mode-card{border:2px solid var(--border);border-radius:var(--radius);padding:14px;
+           cursor:pointer;transition:.15s;position:relative}
+.mode-card:hover{border-color:var(--text2)}
+.mode-card.selected{border-color:var(--accent);background:var(--surface2)}
+.mode-card input[type=radio]{position:absolute;opacity:0}
+.mode-icon{font-size:1.4rem;margin-bottom:6px}
+.mode-name{font-size:.85rem;font-weight:600;color:var(--text)}
+.mode-desc{font-size:.75rem;color:var(--text2);margin-top:4px}
+.mode-badge{font-size:.65rem;padding:1px 6px;border-radius:8px;display:inline-block;margin-top:4px}
+.badge-safe{background:#10b98120;color:#10b981;border:1px solid #10b98140}
+.badge-warn{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b40}
+.badge-cloud{background:#4a90d920;color:#4a90d9;border:1px solid #4a90d940}
+
+/* ── Provider cards ── */
+.provider-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.provider-card{border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;
+               cursor:pointer;transition:.15s}
+.provider-card:hover{border-color:var(--text2)}
+.provider-card.selected{border-color:var(--accent);background:var(--surface2)}
+.provider-card input[type=radio]{display:none}
+.provider-name{font-size:.82rem;font-weight:600;color:var(--text)}
+.provider-note{font-size:.72rem;color:var(--text2);margin-top:2px}
+
+/* ── License info ── */
+.license-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lic-stat{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+          padding:14px;text-align:center}
+.lic-val{font-size:1.6rem;font-weight:700;color:var(--accent)}
+.lic-label{font-size:.75rem;color:var(--text2);margin-top:4px}
+
+/* ── Buttons ── */
+.s-btn{padding:8px 20px;border-radius:var(--radius);border:none;cursor:pointer;
+       font-size:.85rem;font-weight:600;transition:.15s}
+.s-btn-primary{background:var(--accent);color:#000}
+.s-btn-primary:hover{opacity:.85}
+.s-btn-secondary{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+.s-btn-secondary:hover{border-color:var(--accent);color:var(--text)}
+.s-btn-danger{background:#ef444420;color:#ef4444;border:1px solid #ef444440}
+.s-btn-danger:hover{background:#ef4444;color:#fff}
+
+/* ── Alert banner ── */
+.s-alert{padding:10px 14px;border-radius:var(--radius);font-size:.82rem;margin-bottom:14px;
+         display:flex;gap:8px;align-items:flex-start}
+.s-alert-warn{background:#f59e0b15;border:1px solid #f59e0b40;color:#f59e0b}
+.s-alert-info{background:#4a90d915;border:1px solid #4a90d940;color:#94a3b8}
+.s-alert-ok{background:#10b98115;border:1px solid #10b98140;color:#10b981}
+.s-alert-err{background:#ef444415;border:1px solid #ef444440;color:#ef4444}
+
+/* ── Toast ── */
+#toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--border);
+       color:var(--text);padding:10px 18px;border-radius:var(--radius);font-size:.85rem;
+       opacity:0;transition:.3s;z-index:999;pointer-events:none;box-shadow:0 4px 20px #0008}
+#toast.show{opacity:1}
+#toast.ok{border-color:#10b981;color:#10b981}
+#toast.err{border-color:#ef4444;color:#ef4444}
+
+/* ── MAC address display ── */
+.mac-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+         padding:10px 14px;font-family:monospace;font-size:.9rem;color:var(--accent);
+         letter-spacing:.1em}
+</style>
+
+<div class="settings-layout">
+
+  <!-- ── Sidebar nav ──────────────────────────────────────────────── -->
+  <div class="settings-nav">
+    <div class="nav-section">Engine</div>
+    <a href="#" class="active" onclick="showSection('ai',this)">🤖 AI / Recommendations</a>
+    <a href="#" onclick="showSection('anomaly',this)">📊 Anomaly Thresholds</a>
+    <div class="nav-section">Data Sources</div>
+    <a href="#" onclick="showSection('awr_source',this)">🗄 AWR Source</a>
+    <a href="#" onclick="showSection('sar_source',this)">🖥 SAR Source</a>
+    <div class="nav-section">Administration</div>
+    <a href="#" onclick="showSection('license',this)">🔑 License</a>
+    <a href="#" onclick="showSection('access',this)">🔒 Access Control</a>
+    <a href="#" onclick="showSection('users',this)">👤 Users</a>
+  </div>
+
+  <!-- ── Main content ─────────────────────────────────────────────── -->
+  <div class="settings-body">
+
+    {% if not is_admin %}
+    <div class="s-alert s-alert-err">
+      🔒 Settings are read-only. Admin login required to make changes.
+      <a href="/login" style="color:var(--accent);margin-left:8px">Login as admin →</a>
+    </div>
+    {% endif %}
+
+    <!-- ── AI / Recommendations ──────────────────────────────────── -->
+    <div id="s-ai" class="s-panel active">
+      <div class="s-title">🤖 AI / Recommendation Engine</div>
+      <div class="s-desc">Choose how the portal generates tuning recommendations. Rules mode always works offline. Local AI keeps data on-premise — recommended for BFSI. Cloud AI sends data externally.</div>
+
+      <div class="s-card">
+        <div class="s-card-title">Recommendation Mode</div>
+        <div class="mode-grid">
+          <label class="mode-card {% if cfg.ai_mode=='rules' %}selected{% endif %}" onclick="selectMode(this,'rules')">
+            <input type="radio" name="ai_mode" value="rules" {% if cfg.ai_mode=='rules' %}checked{% endif %}>
+            <div class="mode-icon">⚙️</div>
+            <div class="mode-name">Rules Engine</div>
+            <div class="mode-desc">Built-in rule library. No internet. No API key. Always available.</div>
+            <span class="mode-badge badge-safe">✅ Default · Air-gap safe</span>
+          </label>
+          <label class="mode-card {% if cfg.ai_mode=='local_ai' %}selected{% endif %}" onclick="selectMode(this,'local_ai')">
+            <input type="radio" name="ai_mode" value="local_ai" {% if cfg.ai_mode=='local_ai' %}checked{% endif %}>
+            <div class="mode-icon">🖥️</div>
+            <div class="mode-name">Local AI (Ollama)</div>
+            <div class="mode-desc">Runs on your server. Data never leaves premises. Best for BFSI/NBFC.</div>
+            <span class="mode-badge badge-safe">✅ On-premise · BFSI safe</span>
+          </label>
+          <label class="mode-card {% if cfg.ai_mode=='cloud_ai' %}selected{% endif %}" onclick="selectMode(this,'cloud_ai')">
+            <input type="radio" name="ai_mode" value="cloud_ai" {% if cfg.ai_mode=='cloud_ai' %}checked{% endif %}>
+            <div class="mode-icon">☁️</div>
+            <div class="mode-name">Cloud AI</div>
+            <div class="mode-desc">Claude, OpenAI, Gemini, Azure. Better quality, needs internet + API key.</div>
+            <span class="mode-badge badge-warn">⚠️ Data sent externally</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Local AI config -->
+      <div class="s-card" id="local-ai-card" style="{% if cfg.ai_mode != 'local_ai' %}display:none{% endif %}">
+        <div class="s-card-title">🖥️ Local AI Configuration (Ollama)</div>
+        <div class="s-alert s-alert-info">
+          ℹ️ Ollama must be installed on this Windows server.
+          <a href="https://ollama.com/download" target="_blank" style="color:var(--accent)">Download Ollama →</a>
+          After installing, run: <code style="margin-left:4px">ollama pull llama3.1</code>
+        </div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">Ollama URL</label>
+            <input class="s-input" id="ai_local_url" value="{{ cfg.ai_local_url }}" placeholder="http://localhost:11434">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Model</label>
+            <select class="s-select" id="ai_local_model">
+              {% for m in ['llama3.1','llama3.2','mistral','mixtral','codellama','phi3'] %}
+              <option value="{{ m }}" {% if cfg.ai_local_model==m %}selected{% endif %}>{{ m }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <button class="s-btn s-btn-secondary" onclick="testOllama()">🔌 Test Connection</button>
+        <span id="ollama-status" style="font-size:.8rem;margin-left:10px"></span>
+      </div>
+
+      <!-- Cloud AI config -->
+      <div class="s-card" id="cloud-ai-card" style="{% if cfg.ai_mode != 'cloud_ai' %}display:none{% endif %}">
+        <div class="s-card-title">☁️ Cloud AI Configuration</div>
+        <div class="s-alert s-alert-warn">
+          ⚠️ <strong>BFSI/NBFC Warning:</strong> Cloud AI sends AWR data (SQL text, table names, execution plans) to external servers. This may violate RBI IT Framework, DPDP Act 2023, and your organisation's data residency policy. Use Local AI (Ollama) for regulated environments.
+        </div>
+        <div class="s-card-title" style="font-size:.8rem;margin-bottom:10px">Select Provider</div>
+        <div class="provider-grid">
+          {% set providers = [
+            ('claude','Anthropic Claude','claude-haiku-4-5','Fast & cost-effective'),
+            ('openai','OpenAI ChatGPT','gpt-4o','Widely used'),
+            ('gemini','Google Gemini','gemini-1.5-pro','Good for structured data'),
+            ('azure_openai','Azure OpenAI','gpt-4o','Data in Azure tenant'),
+            ('lm_studio','LM Studio (Local)','local','Local alternative to Ollama'),
+          ] %}
+          {% for pid, pname, pmodel, pnote in providers %}
+          <label class="provider-card {% if cfg.ai_cloud_provider==pid %}selected{% endif %}"
+                 onclick="selectProvider(this,'{{ pid }}','{{ pmodel }}')">
+            <input type="radio" name="ai_cloud_provider" value="{{ pid }}"
+                   {% if cfg.ai_cloud_provider==pid %}checked{% endif %}>
+            <div class="provider-name">{{ pname }}</div>
+            <div class="provider-note">{{ pnote }}</div>
+          </label>
+          {% endfor %}
+        </div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">API Key</label>
+            <input class="s-input" id="ai_cloud_api_key" type="password"
+                   value="{{ cfg.ai_cloud_api_key }}" placeholder="sk-... or AIza...">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Model</label>
+            <input class="s-input" id="ai_cloud_model" value="{{ cfg.ai_cloud_model }}"
+                   placeholder="claude-sonnet-4-6">
+          </div>
+        </div>
+        <button class="s-btn s-btn-secondary" onclick="testCloudAI()">🔌 Test Connection</button>
+        <span id="cloud-ai-status" style="font-size:.8rem;margin-left:10px"></span>
+      </div>
+
+      <button class="s-btn s-btn-primary" onclick="saveSection('ai')" {% if not is_admin %}disabled{% endif %}>
+        💾 Save AI Settings
+      </button>
+    </div>
+
+    <!-- ── Anomaly Thresholds ─────────────────────────────────────── -->
+    <div id="s-anomaly" class="s-panel">
+      <div class="s-title">📊 Anomaly Detection Thresholds</div>
+      <div class="s-desc">These thresholds control sensitivity of AWR and SAR anomaly detection. Changes apply to future detections — re-run backfill to update historical data.</div>
+      <div class="s-card">
+        <div class="s-card-title">Detection Parameters</div>
+        <div class="s-row three">
+          <div class="s-field">
+            <label class="s-label">Z-Score Threshold</label>
+            <input class="s-input" id="anomaly_z_threshold" type="number" step="0.1" min="0.5" max="5"
+                   value="{{ cfg.anomaly_z_threshold }}">
+            <span style="font-size:.72rem;color:var(--text2);margin-top:2px">Lower = more sensitive. Default: 1.5</span>
+          </div>
+          <div class="s-field">
+            <label class="s-label">Baseline Days</label>
+            <input class="s-input" id="anomaly_baseline_days" type="number" min="7" max="365"
+                   value="{{ cfg.anomaly_baseline_days }}">
+            <span style="font-size:.72rem;color:var(--text2);margin-top:2px">Days of history for baseline. Default: 90</span>
+          </div>
+          <div class="s-field">
+            <label class="s-label">Min Samples</label>
+            <input class="s-input" id="anomaly_min_samples" type="number" min="1" max="30"
+                   value="{{ cfg.anomaly_min_samples }}">
+            <span style="font-size:.72rem;color:var(--text2);margin-top:2px">Min data points required. Default: 3</span>
+          </div>
+        </div>
+      </div>
+      <button class="s-btn s-btn-primary" onclick="saveSection('anomaly')" {% if not is_admin %}disabled{% endif %}>
+        💾 Save Thresholds
+      </button>
+    </div>
+
+    <!-- ── AWR Source ─────────────────────────────────────────────── -->
+    <div id="s-awr_source" class="s-panel">
+      <div class="s-title">🗄 AWR Source Configuration</div>
+      <div class="s-desc">Configure where AWR HTML reports are picked up from. The watcher monitors this location and queues files for parsing.</div>
+      <div class="s-card">
+        <div class="s-card-title">Source Type</div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">AWR Source</label>
+            <select class="s-select" id="awr_source_type" onchange="toggleAwrSource(this.value)">
+              <option value="local" {% if cfg.awr_source_type=='local' %}selected{% endif %}>Local Folder (default)</option>
+              <option value="network" {% if cfg.awr_source_type=='network' %}selected{% endif %}>Network / UNC Path</option>
+              <option value="direct_db" {% if cfg.awr_source_type=='direct_db' %}selected{% endif %}>Direct Oracle DB Connection</option>
+            </select>
+          </div>
+        </div>
+        <div id="awr-local-cfg">
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">Local Drop Folder Path</label>
+              <input class="s-input" id="awr_local_path" value="{{ cfg.awr_local_path }}"
+                     placeholder="awr_reports">
+            </div>
+          </div>
+        </div>
+        <div id="awr-network-cfg" style="display:none">
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">Network / UNC Path</label>
+              <input class="s-input" id="awr_network_path" value="{{ cfg.awr_network_path }}"
+                     placeholder="\\server\share\awr_reports">
+            </div>
+          </div>
+        </div>
+        <div id="awr-db-cfg" style="display:none">
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">Oracle DB Host</label>
+              <input class="s-input" id="awr_db_host" value="{{ cfg.awr_db_host }}" placeholder="192.168.1.10">
+            </div>
+            <div class="s-field">
+              <label class="s-label">Port</label>
+              <input class="s-input" id="awr_db_port" value="{{ cfg.awr_db_port }}" placeholder="1521">
+            </div>
+          </div>
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">Service Name</label>
+              <input class="s-input" id="awr_db_service" value="{{ cfg.awr_db_service }}" placeholder="ORCL">
+            </div>
+            <div class="s-field">
+              <label class="s-label">Username</label>
+              <input class="s-input" id="awr_db_user" value="{{ cfg.awr_db_user }}" placeholder="awrreader">
+            </div>
+          </div>
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">Password</label>
+              <input class="s-input" id="awr_db_password" type="password" value="{{ cfg.awr_db_password }}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="s-btn s-btn-primary" onclick="saveSection('awr_source')" {% if not is_admin %}disabled{% endif %}>
+        💾 Save AWR Source
+      </button>
+    </div>
+
+    <!-- ── SAR Source ─────────────────────────────────────────────── -->
+    <div id="s-sar_source" class="s-panel">
+      <div class="s-title">🖥 SAR Source Configuration</div>
+      <div class="s-desc">Configure where SAR binary/text files are collected from. Subfolder per hostname pattern is used: sar_drop\HOSTNAME\sa01.</div>
+      <div class="s-card">
+        <div class="s-card-title">Source Type</div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">SAR Source</label>
+            <select class="s-select" id="sar_source_type" onchange="toggleSarSource(this.value)">
+              <option value="local" {% if cfg.sar_source_type=='local' %}selected{% endif %}>Local Folder (default)</option>
+              <option value="ssh" {% if cfg.sar_source_type=='ssh' %}selected{% endif %}>SSH Pull from Linux Server</option>
+            </select>
+          </div>
+          <div class="s-field">
+            <label class="s-label">SAR Timezone Offset (hours)</label>
+            <select class="s-select" id="sar_tz_offset">
+              <option value="0"   {% if cfg.sar_tz_offset in ('0','0.0','') or not cfg.sar_tz_offset %}selected{% endif %}>0 — No adjustment (server is IST)</option>
+              <option value="5.5" {% if cfg.sar_tz_offset=='5.5' %}selected{% endif %}>+5.5 — UTC → IST (server is UTC)</option>
+              <option value="-5.5"{% if cfg.sar_tz_offset=='-5.5' %}selected{% endif %}>-5.5 — IST → UTC</option>
+            </select>
+            <span style="font-size:.72rem;color:var(--text2);margin-top:2px">
+              Use +5.5 if SAR text files show UTC times but your portal is in IST
+            </span>
+          </div>
+        </div>
+        <div id="sar-local-cfg">
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">Local Drop Folder</label>
+              <input class="s-input" id="sar_local_path" value="{{ cfg.sar_local_path }}" placeholder="sar_drop">
+            </div>
+          </div>
+        </div>
+        <div id="sar-ssh-cfg" style="display:none">
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">SSH Host</label>
+              <input class="s-input" id="sar_ssh_host" value="{{ cfg.sar_ssh_host }}" placeholder="192.168.1.20">
+            </div>
+            <div class="s-field">
+              <label class="s-label">SSH Port</label>
+              <input class="s-input" id="sar_ssh_port" value="{{ cfg.sar_ssh_port }}" placeholder="22">
+            </div>
+          </div>
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">SSH Username</label>
+              <input class="s-input" id="sar_ssh_user" value="{{ cfg.sar_ssh_user }}" placeholder="oracle">
+            </div>
+            <div class="s-field">
+              <label class="s-label">SSH Key Path</label>
+              <input class="s-input" id="sar_ssh_key_path" value="{{ cfg.sar_ssh_key_path }}"
+                     placeholder="C:\keys\id_rsa">
+            </div>
+          </div>
+          <div class="s-row">
+            <div class="s-field">
+              <label class="s-label">Remote SAR Path</label>
+              <input class="s-input" id="sar_ssh_remote_path" value="{{ cfg.sar_ssh_remote_path }}"
+                     placeholder="/var/log/sa">
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="s-btn s-btn-primary" onclick="saveSection('sar_source')" {% if not is_admin %}disabled{% endif %}>
+        💾 Save SAR Source
+      </button>
+    </div>
+
+    <!-- ── License ───────────────────────────────────────────────── -->
+    <div id="s-license" class="s-panel">
+      <div class="s-title">🔑 License Information</div>
+      <div class="s-desc">License details control how many Oracle databases and SAR servers can be monitored. Contact Avekshaa for license keys.</div>
+      <div class="s-card">
+        <div class="s-card-title">Current License Status</div>
+        <div class="license-grid" style="margin-bottom:16px">
+          <div class="lic-stat">
+            <div class="lic-val" id="lic-db-used">{{ license.db_used }}</div>
+            <div class="lic-label">DBs in use / {{ cfg.license_db_count }} licensed</div>
+          </div>
+          <div class="lic-stat">
+            <div class="lic-val" id="lic-sar-used">{{ license.sar_used }}</div>
+            <div class="lic-label">SAR servers in use / {{ cfg.license_sar_count }} licensed</div>
+          </div>
+          <div class="lic-stat">
+            <div class="lic-val" style="font-size:1rem" id="lic-expiry">{{ cfg.license_expiry or 'Not set' }}</div>
+            <div class="lic-label">License expiry</div>
+          </div>
+        </div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">License Key</label>
+            <input class="s-input" id="license_key" value="{{ cfg.license_key }}" placeholder="AVK-XXXX-XXXX-XXXX">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Customer Name</label>
+            <input class="s-input" id="license_customer" value="{{ cfg.license_customer }}">
+          </div>
+        </div>
+        <div class="s-row three">
+          <div class="s-field">
+            <label class="s-label">Licensed DB Count</label>
+            <input class="s-input" id="license_db_count" type="number" value="{{ cfg.license_db_count }}">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Licensed SAR Server Count</label>
+            <input class="s-input" id="license_sar_count" type="number" value="{{ cfg.license_sar_count }}">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Expiry Date</label>
+            <input class="s-input" id="license_expiry" type="date" value="{{ cfg.license_expiry }}">
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="s-label" style="margin-bottom:6px">Server MAC Address (for license generation)</div>
+          <div class="mac-box" id="mac-address">{{ mac_address }}</div>
+        </div>
+      </div>
+      <button class="s-btn s-btn-primary" onclick="saveSection('license')" {% if not is_admin %}disabled{% endif %}>
+        💾 Save License
+      </button>
+    </div>
+
+    <!-- ── Access Control ────────────────────────────────────────── -->
+    <div id="s-access" class="s-panel">
+      <div class="s-title">🔒 Access Control</div>
+      <div class="s-desc">Control who can access the portal. When login is enabled all users must authenticate before viewing any page.</div>
+      <div class="s-card">
+        <div class="s-card-title">Portal Access</div>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Require Login</div>
+            <div class="toggle-sub">When enabled, all users must log in before accessing the portal.</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="portal_login_required"
+                   {% if cfg.portal_login_required=='true' %}checked{% endif %}>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Metadata Refresh Frequency</div>
+            <div class="toggle-sub">How often DBAs should refresh Oracle object metadata (dba_tables, dba_indexes etc.).</div>
+          </div>
+          <select class="s-input" id="metadata_refresh_days" style="width:160px">
+            <option value="7"  {% if cfg.metadata_refresh_days=='7' %}selected{% endif %}>Weekly (7 days)</option>
+            <option value="14" {% if cfg.metadata_refresh_days=='14' or not cfg.metadata_refresh_days %}selected{% endif %}>Fortnightly (14 days) ✓ Recommended</option>
+            <option value="30" {% if cfg.metadata_refresh_days=='30' %}selected{% endif %}>Monthly (30 days)</option>
+          </select>
+        </div>
+            <div class="toggle-sub">Used for password reset on the Forgot Password page.</div>
+          </div>
+          <input class="s-input" id="admin_reset_pin"
+                 value="{{ cfg.admin_reset_pin or 'AWR@2024' }}"
+                 style="width:160px;text-align:center"
+                 placeholder="AWR@2024">
+        </div>
+            <div class="toggle-sub">Auto-logout after inactivity.</div>
+          </div>
+          <select class="s-select" id="session_timeout_mins" style="width:160px">
+            <option value="0" {% if cfg.session_timeout_mins=='0' %}selected{% endif %}>Never</option>
+            <option value="30" {% if cfg.session_timeout_mins=='30' or not cfg.session_timeout_mins %}selected{% endif %}>30 minutes</option>
+            <option value="60" {% if cfg.session_timeout_mins=='60' %}selected{% endif %}>1 hour</option>
+            <option value="240" {% if cfg.session_timeout_mins=='240' %}selected{% endif %}>4 hours</option>
+            <option value="480" {% if cfg.session_timeout_mins=='480' %}selected{% endif %}>8 hours</option>
+            <option value="1440" {% if cfg.session_timeout_mins=='1440' %}selected{% endif %}>24 hours</option>
+          </select>
+        </div>
+      </div>
+      <button class="s-btn s-btn-primary" onclick="saveSection('access')" {% if not is_admin %}disabled{% endif %}>
+        💾 Save Access Settings
+      </button>
+    </div>
+
+    <!-- ── Users ─────────────────────────────────────────────────── -->
+    <div id="s-users" class="s-panel">
+      <div class="s-title">👤 Users</div>
+      <div class="s-desc">Manage portal user accounts. Admin users can access Settings. Viewer users can access dashboards and reports only.</div>
+
+      <!-- User list -->
+      <div class="s-card">
+        <div class="s-card-title">User Accounts</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.85rem">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border)">
+              <th style="text-align:left;padding:6px 8px;color:var(--text2)">Username</th>
+              <th style="text-align:left;padding:6px 8px;color:var(--text2)">Full Name</th>
+              <th style="text-align:left;padding:6px 8px;color:var(--text2)">Role</th>
+              <th style="text-align:left;padding:6px 8px;color:var(--text2)">Last Login</th>
+              <th style="text-align:left;padding:6px 8px;color:var(--text2)">Status</th>
+              <th style="padding:6px 8px"></th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody">
+            {% for u in users %}
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:7px 8px;font-weight:600">{{ u.username }}</td>
+              <td style="padding:7px 8px;color:var(--text2)">{{ u.full_name or '—' }}</td>
+              <td style="padding:7px 8px">
+                <span style="font-size:.75rem;padding:2px 8px;border-radius:8px;
+                  background:{% if u.role=='admin' %}#f59e0b20{% else %}#4a90d920{% endif %};
+                  color:{% if u.role=='admin' %}#f59e0b{% else %}#4a90d9{% endif %};
+                  border:1px solid {% if u.role=='admin' %}#f59e0b40{% else %}#4a90d940{% endif %}">
+                  {{ u.role }}
+                </span>
+              </td>
+              <td style="padding:7px 8px;color:var(--text2);font-size:.8rem">
+                {{ u.last_login.strftime('%d %b %Y %H:%M') if u.last_login else '—' }}
+              </td>
+              <td style="padding:7px 8px">
+                <span style="font-size:.75rem;color:{% if u.active %}#10b981{% else %}#ef4444{% endif %}">
+                  {{ '● Active' if u.active else '● Inactive' }}
+                </span>
+              </td>
+              <td style="padding:7px 8px">
+                {% if is_admin and u.username != 'admin' %}
+                <button class="s-btn s-btn-secondary" style="font-size:.75rem;padding:3px 10px"
+                        onclick="editUser('{{ u.username }}','{{ u.role }}')">Edit</button>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Add / Edit user form -->
+      <div class="s-card" id="user-form-card" {% if not is_admin %}style="display:none"{% endif %}>
+        <div class="s-card-title" id="user-form-title">➕ Add New User</div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">Username</label>
+            <input class="s-input" id="u-username" placeholder="e.g. analyst1">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Full Name</label>
+            <input class="s-input" id="u-fullname" placeholder="e.g. Rajesh Kumar">
+          </div>
+        </div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">Password</label>
+            <input class="s-input" id="u-password" type="password" placeholder="Min 8 characters">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Role</label>
+            <select class="s-select" id="u-role">
+              <option value="viewer">Viewer</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px">
+          <button class="s-btn s-btn-primary" onclick="saveUser()">💾 Save User</button>
+          <button class="s-btn s-btn-secondary" onclick="clearUserForm()">✕ Cancel</button>
+        </div>
+      </div>
+
+      <!-- Change own password -->
+      <div class="s-card">
+        <div class="s-card-title">🔑 Change My Password</div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">Current Password</label>
+            <input class="s-input" id="pwd-current" type="password">
+          </div>
+        </div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">New Password</label>
+            <input class="s-input" id="pwd-new" type="password">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Confirm New Password</label>
+            <input class="s-input" id="pwd-confirm" type="password">
+          </div>
+        </div>
+        <button class="s-btn s-btn-primary" onclick="changePassword()">🔑 Change Password</button>
+      </div>
+    </div>
+
+  </div><!-- /settings-body -->
+</div><!-- /settings-layout -->
+
+<div id="toast"></div>
+
+<script>
+// ── Section navigation ────────────────────────────────────────────────
+function showSection(name, el) {
+  document.querySelectorAll('.s-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.settings-nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById('s-' + name).classList.add('active');
+  if (el) el.classList.add('active');
+  return false;
+}
+
+// ── Mode selection ────────────────────────────────────────────────────
+function selectMode(card, mode) {
+  document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  document.getElementById('local-ai-card').style.display = mode === 'local_ai' ? '' : 'none';
+  document.getElementById('cloud-ai-card').style.display = mode === 'cloud_ai' ? '' : 'none';
+}
+
+function selectProvider(card, pid, defaultModel) {
+  document.querySelectorAll('.provider-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  if (!document.getElementById('ai_cloud_model').value) {
+    document.getElementById('ai_cloud_model').value = defaultModel;
+  }
+}
+
+// ── Source toggles ────────────────────────────────────────────────────
+function toggleAwrSource(val) {
+  document.getElementById('awr-local-cfg').style.display   = val === 'local'     ? '' : 'none';
+  document.getElementById('awr-network-cfg').style.display = val === 'network'   ? '' : 'none';
+  document.getElementById('awr-db-cfg').style.display      = val === 'direct_db' ? '' : 'none';
+}
+function toggleSarSource(val) {
+  document.getElementById('sar-local-cfg').style.display = val === 'local' ? '' : 'none';
+  document.getElementById('sar-ssh-cfg').style.display   = val === 'ssh'   ? '' : 'none';
+}
+// Init on load
+toggleAwrSource(document.getElementById('awr_source_type')?.value);
+toggleSarSource(document.getElementById('sar_source_type')?.value);
+
+// ── Save section ──────────────────────────────────────────────────────
+async function saveSection(section) {
+  const fields = {};
+  const ids = {
+    ai: ['ai_mode','ai_local_url','ai_local_model','ai_cloud_provider',
+         'ai_cloud_api_key','ai_cloud_model'],
+    anomaly: ['anomaly_z_threshold','anomaly_baseline_days','anomaly_min_samples'],
+    awr_source: ['awr_source_type','awr_local_path','awr_network_path','awr_db_host',
+                 'awr_db_port','awr_db_service','awr_db_user','awr_db_password'],
+    sar_source: ['sar_source_type','sar_tz_offset','sar_local_path','sar_ssh_host','sar_ssh_port',
+                 'sar_ssh_user','sar_ssh_key_path','sar_ssh_remote_path'],
+    license: ['license_key','license_customer','license_db_count',
+              'license_sar_count','license_expiry'],
+    access: ['session_timeout_mins', 'admin_reset_pin', 'metadata_refresh_days'],
+  };
+
+  // ai_mode comes from radio
+  if (section === 'ai') {
+    const modeEl = document.querySelector('input[name=ai_mode]:checked');
+    if (modeEl) fields['ai_mode'] = modeEl.value;
+    const provEl = document.querySelector('input[name=ai_cloud_provider]:checked');
+    if (provEl) fields['ai_cloud_provider'] = provEl.value;
+  }
+  if (section === 'access') {
+    fields['portal_login_required'] = document.getElementById('portal_login_required')?.checked ? 'true' : 'false';
+  }
+
+  (ids[section] || []).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) fields[id] = el.value;
+  });
+
+  const res = await fetch('/api/settings/save', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({section, fields})
+  });
+  const data = await res.json();
+  showToast(res.ok ? '✅ Saved successfully' : '❌ ' + (data.detail || 'Save failed'), res.ok ? 'ok' : 'err');
+}
+
+// ── Test connections ──────────────────────────────────────────────────
+async function testOllama() {
+  const url   = document.getElementById('ai_local_url').value;
+  const model = document.getElementById('ai_local_model').value;
+  const el    = document.getElementById('ollama-status');
+  el.textContent = '⏳ Testing...';
+  const res = await fetch('/api/settings/test-ollama', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({url, model})
+  });
+  const d = await res.json();
+  el.style.color = d.ok ? '#10b981' : '#ef4444';
+  el.textContent = d.ok ? '✅ Connected — ' + d.model : '❌ ' + d.error;
+}
+
+async function testCloudAI() {
+  const provEl = document.querySelector('input[name=ai_cloud_provider]:checked');
+  const el = document.getElementById('cloud-ai-status');
+  el.textContent = '⏳ Testing...';
+  const res = await fetch('/api/settings/test-cloud-ai', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      provider: provEl?.value,
+      api_key:  document.getElementById('ai_cloud_api_key').value,
+      model:    document.getElementById('ai_cloud_model').value,
+    })
+  });
+  const d = await res.json();
+  el.style.color = d.ok ? (d.warning ? '#f59e0b' : '#10b981') : '#ef4444';
+  el.textContent = d.ok ? (d.warning || '✅ Connected') : '❌ ' + d.error;
+}
+
+// ── User management ───────────────────────────────────────────────────
+function editUser(username, role) {
+  document.getElementById('u-username').value = username;
+  document.getElementById('u-username').disabled = true;
+  document.getElementById('u-role').value = role;
+  document.getElementById('user-form-title').textContent = '✏️ Edit User: ' + username;
+  document.getElementById('user-form-card').style.display = '';
+}
+function clearUserForm() {
+  ['u-username','u-fullname','u-password'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('u-username').disabled = false;
+  document.getElementById('u-role').value = 'viewer';
+  document.getElementById('user-form-title').textContent = '➕ Add New User';
+}
+async function saveUser() {
+  const body = {
+    username:  document.getElementById('u-username').value.trim(),
+    full_name: document.getElementById('u-fullname').value.trim(),
+    password:  document.getElementById('u-password').value,
+    role:      document.getElementById('u-role').value,
+  };
+  if (!body.username) { showToast('❌ Username is required','err'); return; }
+  const res  = await fetch('/api/settings/users', {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
+  });
+  const data = await res.json();
+  showToast(res.ok ? '✅ User saved' : '❌ ' + data.detail, res.ok ? 'ok' : 'err');
+  if (res.ok) { clearUserForm(); location.reload(); }
+}
+async function changePassword() {
+  const curr    = document.getElementById('pwd-current').value;
+  const newpwd  = document.getElementById('pwd-new').value;
+  const confirm = document.getElementById('pwd-confirm').value;
+  if (newpwd !== confirm) { showToast('❌ Passwords do not match','err'); return; }
+  if (newpwd.length < 8)  { showToast('❌ Password must be at least 8 characters','err'); return; }
+  const res  = await fetch('/api/settings/change-password', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({current_password: curr, new_password: newpwd})
+  });
+  const data = await res.json();
+  showToast(res.ok ? '✅ Password changed' : '❌ ' + data.detail, res.ok ? 'ok' : 'err');
+  if (res.ok) ['pwd-current','pwd-new','pwd-confirm'].forEach(id =>
+    document.getElementById(id).value = '');
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────
+function showToast(msg, type='ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show ' + type;
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => el.className = '', 3000);
+}
+</script>
+{% endblock %}

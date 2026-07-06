@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %} — Execution Plan{% endblock %}
+{% block content %}
+<h1 style="font-size:1.2rem;margin-bottom:16px">📋 Upload / Paste Execution Plan</h1>
+
+{% if message %}
+<div class="msg {{ 'ok' if '✅' in message else 'err' }}">{{ message }}</div>
+{% endif %}
+
+<div class="card">
+  <h2>Paste or Upload DBMS_XPLAN Output</h2>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:12px">
+    Paste a single plan or upload a SQL*Plus spool file containing multiple plans.
+    The parser auto-detects single vs multi-plan files.
+  </p>
+  <form method="post" enctype="multipart/form-data">
+    <div class="form-row">
+      <div><label>Database</label>
+        <select name="dbname" required>
+          <option value="">-- Select --</option>
+          {% for db in dbs %}<option>{{ db }}</option>{% endfor %}
+        </select></div>
+      <div><label>SQL ID <span style="color:var(--text2)">(optional — auto-detected)</span></label>
+        <input type="text" name="sql_id" placeholder="e.g. abc123def456g"></div>
+    </div>
+    <label>Begin Snap ID <span style="color:var(--text2)">(optional — links to AWR metrics)</span></label>
+    <input type="number" name="begin_snap" placeholder="e.g. 43649">
+    <label>Plan Text <span style="color:var(--text2)">(paste here, or upload file below)</span></label>
+    <textarea name="plan_text" rows="14" placeholder="Paste DBMS_XPLAN output here — single plan or multi-plan spool file..."
+      style="font-family:monospace;font-size:.82rem"></textarea>
+    <label style="margin-top:8px">— OR upload a .txt file —</label>
+    <input type="file" name="plan_file" accept=".txt" style="padding:8px;cursor:pointer">
+    <br><button type="submit" class="btn btn-primary"
+      style="margin-top:16px;background:#7e57c2;color:#fff">Parse &amp; Store Plan(s)</button>
+  </form>
+</div>
+
+{# ── Single plan analysis ─────────────────────────────────────────── #}
+{% if analysis %}
+<div class="card">
+  <h2>Plan Analysis — <code>{{ analysis.sql_id }}</code></h2>
+  <p style="font-size:.85rem;color:var(--text2)">
+    Plan Hash: <code>{{ analysis.plan_hash }}</code> &nbsp;|&nbsp;
+    Steps: <strong>{{ analysis.total_steps }}</strong>
+  </p>
+  {% if analysis.findings %}
+  <table style="margin-top:12px">
+    <thead><tr><th>Severity</th><th>Pattern</th><th>Detail</th><th>Action</th></tr></thead>
+    <tbody>
+    {% for f in analysis.findings %}
+    <tr>
+      <td><span class="badge badge-{{ f.severity }}">{{ f.severity.upper() }}</span></td>
+      <td>{{ f.pattern }}</td>
+      <td style="font-size:.82rem">{{ f.detail }}</td>
+      <td style="font-size:.82rem;color:var(--text2)">{{ f.action }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:var(--accent2);margin-top:10px">✅ No major anti-patterns detected.</p>
+  {% endif %}
+</div>
+{% endif %}
+
+{# ── Multi-plan file results ──────────────────────────────────────── #}
+{% if multi_results %}
+<div class="card">
+  <h2>Multi-Plan Results — {{ multi_results|length }} plans parsed</h2>
+  <table style="margin-top:12px">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>SQL ID</th>
+        <th>Plan Hash</th>
+        <th style="text-align:center">Steps</th>
+        <th style="text-align:center">Findings</th>
+        <th>Top Issue</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in multi_results %}
+    {% set a = item.analysis %}
+    <tr>
+      <td style="color:var(--text2)">{{ loop.index }}</td>
+      <td><code>{{ a.sql_id }}</code></td>
+      <td style="font-size:.82rem;color:var(--text2)">{{ a.plan_hash }}</td>
+      <td style="text-align:center">{{ a.total_steps }}</td>
+      <td style="text-align:center">
+        {% if a.finding_count == 0 %}
+          <span style="color:var(--accent2)">✅ Clean</span>
+        {% else %}
+          <span style="color:{% if a.has_warnings %}#ef5350{% else %}#ffa726{% endif %}">
+            {{ a.finding_count }} issue{{ 's' if a.finding_count > 1 else '' }}
+          </span>
+        {% endif %}
+      </td>
+      <td style="font-size:.82rem">
+        {% if a.findings %}
+          <span class="badge badge-{{ a.findings[0].severity }}">{{ a.findings[0].severity.upper() }}</span>
+          {{ a.findings[0].pattern }}
+          {% if a.findings[0].detail %}
+            <span style="color:var(--text2)"> — {{ a.findings[0].detail[:60] }}{% if a.findings[0].detail|length > 60 %}…{% endif %}</span>
+          {% endif %}
+        {% else %}—{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {# Expandable detail per plan #}
+  {% for item in multi_results %}
+  {% set a = item.analysis %}
+  {% if a.findings %}
+  <details style="margin-top:12px;border:1px solid var(--border);border-radius:6px;padding:10px">
+    <summary style="cursor:pointer;font-weight:600">
+      <code>{{ a.sql_id }}</code> — {{ a.finding_count }} finding(s)
+    </summary>
+    <table style="margin-top:8px">
+      <thead><tr><th>Severity</th><th>Pattern</th><th>Detail</th><th>Action</th></tr></thead>
+      <tbody>
+      {% for f in a.findings %}
+      <tr>
+        <td><span class="badge badge-{{ f.severity }}">{{ f.severity.upper() }}</span></td>
+        <td>{{ f.pattern }}</td>
+        <td style="font-size:.82rem">{{ f.detail }}</td>
+        <td style="font-size:.82rem;color:var(--text2)">{{ f.action }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </details>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

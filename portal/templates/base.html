@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWR Insight Portal{% block title %}{% endblock %}</title>
+<style>
+:root{--bg:#0a0e1a;--surface:#141829;--surface2:#1e2340;--accent:#f59e0b;
+      --accent2:#10b981;--warn:#f59e0b;--danger:#ef4444;--text:#e2e8f0;
+      --text2:#94a3b8;--border:#1e2340;--radius:8px;--font:'Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+
+/* ── Top nav bar ── */
+.nav{background:var(--surface);border-bottom:1px solid var(--border);
+     padding:0 16px;display:flex;align-items:center;gap:2px;height:56px;flex-wrap:nowrap}
+.nav-brand{display:flex;flex-direction:column;justify-content:center;
+           margin-right:12px;flex-shrink:0}
+.nav-brand-line1{font-size:1rem;font-weight:700;color:var(--accent);white-space:nowrap}
+.nav-brand-line2{font-size:.7rem;color:var(--text2);white-space:nowrap}
+.nav a{color:var(--text2);padding:6px 10px;border-radius:var(--radius);
+       font-size:.82rem;transition:.15s;white-space:nowrap;text-decoration:none;flex-shrink:0}
+.nav a:hover,.nav a.active{background:var(--surface2);color:var(--text)}
+.nav-sep{width:1px;height:24px;background:var(--border);margin:0 4px;flex-shrink:0}
+
+/* ── Info strip below nav ── */
+.info-strip{background:#0d1120;border-bottom:1px solid var(--border);
+            padding:5px 16px;display:flex;align-items:center;gap:0;font-size:.78rem}
+.info-left{display:flex;align-items:center;gap:16px;flex:0 0 auto}
+.info-right{display:flex;align-items:center;gap:16px;margin-left:auto;flex:0 0 auto}
+.info-center{flex:1;display:flex;align-items:center;gap:12px;margin:0 16px}
+.info-pill{display:flex;align-items:center;gap:5px;padding:2px 8px;border-radius:10px}
+.info-label{color:var(--text2);font-size:.72rem}
+.info-val{font-weight:600}
+.pill-rules{background:#10b98118;color:#10b981;border:1px solid #10b98130}
+.pill-local{background:#4a90d918;color:#4a90d9;border:1px solid #4a90d930}
+.pill-cloud{background:#f59e0b18;color:#f59e0b;border:1px solid #f59e0b30}
+
+/* ── Progress bars ── */
+.prog-wrap{display:flex;align-items:center;gap:6px}
+.prog-label{font-size:.72rem;color:var(--text2);white-space:nowrap}
+.prog-bar{height:8px;border-radius:4px;background:var(--surface2);
+          border:1px solid var(--border);overflow:hidden;width:80px}
+.prog-fill{height:100%;border-radius:4px;transition:.4s}
+.prog-awr .prog-fill{background:var(--accent)}
+.prog-sar .prog-fill{background:#4a90d9}
+.prog-count{font-size:.72rem;font-weight:600;white-space:nowrap}
+
+.container{max-width:1400px;margin:0 auto;padding:24px;flex:1}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.card h2{font-size:1.1rem;color:var(--accent);margin-bottom:12px;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center}
+.stat-val{font-size:2.2rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.9rem;color:var(--text2);margin-top:4px}
+.stat.warn .stat-val{color:var(--warn)}
+.stat.danger .stat-val{color:var(--danger)}
+.stat.ok .stat-val{color:var(--accent2)}
+btn,.btn{display:inline-block;padding:8px 18px;border-radius:var(--radius);border:none;cursor:pointer;font-size:.9rem;transition:.15s}
+.btn-primary{background:var(--accent);color:#000}
+.btn-primary:hover{background:#81d4fa;color:#000}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-sm{padding:4px 12px;font-size:.8rem}
+form input[type=text],form input[type=number],form select,form textarea{
+  background:var(--surface2);border:1px solid var(--border);color:var(--text);
+  padding:8px 12px;border-radius:var(--radius);width:100%;font-size:.9rem;
+  font-family:var(--font);outline:none}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--accent)}
+form label{display:block;font-size:.85rem;color:var(--text2);margin-bottom:4px;margin-top:12px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.msg{padding:10px 14px;border-radius:var(--radius);margin-bottom:14px;font-size:.9rem}
+.msg.ok{background:#1b3a2c;border:1px solid var(--accent2);color:var(--accent2)}
+.msg.err{background:#3a1b1b;border:1px solid var(--danger);color:var(--danger)}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:var(--surface2);color:var(--text2);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:hover td{background:var(--surface2)}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.75rem;font-weight:600}
+.badge-critical{background:#b71c1c;color:#fff}
+.badge-high{background:#e65100;color:#fff}
+.badge-medium{background:#f57f17;color:#000}
+.badge-low{background:#1b5e20;color:#fff}
+.badge-done{background:#1b5e20;color:#fff}
+.badge-pending{background:#0d47a1;color:#fff}
+.badge-failed{background:#b71c1c;color:#fff}
+.badge-processing{background:#f57f17;color:#000}
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:40px;text-align:center;cursor:pointer;transition:.15s}
+.upload-zone:hover{border-color:var(--accent);background:var(--surface2)}
+.footer{text-align:center;padding:16px;color:var(--text2);font-size:.8rem;border-top:1px solid var(--border)}
+code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:.85em}
+pre{background:var(--surface2);padding:14px;border-radius:var(--radius);overflow-x:auto;font-size:.82rem;line-height:1.5}
+.plan-step{font-family:monospace;font-size:.82rem;padding:4px 8px;border-left:3px solid transparent}
+.plan-step.warning{border-left-color:var(--warn);background:#2a2010}
+.plan-step.critical{border-left-color:var(--danger);background:#2a1010}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <!-- Brand -->
+  <div class="nav-brand" style="margin-right:10px">
+    <div class="nav-brand-line1">⚡ AWR Insight Portal</div>
+    <div class="nav-brand-line2">Oracle Performance Analysis</div>
+  </div>
+  <div class="nav-sep"></div>
+  <a href="/" class="{% if page=='home' %}active{% endif %}">🏠 Home</a>
+  <a href="/upload/awr" class="{% if page=='upload' %}active{% endif %}">📤 AWR</a>
+  <a href="/upload/sar" class="{% if page=='sar' %}active{% endif %}">📊 SAR</a>
+  <a href="/upload/plan" class="{% if page=='plan' %}active{% endif %}">📋 Exec Plan</a>
+  <a href="/queues" class="{% if page=='queues' %}active{% endif %}">⚙️ Queues</a>
+  <a href="/comparison" class="{% if page=='comparison' %}active{% endif %}">🔄 AWR Compare</a>
+  <a href="/exec-plan" class="{% if page=='exec_plan' %}active{% endif %}">📋 Plan Compare</a>
+  <a href="/sql-search" class="{% if page=='sql_search' %}active{% endif %}">🔍 SQL</a>
+  <div class="nav-sep"></div>
+  <a href="/ai-recommendations" class="{% if page=='ai_rec' %}active{% endif %}">🤖 AI Recs</a>
+  <a href="/metadata" class="{% if page=='metadata' %}active{% endif %}">📚 Metadata</a>
+  <a href="/settings" class="{% if page=='settings' %}active{% endif %}">⚙️ Settings</a>
+  <a href="/logout" style="color:#ef4444"
+     onclick="return confirm('Sign out of AWR Insight Portal?')">↪ Logout</a>
+  <!-- Logo pushed to right -->
+  <a href="/" style="margin-left:auto;display:flex;align-items:center;text-decoration:none;flex-shrink:0">
+    <img src="/static/logo.jpg" alt="Avekshaa" style="height:40px;width:auto;object-fit:contain">
+  </a>
+</nav>
+
+<!-- ── Info strip ─────────────────────────────────────────────────── -->
+<div class="info-strip" id="info-strip">
+  <!-- Left: AI mode + license limits -->
+  <div class="info-left">
+    <span class="info-pill pill-rules" id="ai-mode-pill">⚙️ Rules mode</span>
+    <span class="info-label">Licensed:</span>
+    <span class="info-val" id="lic-dbs" style="color:var(--accent)">— DBs</span>
+    <span class="info-label">/</span>
+    <span class="info-val" id="lic-sars" style="color:#4a90d9">— SAR servers</span>
+  </div>
+
+  <!-- Center: AWR + SAR progress bars -->
+  <div class="info-center">
+    <div class="prog-wrap prog-awr">
+      <span class="prog-label">AWR</span>
+      <div class="prog-bar"><div class="prog-fill" id="awr-bar" style="width:0%"></div></div>
+      <span class="prog-count" id="awr-prog-txt" style="color:var(--accent)">—</span>
+    </div>
+    <div class="prog-wrap prog-sar">
+      <span class="prog-label">SAR</span>
+      <div class="prog-bar"><div class="prog-fill" id="sar-bar" style="width:0%"></div></div>
+      <span class="prog-count" id="sar-prog-txt" style="color:#4a90d9">—</span>
+    </div>
+  </div>
+
+  <!-- Right: links -->
+  <div class="info-right">
+    <a href="/settings#s-users" style="font-size:.75rem;color:var(--text2)" title="User Guide">📖 User Guide</a>
+    <span id="strip-user" style="font-size:.75rem;color:var(--text2)"></span>
+  </div>
+</div>
+
+<script>
+/* ── Auto-logout after 30 minutes of inactivity ── */
+(function(){
+  const TIMEOUT_MS = 30 * 60 * 1000;
+  let timer;
+  function reset() {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      alert('Your session has expired due to inactivity. You will be redirected to the login page.');
+      window.location.href = '/logout';
+    }, TIMEOUT_MS);
+  }
+  ['mousemove','keydown','click','scroll','touchstart'].forEach(e =>
+    document.addEventListener(e, reset, {passive:true})
+  );
+  reset();
+})();
+
+/* ── Info strip loader ── */
+(async function loadInfoStrip(){
+  try {
+    const res  = await fetch('/api/portal-info');
+    const data = await res.json();
+
+    // AI mode pill
+    const pill = document.getElementById('ai-mode-pill');
+    const mode = data.ai_mode || 'rules';
+    if (mode === 'local_ai') {
+      pill.textContent = '🖥️ Local AI';
+      pill.className = 'info-pill pill-local';
+    } else if (mode === 'cloud_ai') {
+      pill.textContent = '☁️ Cloud AI';
+      pill.className = 'info-pill pill-cloud';
+    } else {
+      pill.textContent = '⚙️ Rules mode';
+      pill.className = 'info-pill pill-rules';
+    }
+
+    // License counts
+    const licDb  = parseInt(data.license_db_count  || 0);
+    const licSar = parseInt(data.license_sar_count || 0);
+    const usedDb  = parseInt(data.db_used   || 0);
+    const usedSar = parseInt(data.sar_used  || 0);
+    document.getElementById('lic-dbs').textContent  = licDb  + ' DBs';
+    document.getElementById('lic-sars').textContent = licSar + ' SAR servers';
+
+    // Progress bars
+    const awrPct = licDb  > 0 ? Math.min(100, Math.round(usedDb  / licDb  * 100)) : 0;
+    const sarPct = licSar > 0 ? Math.min(100, Math.round(usedSar / licSar * 100)) : 0;
+    document.getElementById('awr-bar').style.width  = awrPct + '%';
+    document.getElementById('sar-bar').style.width  = sarPct + '%';
+    document.getElementById('awr-prog-txt').textContent = usedDb  + ' / ' + licDb  + ' DBs';
+    document.getElementById('sar-prog-txt').textContent = usedSar + ' / ' + licSar + ' servers';
+
+    // Colour bar red if at/over limit
+    if (awrPct >= 100) document.getElementById('awr-bar').style.background = 'var(--danger)';
+    if (sarPct >= 100) document.getElementById('sar-bar').style.background = 'var(--danger)';
+
+    // Username
+    if (data.username) {
+      document.getElementById('strip-user').textContent = '👤 ' + data.username;
+    }
+  } catch(_){}
+})();
+</script>
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+<div class="footer">AWR Insight Portal v2.0 &nbsp;|&nbsp; Oracle Performance Analysis Platform</div>
+</body>
+</html>

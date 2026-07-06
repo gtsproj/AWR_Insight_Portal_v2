@@ -1,0 +1,385 @@
+{% extends "base.html" %}
+{% block title %} — Home{% endblock %}
+{% block content %}
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+  <h1 style="font-size:1.6rem;color:var(--accent)">Dashboard Overview</h1>
+  <div style="display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--text2)">
+    <span id="live-dot" title="Auto-refreshing every 10s"
+          style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block"></span>
+    <span id="refresh-status">Live</span>
+  </div>
+</div>
+
+{# ── AWR Queue Stats ── #}
+<div style="font-size:.95rem;color:var(--text2);margin-bottom:6px;font-weight:600;letter-spacing:.05em">AWR QUEUE</div>
+<div class="stat-grid" id="stat-grid">
+  <div class="stat" id="stat-pending">
+    <div class="stat-val" id="val-pending">{{ stats.pending }}</div>
+    <div class="stat-label">Pending</div>
+  </div>
+  <div class="stat" id="stat-processing">
+    <div class="stat-val" id="val-processing">{{ stats.processing }}</div>
+    <div class="stat-label">Processing</div>
+  </div>
+  <div class="stat ok" id="stat-done">
+    <div class="stat-val" id="val-done">{{ stats.done }}</div>
+    <div class="stat-label">Done</div>
+  </div>
+  <div class="stat" id="stat-failed">
+    <div class="stat-val" id="val-failed">{{ stats.failed }}</div>
+    <div class="stat-label">Failed</div>
+  </div>
+  <div class="stat" id="stat-dbs">
+    <div class="stat-val" id="val-dbs">{{ stats.db_count }}</div>
+    <div class="stat-label">Databases</div>
+  </div>
+</div>
+
+{# ── SAR Queue Stats ── #}
+<div style="font-size:.95rem;color:var(--text2);margin-bottom:6px;font-weight:600;letter-spacing:.05em">SAR QUEUE</div>
+<div class="stat-grid" id="sar-stat-grid">
+  <div class="stat" id="sar-stat-pending">
+    <div class="stat-val" id="sar-val-pending">{{ stats.sar_pending }}</div>
+    <div class="stat-label">Pending</div>
+  </div>
+  <div class="stat" id="sar-stat-processing">
+    <div class="stat-val" id="sar-val-processing">{{ stats.sar_processing }}</div>
+    <div class="stat-label">Processing</div>
+  </div>
+  <div class="stat ok" id="sar-stat-done">
+    <div class="stat-val" id="sar-val-done">{{ stats.sar_done }}</div>
+    <div class="stat-label">Done</div>
+  </div>
+  <div class="stat" id="sar-stat-failed">
+    <div class="stat-val" id="sar-val-failed">{{ stats.sar_failed }}</div>
+    <div class="stat-label">Failed</div>
+  </div>
+  <div class="stat" id="sar-stat-hosts">
+    <div class="stat-val" id="sar-val-hosts">{{ stats.sar_host_count }}</div>
+    <div class="stat-label">Servers</div>
+  </div>
+</div>
+
+{# ── Active parsing status banner ── #}
+<div id="active-banner" style="display:none;margin-bottom:16px;padding:10px 16px;
+     background:#1a2a1a;border:1px solid var(--accent2);border-radius:var(--radius);
+     font-size:1rem;color:var(--accent2)">
+  ⚙️ <strong>Parsing in progress:</strong>
+  <span id="active-db-name" style="font-family:monospace;margin-left:6px"></span>
+  <span id="active-count" style="color:var(--text2);margin-left:8px"></span>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div class="card"><h2>Quick Actions</h2>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <a href="/upload/awr" class="btn btn-primary">📤 Upload AWR Report</a>
+    <a href="/upload/sar" class="btn btn-primary" style="background:var(--accent2)">📊 Upload SAR File</a>
+    <a href="/upload/plan" class="btn btn-primary" style="background:#7e57c2;color:#fff">📋 Upload Execution Plan</a>
+    <a href="/queues" class="btn btn-primary" style="background:var(--surface2);color:var(--text)">⚙️ Monitor Queues</a>
+  </div>
+</div>
+<!-- ── Metadata Refresh Alert ─────────────────────────────────── -->
+<div id="metadata-alert-banner" style="display:none;margin-bottom:12px">
+  <div style="background:#f59e0b15;border:1px solid #f59e0b50;border-radius:var(--radius);
+              padding:12px 16px;">
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span style="font-size:1.2rem;flex-shrink:0">⚠️</span>
+      <div style="flex:1">
+        <div style="font-size:.88rem;font-weight:600;color:#f59e0b;margin-bottom:6px">
+          Oracle Object Metadata Refresh Due
+          <span id="meta-freq-label" style="font-weight:400;font-size:.78rem;
+                color:var(--text2);margin-left:8px"></span>
+        </div>
+        <div id="meta-alert-list" style="font-size:.82rem;color:var(--text);
+             line-height:1.8"></div>
+        <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+          <a href="/metadata" style="font-size:.82rem;padding:4px 12px;
+             background:var(--accent);color:#000;border-radius:var(--radius);
+             text-decoration:none;font-weight:600">📚 Upload Metadata →</a>
+          <button onclick="dismissMetaAlert()"
+                  style="font-size:.78rem;padding:4px 10px;background:transparent;
+                         color:var(--text2);border:1px solid var(--border);
+                         border-radius:var(--radius);cursor:pointer">
+            Dismiss until tomorrow
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card"><h2>Grafana Dashboards</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;font-size:1rem">
+    <div style="font-size:.75rem;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px">AWR Dashboards</div>
+    {% if ai_mode in ('local_ai','cloud_ai') %}
+    <a href="http://localhost:3000/d/awr-intelligence-ai" target="_blank">🧠 AWR Intelligence — Wait · SQL · Segment · Correlation ↗</a>
+    {% else %}
+    <a href="http://localhost:3000/d/awr-unified-intelligence" target="_blank">🧠 AWR Intelligence — Wait · SQL · Segment · Correlation & Recommendations ↗</a>
+    {% endif %}
+    <a href="http://localhost:3000/d/awr-memory-advisory" target="_blank">💾 Memory Advisory & Instance Efficiency ↗</a>
+    <a href="http://localhost:3000/d/awr-anomaly-detection" target="_blank">🚨 AWR Anomaly Detection ↗</a>
+    <a href="/comparison">🔄 AWR Before/After Comparison</a>
+    <a href="/ai-recommendations">🤖 AI Recommendations</a>
+    <div style="font-size:.75rem;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;margin-top:6px;margin-bottom:2px">SAR Dashboards</div>
+    <a href="http://localhost:3000/d/sar-anomalies" target="_blank">🚨 SAR Anomaly Detection ↗</a>
+    <a href="http://localhost:3000/d/sar-overview" target="_blank">🖥️ SAR System Overview ↗</a>
+    <div style="font-size:.75rem;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;margin-top:6px;margin-bottom:2px">Correlation</div>
+    <a href="http://localhost:3000/d/sar-awr-correlation" target="_blank">🔗 AWR+SAR OS vs Oracle Correlation ↗</a>
+    <div style="font-size:.75rem;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;margin-top:6px;margin-bottom:2px">Navigation</div>
+    <a href="http://localhost:3000/d/fdv31-awr-nav" target="_blank">📌 AWR Navigation Hub ↗</a>
+  </div>
+</div>
+</div>
+
+{# ── Service Control Panel ── #}
+<div class="card" style="margin-top:4px">
+  <h2>Service Control</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:14px" id="svc-status-grid">
+    {% for key, label in [('portal','Portal'),('watcher','AWR Watcher'),('sar','SAR Watcher'),('queue','Queue Processor'),('grafana','Grafana')] %}
+    <div style="background:var(--surface2);border-radius:var(--radius);padding:10px 14px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:.85rem">{{ label }}</span>
+      <span id="svc-{{ key }}" class="badge" style="background:#333">…</span>
+    </div>
+    {% endfor %}
+  </div>
+  {% if is_admin %}
+  <div style="display:flex;flex-wrap:wrap;gap:8px">
+    <button class="btn btn-sm" style="background:#10b981;color:#fff" onclick="svcAction('start','all')">▶ Start All</button>
+    <button class="btn btn-sm btn-danger" onclick="svcAction('stop','all')">⏹ Stop All</button>
+    <button class="btn btn-sm" style="background:var(--warn);color:#000" onclick="svcAction('restart','all')">↺ Restart All</button>
+    <button class="btn btn-sm" style="background:#1e2340;color:#e2e8f0" onclick="svcAction('pause','all')">⏸ Pause All</button>
+    <button class="btn btn-sm" style="background:#334155;color:#e2e8f0" onclick="svcAction('resume','all')">⏯ Resume All</button>
+    <span style="border-left:1px solid var(--border);margin:0 4px"></span>
+    <button class="btn btn-sm" style="background:var(--surface2);color:var(--text)" onclick="clearCache()">🗑 Clear Cache &amp; Restart Portal</button>
+  </div>
+  {% else %}
+  <div style="font-size:.8rem;color:var(--text2);padding:6px 0">🔒 Service control available to admin users only.</div>
+  {% endif %}
+  <div id="svc-msg" style="margin-top:10px;font-size:.82rem;color:var(--text2);min-height:18px"></div>
+</div>
+
+{# ── Log Viewer ── #}
+<div class="card" style="margin-top:4px">
+  <h2>Log Viewer</h2>
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+    <select id="log-select" style="background:var(--surface2);border:1px solid var(--border);
+      color:var(--text);padding:7px 12px;border-radius:var(--radius);font-size:.85rem;outline:none;flex:1"
+      onchange="loadLog()">
+      <option value="">-- Select Log --</option>
+      <option value="portal">Portal (portal_stderr.log)</option>
+      <option value="watcher">AWR Watcher (watcher.log)</option>
+      <option value="sar_watcher">SAR Watcher (sar_watcher.log)</option>
+      <option value="queue">Queue Processor (queue_processor.log)</option>
+      <option value="anomaly">Anomaly Detector (anomaly_detector.log)</option>
+    </select>
+    <button class="btn btn-sm" style="background:var(--surface2);color:var(--text2)"
+            onclick="loadLog()">🔄 Refresh</button>
+  </div>
+  <pre id="log-output" style="background:var(--surface2);border:1px solid var(--border);
+    border-radius:var(--radius);padding:12px;font-size:.75rem;font-family:monospace;
+    height:260px;overflow-y:auto;color:var(--text2);white-space:pre-wrap;word-break:break-all">
+Select a log file above to view the last 50 lines.</pre>
+</div>
+
+<script>
+(function () {
+  const INTERVAL_MS = 10000;
+
+  const SVC_COLOURS = {
+    'Running':  { bg: '#1b5e20', text: '#fff' },
+    'Stopped':  { bg: '#b71c1c', text: '#fff' },
+    'Paused':   { bg: '#e65100', text: '#fff' },
+    'Starting': { bg: '#0d47a1', text: '#fff' },
+    'Stopping': { bg: '#4a148c', text: '#fff' },
+    'Unknown':  { bg: '#333',    text: '#ccc' },
+  };
+
+  function applyClass(el, cls) {
+    el.className = 'stat ' + (cls || '');
+  }
+
+  function setMsg(msg, colour) {
+    const el = document.getElementById('svc-msg');
+    if (el) { el.textContent = msg; el.style.color = colour || 'var(--text2)'; }
+  }
+
+  // ── Queue stats refresh ──────────────────────────────────────────
+  async function refreshStats() {
+    try {
+      const res = await fetch('/api/queue/stats');
+      if (!res.ok) return;
+      const d = await res.json();
+
+      document.getElementById('val-pending').textContent    = d.pending    ?? 0;
+      document.getElementById('val-processing').textContent = d.processing ?? 0;
+      document.getElementById('val-done').textContent       = d.done       ?? 0;
+      document.getElementById('val-failed').textContent     = d.failed     ?? 0;
+      document.getElementById('val-dbs').textContent        = d.db_count   ?? 0;
+
+      applyClass(document.getElementById('stat-pending'),
+        d.pending > 10 ? 'danger' : d.pending === 0 ? 'ok' : '');
+      applyClass(document.getElementById('stat-processing'),
+        d.processing > 0 ? 'warn' : '');
+      applyClass(document.getElementById('stat-done'), 'ok');
+      applyClass(document.getElementById('stat-failed'),
+        d.failed > 0 ? 'danger' : '');
+
+      document.getElementById('sar-val-pending').textContent    = d.sar_pending    ?? 0;
+      document.getElementById('sar-val-processing').textContent = d.sar_processing ?? 0;
+      document.getElementById('sar-val-done').textContent       = d.sar_done       ?? 0;
+      document.getElementById('sar-val-failed').textContent     = d.sar_failed     ?? 0;
+      document.getElementById('sar-val-hosts').textContent      = d.sar_host_count ?? 0;
+
+      applyClass(document.getElementById('sar-stat-pending'),
+        (d.sar_pending ?? 0) > 10 ? 'danger' : (d.sar_pending ?? 0) === 0 ? 'ok' : '');
+      applyClass(document.getElementById('sar-stat-processing'),
+        (d.sar_processing ?? 0) > 0 ? 'warn' : '');
+      applyClass(document.getElementById('sar-stat-done'), 'ok');
+      applyClass(document.getElementById('sar-stat-failed'),
+        (d.sar_failed ?? 0) > 0 ? 'danger' : '');
+
+      const banner = document.getElementById('active-banner');
+      const dbName = document.getElementById('active-db-name');
+      const awrActive = d.processing > 0;
+      const sarActive = (d.sar_processing ?? 0) > 0;
+      if (awrActive || sarActive) {
+        let parts = [];
+        if (awrActive) parts.push(`AWR: ${d.active_db || (d.db_names||[]).join(',')} (${d.processing} file${d.processing>1?'s':''})`);
+        if (sarActive) parts.push(`SAR: ${d.active_sar || (d.sar_hosts||[]).join(',')} (${d.sar_processing} file${d.sar_processing>1?'s':''})`);
+        dbName.textContent = parts.join('  |  ');
+        document.getElementById('active-count').textContent = '';
+        banner.style.display = '';
+      } else {
+        banner.style.display = 'none';
+      }
+
+      const dot = document.getElementById('live-dot');
+      dot.style.background = '#facc15';
+      setTimeout(() => dot.style.background = '#22c55e', 400);
+      const now = new Date();
+      document.getElementById('refresh-status').textContent =
+        'Updated ' + now.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+
+    } catch (_) {}
+  }
+
+  // ── Log viewer ───────────────────────────────────────────────────
+  window.loadLog = async function() {
+    const sel = document.getElementById('log-select').value;
+    const out = document.getElementById('log-output');
+    if (!sel) { out.textContent = 'Select a log file above to view the last 50 lines.'; return; }
+    out.textContent = 'Loading…';
+    try {
+      const res = await fetch(`/api/logs/${sel}?lines=50`);
+      if (!res.ok) { out.textContent = 'Error loading log: ' + res.statusText; return; }
+      const d = await res.json();
+      out.textContent = d.content || '(empty)';
+      out.scrollTop   = out.scrollHeight;
+    } catch(e) { out.textContent = 'Error: ' + e; }
+  };
+
+  // ── Metadata refresh alert ────────────────────────────────────────
+(async function checkMetadataRefresh() {
+  // Check if dismissed today
+  const dismissKey = 'meta_alert_dismissed';
+  const dismissed  = localStorage.getItem(dismissKey);
+  const today      = new Date().toDateString();
+  if (dismissed === today) return;
+
+  try {
+    const r = await fetch('/api/metadata/refresh-status');
+    const d = await r.json();
+    if (!d.overdue_count) return;
+
+    const banner   = document.getElementById('metadata-alert-banner');
+    const listEl   = document.getElementById('meta-alert-list');
+    const freqEl   = document.getElementById('meta-freq-label');
+    if (!banner || !listEl) return;
+
+    freqEl.textContent = `Refresh frequency: ${d.freq_label}`;
+
+    const overdue = d.alerts.filter(a => a.status !== 'ok');
+    listEl.innerHTML = overdue.map(a => {
+      const icon = a.status === 'missing' ? '🔴' : '🟡';
+      const age  = a.days_old != null
+        ? `${a.days_old} days old`
+        : 'never uploaded';
+      const count = a.object_count
+        ? ` · ${a.object_count.toLocaleString()} objects`
+        : '';
+      return `${icon} <strong>${a.dbname}</strong> — ${age}${count}`;
+    }).join('<br>');
+
+    banner.style.display = 'block';
+  } catch(_) {}
+})();
+
+window.dismissMetaAlert = function() {
+  const today = new Date().toDateString();
+  localStorage.setItem('meta_alert_dismissed', today);
+  const banner = document.getElementById('metadata-alert-banner');
+  if (banner) banner.style.display = 'none';
+};
+  async function refreshServices() {
+    try {
+      const res = await fetch('/api/services/status');
+      if (!res.ok) return;
+      const d = await res.json();
+      for (const [key, status] of Object.entries(d)) {
+        const el = document.getElementById('svc-' + key);
+        if (!el) continue;
+        const c = SVC_COLOURS[status] || SVC_COLOURS['Unknown'];
+        el.textContent = status;
+        el.style.background = c.bg;
+        el.style.color = c.text;
+      }
+    } catch (_) {}
+  }
+
+  // ── Service action ───────────────────────────────────────────────
+  window.svcAction = async function(action, service) {
+    setMsg(`${action} ${service}…`, 'var(--warn)');
+    try {
+      const res = await fetch(`/api/services/${action}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({service})
+      });
+      const d = await res.json();
+      const ok = Object.values(d.results).every(r => r.ok);
+      const statuses = Object.entries(d.results)
+        .map(([k, v]) => `${k}: ${v.status}`).join('  |  ');
+      setMsg(`${action} complete — ${statuses}`, ok ? 'var(--accent2)' : 'var(--warn)');
+      setTimeout(refreshServices, 1500);
+    } catch (e) {
+      setMsg(`Error: ${e}`, 'var(--danger)');
+    }
+  };
+
+  // ── Clear cache & restart portal ────────────────────────────────
+  window.clearCache = async function() {
+    setMsg('Clearing cache…', 'var(--warn)');
+    try {
+      const r1 = await fetch('/api/cache/clear', {method:'POST'});
+      const d1 = await r1.json();
+      setMsg(`Cache cleared (${d1.cleared} folders). Restarting portal…`, 'var(--warn)');
+      await fetch('/api/services/restart', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({service: 'portal'})
+      });
+      setMsg('Portal restarting — page will reload in 8s…', 'var(--accent2)');
+      setTimeout(() => location.reload(), 8000);
+    } catch (e) {
+      setMsg(`Error: ${e}`, 'var(--danger)');
+    }
+  };
+
+  // ── Boot ─────────────────────────────────────────────────────────
+  setInterval(refreshStats,    INTERVAL_MS);
+  setInterval(refreshServices, INTERVAL_MS);
+  refreshStats();
+  refreshServices();
+})();
+</script>
+{% endblock %}

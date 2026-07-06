@@ -1,0 +1,478 @@
+{% extends "base.html" %}
+{% block title %} — AI Recommendations{% endblock %}
+{% block content %}
+<style>
+.ai-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.ai-header h1{font-size:1.1rem;font-weight:700;margin:0}
+.mode-pill{font-size:.75rem;padding:3px 10px;border-radius:10px;font-weight:600}
+.mode-rules{background:#10b98120;color:#10b981;border:1px solid #10b98130}
+.mode-local{background:#4a90d920;color:#4a90d9;border:1px solid #4a90d930}
+.mode-cloud{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b30}
+
+/* Generate card */
+.gen-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+          padding:20px;margin-bottom:20px}
+.gen-card h3{font-size:.95rem;font-weight:600;color:var(--accent);margin-bottom:14px}
+.gen-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;align-items:flex-end}
+.gen-field{display:flex;flex-direction:column;gap:3px;flex:1;min-width:140px}
+.gen-field.wide{flex:2;min-width:200px}
+.gen-label{font-size:.75rem;color:var(--text2)}
+.gen-select,.gen-input{background:var(--surface2);border:1px solid var(--border);
+  color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.83rem;
+  outline:none;width:100%}
+.gen-select:focus,.gen-input:focus{border-color:var(--accent)}
+.btn-generate{padding:8px 18px;background:var(--accent);color:#000;border:none;
+              border-radius:var(--radius);font-size:.85rem;font-weight:700;cursor:pointer;
+              white-space:nowrap;height:36px}
+.btn-generate:hover{opacity:.85}
+
+/* Recommendation cards */
+.rec-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+          padding:16px;margin-bottom:10px}
+.rec-card:hover{border-color:var(--accent)}
+.rec-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.rec-sev{font-size:.72rem;padding:2px 8px;border-radius:8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.sev-critical{background:#ef444420;color:#ef4444;border:1px solid #ef444440}
+.sev-high{background:#f9731620;color:#f97316;border:1px solid #f9731640}
+.sev-medium{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b40}
+.sev-low{background:#10b98120;color:#10b981;border:1px solid #10b98140}
+.rec-title{font-size:.92rem;font-weight:600;flex:1}
+.st-badge{font-size:.7rem;padding:2px 8px;border-radius:8px;font-weight:600;flex-shrink:0}
+.st-pending{background:#33415520;color:#94a3b8;border:1px solid #33415540}
+.st-accepted{background:#10b98120;color:#10b981;border:1px solid #10b98140}
+.st-rejected{background:#ef444420;color:#ef4444;border:1px solid #ef444440}
+.st-revised{background:#4a90d920;color:#4a90d9;border:1px solid #4a90d940}
+.rec-meta{font-size:.75rem;color:var(--text2);margin-bottom:8px;display:flex;gap:12px;flex-wrap:wrap}
+.rec-body{font-size:.82rem;color:var(--text);line-height:1.65;white-space:pre-wrap;
+          background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+          padding:12px;margin-bottom:10px;font-family:'Segoe UI',Arial,sans-serif}
+.rec-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn-accept{padding:5px 12px;background:#10b98120;color:#10b981;border:1px solid #10b98140;
+            border-radius:var(--radius);font-size:.78rem;cursor:pointer;font-weight:600}
+.btn-accept:hover{background:#10b981;color:#000}
+.btn-reject{padding:5px 12px;background:#ef444420;color:#ef4444;border:1px solid #ef444440;
+            border-radius:var(--radius);font-size:.78rem;cursor:pointer;font-weight:600}
+.btn-reject:hover{background:#ef4444;color:#fff}
+.btn-revise{padding:5px 12px;background:#4a90d920;color:#4a90d9;border:1px solid #4a90d940;
+            border-radius:var(--radius);font-size:.78rem;cursor:pointer;font-weight:600}
+.btn-revise:hover{background:#4a90d9;color:#fff}
+.fb-form{display:none;margin-top:10px;background:var(--surface2);border:1px solid var(--border);
+         border-radius:var(--radius);padding:12px}
+.fb-form.open{display:block}
+.fb-form textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);
+  padding:8px;border-radius:var(--radius);font-size:.82rem;resize:vertical;min-height:70px;
+  outline:none;font-family:inherit}
+.fb-form textarea:focus{border-color:var(--accent)}
+.fb-actions{display:flex;gap:8px;margin-top:8px}
+.ai-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+        padding:14px;white-space:pre-wrap;font-size:.82rem;line-height:1.7;color:var(--text);
+        margin-top:10px;font-family:'Segoe UI',Arial,sans-serif}
+.filter-bar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.filter-bar select,.filter-bar input{background:var(--surface2);border:1px solid var(--border);
+  color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.83rem;outline:none}
+.bfsi-warn{background:#f59e0b15;border:1px solid #f59e0b40;color:#f59e0b;
+           padding:8px 12px;border-radius:var(--radius);font-size:.8rem;margin-bottom:14px}
+#toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--border);
+       color:var(--text);padding:10px 18px;border-radius:var(--radius);font-size:.85rem;
+       opacity:0;transition:.3s;z-index:999;pointer-events:none;box-shadow:0 4px 20px #0008}
+#toast.show{opacity:1}
+#toast.ok{border-color:#10b981;color:#10b981}
+#toast.err{border-color:#ef4444;color:#ef4444}
+</style>
+
+<div class="ai-header">
+  <h1>🤖 AI Recommendations</h1>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span class="mode-pill
+      {% if ai_mode=='local_ai' %}mode-local
+      {% elif ai_mode=='cloud_ai' %}mode-cloud
+      {% else %}mode-rules{% endif %}">
+      {% if ai_mode=='local_ai' %}🖥️ Local AI (Ollama)
+      {% elif ai_mode=='cloud_ai' %}☁️ Cloud AI
+      {% else %}⚙️ Rules mode — AI inactive{% endif %}
+    </span>
+    <a href="/settings" style="font-size:.8rem;color:var(--text2)">Change mode →</a>
+  </div>
+</div>
+
+{% if ai_mode=='cloud_ai' %}
+<div class="bfsi-warn">⚠️ <strong>BFSI/NBFC Warning:</strong> Cloud AI sends AWR data to external servers. Ensure compliance with your data residency policy.</div>
+{% endif %}
+
+{% if ai_mode=='rules' %}
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+            padding:24px;text-align:center;color:var(--text2)">
+  <div style="font-size:2rem;margin-bottom:8px">⚙️</div>
+  <div style="font-size:.95rem;margin-bottom:8px">AI mode is <strong>Rules Engine</strong></div>
+  <div style="font-size:.84rem;margin-bottom:14px">Switch to Local AI (Ollama) or Cloud AI in Settings.</div>
+  <a href="/settings" style="display:inline-block;padding:8px 18px;background:var(--accent);
+     color:#000;border-radius:var(--radius);font-size:.85rem;font-weight:600;text-decoration:none">
+    ⚙️ Go to Settings →
+  </a>
+</div>
+{% else %}
+
+<!-- Generate Panel -->
+<div class="gen-card">
+  <h3>🔍 Generate AI Recommendation</h3>
+
+  <!-- Row 1: DB + Instance + Start Snap + End Snap + Generate button -->
+  <div class="gen-row">
+    <div class="gen-field">
+      <span class="gen-label">Database *</span>
+      <select class="gen-select" id="gen-dbname" onchange="onDbChange()">
+        <option value="">-- Select DB --</option>
+      </select>
+    </div>
+    <div class="gen-field">
+      <span class="gen-label">Instance</span>
+      <select class="gen-select" id="gen-instance">
+        <option value="">-- All --</option>
+      </select>
+    </div>
+    <div style="display:flex;align-items:flex-end;padding-bottom:1px">
+      <button class="btn-generate" style="padding:7px 12px;font-size:.8rem;height:36px"
+              onclick="loadSnaps()">▶ Load Snaps</button>
+    </div>
+    <div class="gen-field">
+      <span class="gen-label">Start Snap *</span>
+      <select class="gen-select" id="gen-start-snap">
+        <option value="">-- Select DB first --</option>
+      </select>
+    </div>
+    <div class="gen-field">
+      <span class="gen-label">End Snap *</span>
+      <select class="gen-select" id="gen-end-snap">
+        <option value="">-- Select DB first --</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Row 2: Focus Type + Focus Value + Generate button -->
+  <div class="gen-row">
+    <div class="gen-field">
+      <span class="gen-label">Focus Type</span>
+      <select class="gen-select" id="gen-focus-type">
+        <option value="overall">Overall Analysis</option>
+        <option value="wait">Wait Event</option>
+        <option value="sql">SQL ID</option>
+        <option value="segment">Segment</option>
+      </select>
+    </div>
+    <div class="gen-field wide">
+      <span class="gen-label">Focus Value <span style="color:var(--text2);font-size:.7rem">(auto-populated from snap)</span></span>
+      <select class="gen-select" id="gen-focus-value">
+        <option value="">-- Select snaps first --</option>
+      </select>
+    </div>
+    <div style="display:flex;align-items:flex-end">
+      <button class="btn-generate" onclick="generateRecommendation()">
+        🤖 Generate AI Recommendation
+      </button>
+    </div>
+  </div>
+
+  <div id="gen-result" style="margin-top:12px"></div>
+</div>
+
+<!-- Filter bar -->
+<div class="filter-bar">
+  <select id="filter-db" onchange="loadRecommendations()">
+    <option value="">All Databases</option>
+  </select>
+  <select id="filter-status" onchange="loadRecommendations()">
+    <option value="">All Statuses</option>
+    <option value="pending">Pending</option>
+    <option value="accepted">Accepted</option>
+    <option value="rejected">Rejected</option>
+    <option value="revised">Revised</option>
+  </select>
+  <input type="text" id="filter-search" placeholder="Search..." oninput="loadRecommendations()"
+         style="min-width:180px">
+  <button class="btn-generate" style="padding:6px 12px;font-size:.8rem"
+          onclick="loadRecommendations()">🔄 Refresh</button>
+</div>
+
+<div id="rec-list">
+  <div style="color:var(--text2);font-size:.85rem;padding:16px;text-align:center">Loading...</div>
+</div>
+{% endif %}
+
+<div id="toast"></div>
+
+<script>
+const AI_MODE = '{{ ai_mode }}';
+
+// ── Initialise ────────────────────────────────────────────────────────
+(async function init() {
+  try {
+    const r = await fetch('/api/db-list');
+    const d = await r.json();
+    ['gen-dbname','filter-db'].forEach(id => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+      (d.dbs||[]).forEach(db => {
+        const o = document.createElement('option');
+        o.value = o.textContent = db;
+        sel.appendChild(o);
+      });
+    });
+  } catch(_){}
+  if (AI_MODE !== 'rules') loadRecommendations();
+})();
+
+// ── DB change → load instances ────────────────────────────────────────
+async function onDbChange() {
+  const dbname  = document.getElementById('gen-dbname').value;
+  const instSel = document.getElementById('gen-instance');
+  instSel.innerHTML = '<option value="">-- Select Instance --</option>';
+  resetSnaps();
+  if (!dbname) return;
+  try {
+    const r = await fetch(`/api/instance-list?dbname=${encodeURIComponent(dbname)}`);
+    const d = await r.json();
+    const instances = d.instances||[];
+    instances.forEach(inst => {
+      const o = document.createElement('option');
+      o.value = o.textContent = inst;
+      instSel.appendChild(o);
+    });
+    // Never auto-select or auto-load snaps — user must explicitly select instance
+  } catch(e) { console.error('Instance load error:', e); }
+}
+
+function resetSnaps() {
+  ['gen-start-snap','gen-end-snap'].forEach(id => {
+    document.getElementById(id).innerHTML = '<option value="">-- Select Instance first --</option>';
+  });
+  const fv = document.getElementById('gen-focus-value');
+  if (fv) fv.innerHTML = '<option value="">-- Select snaps first --</option>';
+}
+
+// ── Load snaps — requires instance to be selected ─────────────────────
+async function loadSnaps() {
+  const dbname   = document.getElementById('gen-dbname').value;
+  const instance = document.getElementById('gen-instance').value;
+  const startSel = document.getElementById('gen-start-snap');
+  const endSel   = document.getElementById('gen-end-snap');
+
+  if (!dbname || !instance) {
+    startSel.innerHTML = '<option value="">-- Select Instance first --</option>';
+    endSel.innerHTML   = '<option value="">-- Select Instance first --</option>';
+    return;
+  }
+
+  startSel.innerHTML = '<option value="">Loading...</option>';
+  endSel.innerHTML   = '<option value="">Loading...</option>';
+
+  try {
+    const url = `/api/snaps?dbname=${encodeURIComponent(dbname)}&instance=${encodeURIComponent(instance)}`;
+    const r = await fetch(url);
+    const d = await r.json();
+    const snaps = Array.isArray(d) ? d : (d.snaps||[]);
+
+    const opts = snaps.map(s =>
+      `<option value="${s.snap_id||s.snap}">${s.label||s.snap_id}</option>`
+    ).join('');
+    // No auto-selection — user picks start and end snap freely
+    startSel.innerHTML = '<option value="">-- Select Start Snap --</option>' + opts;
+    endSel.innerHTML   = '<option value="">-- Select End Snap --</option>'   + opts;
+    loadFocusValues();
+  } catch(e) {
+    startSel.innerHTML = '<option value="">Error — check DB</option>';
+    endSel.innerHTML   = '<option value="">Error</option>';
+  }
+}
+
+// ── Load focus values based on snap range ─────────────────────────────
+async function loadFocusValues() {
+  const dbname    = document.getElementById('gen-dbname').value;
+  const beginSnap = parseInt(document.getElementById('gen-start-snap').value)||0;
+  const endSnap   = parseInt(document.getElementById('gen-end-snap').value)||0;
+  const focusType = document.getElementById('gen-focus-type').value;
+  const sel       = document.getElementById('gen-focus-value');
+
+  sel.innerHTML = '<option value="">-- Overall Analysis --</option>';
+  if (!dbname || !beginSnap || focusType === 'overall') return;
+
+  sel.innerHTML = '<option value="">Loading...</option>';
+  try {
+    const r = await fetch(
+      `/api/ai/focus-values?dbname=${encodeURIComponent(dbname)}`
+      +`&begin_snap=${beginSnap}&end_snap=${endSnap||beginSnap}`
+      +`&focus_type=${focusType}`
+    );
+    const d = await r.json();
+    const vals = d.values||[];
+    sel.innerHTML = '<option value="">-- Select or leave blank --</option>'
+      + vals.map(v => `<option value="${v.value}">${v.label}</option>`).join('');
+  } catch(_) {
+    sel.innerHTML = '<option value="">Error loading</option>';
+  }
+}
+
+// ── Generate ──────────────────────────────────────────────────────────
+async function generateRecommendation() {
+  const dbname     = document.getElementById('gen-dbname').value;
+  const instance   = document.getElementById('gen-instance').value;
+  const beginSnap  = parseInt(document.getElementById('gen-start-snap').value)||0;
+  const endSnap    = parseInt(document.getElementById('gen-end-snap').value)||0;
+  const focusType  = document.getElementById('gen-focus-type').value;
+  const focusValue = document.getElementById('gen-focus-value').value.trim();
+  const resEl      = document.getElementById('gen-result');
+
+  if (!dbname)    { showToast('❌ Select a database','err'); return; }
+  if (!beginSnap) { showToast('❌ Select a start snap','err'); return; }
+  if (!endSnap)   { showToast('❌ Select an end snap','err'); return; }
+
+  resEl.innerHTML = '<div style="color:var(--text2)">⏳ Generating — may take 20-60s for local AI...</div>';
+
+  try {
+    const res = await fetch('/api/ai/recommend', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        dbname, instance,
+        begin_snap: beginSnap, end_snap: endSnap,
+        trigger_type: focusType,
+        trigger_value: focusValue || dbname,
+        severity: 'medium',
+      })
+    });
+    const data = await res.json();
+    if (!data.ok) {
+      resEl.innerHTML = `<div style="color:#ef4444">❌ ${data.error||'Generation failed'}</div>`;
+      return;
+    }
+    resEl.innerHTML = `
+      <div style="color:#10b981;font-size:.82rem;margin-bottom:6px">✅ Generated (ID: ${data.rec_id})</div>
+      <div class="ai-box">${escHtml(data.response)}</div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn-accept" onclick="doFeedback(${data.rec_id},'accept','')">✅ Accept</button>
+        <button class="btn-reject" onclick="openFb('gen-fb-${data.rec_id}','reject',${data.rec_id})">❌ Reject</button>
+        <button class="btn-revise" onclick="openFb('gen-fb-${data.rec_id}','revise',${data.rec_id})">✏️ Revise</button>
+      </div>
+      <div id="gen-fb-${data.rec_id}" class="fb-form"></div>`;
+    loadRecommendations();
+  } catch(e) {
+    resEl.innerHTML = `<div style="color:#ef4444">❌ ${e.message}</div>`;
+  }
+}
+
+// ── History ───────────────────────────────────────────────────────────
+async function loadRecommendations() {
+  const db     = document.getElementById('filter-db')?.value||'';
+  const status = document.getElementById('filter-status')?.value||'';
+  const search = (document.getElementById('filter-search')?.value||'').toLowerCase();
+  const listEl = document.getElementById('rec-list');
+  if (!listEl) return;
+
+  try {
+    const r = await fetch(`/api/ai/history?dbname=${encodeURIComponent(db)}&limit=100`);
+    const d = await r.json();
+    let recs = d.history||[];
+    if (status) recs = recs.filter(r => r.status===status);
+    if (search) recs = recs.filter(r =>
+      (r.trigger_value||'').toLowerCase().includes(search)||
+      (r.root_cause||'').toLowerCase().includes(search)||
+      (r.dbname||'').toLowerCase().includes(search));
+
+    if (!recs.length) {
+      listEl.innerHTML = '<div style="color:var(--text2);font-size:.85rem;padding:16px;text-align:center">No recommendations found. Use Generate above to create one.</div>';
+      return;
+    }
+    listEl.innerHTML = recs.map(r => card(r)).join('');
+  } catch(e) {
+    listEl.innerHTML = `<div style="color:#ef4444">Error: ${e.message}</div>`;
+  }
+}
+
+function card(r) {
+  const sc = {critical:'sev-critical',high:'sev-high',medium:'sev-medium',low:'sev-low'}[r.severity]||'sev-medium';
+  const se = {critical:'🔴',high:'🟠',medium:'🟡',low:'🟢'}[r.severity]||'🟡';
+  const stc = {pending:'st-pending',accepted:'st-accepted',rejected:'st-rejected',revised:'st-revised'}[r.status]||'st-pending';
+  const dt  = r.created_at ? new Date(r.created_at).toLocaleDateString('en-IN',
+              {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+  const body = (r.revised_response||r.recommendation||r.root_cause||'—').substring(0,600);
+  const fb   = r.dba_feedback ? `<div style="font-size:.75rem;color:var(--text2);margin-top:4px">DBA: <em>${escHtml(r.dba_feedback)}</em></div>` : '';
+  const btns = r.status==='pending'
+    ? `<button class="btn-accept" onclick="doFeedback(${r.id},'accept','')">✅ Accept</button>
+       <button class="btn-reject" onclick="openFb('fb-${r.id}','reject',${r.id})">❌ Reject</button>
+       <button class="btn-revise" onclick="openFb('fb-${r.id}','revise',${r.id})">✏️ Revise</button>`
+    : r.status==='accepted' ? '<span style="color:#10b981;font-size:.78rem">✅ Accepted — in AI learning</span>'
+    : r.status==='rejected' ? '<span style="color:#ef4444;font-size:.78rem">❌ Rejected</span>'
+    : '<span style="color:#4a90d9;font-size:.78rem">✏️ Revised</span>';
+  return `<div class="rec-card" id="card-${r.id}">
+    <div class="rec-header">
+      <span class="rec-sev ${sc}">${se} ${(r.severity||'medium').toUpperCase()}</span>
+      <div class="rec-title">${escHtml(r.trigger_type||'')}: ${escHtml(r.trigger_value||'')}</div>
+      <span class="st-badge ${stc}">${r.status||'pending'}</span>
+    </div>
+    <div class="rec-meta">
+      <span>🗄 ${r.dbname}</span>
+      <span>🤖 ${r.ai_provider||''}</span>
+      <span>📅 ${dt}</span>
+    </div>
+    <div class="rec-body">${escHtml(body)}${body.length>=600?' [...]':''}</div>
+    ${fb}
+    <div class="rec-actions">${btns}</div>
+    <div id="fb-${r.id}" class="fb-form"></div>
+  </div>`;
+}
+
+// ── Feedback ──────────────────────────────────────────────────────────
+function openFb(cid, action, recId) {
+  const el = document.getElementById(cid);
+  if (!el) return;
+  const label = action==='reject'
+    ? 'Why rejecting? (optional — helps improve the AI)'
+    : 'Add more context to improve the recommendation:';
+  const btnLabel = action==='reject' ? '❌ Confirm Rejection' : '✏️ Re-generate with context';
+  el.classList.add('open');
+  el.innerHTML = `
+    <div style="font-size:.78rem;color:var(--text2);margin-bottom:5px">${label}</div>
+    <textarea id="fbt-${recId}" placeholder="e.g. This table has 100 concurrent DML sessions..."></textarea>
+    <div class="fb-actions">
+      <button class="${action==='reject'?'btn-reject':'btn-revise'}"
+        onclick="doFeedback(${recId},'${action}',document.getElementById('fbt-${recId}').value)">${btnLabel}</button>
+      <button style="padding:5px 12px;background:var(--surface2);color:var(--text2);
+        border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:.78rem"
+        onclick="document.getElementById('${cid}').classList.remove('open')">Cancel</button>
+    </div>
+    <div id="fbr-${recId}" style="margin-top:6px;font-size:.8rem"></div>`;
+}
+
+async function doFeedback(recId, action, feedback) {
+  const rEl = document.getElementById(`fbr-${recId}`);
+  if (rEl) rEl.textContent = '⏳ Processing...';
+  try {
+    const res = await fetch('/api/ai/feedback',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({rec_id:recId, action, feedback})
+    });
+    const data = await res.json();
+    if (action==='revise' && data.ok && data.response) {
+      if (rEl) rEl.innerHTML = `
+        <div style="color:#4a90d9;margin-bottom:5px">✏️ Revised:</div>
+        <div class="ai-box">${escHtml(data.response)}</div>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button class="btn-accept" onclick="doFeedback(${recId},'accept','')">✅ Accept revised</button>
+        </div>`;
+    } else if (data.ok) {
+      showToast(action==='accept'?'✅ Accepted — added to AI learning':'❌ Rejected','ok');
+      setTimeout(loadRecommendations, 800);
+    } else {
+      showToast('❌ '+(data.error||'Failed'),'err');
+    }
+  } catch(e) { showToast('❌ '+e.message,'err'); }
+}
+
+function escHtml(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function showToast(msg,type='ok') {
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.className='show '+type;
+  clearTimeout(window._tt); window._tt=setTimeout(()=>el.className='',3000);
+}
+</script>
+{% endblock %}

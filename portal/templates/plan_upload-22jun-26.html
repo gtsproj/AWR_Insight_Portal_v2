@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} — Execution Plan{% endblock %}
+{% block content %}
+<h1 style="font-size:1.2rem;margin-bottom:16px">📋 Upload / Paste Execution Plan</h1>
+{% if message %}<div class="msg {{ 'ok' if '✅' in message else 'err' }}">{{ message }}</div>{% endif %}
+<div class="card"><h2>Paste or Upload DBMS_XPLAN Output</h2>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:12px">
+    Paste the output of <code>SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(:sql_id, NULL, 'ALLSTATS LAST'))</code> or upload a .txt file.
+  </p>
+  <form method="post" enctype="multipart/form-data">
+    <div class="form-row">
+      <div><label>Database</label>
+        <select name="dbname" required>
+          <option value="">-- Select --</option>
+          {% for db in dbs %}<option>{{ db }}</option>{% endfor %}
+        </select></div>
+      <div><label>SQL ID (optional — auto-detected)</label>
+        <input type="text" name="sql_id" placeholder="e.g. abc123def456g"></div>
+    </div>
+    <label>Begin Snap ID (optional — links to AWR metrics)</label>
+    <input type="number" name="begin_snap" placeholder="e.g. 43649">
+    <label>Plan Text (paste here)</label>
+    <textarea name="plan_text" rows="18" placeholder="Paste DBMS_XPLAN output here..." style="font-family:monospace;font-size:.82rem"></textarea>
+    <label style="margin-top:8px">— OR upload a file —</label>
+    <input type="file" name="plan_file" accept=".txt" style="padding:8px;cursor:pointer">
+    <br><button type="submit" class="btn btn-primary" style="margin-top:16px;background:#7e57c2;color:#fff">Parse &amp; Store Plan</button>
+  </form>
+</div>
+{% if analysis %}
+<div class="card"><h2>Plan Analysis — {{ analysis.sql_id }}</h2>
+  <p style="font-size:.85rem;color:var(--text2)">Plan Hash: <code>{{ analysis.plan_hash }}</code> &nbsp; Steps: {{ analysis.total_steps }}</p>
+  {% if analysis.findings %}
+    <table style="margin-top:12px"><thead><tr><th>Severity</th><th>Pattern</th><th>Detail</th><th>Action</th></tr></thead><tbody>
+    {% for f in analysis.findings %}
+    <tr>
+      <td><span class="badge badge-{{ f.severity }}">{{ f.severity.upper() }}</span></td>
+      <td>{{ f.pattern }}</td><td style="font-size:.82rem">{{ f.detail }}</td>
+      <td style="font-size:.82rem;color:var(--text2)">{{ f.action }}</td>
+    </tr>{% endfor %}
+    </tbody></table>
+  {% else %}<p style="color:var(--accent2);margin-top:10px">✅ No major anti-patterns detected in this plan.</p>{% endif %}
+</div>{% endif %}
+{% endblock %}

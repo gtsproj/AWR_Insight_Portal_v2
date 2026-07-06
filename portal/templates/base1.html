@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWR Insight Portal{% block title %}{% endblock %}</title>
+<style>
+:root{--bg:#0f1117;--surface:#1a1d2e;--surface2:#252840;--accent:#4fc3f7;
+      --accent2:#81c784;--warn:#ffb74d;--danger:#ef5350;--text:#e0e0e0;
+      --text2:#9e9e9e;--border:#2a2d3e;--radius:8px;--font:'Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;gap:8px;height:56px}
+.nav-brand{font-size:1.1rem;font-weight:700;color:var(--accent);margin-right:16px}
+.nav a{color:var(--text2);padding:8px 14px;border-radius:var(--radius);font-size:.9rem;transition:.15s}
+.nav a:hover,.nav a.active{background:var(--surface2);color:var(--text);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:24px;flex:1}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.card h2{font-size:1rem;color:var(--accent);margin-bottom:12px;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center}
+.stat-val{font-size:2rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.8rem;color:var(--text2);margin-top:4px}
+.stat.warn .stat-val{color:var(--warn)}
+.stat.danger .stat-val{color:var(--danger)}
+.stat.ok .stat-val{color:var(--accent2)}
+btn,.btn{display:inline-block;padding:8px 18px;border-radius:var(--radius);border:none;cursor:pointer;font-size:.9rem;transition:.15s}
+.btn-primary{background:var(--accent);color:#000}
+.btn-primary:hover{background:#81d4fa;color:#000}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-sm{padding:4px 12px;font-size:.8rem}
+form input[type=text],form input[type=number],form select,form textarea{
+  background:var(--surface2);border:1px solid var(--border);color:var(--text);
+  padding:8px 12px;border-radius:var(--radius);width:100%;font-size:.9rem;
+  font-family:var(--font);outline:none}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--accent)}
+form label{display:block;font-size:.85rem;color:var(--text2);margin-bottom:4px;margin-top:12px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.msg{padding:10px 14px;border-radius:var(--radius);margin-bottom:14px;font-size:.9rem}
+.msg.ok{background:#1b3a2c;border:1px solid var(--accent2);color:var(--accent2)}
+.msg.err{background:#3a1b1b;border:1px solid var(--danger);color:var(--danger)}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:var(--surface2);color:var(--text2);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:hover td{background:var(--surface2)}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.75rem;font-weight:600}
+.badge-critical{background:#b71c1c;color:#fff}
+.badge-high{background:#e65100;color:#fff}
+.badge-medium{background:#f57f17;color:#000}
+.badge-low{background:#1b5e20;color:#fff}
+.badge-done{background:#1b5e20;color:#fff}
+.badge-pending{background:#0d47a1;color:#fff}
+.badge-failed{background:#b71c1c;color:#fff}
+.badge-processing{background:#f57f17;color:#000}
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:40px;text-align:center;cursor:pointer;transition:.15s}
+.upload-zone:hover{border-color:var(--accent);background:var(--surface2)}
+.footer{text-align:center;padding:16px;color:var(--text2);font-size:.8rem;border-top:1px solid var(--border)}
+code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:.85em}
+pre{background:var(--surface2);padding:14px;border-radius:var(--radius);overflow-x:auto;font-size:.82rem;line-height:1.5}
+.plan-step{font-family:monospace;font-size:.82rem;padding:4px 8px;border-left:3px solid transparent}
+.plan-step.warning{border-left-color:var(--warn);background:#2a2010}
+.plan-step.critical{border-left-color:var(--danger);background:#2a1010}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:16px">
+    <img src="/static/logo.jpg" alt="Avekshaa" style="height:36px;width:auto;object-fit:contain">
+    <span class="nav-brand" style="margin-right:0">⚡ AWR Insight Portal</span>
+  </a>
+  <a href="/" class="{% if page=='home' %}active{% endif %}">🏠 Home</a>
+  <a href="/upload/awr" class="{% if page=='upload' %}active{% endif %}">📤 AWR Upload</a>
+  <a href="/upload/sar" class="{% if page=='sar' %}active{% endif %}">📊 SAR Upload</a>
+  <a href="/upload/plan" class="{% if page=='plan' %}active{% endif %}">📋 Exec Plan</a>
+  <a href="/queues" class="{% if page=='queues' %}active{% endif %}">⚙️ Queues</a>
+  <a href="/comparison" class="{% if page=='comparison' %}active{% endif %}">🔄 Compare</a>
+  <a href="/sql-search" class="{% if page=='sql_search' %}active{% endif %}">🔍 SQL Search</a>
+</nav>
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+<div class="footer">AWR Insight Portal v2.0 &nbsp;|&nbsp; Oracle Performance Analysis Platform</div>
+</body>
+</html>

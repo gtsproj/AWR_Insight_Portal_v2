@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %} — SAR Upload{% endblock %}
+{% block content %}
+<h1 style="font-size:1.2rem;margin-bottom:16px">📊 Upload SAR Files</h1>
+
+<div class="card">
+  <h2>Upload SAR Files</h2>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:12px">
+    Accepts both <strong>binary SAR files</strong> (sa01, sa02 …) and <strong>text files</strong>.<br>
+    Binary files are converted automatically using WSL if available.
+  </p>
+
+  <div style="background:rgba(126,87,194,.15);border-left:3px solid #7e57c2;
+              padding:10px 14px;border-radius:4px;margin-bottom:16px;font-size:.85rem">
+    ⚠ <strong>Hostname is required for binary SAR files.</strong><br>
+    When a binary file is converted via WSL, the header shows the WSL machine name,
+    not the original Linux server. Always enter the correct server hostname below.
+  </div>
+
+  <form method="post" enctype="multipart/form-data">
+    <label>
+      Server Hostname
+      <span style="color:#ef5350;font-weight:700"> *</span>
+      <span style="font-size:.8rem;color:var(--text2);font-weight:400">
+        — the Linux server the SAR data was collected from
+      </span>
+    </label>
+    <input type="text" name="hostname" placeholder="e.g. TCLFSLPRDDB1"
+           required style="text-transform:uppercase"
+           oninput="this.value=this.value.toUpperCase()">
+
+    <label style="margin-top:12px">SAR Files
+      <span style="font-size:.8rem;color:var(--text2);font-weight:400">
+        — binary (sa01, sa02…) or text (.txt)
+      </span>
+    </label>
+    <input type="file" name="files" multiple
+           style="padding:8px;cursor:pointer">
+
+    <br>
+    <button type="submit" class="btn btn-primary"
+            style="margin-top:16px;background:var(--accent2)">
+      Upload &amp; Parse
+    </button>
+  </form>
+</div>
+
+{% if results %}
+<div class="card">
+  <h2>Results</h2>
+  <table>
+    <thead>
+      <tr><th>File</th><th>Host</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+    {% for r in results %}
+    <tr>
+      <td><code>{{ r.file }}</code></td>
+      <td><strong>{{ r.host }}</strong></td>
+      <td>{{ r.status }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+{% endblock %}

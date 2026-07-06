@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block title %} — SQL Search{% endblock %}
+{% block content %}
+<h1 style="font-size:1.2rem;margin-bottom:16px">🔍 SQL Search</h1>
+
+<div class="card">
+  <form method="get" id="search-form">
+
+    {# ── Step 1: DB + Instance ── #}
+    <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:flex-end">
+      <div>
+        <label>1. Database</label>
+        <select name="dbname" id="f-dbname" required onchange="onDbChange(this.value)">
+          <option value="">-- Select --</option>
+          {% for db in dbs %}
+          <option value="{{ db }}" {{ 'selected' if db == dbname else '' }}>{{ db }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label>2. Instance</label>
+        <select name="instance" id="f-instance" required>
+          <option value="">-- Select DB first --</option>
+          {% if instance %}
+          <option value="{{ instance }}" selected>{{ instance }}</option>
+          {% endif %}
+        </select>
+      </div>
+      <div style="padding-bottom:1px">
+        <button type="button" class="btn btn-sm"
+                style="padding:8px 14px"
+                onclick="loadInstances(document.getElementById('f-dbname').value)">
+          🔄 Load
+        </button>
+      </div>
+    </div>
+
+    {# ── Step 2: Search type toggle ── #}
+    <div style="margin-top:16px;padding:12px;background:var(--surface2);border-radius:var(--radius)">
+      <label style="margin:0 0 10px 0;color:var(--text)">3. Search by</label>
+      <div style="display:flex;gap:20px;margin-top:8px">
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;margin:0;color:var(--text)">
+          <input type="radio" name="search_type" value="text"
+                 {{ 'checked' if search_type != 'id' else '' }}
+                 onchange="toggleSearchMode('text')">
+          SQL Text
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;margin:0;color:var(--text)">
+          <input type="radio" name="search_type" value="id"
+                 {{ 'checked' if search_type == 'id' else '' }}
+                 onchange="toggleSearchMode('id')">
+          SQL ID
+        </label>
+      </div>
+
+      {# SQL Text input #}
+      <div id="mode-text" style="margin-top:12px;{{ 'display:none' if search_type == 'id' else '' }}">
+        <label>SQL Text (partial match)</label>
+        <div style="display:flex;gap:8px">
+          <input type="text" name="q" id="f-q" value="{{ query }}"
+                 placeholder="e.g. table name, column, procedure, keyword…"
+                 style="flex:1">
+          <button type="submit" class="btn btn-primary"
+                  id="btn-search-text">Search</button>
+        </div>
+      </div>
+
+      {# SQL ID input #}
+      <div id="mode-id" style="margin-top:12px;{{ '' if search_type == 'id' else 'display:none' }}">
+        <label>SQL ID (exact)</label>
+        <div style="display:flex;gap:8px">
+          <input type="text" name="sql_id" id="f-sql-id" value="{{ sql_id }}"
+                 placeholder="e.g. 7vf3j9k2mq0xt"
+                 style="flex:1;font-family:monospace">
+          <button type="submit" class="btn btn-primary"
+                  id="btn-search-id">Search</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+{# ── Results ── #}
+{% if searched %}
+<div class="card">
+  {% set label = sql_id if search_type == 'id' else query %}
+  <h2>
+    {% if search_type == 'id' %}SQL ID: <code>{{ sql_id }}</code>{% else %}Text: "{{ query }}"{% endif %}
+    &nbsp;—&nbsp; {{ dbname }} / {{ instance }}
+    &nbsp;({{ results | length }} result{{ 's' if results | length != 1 else '' }})
+  </h2>
+
+  {% if results %}
+  <table>
+    <thead>
+      <tr>
+        <th style="width:130px">SQL ID</th>
+        <th style="width:130px">Snap Time</th>
+        <th>SQL Text</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for r in results %}
+    <tr>
+      <td>
+        {% if search_type == 'text' %}
+        {# Clickable link — re-searches by SQL ID to show full text #}
+        <a href="/sql-search?dbname={{ dbname }}&instance={{ instance }}&search_type=id&sql_id={{ r.sql_id }}"
+           title="Click to view full SQL text"
+           style="font-family:monospace;font-size:.8rem">{{ r.sql_id }}</a>
+        {% else %}
+        <code style="font-size:.8rem">{{ r.sql_id }}</code>
+        {% endif %}
+      </td>
+      <td style="font-size:.78rem;color:var(--text2);white-space:nowrap">
+        {{ r.snap_time | string | truncate(16, true, '') if r.snap_time else '-' }}
+      </td>
+      <td style="font-family:monospace;font-size:.78rem;white-space:pre-wrap;word-break:break-word">{{ r.sql_excerpt }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:var(--text2)">
+    No results found for
+    {% if search_type == 'id' %}<code>{{ sql_id }}</code>{% else %}"{{ query }}"{% endif %}
+    in {{ dbname }} / {{ instance }}.
+  </p>
+  {% endif %}
+</div>
+{% elif dbname and instance %}
+<div class="card">
+  <p style="color:var(--text2);font-size:.88rem">
+    ✅ {{ dbname }} / {{ instance }} selected. Enter a SQL ID or SQL text above and click Search.
+  </p>
+</div>
+{% endif %}
+
+<script>
+async function loadInstances(dbname, preselect) {
+  const sel = document.getElementById('f-instance');
+  if (!dbname) { sel.innerHTML = '<option value="">-- Select DB first --</option>'; return; }
+  sel.innerHTML = '<option value="">Loading…</option>';
+  try {
+    const res  = await fetch('/api/instances?dbname=' + encodeURIComponent(dbname));
+    const data = await res.json();
+    sel.innerHTML = '<option value="">-- Select --</option>' +
+      data.map(i => `<option value="${i}" ${i === (preselect || '') ? 'selected' : ''}>${i}</option>`).join('');
+  } catch(e) {
+    sel.innerHTML = '<option value="">Error loading instances</option>';
+  }
+}
+
+function onDbChange(dbname) {
+  loadInstances(dbname);
+}
+
+function toggleSearchMode(mode) {
+  document.getElementById('mode-text').style.display = mode === 'text' ? '' : 'none';
+  document.getElementById('mode-id').style.display   = mode === 'id'   ? '' : 'none';
+  // Clear the inactive field so it doesn't get submitted
+  if (mode === 'text') document.getElementById('f-sql-id').value = '';
+  else                 document.getElementById('f-q').value = '';
+}
+
+// On page load — if DB already selected, load its instances
+document.addEventListener('DOMContentLoaded', function() {
+  const db   = document.getElementById('f-dbname').value;
+  const inst = '{{ instance }}';
+  if (db) loadInstances(db, inst);
+});
+</script>
+{% endblock %}

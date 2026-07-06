@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} — AWR Upload{% endblock %}
+{% block content %}
+<h1 style="font-size:1.2rem;margin-bottom:16px">📤 Upload AWR Reports</h1>
+{% if message %}<div class="msg {{ 'ok' if '✅' in message else 'err' }}">{{ message }}</div>{% endif %}
+<div class="card">
+  <h2>Upload AWR HTML / TXT Files</h2>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:16px">
+    Select one or more AWR report files. The DB name will be auto-detected from the filename.<br>
+    Expected filename format: <code>awr_&lt;DBNAME&gt;_&lt;inst&gt;_&lt;date&gt;.html</code>
+  </p>
+  <form method="post" enctype="multipart/form-data">
+    <label>AWR Files (HTML/TXT)</label>
+    <input type="file" name="files" multiple accept=".html,.htm,.txt" style="padding:8px;cursor:pointer">
+    <label>DB Name Override (optional — leave blank for auto-detect)</label>
+    <input type="text" name="dbname_override" placeholder="e.g. COLDBPRD">
+    <br><button type="submit" class="btn btn-primary" style="margin-top:16px">Upload &amp; Enqueue</button>
+  </form>
+</div>
+{% if results %}
+<div class="card"><h2>Upload Results</h2>
+<table><thead><tr><th>File</th><th>DB</th><th>Status</th></tr></thead><tbody>
+{% for r in results %}<tr><td><code>{{ r.file }}</code></td><td>{{ r.get('db','-') }}</td><td>{{ r.status }}</td></tr>{% endfor %}
+</tbody></table></div>{% endif %}
+{% endblock %}

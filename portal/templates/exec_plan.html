@@ -1,0 +1,540 @@
+{% extends "base.html" %}
+{% block title %} — Execution Plan Comparison{% endblock %}
+
+{% block content %}
+<style>
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.plan-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.plan-box h3{font-size:.9rem;color:var(--accent);margin-bottom:10px;font-weight:600}
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:20px;text-align:center;
+             cursor:pointer;transition:.15s;font-size:.85rem;color:var(--text2);margin-bottom:10px}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--accent);background:var(--surface2)}
+.plan-textarea{width:100%;height:160px;background:var(--surface2);border:1px solid var(--border);
+               color:var(--text);padding:10px;border-radius:var(--radius);font-family:monospace;
+               font-size:.78rem;resize:vertical;outline:none}
+.plan-textarea:focus{border-color:var(--accent)}
+.meta-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.meta-row input,.meta-row select{background:var(--surface2);border:1px solid var(--border);
+  color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.85rem;width:100%;outline:none}
+.meta-row input:focus,.meta-row select:focus{border-color:var(--accent)}
+label.meta-label{font-size:.78rem;color:var(--text2);margin-bottom:3px;display:block}
+.compare-btn{width:100%;padding:12px;background:var(--accent);color:#000;border:none;
+             border-radius:var(--radius);font-size:1rem;font-weight:600;cursor:pointer;margin-top:8px}
+.compare-btn:hover{opacity:.85}
+
+/* Results */
+.result-section{margin-bottom:20px}
+.summary-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px}
+.summary-box h3{font-size:.9rem;color:var(--accent);margin-bottom:10px}
+.summary-item{padding:6px 0;border-bottom:1px solid var(--border);font-size:.85rem}
+.summary-item:last-child{border-bottom:none}
+.improved{color:#10b981}.regressed{color:#ef4444}.neutral{color:var(--text2)}
+
+.step-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:8px}
+.step-table th{background:var(--surface2);color:var(--text2);text-align:left;padding:6px 8px;
+               position:sticky;top:0;border-bottom:1px solid var(--border)}
+.step-table td{padding:5px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+.step-table tr.changed td{background:#2a2010}
+.step-table tr.added td{background:#0f2a1a}
+.step-table tr.removed td{background:#2a0f0f;text-decoration:line-through;opacity:.7}
+.step-table tr.problem td:first-child{border-left:3px solid #ef4444}
+.op-changed{color:var(--accent);font-weight:600}
+.op-same{color:var(--text)}
+.cost-better{color:#10b981;font-weight:600}
+.cost-worse{color:#ef4444;font-weight:600}
+.badge-full{background:#ef444420;color:#ef4444;border:1px solid #ef444440;
+            font-size:.7rem;padding:1px 6px;border-radius:8px;margin-left:4px}
+.badge-nl{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b40;
+          font-size:.7rem;padding:1px 6px;border-radius:8px;margin-left:4px}
+.badge-ok{background:#10b98120;color:#10b981;border:1px solid #10b98140;
+          font-size:.7rem;padding:1px 6px;border-radius:8px;margin-left:4px}
+
+.plan-raw{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+          padding:12px;font-family:monospace;font-size:.72rem;overflow-x:auto;white-space:pre;
+          max-height:300px;overflow-y:auto;margin-top:8px}
+.tab-bar{display:flex;gap:4px;margin-bottom:12px}
+.tab{padding:6px 16px;border-radius:var(--radius);font-size:.85rem;cursor:pointer;
+     background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+.tab.active{background:var(--accent);color:#000;border-color:var(--accent);font-weight:600}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+/* Saved plans */
+.saved-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+            padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.saved-card .plan-info{flex:1;min-width:0}
+.saved-card .plan-label{font-size:.9rem;font-weight:600;color:var(--text)}
+.saved-card .plan-meta{font-size:.75rem;color:var(--text2);margin-top:2px}
+.saved-card .plan-tags{font-size:.72rem;color:var(--accent);margin-top:3px}
+.type-badge{font-size:.7rem;padding:2px 8px;border-radius:8px;white-space:nowrap}
+.type-baseline{background:#4a90d920;color:#4a90d9;border:1px solid #4a90d940}
+.type-optimized{background:#10b98120;color:#10b981;border:1px solid #10b98140}
+.load-btn{font-size:.75rem;padding:4px 10px;border-radius:var(--radius);border:1px solid var(--border);
+          background:var(--surface2);color:var(--text2);cursor:pointer;white-space:nowrap}
+.load-btn:hover{border-color:var(--accent);color:var(--accent)}
+</style>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+  <h1 style="font-size:1.2rem;margin:0">📋 Execution Plan Comparison</h1>
+  <div style="font-size:.8rem;color:var(--text2)">Compare baseline vs optimised Oracle execution plans</div>
+</div>
+
+<!-- Tab bar -->
+<div class="tab-bar">
+  <div class="tab active" data-tab="compare" onclick="showTab('compare')">⚡ Compare Plans</div>
+  <div class="tab" data-tab="saved" onclick="showTab('saved')">📂 Saved Plans</div>
+</div>
+
+<!-- ── Compare Tab ─────────────────────────────────────────────── -->
+<div id="tab-compare" class="tab-panel active">
+
+  <div class="plan-grid">
+    <!-- Baseline Plan -->
+    <div class="plan-box">
+      <h3>📌 Baseline Plan <span style="font-size:.75rem;color:var(--text2)">(before optimisation)</span></h3>
+      <div class="meta-row">
+        <div>
+          <label class="meta-label">Label / Description *</label>
+          <input type="text" id="label_a" placeholder="e.g. Before index on MOBILE_NO" required>
+        </div>
+        <div>
+          <label class="meta-label">Database</label>
+          <select id="dbname_a" style="background:var(--surface2);border:1px solid var(--border);
+            color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.85rem;
+            width:100%;outline:none">
+            <option value="">-- Select DB --</option>
+          </select>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div>
+          <label class="meta-label">SQL ID *</label>
+          <input type="text" id="sql_id_a" placeholder="e.g. dgs4ds23rf8w5" required
+                 style="font-family:monospace">
+        </div>
+      </div>
+      <div class="upload-zone" id="drop_a" onclick="document.getElementById('file_a').click()">
+        📂 Drop .txt file here or click to browse
+        <input type="file" id="file_a" accept=".txt,.sql" style="display:none" onchange="loadFile('a')">
+      </div>
+      <textarea class="plan-textarea" id="plan_a" placeholder="Or paste execution plan text here...
+SQL_ID  dgs4ds23rf8w5, child number 0
+Plan hash value: 3500243952
+| Id | Operation | Name | Rows | Cost |
+..."></textarea>
+    </div>
+
+    <!-- Optimized Plan -->
+    <div class="plan-box">
+      <h3>✅ Optimised Plan <span style="font-size:.75rem;color:var(--text2)">(after optimisation)</span></h3>
+      <div class="meta-row">
+        <div>
+          <label class="meta-label">Label / Description *</label>
+          <input type="text" id="label_b" placeholder="e.g. After index on MOBILE_NO" required>
+        </div>
+        <div>
+          <label class="meta-label">Database</label>
+          <select id="dbname_b" style="background:var(--surface2);border:1px solid var(--border);
+            color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.85rem;
+            width:100%;outline:none">
+            <option value="">-- Select DB --</option>
+          </select>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div>
+          <label class="meta-label">SQL ID * <span style="font-size:.72rem;color:var(--text2)">(auto-filled from baseline)</span></label>
+          <input type="text" id="sql_id_b" placeholder="e.g. dgs4ds23rf8w5" required
+                 style="font-family:monospace">
+        </div>
+      </div>
+      <div class="upload-zone" id="drop_b" onclick="document.getElementById('file_b').click()">
+        📂 Drop .txt file here or click to browse
+        <input type="file" id="file_b" accept=".txt,.sql" style="display:none" onchange="loadFile('b')">
+      </div>
+      <textarea class="plan-textarea" id="plan_b" placeholder="Or paste optimised execution plan text here..."></textarea>
+    </div>
+  </div>
+
+  <button class="compare-btn" onclick="comparePlans()">⚡ Compare &amp; Save Plans</button>
+  <button onclick="resetAll()" style="width:100%;padding:10px;margin-top:8px;
+    background:var(--surface2);color:var(--text2);border:1px solid var(--border);
+    border-radius:var(--radius);font-size:.9rem;cursor:pointer;transition:.15s"
+    onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--text)'"
+    onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">
+    🗑 Reset — Clear Both Plans
+  </button>
+
+  <!-- Results -->
+  <div id="results" style="display:none;margin-top:24px">
+
+    <!-- Cost Summary -->
+    <div class="summary-box">
+      <h3>📊 Cost Summary</h3>
+      <div id="summary-items"></div>
+    </div>
+
+    <!-- Access Path Changes -->
+    <div class="summary-box" id="access-box" style="display:none">
+      <h3>🔄 Access Path Changes</h3>
+      <div id="access-items"></div>
+    </div>
+
+    <!-- Problems fixed / introduced -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px" id="problem-grid">
+      <div class="summary-box" id="fixed-box" style="display:none">
+        <h3 class="improved">✅ Problems Fixed</h3>
+        <div id="fixed-items"></div>
+      </div>
+      <div class="summary-box" id="new-box" style="display:none">
+        <h3 class="regressed">⚠️ New Problems Introduced</h3>
+        <div id="new-items"></div>
+      </div>
+    </div>
+
+    <!-- Step-by-step diff -->
+    <div class="summary-box">
+      <h3>🔍 Step-by-Step Comparison</h3>
+      <div style="overflow-x:auto">
+        <table class="step-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Baseline Operation</th>
+              <th>Object</th>
+              <th style="text-align:right">Cost B</th>
+              <th style="text-align:right">Rows B</th>
+              <th>Optimised Operation</th>
+              <th>Object</th>
+              <th style="text-align:right">Cost A</th>
+              <th style="text-align:right">Rows A</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody id="step-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Raw plan side by side -->
+    <div class="plan-grid" style="margin-top:16px">
+      <div>
+        <div style="font-size:.8rem;color:var(--text2);margin-bottom:4px">Baseline — raw plan</div>
+        <div class="plan-raw" id="raw-a"></div>
+      </div>
+      <div>
+        <div style="font-size:.8rem;color:var(--text2);margin-bottom:4px">Optimised — raw plan</div>
+        <div class="plan-raw" id="raw-b"></div>
+      </div>
+    </div>
+
+  </div><!-- /results -->
+</div>
+
+<!-- ── Saved Plans Tab ─────────────────────────────────────────── -->
+<div id="tab-saved" class="tab-panel">
+  <div style="display:flex;gap:8px;margin-bottom:12px">
+    <input type="text" id="search-tag" placeholder="Search by label, SQL ID, or tag..."
+           style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);
+                  padding:8px 12px;border-radius:var(--radius);font-size:.85rem;outline:none"
+           oninput="searchPlans(this.value)">
+  </div>
+  <div id="saved-list">
+    <div style="color:var(--text2);font-size:.85rem">Loading saved plans...</div>
+  </div>
+</div>
+
+<script>
+// ── Load DB list into both dropdowns ─────────────────────────────────
+async function loadDbList() {
+  try {
+    const res  = await fetch('/api/db-list');
+    const data = await res.json();
+    const dbs  = data.dbs || [];
+    ['a','b'].forEach(side => {
+      const sel = document.getElementById('dbname_' + side);
+      dbs.forEach(db => {
+        const opt = document.createElement('option');
+        opt.value = db;
+        opt.textContent = db;
+        sel.appendChild(opt);
+      });
+    });
+  } catch(_) {}
+}
+loadDbList();
+
+// ── Reset all fields ─────────────────────────────────────────────────
+function resetAll() {
+  ['a','b'].forEach(side => {
+    document.getElementById('plan_'    + side).value = '';
+    document.getElementById('label_'   + side).value = '';
+    document.getElementById('sql_id_'  + side).value = '';
+    document.getElementById('dbname_'  + side).selectedIndex = 0;
+
+    document.getElementById('file_'    + side).value = '';
+  });
+  document.getElementById('results').style.display = 'none';
+  // Reset result sections
+  ['access-box','fixed-box','new-box'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ── Auto-fill SQL ID B from A ────────────────────────────────────────
+document.getElementById('sql_id_a').addEventListener('input', function() {
+  const b = document.getElementById('sql_id_b');
+  if (!b.value || b.dataset.autofilled === 'true') {
+    b.value = this.value;
+    b.dataset.autofilled = 'true';
+  }
+});
+document.getElementById('sql_id_b').addEventListener('input', function() {
+  this.dataset.autofilled = 'false';
+});
+
+// ── File loading ─────────────────────────────────────────────────────
+function loadFile(side) {
+  const file = document.getElementById('file_' + side).files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('plan_' + side).value = e.target.result;
+  };
+  reader.readAsText(file);
+}
+
+// ── Drag and drop ────────────────────────────────────────────────────
+['a','b'].forEach(side => {
+  const zone = document.getElementById('drop_' + side);
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault(); zone.classList.remove('drag');
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => document.getElementById('plan_' + side).value = ev.target.result;
+    reader.readAsText(file);
+  });
+});
+
+// ── Tab switching ─────────────────────────────────────────────────────
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('tab-' + name);
+  if (target) target.classList.add('active');
+  // Find tab by data-tab attribute
+  document.querySelectorAll('.tab[data-tab]').forEach(t => {
+    if (t.dataset.tab === name) t.classList.add('active');
+  });
+  if (name === 'saved') loadSavedPlans();
+}
+
+// ── Compare plans ─────────────────────────────────────────────────────
+async function comparePlans() {
+  const label_a = document.getElementById('label_a').value.trim();
+  const label_b = document.getElementById('label_b').value.trim();
+  const plan_a  = document.getElementById('plan_a').value.trim();
+  const plan_b  = document.getElementById('plan_b').value.trim();
+
+  const sql_id_a = document.getElementById('sql_id_a').value.trim();
+  const sql_id_b = document.getElementById('sql_id_b').value.trim();
+  if (!label_a || !label_b) { alert('Please enter a label for both plans'); return; }
+  if (!sql_id_a) { alert('Please enter SQL ID for the baseline plan'); return; }
+  if (!sql_id_b) { alert('Please enter SQL ID for the optimised plan'); return; }
+  if (!plan_a)  { alert('Please enter or upload the baseline plan'); return; }
+  if (!plan_b)  { alert('Please enter or upload the optimised plan'); return; }
+
+  const btn = document.querySelector('.compare-btn');
+  btn.textContent = '⏳ Comparing...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/plans/compare', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        plan_a, plan_b, label_a, label_b,
+        dbname_a: document.getElementById('dbname_a').value.trim(),
+        dbname_b: document.getElementById('dbname_b').value.trim(),
+        sql_id_a: sql_id_a,
+        sql_id_b: sql_id_b,
+      })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Compare failed');
+    renderResults(data);
+  } catch(e) {
+    alert('Error: ' + e.message);
+  } finally {
+    btn.textContent = '⚡ Compare & Save Plans';
+    btn.disabled = false;
+  }
+}
+
+function fmt(v, decimals=0) {
+  if (v === null || v === undefined) return '—';
+  return Number(v).toLocaleString('en-IN', {maximumFractionDigits: decimals});
+}
+
+function costDiff(a, b) {
+  if (a === null || b === null || a === undefined || b === undefined) return '';
+  const diff = b - a;
+  if (diff < 0) return `<span class="cost-better">↓ ${fmt(Math.abs(diff))}</span>`;
+  if (diff > 0) return `<span class="cost-worse">↑ ${fmt(diff)}</span>`;
+  return '<span style="color:var(--text2)">—</span>';
+}
+
+function opBadge(op) {
+  if (!op) return '';
+  const u = op.toUpperCase();
+  if (u.includes('FULL')) return '<span class="badge-full">FULL</span>';
+  if (u.includes('NESTED LOOP')) return '<span class="badge-nl">NL</span>';
+  if (u.includes('INDEX')) return '<span class="badge-ok">IDX</span>';
+  return '';
+}
+
+function renderResults(data) {
+  const { plan_a, plan_b, comparison } = data;
+
+  // Summary
+  const summaryEl = document.getElementById('summary-items');
+  summaryEl.innerHTML = comparison.summary.map(s => {
+    const cls = s.includes('IMPROVED') ? 'improved' : s.includes('REGRESSED') ? 'regressed' : 'neutral';
+    return `<div class="summary-item ${cls}">${s}</div>`;
+  }).join('');
+
+  // Also show step counts, full scan flags
+  const extraRows = [
+    `Steps: ${plan_a.step_count} → ${plan_b.step_count}`,
+    `Full scan: ${plan_a.has_full_scan ? '⚠️ Yes' : '✅ No'} → ${plan_b.has_full_scan ? '⚠️ Yes' : '✅ No'}`,
+    `Nested loops: ${plan_a.has_nested_loop ? 'Yes' : 'No'} → ${plan_b.has_nested_loop ? 'Yes' : 'No'}`,
+  ];
+  summaryEl.innerHTML += extraRows.map(s => `<div class="summary-item neutral">${s}</div>`).join('');
+
+  // Access changes
+  if (comparison.access_changes.length) {
+    document.getElementById('access-box').style.display = '';
+    document.getElementById('access-items').innerHTML =
+      comparison.access_changes.map(a => `<div class="summary-item">${a}</div>`).join('');
+  }
+
+  // Fixed problems
+  if (comparison.fixed_problems.length) {
+    document.getElementById('fixed-box').style.display = '';
+    document.getElementById('fixed-items').innerHTML =
+      comparison.fixed_problems.map(p => `<div class="summary-item improved">✅ ${p}</div>`).join('');
+  }
+
+  // New problems
+  if (comparison.new_problems.length) {
+    document.getElementById('new-box').style.display = '';
+    document.getElementById('new-items').innerHTML =
+      comparison.new_problems.map(p => `<div class="summary-item regressed">⚠️ ${p}</div>`).join('');
+  }
+
+  // Step diff table
+  const tbody = document.getElementById('step-tbody');
+  tbody.innerHTML = comparison.step_diff.map(d => {
+    const rowCls = d.status === 'changed' ? 'changed' :
+                   d.status === 'added'   ? 'added'   :
+                   d.status === 'removed' ? 'removed'  : '';
+    const opClsA = d.op_changed ? 'op-changed' : 'op-same';
+    const opClsB = d.op_changed ? 'op-changed' : 'op-same';
+    return `<tr class="${rowCls}">
+      <td style="text-align:center;color:var(--text2)">${d.step_id}</td>
+      <td class="${opClsA}">${d.op_a || ''}${opBadge(d.op_a)}</td>
+      <td style="color:var(--text2);font-size:.72rem">${d.obj_a || ''}</td>
+      <td style="text-align:right">${fmt(d.cost_a)}</td>
+      <td style="text-align:right">${fmt(d.rows_a)}</td>
+      <td class="${opClsB}">${d.op_b || ''}${opBadge(d.op_b)}</td>
+      <td style="color:var(--text2);font-size:.72rem">${d.obj_b || ''}</td>
+      <td style="text-align:right">${fmt(d.cost_b)}</td>
+      <td style="text-align:right">${fmt(d.rows_b)}</td>
+      <td>${costDiff(d.cost_a, d.cost_b)}</td>
+    </tr>`;
+  }).join('');
+
+  // Raw plans
+  document.getElementById('raw-a').textContent = plan_a.plan_text || '';
+  document.getElementById('raw-b').textContent = plan_b.plan_text || '';
+
+  document.getElementById('results').style.display = '';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+
+// ── Saved plans ───────────────────────────────────────────────────────
+async function loadSavedPlans(query) {
+  const listEl = document.getElementById('saved-list');
+  listEl.innerHTML = '<div style="color:var(--text2);font-size:.85rem">Loading...</div>';
+  try {
+    const url  = query ? `/api/plans/list?q=${encodeURIComponent(query)}` : '/api/plans/list';
+    const res  = await fetch(url);
+    if (!res.ok) {
+      listEl.innerHTML = `<div style="color:#ef4444">Error: ${res.status} ${res.statusText}</div>`;
+      return;
+    }
+    const data = await res.json();
+    if (!data.plans || !data.plans.length) {
+      listEl.innerHTML = query
+        ? `<div style="color:var(--text2);font-size:.85rem">No plans found matching "<strong>${query}</strong>"</div>`
+        : '<div style="color:var(--text2);font-size:.85rem">No saved plans yet. Compare two plans to save them.</div>';
+      return;
+    }
+    listEl.innerHTML = data.plans.map(p => `
+      <div class="saved-card">
+        <div class="plan-info">
+          <div class="plan-label">${p.plan_label || '—'}</div>
+          <div class="plan-meta">
+            ${p.sql_id ? `SQL ID: <code style="color:var(--accent)">${p.sql_id}</code> &nbsp;` : ''}
+            ${p.dbname ? `DB: ${p.dbname} &nbsp;` : ''}
+            Cost: ${p.total_cost ? Number(p.total_cost).toLocaleString() : '—'} &nbsp;
+            Steps: ${p.step_count || '—'} &nbsp;
+            ${p.has_full_scan ? '<span style="color:#ef4444">⚠ Full Scan</span>' : ''}
+            <span style="color:var(--text2)">${new Date(p.created_at).toLocaleDateString('en-IN')}</span>
+          </div>
+        </div>
+        <span class="type-badge ${p.plan_type === 'baseline' ? 'type-baseline' : 'type-optimized'}">
+          ${p.plan_type}
+        </span>
+        <button class="load-btn" onclick="loadSavedPlan(${p.id}, '${p.plan_type}')">Load</button>
+        <button class="load-btn" style="color:#ef4444;border-color:#ef444440"
+                onclick="deletePlan(${p.id})">✕</button>
+      </div>
+    `).join('');
+  } catch(e) {
+    listEl.innerHTML = `<div style="color:#ef4444">Error loading plans: ${e.message}</div>`;
+  }
+}
+
+function searchPlans(q) {
+  clearTimeout(window._searchTimer);
+  window._searchTimer = setTimeout(() => loadSavedPlans(q), 300);
+}
+
+async function loadSavedPlan(id, type) {
+  const res  = await fetch(`/api/plans/${id}`);
+  const data = await res.json();
+  const side = (type === 'baseline') ? 'a' : 'b';
+  document.getElementById('plan_' + side).value = data.plan_text;
+  document.getElementById('label_' + side).value = data.plan_label;
+  document.getElementById('sql_id_' + side).value = data.sql_id || '';
+  document.getElementById('dbname_' + side).value = data.dbname || '';
+  document.getElementById('tags_' + side).value = data.tags || '';
+  showTab('compare');
+  document.querySelector('.tab').click();
+  // Switch to compare tab
+  document.querySelectorAll('.tab')[0].click();
+}
+
+async function deletePlan(id) {
+  if (!confirm('Delete this saved plan?')) return;
+  await fetch(`/api/plans/${id}`, {method:'DELETE'});
+  loadSavedPlans();
+}
+</script>
+{% endblock %}

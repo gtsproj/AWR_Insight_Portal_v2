@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% block title %} — Object Metadata{% endblock %}
+{% block content %}
+<style>
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.meta-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.meta-card h3{font-size:.95rem;color:var(--accent);margin-bottom:14px;font-weight:600}
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:20px;
+             text-align:center;cursor:pointer;transition:.15s;font-size:.85rem;color:var(--text2)}
+.upload-zone:hover{border-color:var(--accent);background:var(--surface2)}
+.f-label{font-size:.78rem;color:var(--text2);margin-bottom:4px;display:block}
+.f-input{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);
+         padding:8px 10px;border-radius:var(--radius);font-size:.85rem;outline:none}
+.f-input:focus{border-color:var(--accent)}
+.f-select{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);
+          padding:8px 10px;border-radius:var(--radius);font-size:.85rem;outline:none}
+.btn-primary{padding:9px 20px;background:var(--accent);color:#000;border:none;
+             border-radius:var(--radius);font-size:.85rem;font-weight:600;cursor:pointer}
+.btn-secondary{padding:9px 20px;background:var(--surface2);color:var(--text2);
+               border:1px solid var(--border);border-radius:var(--radius);font-size:.85rem;cursor:pointer}
+.step-badge{display:inline-block;background:var(--accent);color:#000;border-radius:50%;
+            width:22px;height:22px;text-align:center;line-height:22px;font-size:.75rem;
+            font-weight:700;margin-right:6px}
+.summary-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:10px}
+.summary-table th{background:var(--surface2);color:var(--text2);padding:6px 10px;text-align:left;
+                  border-bottom:1px solid var(--border)}
+.summary-table td{padding:5px 10px;border-bottom:1px solid var(--border);color:var(--text)}
+</style>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+  <h1 style="font-size:1.2rem;margin:0">📚 Oracle Object Metadata</h1>
+  <div style="font-size:.8rem;color:var(--text2)">Upload DBA dictionary data to enhance AI recommendations</div>
+</div>
+
+<div class="meta-grid">
+  <!-- Step 1: Download export script -->
+  <div class="meta-card">
+    <h3><span class="step-badge">1</span>Export from Oracle Database</h3>
+    <p style="font-size:.84rem;color:var(--text2);line-height:1.6;margin-bottom:14px">
+      Run the export script on each Oracle database as a user with
+      <code>SELECT_CATALOG_ROLE</code> or DBA privilege.
+      The script exports tables, indexes and partitions to a pipe-delimited CSV file.
+    </p>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+                padding:12px;font-family:monospace;font-size:.78rem;color:var(--accent);margin-bottom:14px">
+      sqlplus user/password@DBNAME @export_object_metadata.sql DBNAME<br>
+      <span style="color:var(--text2)"># Output: object_metadata_DBNAME.csv</span>
+    </div>
+    <a href="/static/export_object_metadata.sql" download
+       style="display:inline-block;padding:8px 16px;background:var(--surface2);
+              border:1px solid var(--border);border-radius:var(--radius);
+              color:var(--accent);font-size:.85rem;text-decoration:none">
+      ⬇ Download export_object_metadata.sql
+    </a>
+  </div>
+
+  <!-- Step 2: Upload CSV -->
+  <div class="meta-card">
+    <h3><span class="step-badge">2</span>Upload Metadata CSV</h3>
+    {% if is_admin %}
+    <div style="margin-bottom:12px">
+      <label class="f-label">Database Name</label>
+      <select class="f-select" id="meta-dbname">
+        <option value="">-- Select Database --</option>
+      </select>
+    </div>
+    <div class="upload-zone" onclick="document.getElementById('meta-file').click()">
+      📂 Click to select object_metadata_DBNAME.csv
+      <input type="file" id="meta-file" accept=".csv,.txt" style="display:none"
+             onchange="this.parentElement.querySelector('span') && null;
+                       uploadFilename(this)">
+    </div>
+    <div id="upload-filename" style="font-size:.78rem;color:var(--text2);margin-top:6px"></div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button class="btn-primary" onclick="uploadMetadata()">📤 Upload & Import</button>
+    </div>
+    <div id="upload-result" style="margin-top:10px;font-size:.82rem;min-height:18px"></div>
+    {% else %}
+    <div style="color:var(--text2);font-size:.85rem;padding:10px 0">
+      🔒 Admin access required to upload metadata.
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Current Metadata Summary -->
+<div class="meta-card">
+  <h3>📊 Current Metadata Coverage</h3>
+  <div id="meta-summary">
+    <div style="color:var(--text2);font-size:.85rem">Loading...</div>
+  </div>
+</div>
+
+<!-- Ollama Installation Guide -->
+<div class="meta-card" style="margin-top:16px">
+  <h3>🖥️ Local AI Setup — Ollama Installation (Windows)</h3>
+  <div style="font-size:.84rem;color:var(--text2);line-height:1.8">
+    <p style="margin-bottom:10px">
+      Ollama runs the AI model locally — no data leaves the server. Required for Local AI mode.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-weight:600;color:var(--text);margin-bottom:8px">Installation Steps:</div>
+        <ol style="margin-left:16px;line-height:2">
+          <li>Download <a href="https://ollama.com/download/windows" target="_blank" style="color:var(--accent)">Ollama for Windows ↗</a></li>
+          <li>Run the installer (OllamaSetup.exe)</li>
+          <li>Open Command Prompt and run:<br>
+              <code style="background:var(--surface2);padding:2px 6px;border-radius:4px">ollama pull llama3.1:8b</code>
+          </li>
+          <li>Verify: <code style="background:var(--surface2);padding:2px 6px;border-radius:4px">ollama list</code></li>
+          <li>In Portal → Settings → AI: set mode to Local AI, test connection</li>
+        </ol>
+      </div>
+      <div>
+        <div style="font-weight:600;color:var(--text);margin-bottom:8px">Hardware Requirements:</div>
+        <table class="summary-table">
+          <tr><th>Model</th><th>RAM</th><th>Quality</th></tr>
+          <tr><td>phi3:mini</td><td>4GB+</td><td>Basic</td></tr>
+          <tr><td>mistral:7b</td><td>6GB+</td><td>Good</td></tr>
+          <tr><td><b>llama3.1:8b</b></td><td><b>8GB+</b></td><td><b>Best ✓</b></td></tr>
+          <tr><td>llama3.1:70b</td><td>48GB+</td><td>Enterprise</td></tr>
+        </table>
+        <div style="margin-top:8px;font-size:.78rem;color:var(--text2)">
+          ✅ Recommended: <strong>llama3.1:8b</strong> — best Oracle DBA reasoning, fits on 8GB RAM server.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Load DB list
+(async function() {
+  try {
+    const r = await fetch('/api/db-list');
+    const d = await r.json();
+    const sel = document.getElementById('meta-dbname');
+    if (sel) {
+      (d.dbs||[]).forEach(db => {
+        const o = document.createElement('option');
+        o.value = o.textContent = db;
+        sel.appendChild(o);
+      });
+    }
+  } catch(_){}
+})();
+
+// Load metadata summary
+(async function loadSummary() {
+  try {
+    const r = await fetch('/api/metadata/summary');
+    const d = await r.json();
+    const el = document.getElementById('meta-summary');
+    if (!d.summary || !d.summary.length) {
+      el.innerHTML = '<div style="color:var(--text2);font-size:.85rem">No metadata uploaded yet. Run the export script on each Oracle database and upload the CSV.</div>';
+      return;
+    }
+    // Group by dbname
+    const byDb = {};
+    d.summary.forEach(r => {
+      if (!byDb[r.dbname]) byDb[r.dbname] = [];
+      byDb[r.dbname].push(r);
+    });
+    let html = '<table class="summary-table"><thead><tr><th>Database</th><th>Type</th><th>Count</th><th>Last Upload</th></tr></thead><tbody>';
+    Object.entries(byDb).forEach(([db, rows]) => {
+      rows.forEach((r, i) => {
+        html += `<tr>
+          ${i===0 ? `<td rowspan="${rows.length}" style="font-weight:600">${db}</td>` : ''}
+          <td>${r.object_type}</td>
+          <td>${r.cnt?.toLocaleString()}</td>
+          <td style="color:var(--text2);font-size:.78rem">${r.last_upload ? new Date(r.last_upload).toLocaleDateString('en-IN') : '—'}</td>
+        </tr>`;
+      });
+    });
+    html += '</tbody></table>';
+    el.innerHTML = html;
+  } catch(e) {
+    document.getElementById('meta-summary').innerHTML = '<div style="color:#ef4444">Error loading summary</div>';
+  }
+})();
+
+function uploadFilename(input) {
+  const el = document.getElementById('upload-filename');
+  el.textContent = input.files[0] ? '📄 ' + input.files[0].name : '';
+}
+
+async function uploadMetadata() {
+  const dbname = document.getElementById('meta-dbname')?.value;
+  const file   = document.getElementById('meta-file')?.files[0];
+  const res_el = document.getElementById('upload-result');
+  if (!dbname) { res_el.textContent = '❌ Please select a database'; res_el.style.color='#ef4444'; return; }
+  if (!file)   { res_el.textContent = '❌ Please select a CSV file'; res_el.style.color='#ef4444'; return; }
+
+  res_el.textContent = '⏳ Uploading and importing...';
+  res_el.style.color = 'var(--text2)';
+
+  const fd = new FormData();
+  fd.append('dbname', dbname);
+  fd.append('csv_file', file);
+
+  try {
+    const r = await fetch('/api/metadata/upload', {method:'POST', body: fd});
+    const d = await r.json();
+    if (r.ok && d.ok) {
+      res_el.textContent = `✅ ${d.message}`;
+      res_el.style.color = '#10b981';
+      // Reload summary
+      setTimeout(() => location.reload(), 1500);
+    } else {
+      res_el.textContent = `❌ ${d.detail || 'Upload failed'}`;
+      res_el.style.color = '#ef4444';
+    }
+  } catch(e) {
+    res_el.textContent = `❌ Error: ${e.message}`;
+    res_el.style.color = '#ef4444';
+  }
+}
+</script>
+{% endblock %}
