@@ -1,0 +1,15 @@
+2025-09-03 14:01:11,724 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0000_0030.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0000_0030.html'
+2025-09-03 14:07:48,071 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0600_0630.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0600_0630.html'
+2025-09-03 14:15:39,934 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0600_0630.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0600_0630.html'
+2025-09-03 14:39:23,811 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0600_0630.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0600_0630.html'
+2025-09-03 14:40:03,036 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0600_0630.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0600_0630.html'
+2025-09-03 14:42:48,676 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0600_0630.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0600_0630.html'
+2025-09-03 14:45:03,869 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0600_0630.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0600_0630.html'
+2025-09-03 16:10:06,510 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0530_0600.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0530_0600.html'
+2025-09-03 16:37:59,198 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0530_0600.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0530_0600.html'
+Traceback (most recent call last):
+  File "C:\awr_parser_project\modules\db_info_parser.py", line 30, in parse_db_info
+    with open(file_path, "r", encoding="utf-8") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0530_0600.html'
+2025-09-05 12:43:48,374 | db_info_parser | ERROR | Error parsing awr_neodbprd_1_1_240221_0530_0600.html: [Errno 2] No such file or directory: 'awr_neodbprd_1_1_240221_0530_0600.html'
