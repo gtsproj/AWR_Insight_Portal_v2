@@ -1,0 +1,102 @@
+# config/settings.yaml  (v2)
+# ============================================================
+# AWR Insight Portal — Master Configuration
+# All paths support both Windows (C:/...) and Linux (/mnt/...)
+# ============================================================
+
+# ── Database connection ───────────────────────────────────────────────
+database:
+  dbname:   "postgres"
+  user:     "postgres"
+  password: "Admin123"
+  host:     "localhost"
+  port:     5432
+
+# ── Logging ───────────────────────────────────────────────────────────
+logging:
+  level: "INFO"          # DEBUG | INFO | WARNING | ERROR
+  dir:   "logs"          # Relative to project root
+
+# ── Source mode ───────────────────────────────────────────────────────
+source:
+  mode: "local"          # local | central | both | direct_db
+  local_watch_dir: "awr_reports"
+  central_repo_path: "/mnt/shared/oracle_awrs"
+  repo_scan_interval_seconds: 300
+  repo_recursive: true
+  repo_db_filter: []
+  oracle_connect:
+    enabled: false
+    connections: []
+
+# ── SAR reports ───────────────────────────────────────────────────────
+sar:
+  input_dir:    "sar_reports"     # Root for SAR text files
+  timezone:     "Asia/Kolkata"    # TZ for WSL binary conversion
+  # Layout: sar_reports/<HOSTNAME>/sar<date>.txt
+  # For binary SAR files, pre-convert with: sar -A -f /var/log/sa/saNN > sar_text.txt
+
+# ── File watcher ──────────────────────────────────────────────────────
+watcher:
+  poll_interval_seconds: 10
+  awr_extensions:
+    - ".html"
+    - ".htm"
+    - ".txt"
+
+# ── Queue processor ───────────────────────────────────────────────────
+queue:
+  max_retries:               3
+  poll_interval_seconds:    15
+  archive_on_success:       true
+  sar_poll_interval_seconds: 15
+
+# ── Paths (output / work directories) ─────────────────────────────────
+paths:
+  watch_directory:        "awr_reports"
+  queues_directory:       "queues"
+  archive_directory:      "archive"
+  master_parser:          "master_parser.py"
+  sar_drop_directory:     "sar_drop"
+  sar_queues_directory:   "sar_queues"
+  sar_archive_directory:  "sar_archive"
+
+# ── Database type detection ───────────────────────────────────────────
+db_detection:
+  mode: "auto"
+  db_overrides: []
+
+# ── AI / Recommendation engine ────────────────────────────────────────
+ai:
+  mode: "rules"           # rules | local | cloud
+  ollama:
+    enabled:  false
+    base_url: "http://localhost:11434"
+    model:    "llama3"
+    timeout:  60
+  anthropic:
+    enabled:  false
+    api_key:  ""
+    model:    "claude-sonnet-4-6"
+    max_tokens: 1024
+  rules:
+    rules_file: "rules/recommendation_rules_v2.json"
+    min_severity_to_show: "medium"
+
+# ── Grafana ───────────────────────────────────────────────────────────
+grafana:
+  base_url:    "http://localhost:3000"
+  api_key:     ""
+  org_id:      1
+  datasource:  "AWR_Parser_PG"
+
+# ── Alerting ──────────────────────────────────────────────────────────
+alerting:
+  enabled: false
+  webhook_url: ""
+  email:
+    enabled:   false
+    smtp_host: "localhost"
+    smtp_port: 25
+    from:      "awrparser@company.com"
+    to:        []
