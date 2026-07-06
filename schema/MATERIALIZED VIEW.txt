@@ -1,0 +1,928 @@
+DROP MATERIALIZED VIEW IF EXISTS public.awr_sql_summary_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_sql_summary_mv
+TABLESPACE awrparser
+AS
+ WITH elapsed AS (
+         SELECT awr_sql_elapsed_time.dbname,
+            awr_sql_elapsed_time.instance,
+            awr_sql_elapsed_time.begin_snap,
+            min(awr_sql_elapsed_time.snap_time) AS snap_time,
+            awr_sql_elapsed_time.sql_id,
+            sum(awr_sql_elapsed_time.executions) AS executions,
+            avg(awr_sql_elapsed_time.elapsed_time_per_exec_s) AS elapsed_time_per_exec_s,
+            avg(awr_sql_elapsed_time.pct_cpu) AS pct_cpu,
+            avg(awr_sql_elapsed_time.pct_io) AS pct_io
+           FROM awr_sql_elapsed_time
+          GROUP BY awr_sql_elapsed_time.dbname, awr_sql_elapsed_time.instance, awr_sql_elapsed_time.begin_snap, awr_sql_elapsed_time.sql_id
+        ), cpu AS (
+         SELECT awr_sql_cpu_time.dbname,
+            awr_sql_cpu_time.instance,
+            awr_sql_cpu_time.begin_snap,
+            awr_sql_cpu_time.sql_id,
+            avg(awr_sql_cpu_time.cpu_per_exec_s) AS cpu_per_exec_s
+           FROM awr_sql_cpu_time
+          GROUP BY awr_sql_cpu_time.dbname, awr_sql_cpu_time.instance, awr_sql_cpu_time.begin_snap, awr_sql_cpu_time.sql_id
+        ), uio AS (
+         SELECT awr_sql_user_io_time.dbname,
+            awr_sql_user_io_time.instance,
+            awr_sql_user_io_time.begin_snap,
+            awr_sql_user_io_time.sql_id,
+            avg(awr_sql_user_io_time.uio_per_exec_s) AS user_io_wait_per_exec_s
+           FROM awr_sql_user_io_time
+          GROUP BY awr_sql_user_io_time.dbname, awr_sql_user_io_time.instance, awr_sql_user_io_time.begin_snap, awr_sql_user_io_time.sql_id
+        ), gets AS (
+         SELECT awr_sql_gets.dbname,
+            awr_sql_gets.instance,
+            awr_sql_gets.begin_snap,
+            awr_sql_gets.sql_id,
+            avg(awr_sql_gets.gets_per_exec) AS buffer_gets_per_exec
+           FROM awr_sql_gets
+          GROUP BY awr_sql_gets.dbname, awr_sql_gets.instance, awr_sql_gets.begin_snap, awr_sql_gets.sql_id
+        ), reads AS (
+         SELECT awr_sql_reads.dbname,
+            awr_sql_reads.instance,
+            awr_sql_reads.begin_snap,
+            awr_sql_reads.sql_id,
+            avg(awr_sql_reads.reads_per_exec) AS disk_reads_per_exec
+           FROM awr_sql_reads
+          GROUP BY awr_sql_reads.dbname, awr_sql_reads.instance, awr_sql_reads.begin_snap, awr_sql_reads.sql_id
+        ), unopt AS (
+         SELECT awr_sql_phy_reads_unopt.dbname,
+            awr_sql_phy_reads_unopt.instance,
+            awr_sql_phy_reads_unopt.begin_snap,
+            awr_sql_phy_reads_unopt.sql_id,
+            avg(awr_sql_phy_reads_unopt.unoptimized_reqs_per_exec) AS unoptimized_reqs_per_exec,
+            avg(awr_sql_phy_reads_unopt.pctopt) AS pct_opt
+           FROM awr_sql_phy_reads_unopt
+          GROUP BY awr_sql_phy_reads_unopt.dbname, awr_sql_phy_reads_unopt.instance, awr_sql_phy_reads_unopt.begin_snap, awr_sql_phy_reads_unopt.sql_id
+        ), execs AS (
+         SELECT awr_sql_executions.dbname,
+            awr_sql_executions.instance,
+            awr_sql_executions.begin_snap,
+            awr_sql_executions.sql_id,
+            sum(awr_sql_executions.executions) AS total_executions
+           FROM awr_sql_executions
+          GROUP BY awr_sql_executions.dbname, awr_sql_executions.instance, awr_sql_executions.begin_snap, awr_sql_executions.sql_id
+        ), parses AS (
+         SELECT awr_sql_parsed_calls.dbname,
+            awr_sql_parsed_calls.instance,
+            awr_sql_parsed_calls.begin_snap,
+            awr_sql_parsed_calls.sql_id,
+            sum(awr_sql_parsed_calls.parse_calls) AS parse_calls,
+            avg(awr_sql_parsed_calls.pct_total_parses) AS pct_total_parses
+           FROM awr_sql_parsed_calls
+          GROUP BY awr_sql_parsed_calls.dbname, awr_sql_parsed_calls.instance, awr_sql_parsed_calls.begin_snap, awr_sql_parsed_calls.sql_id
+        ), clu AS (
+         SELECT awr_sql_cluster_wait_time.dbname,
+            awr_sql_cluster_wait_time.instance,
+            awr_sql_cluster_wait_time.begin_snap,
+            awr_sql_cluster_wait_time.sql_id,
+            avg(awr_sql_cluster_wait_time.cluster_wait_time_s) AS cluster_wait_time_per_exec_s,
+            avg(awr_sql_cluster_wait_time.pct_clu) AS pct_clu
+           FROM awr_sql_cluster_wait_time
+          GROUP BY awr_sql_cluster_wait_time.dbname, awr_sql_cluster_wait_time.instance, awr_sql_cluster_wait_time.begin_snap, awr_sql_cluster_wait_time.sql_id
+        )
+ SELECT e.dbname,
+    e.instance,
+    e.begin_snap,
+    e.snap_time,
+    e.sql_id,
+    e.executions,
+    e.elapsed_time_per_exec_s,
+    c.cpu_per_exec_s,
+    u.user_io_wait_per_exec_s,
+    g.buffer_gets_per_exec,
+    r.disk_reads_per_exec,
+    un.unoptimized_reqs_per_exec,
+    un.pct_opt,
+    ex.total_executions,
+    p.parse_calls,
+    p.pct_total_parses,
+    cl.cluster_wait_time_per_exec_s,
+    cl.pct_clu,
+    (COALESCE(e.elapsed_time_per_exec_s, 0::numeric) * 0.25 + COALESCE(c.cpu_per_exec_s, 0::numeric) * 0.25 + COALESCE(g.buffer_gets_per_exec, 0::numeric) / 10000.0 * 0.15 + COALESCE(r.disk_reads_per_exec, 0::numeric) / 1000.0 * 0.10 + COALESCE(u.user_io_wait_per_exec_s, 0::numeric) * 0.10 + COALESCE(un.unoptimized_reqs_per_exec, 0::numeric) / 1000.0 * 0.05 + COALESCE(p.parse_calls, 0::numeric) / 1000.0 * 0.05 + COALESCE(cl.cluster_wait_time_per_exec_s, 0::numeric) * 0.05)::numeric(18,4) AS severity_score, row_number() over () AS mv_id
+   FROM elapsed e
+     LEFT JOIN cpu c ON c.dbname = e.dbname AND c.instance = e.instance AND c.begin_snap = e.begin_snap AND c.sql_id = e.sql_id
+     LEFT JOIN uio u ON u.dbname = e.dbname AND u.instance = e.instance AND u.begin_snap = e.begin_snap AND u.sql_id = e.sql_id
+     LEFT JOIN gets g ON g.dbname = e.dbname AND g.instance = e.instance AND g.begin_snap = e.begin_snap AND g.sql_id = e.sql_id
+     LEFT JOIN reads r ON r.dbname = e.dbname AND r.instance = e.instance AND r.begin_snap = e.begin_snap AND r.sql_id = e.sql_id
+     LEFT JOIN unopt un ON un.dbname = e.dbname AND un.instance = e.instance AND un.begin_snap = e.begin_snap AND un.sql_id = e.sql_id
+     LEFT JOIN execs ex ON ex.dbname = e.dbname AND ex.instance = e.instance AND ex.begin_snap = e.begin_snap AND ex.sql_id = e.sql_id
+     LEFT JOIN parses p ON p.dbname = e.dbname AND p.instance = e.instance AND p.begin_snap = e.begin_snap AND p.sql_id = e.sql_id
+     LEFT JOIN clu cl ON cl.dbname = e.dbname AND cl.instance = e.instance AND cl.begin_snap = e.begin_snap AND cl.sql_id = e.sql_id
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_sql_summary_mv_id ON awr_sql_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+CREATE INDEX idx_elapsed ON awr_sql_elapsed_time (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_cpu     ON awr_sql_cpu_time (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_uio     ON awr_sql_user_io_time (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_gets    ON awr_sql_gets (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_reads   ON awr_sql_reads (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_phy     ON awr_sql_phy_reads_unopt (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_parse   ON awr_sql_parsed_calls (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_cluster ON awr_sql_cluster_wait_time (dbname, instance, sql_id, begin_snap) tablespace awrparser_idx;
+
+---------------------------------------------------------------
+Materialized view for AWR Segment Summary
+---------------------------------------------------------------
+
+DROP MATERIALIZED VIEW IF EXISTS public.awr_segment_summary_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_segment_summary_mv
+TABLESPACE awrparser
+AS
+ WITH logical_reads AS (
+         SELECT awr_seg_logical_reads.dbname,
+            awr_seg_logical_reads.instance,
+            awr_seg_logical_reads.begin_snap,
+            min(awr_seg_logical_reads.snap_time) AS snap_time,
+            awr_seg_logical_reads.tablespace_name,
+            awr_seg_logical_reads.obj_type,
+            awr_seg_logical_reads.owner,
+            awr_seg_logical_reads.object_name,
+            awr_seg_logical_reads.subobject_name,
+            avg(awr_seg_logical_reads.logical_reads) AS logical_reads
+           FROM awr_seg_logical_reads
+          GROUP BY awr_seg_logical_reads.dbname, awr_seg_logical_reads.instance, awr_seg_logical_reads.begin_snap, awr_seg_logical_reads.tablespace_name, awr_seg_logical_reads.obj_type, awr_seg_logical_reads.owner, awr_seg_logical_reads.object_name, awr_seg_logical_reads.subobject_name
+        ), physical_reads AS (
+         SELECT awr_seg_phy_reads.dbname,
+            awr_seg_phy_reads.instance,
+            awr_seg_phy_reads.begin_snap,
+            avg(awr_seg_phy_reads.physical_reads) AS physical_reads
+           FROM awr_seg_phy_reads
+          GROUP BY awr_seg_phy_reads.dbname, awr_seg_phy_reads.instance, awr_seg_phy_reads.begin_snap
+        ), physical_writes AS (
+         SELECT awr_seg_phy_writes.dbname,
+            awr_seg_phy_writes.instance,
+            awr_seg_phy_writes.begin_snap,
+            avg(awr_seg_phy_writes.physical_writes) AS physical_writes
+           FROM awr_seg_phy_writes
+          GROUP BY awr_seg_phy_writes.dbname, awr_seg_phy_writes.instance, awr_seg_phy_writes.begin_snap
+        ), direct_reads AS (
+         SELECT awr_seg_direct_phy_reads.dbname,
+            awr_seg_direct_phy_reads.instance,
+            awr_seg_direct_phy_reads.begin_snap,
+            avg(awr_seg_direct_phy_reads.direct_reads) AS direct_reads
+           FROM awr_seg_direct_phy_reads
+          GROUP BY awr_seg_direct_phy_reads.dbname, awr_seg_direct_phy_reads.instance, awr_seg_direct_phy_reads.begin_snap
+        ), direct_writes AS (
+         SELECT awr_seg_direct_phy_writes.dbname,
+            awr_seg_direct_phy_writes.instance,
+            awr_seg_direct_phy_writes.begin_snap,
+            avg(awr_seg_direct_phy_writes.direct_writes) AS direct_writes
+           FROM awr_seg_direct_phy_writes
+          GROUP BY awr_seg_direct_phy_writes.dbname, awr_seg_direct_phy_writes.instance, awr_seg_direct_phy_writes.begin_snap
+        ), read_req AS (
+         SELECT awr_seg_phy_read_req.dbname,
+            awr_seg_phy_read_req.instance,
+            awr_seg_phy_read_req.begin_snap,
+            avg(awr_seg_phy_read_req.phys_read_requests) AS phys_read_requests
+           FROM awr_seg_phy_read_req
+          GROUP BY awr_seg_phy_read_req.dbname, awr_seg_phy_read_req.instance, awr_seg_phy_read_req.begin_snap
+        ), write_req AS (
+         SELECT awr_seg_phy_write_req.dbname,
+            awr_seg_phy_write_req.instance,
+            awr_seg_phy_write_req.begin_snap,
+            avg(awr_seg_phy_write_req.phys_write_requests) AS phys_write_requests
+           FROM awr_seg_phy_write_req
+          GROUP BY awr_seg_phy_write_req.dbname, awr_seg_phy_write_req.instance, awr_seg_phy_write_req.begin_snap
+        ), cr_blocks AS (
+         SELECT awr_seg_cr_blk_rec.dbname,
+            awr_seg_cr_blk_rec.instance,
+            awr_seg_cr_blk_rec.begin_snap,
+            avg(awr_seg_cr_blk_rec.cr_blocks_received) AS cr_blocks_received
+           FROM awr_seg_cr_blk_rec
+          GROUP BY awr_seg_cr_blk_rec.dbname, awr_seg_cr_blk_rec.instance, awr_seg_cr_blk_rec.begin_snap
+        ), cur_blocks AS (
+         SELECT awr_seg_cur_blk_rec.dbname,
+            awr_seg_cur_blk_rec.instance,
+            awr_seg_cur_blk_rec.begin_snap,
+            avg(awr_seg_cur_blk_rec.current_blocks_received) AS current_blocks_received
+           FROM awr_seg_cur_blk_rec
+          GROUP BY awr_seg_cur_blk_rec.dbname, awr_seg_cur_blk_rec.instance, awr_seg_cur_blk_rec.begin_snap
+        ), unopt_reads AS (
+         SELECT awr_seg_unopt_reads.dbname,
+            awr_seg_unopt_reads.instance,
+            awr_seg_unopt_reads.begin_snap,
+            avg(awr_seg_unopt_reads.unoptimized_reads) AS unoptimized_reads
+           FROM awr_seg_unopt_reads
+          GROUP BY awr_seg_unopt_reads.dbname, awr_seg_unopt_reads.instance, awr_seg_unopt_reads.begin_snap
+        ), opt_reads AS (
+         SELECT awr_seg_opt_reads.dbname,
+            awr_seg_opt_reads.instance,
+            awr_seg_opt_reads.begin_snap,
+            avg(awr_seg_opt_reads.optimized_reads) AS optimized_reads
+           FROM awr_seg_opt_reads
+          GROUP BY awr_seg_opt_reads.dbname, awr_seg_opt_reads.instance, awr_seg_opt_reads.begin_snap
+        ), table_scans AS (
+         SELECT awr_seg_table_scan.dbname,
+            awr_seg_table_scan.instance,
+            awr_seg_table_scan.begin_snap,
+            avg(awr_seg_table_scan.table_scans) AS table_scans
+           FROM awr_seg_table_scan
+          GROUP BY awr_seg_table_scan.dbname, awr_seg_table_scan.instance, awr_seg_table_scan.begin_snap
+        ), db_block_changes AS (
+         SELECT awr_seg_db_blk_chg.dbname,
+            awr_seg_db_blk_chg.instance,
+            awr_seg_db_blk_chg.begin_snap,
+            avg(awr_seg_db_blk_chg.db_block_changes) AS db_block_changes
+           FROM awr_seg_db_blk_chg
+          GROUP BY awr_seg_db_blk_chg.dbname, awr_seg_db_blk_chg.instance, awr_seg_db_blk_chg.begin_snap
+        ), row_lock AS (
+         SELECT awr_seg_row_lck_waits.dbname,
+            awr_seg_row_lck_waits.instance,
+            awr_seg_row_lck_waits.begin_snap,
+            avg(awr_seg_row_lck_waits.row_lock_waits) AS row_lock_waits
+           FROM awr_seg_row_lck_waits
+          GROUP BY awr_seg_row_lck_waits.dbname, awr_seg_row_lck_waits.instance, awr_seg_row_lck_waits.begin_snap
+        ), itl AS (
+         SELECT awr_seg_itl_waits.dbname,
+            awr_seg_itl_waits.instance,
+            awr_seg_itl_waits.begin_snap,
+            avg(awr_seg_itl_waits.itl_waits) AS itl_waits
+           FROM awr_seg_itl_waits
+          GROUP BY awr_seg_itl_waits.dbname, awr_seg_itl_waits.instance, awr_seg_itl_waits.begin_snap
+        ), buff_busy AS (
+         SELECT awr_seg_buff_busy_waits.dbname,
+            awr_seg_buff_busy_waits.instance,
+            awr_seg_buff_busy_waits.begin_snap,
+            avg(awr_seg_buff_busy_waits.buffer_busy_waits) AS buffer_busy_waits
+           FROM awr_seg_buff_busy_waits
+          GROUP BY awr_seg_buff_busy_waits.dbname, awr_seg_buff_busy_waits.instance, awr_seg_buff_busy_waits.begin_snap
+        ), gc_busy AS (
+         SELECT awr_seg_gbl_cache_buff_busy.dbname,
+            awr_seg_gbl_cache_buff_busy.instance,
+            awr_seg_gbl_cache_buff_busy.begin_snap,
+            avg(awr_seg_gbl_cache_buff_busy.gc_buffer_busy) AS gc_buffer_busy
+           FROM awr_seg_gbl_cache_buff_busy
+          GROUP BY awr_seg_gbl_cache_buff_busy.dbname, awr_seg_gbl_cache_buff_busy.instance, awr_seg_gbl_cache_buff_busy.begin_snap
+        )
+ SELECT l.dbname,
+    l.instance,
+    l.begin_snap,
+    l.snap_time,
+    l.tablespace_name,
+    l.owner,
+    l.obj_type,
+    l.object_name,
+    l.subobject_name,
+    l.logical_reads,
+    pr.physical_reads,
+    pw.physical_writes,
+    dr.direct_reads,
+    dw.direct_writes,
+    rr.phys_read_requests,
+    wr.phys_write_requests,
+    cb.cr_blocks_received,
+    cur.current_blocks_received,
+    un.unoptimized_reads,
+    opt.optimized_reads,
+    ts.table_scans,
+    dbc.db_block_changes,
+    rl.row_lock_waits,
+    it.itl_waits,
+    bb.buffer_busy_waits,
+    gc.gc_buffer_busy,
+    (COALESCE(pr.physical_reads, 0::numeric) * 0.15 + (COALESCE(dr.direct_reads, 0::numeric) + COALESCE(dw.direct_writes, 0::numeric)) * 0.10 + COALESCE(l.logical_reads, 0::numeric) * 0.10 + (COALESCE(cb.cr_blocks_received, 0::numeric) + COALESCE(cur.current_blocks_received, 0::numeric)) * 0.10 + COALESCE(ts.table_scans, 0::numeric) * 0.05 + COALESCE(un.unoptimized_reads, 0::numeric) * 0.05 + (COALESCE(rr.phys_read_requests, 0::numeric) + COALESCE(wr.phys_write_requests, 0::numeric)) * 0.03 + COALESCE(opt.optimized_reads, 0::numeric) * 0.02 + COALESCE(dbc.db_block_changes, 0::numeric) * 0.10 + COALESCE(rl.row_lock_waits, 0::numeric) * 0.10 + COALESCE(it.itl_waits, 0::numeric) * 0.05 + COALESCE(bb.buffer_busy_waits, 0::numeric) * 0.10 + COALESCE(gc.gc_buffer_busy, 0::numeric) * 0.05)::numeric(18,4) AS severity_score,
+row_number() over () AS mv_id
+   FROM logical_reads l
+     LEFT JOIN physical_reads pr ON pr.dbname = l.dbname AND pr.instance = l.instance AND pr.begin_snap = l.begin_snap
+     LEFT JOIN physical_writes pw ON pw.dbname = l.dbname AND pw.instance = l.instance AND pw.begin_snap = l.begin_snap
+     LEFT JOIN direct_reads dr ON dr.dbname = l.dbname AND dr.instance = l.instance AND dr.begin_snap = l.begin_snap
+     LEFT JOIN direct_writes dw ON dw.dbname = l.dbname AND dw.instance = l.instance AND dw.begin_snap = l.begin_snap
+     LEFT JOIN read_req rr ON rr.dbname = l.dbname AND rr.instance = l.instance AND rr.begin_snap = l.begin_snap
+     LEFT JOIN write_req wr ON wr.dbname = l.dbname AND wr.instance = l.instance AND wr.begin_snap = l.begin_snap
+     LEFT JOIN cr_blocks cb ON cb.dbname = l.dbname AND cb.instance = l.instance AND cb.begin_snap = l.begin_snap
+     LEFT JOIN cur_blocks cur ON cur.dbname = l.dbname AND cur.instance = l.instance AND cur.begin_snap = l.begin_snap
+     LEFT JOIN unopt_reads un ON un.dbname = l.dbname AND un.instance = l.instance AND un.begin_snap = l.begin_snap
+     LEFT JOIN opt_reads opt ON opt.dbname = l.dbname AND opt.instance = l.instance AND opt.begin_snap = l.begin_snap
+     LEFT JOIN table_scans ts ON ts.dbname = l.dbname AND ts.instance = l.instance AND ts.begin_snap = l.begin_snap
+     LEFT JOIN db_block_changes dbc ON dbc.dbname = l.dbname AND dbc.instance = l.instance AND dbc.begin_snap = l.begin_snap
+     LEFT JOIN row_lock rl ON rl.dbname = l.dbname AND rl.instance = l.instance AND rl.begin_snap = l.begin_snap
+     LEFT JOIN itl it ON it.dbname = l.dbname AND it.instance = l.instance AND it.begin_snap = l.begin_snap
+     LEFT JOIN buff_busy bb ON bb.dbname = l.dbname AND bb.instance = l.instance AND bb.begin_snap = l.begin_snap
+     LEFT JOIN gc_busy gc ON gc.dbname = l.dbname AND gc.instance = l.instance AND gc.begin_snap = l.begin_snap
+WITH DATA;
+
+-- Indexes for performance
+CREATE UNIQUE INDEX idx_awr_segment_summary_mv_id ON awr_segment_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+
+--------------------------------------------------
+awr_seg_summary_mv materialized view
+--------------------------------------------------
+
+DROP MATERIALIZED VIEW IF EXISTS public.awr_seg_summary_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_seg_summary_mv
+TABLESPACE awrparser
+AS
+ WITH logical_reads AS (
+         SELECT awr_seg_logical_reads.dbname,
+            awr_seg_logical_reads.instance,
+            awr_seg_logical_reads.begin_snap,
+            min(awr_seg_logical_reads.snap_time) AS snap_time,
+            awr_seg_logical_reads.owner,
+            awr_seg_logical_reads.tablespace_name,
+            awr_seg_logical_reads.object_name,
+            awr_seg_logical_reads.subobject_name,
+            awr_seg_logical_reads.obj_type,
+            avg(awr_seg_logical_reads.logical_reads) AS logical_reads
+           FROM awr_seg_logical_reads
+          GROUP BY awr_seg_logical_reads.dbname, awr_seg_logical_reads.instance, awr_seg_logical_reads.begin_snap, awr_seg_logical_reads.owner, awr_seg_logical_reads.tablespace_name, awr_seg_logical_reads.object_name, awr_seg_logical_reads.subobject_name, awr_seg_logical_reads.obj_type
+        ), physical_reads AS (
+         SELECT awr_seg_phy_reads.dbname,
+            awr_seg_phy_reads.instance,
+            awr_seg_phy_reads.begin_snap,
+            awr_seg_phy_reads.owner,
+            awr_seg_phy_reads.tablespace_name,
+            awr_seg_phy_reads.object_name,
+            awr_seg_phy_reads.subobject_name,
+            awr_seg_phy_reads.obj_type,
+            avg(awr_seg_phy_reads.physical_reads) AS physical_reads
+           FROM awr_seg_phy_reads
+          GROUP BY awr_seg_phy_reads.dbname, awr_seg_phy_reads.instance, awr_seg_phy_reads.begin_snap, awr_seg_phy_reads.owner, awr_seg_phy_reads.tablespace_name, awr_seg_phy_reads.object_name, awr_seg_phy_reads.subobject_name, awr_seg_phy_reads.obj_type
+        ), physical_writes AS (
+         SELECT awr_seg_phy_writes.dbname,
+            awr_seg_phy_writes.instance,
+            awr_seg_phy_writes.begin_snap,
+            awr_seg_phy_writes.owner,
+            awr_seg_phy_writes.tablespace_name,
+            awr_seg_phy_writes.object_name,
+            awr_seg_phy_writes.subobject_name,
+            awr_seg_phy_writes.obj_type,
+            avg(awr_seg_phy_writes.physical_writes) AS physical_writes
+           FROM awr_seg_phy_writes
+          GROUP BY awr_seg_phy_writes.dbname, awr_seg_phy_writes.instance, awr_seg_phy_writes.begin_snap, awr_seg_phy_writes.owner, awr_seg_phy_writes.tablespace_name, awr_seg_phy_writes.object_name, awr_seg_phy_writes.subobject_name, awr_seg_phy_writes.obj_type
+        ), direct_reads AS (
+         SELECT awr_seg_direct_phy_reads.dbname,
+            awr_seg_direct_phy_reads.instance,
+            awr_seg_direct_phy_reads.begin_snap,
+            awr_seg_direct_phy_reads.owner,
+            awr_seg_direct_phy_reads.tablespace_name,
+            awr_seg_direct_phy_reads.object_name,
+            awr_seg_direct_phy_reads.subobject_name,
+            awr_seg_direct_phy_reads.obj_type,
+            avg(awr_seg_direct_phy_reads.direct_reads) AS direct_reads
+           FROM awr_seg_direct_phy_reads
+          GROUP BY awr_seg_direct_phy_reads.dbname, awr_seg_direct_phy_reads.instance, awr_seg_direct_phy_reads.begin_snap, awr_seg_direct_phy_reads.owner, awr_seg_direct_phy_reads.tablespace_name, awr_seg_direct_phy_reads.object_name, awr_seg_direct_phy_reads.subobject_name, awr_seg_direct_phy_reads.obj_type
+        ), direct_writes AS (
+         SELECT awr_seg_direct_phy_writes.dbname,
+            awr_seg_direct_phy_writes.instance,
+            awr_seg_direct_phy_writes.begin_snap,
+            awr_seg_direct_phy_writes.owner,
+            awr_seg_direct_phy_writes.tablespace_name,
+            awr_seg_direct_phy_writes.object_name,
+            awr_seg_direct_phy_writes.subobject_name,
+            awr_seg_direct_phy_writes.obj_type,
+            avg(awr_seg_direct_phy_writes.direct_writes) AS direct_writes
+           FROM awr_seg_direct_phy_writes
+          GROUP BY awr_seg_direct_phy_writes.dbname, awr_seg_direct_phy_writes.instance, awr_seg_direct_phy_writes.begin_snap, awr_seg_direct_phy_writes.owner, awr_seg_direct_phy_writes.tablespace_name, awr_seg_direct_phy_writes.object_name, awr_seg_direct_phy_writes.subobject_name, awr_seg_direct_phy_writes.obj_type
+        ), phys_read_requests AS (
+         SELECT awr_seg_phy_read_req.dbname,
+            awr_seg_phy_read_req.instance,
+            awr_seg_phy_read_req.begin_snap,
+            awr_seg_phy_read_req.owner,
+            awr_seg_phy_read_req.tablespace_name,
+            awr_seg_phy_read_req.object_name,
+            awr_seg_phy_read_req.subobject_name,
+            awr_seg_phy_read_req.obj_type,
+            avg(awr_seg_phy_read_req.phys_read_requests) AS phys_read_requests
+           FROM awr_seg_phy_read_req
+          GROUP BY awr_seg_phy_read_req.dbname, awr_seg_phy_read_req.instance, awr_seg_phy_read_req.begin_snap, awr_seg_phy_read_req.owner, awr_seg_phy_read_req.tablespace_name, awr_seg_phy_read_req.object_name, awr_seg_phy_read_req.subobject_name, awr_seg_phy_read_req.obj_type
+        ), phys_write_requests AS (
+         SELECT awr_seg_phy_write_req.dbname,
+            awr_seg_phy_write_req.instance,
+            awr_seg_phy_write_req.begin_snap,
+            awr_seg_phy_write_req.owner,
+            awr_seg_phy_write_req.tablespace_name,
+            awr_seg_phy_write_req.object_name,
+            awr_seg_phy_write_req.subobject_name,
+            awr_seg_phy_write_req.obj_type,
+            avg(awr_seg_phy_write_req.phys_write_requests) AS phys_write_requests
+           FROM awr_seg_phy_write_req
+          GROUP BY awr_seg_phy_write_req.dbname, awr_seg_phy_write_req.instance, awr_seg_phy_write_req.begin_snap, awr_seg_phy_write_req.owner, awr_seg_phy_write_req.tablespace_name, awr_seg_phy_write_req.object_name, awr_seg_phy_write_req.subobject_name, awr_seg_phy_write_req.obj_type
+        ), cr_blocks AS (
+         SELECT awr_seg_cr_blk_rec.dbname,
+            awr_seg_cr_blk_rec.instance,
+            awr_seg_cr_blk_rec.begin_snap,
+            awr_seg_cr_blk_rec.owner,
+            awr_seg_cr_blk_rec.tablespace_name,
+            awr_seg_cr_blk_rec.object_name,
+            awr_seg_cr_blk_rec.subobject_name,
+            awr_seg_cr_blk_rec.obj_type,
+            avg(awr_seg_cr_blk_rec.cr_blocks_received) AS cr_blocks_received
+           FROM awr_seg_cr_blk_rec
+          GROUP BY awr_seg_cr_blk_rec.dbname, awr_seg_cr_blk_rec.instance, awr_seg_cr_blk_rec.begin_snap, awr_seg_cr_blk_rec.owner, awr_seg_cr_blk_rec.tablespace_name, awr_seg_cr_blk_rec.object_name, awr_seg_cr_blk_rec.subobject_name, awr_seg_cr_blk_rec.obj_type
+        ), current_blocks AS (
+         SELECT awr_seg_cur_blk_rec.dbname,
+            awr_seg_cur_blk_rec.instance,
+            awr_seg_cur_blk_rec.begin_snap,
+            awr_seg_cur_blk_rec.owner,
+            awr_seg_cur_blk_rec.tablespace_name,
+            awr_seg_cur_blk_rec.object_name,
+            awr_seg_cur_blk_rec.subobject_name,
+            awr_seg_cur_blk_rec.obj_type,
+            avg(awr_seg_cur_blk_rec.current_blocks_received) AS current_blocks_received
+           FROM awr_seg_cur_blk_rec
+          GROUP BY awr_seg_cur_blk_rec.dbname, awr_seg_cur_blk_rec.instance, awr_seg_cur_blk_rec.begin_snap, awr_seg_cur_blk_rec.owner, awr_seg_cur_blk_rec.tablespace_name, awr_seg_cur_blk_rec.object_name, awr_seg_cur_blk_rec.subobject_name, awr_seg_cur_blk_rec.obj_type
+        ), unopt_reads AS (
+         SELECT awr_seg_unopt_reads.dbname,
+            awr_seg_unopt_reads.instance,
+            awr_seg_unopt_reads.begin_snap,
+            awr_seg_unopt_reads.owner,
+            awr_seg_unopt_reads.tablespace_name,
+            awr_seg_unopt_reads.object_name,
+            awr_seg_unopt_reads.subobject_name,
+            awr_seg_unopt_reads.obj_type,
+            avg(awr_seg_unopt_reads.unoptimized_reads) AS unoptimized_reads
+           FROM awr_seg_unopt_reads
+          GROUP BY awr_seg_unopt_reads.dbname, awr_seg_unopt_reads.instance, awr_seg_unopt_reads.begin_snap, awr_seg_unopt_reads.owner, awr_seg_unopt_reads.tablespace_name, awr_seg_unopt_reads.object_name, awr_seg_unopt_reads.subobject_name, awr_seg_unopt_reads.obj_type
+        ), table_scans AS (
+         SELECT awr_seg_table_scan.dbname,
+            awr_seg_table_scan.instance,
+            awr_seg_table_scan.begin_snap,
+            awr_seg_table_scan.owner,
+            awr_seg_table_scan.tablespace_name,
+            awr_seg_table_scan.object_name,
+            awr_seg_table_scan.subobject_name,
+            awr_seg_table_scan.obj_type,
+            avg(awr_seg_table_scan.table_scans) AS table_scans
+           FROM awr_seg_table_scan
+          GROUP BY awr_seg_table_scan.dbname, awr_seg_table_scan.instance, awr_seg_table_scan.begin_snap, awr_seg_table_scan.owner, awr_seg_table_scan.tablespace_name, awr_seg_table_scan.object_name, awr_seg_table_scan.subobject_name, awr_seg_table_scan.obj_type
+        ), db_blk_chg AS (
+         SELECT awr_seg_db_blk_chg.dbname,
+            awr_seg_db_blk_chg.instance,
+            awr_seg_db_blk_chg.begin_snap,
+            awr_seg_db_blk_chg.owner,
+            awr_seg_db_blk_chg.tablespace_name,
+            awr_seg_db_blk_chg.object_name,
+            awr_seg_db_blk_chg.subobject_name,
+            awr_seg_db_blk_chg.obj_type,
+            avg(awr_seg_db_blk_chg.db_block_changes) AS db_block_changes
+           FROM awr_seg_db_blk_chg
+          GROUP BY awr_seg_db_blk_chg.dbname, awr_seg_db_blk_chg.instance, awr_seg_db_blk_chg.begin_snap, awr_seg_db_blk_chg.owner, awr_seg_db_blk_chg.tablespace_name, awr_seg_db_blk_chg.object_name, awr_seg_db_blk_chg.subobject_name, awr_seg_db_blk_chg.obj_type
+        ), row_lck AS (
+         SELECT awr_seg_row_lck_waits.dbname,
+            awr_seg_row_lck_waits.instance,
+            awr_seg_row_lck_waits.begin_snap,
+            awr_seg_row_lck_waits.owner,
+            awr_seg_row_lck_waits.tablespace_name,
+            awr_seg_row_lck_waits.object_name,
+            awr_seg_row_lck_waits.subobject_name,
+            awr_seg_row_lck_waits.obj_type,
+            avg(awr_seg_row_lck_waits.row_lock_waits) AS row_lock_waits
+           FROM awr_seg_row_lck_waits
+          GROUP BY awr_seg_row_lck_waits.dbname, awr_seg_row_lck_waits.instance, awr_seg_row_lck_waits.begin_snap, awr_seg_row_lck_waits.owner, awr_seg_row_lck_waits.tablespace_name, awr_seg_row_lck_waits.object_name, awr_seg_row_lck_waits.subobject_name, awr_seg_row_lck_waits.obj_type
+        ), itl AS (
+         SELECT awr_seg_itl_waits.dbname,
+            awr_seg_itl_waits.instance,
+            awr_seg_itl_waits.begin_snap,
+            awr_seg_itl_waits.owner,
+            awr_seg_itl_waits.tablespace_name,
+            awr_seg_itl_waits.object_name,
+            awr_seg_itl_waits.subobject_name,
+            awr_seg_itl_waits.obj_type,
+            avg(awr_seg_itl_waits.itl_waits) AS itl_waits
+           FROM awr_seg_itl_waits
+          GROUP BY awr_seg_itl_waits.dbname, awr_seg_itl_waits.instance, awr_seg_itl_waits.begin_snap, awr_seg_itl_waits.owner, awr_seg_itl_waits.tablespace_name, awr_seg_itl_waits.object_name, awr_seg_itl_waits.subobject_name, awr_seg_itl_waits.obj_type
+        ), buff_busy AS (
+         SELECT awr_seg_buff_busy_waits.dbname,
+            awr_seg_buff_busy_waits.instance,
+            awr_seg_buff_busy_waits.begin_snap,
+            awr_seg_buff_busy_waits.owner,
+            awr_seg_buff_busy_waits.tablespace_name,
+            awr_seg_buff_busy_waits.object_name,
+            awr_seg_buff_busy_waits.subobject_name,
+            awr_seg_buff_busy_waits.obj_type,
+            avg(awr_seg_buff_busy_waits.buffer_busy_waits) AS buffer_busy_waits
+           FROM awr_seg_buff_busy_waits
+          GROUP BY awr_seg_buff_busy_waits.dbname, awr_seg_buff_busy_waits.instance, awr_seg_buff_busy_waits.begin_snap, awr_seg_buff_busy_waits.owner, awr_seg_buff_busy_waits.tablespace_name, awr_seg_buff_busy_waits.object_name, awr_seg_buff_busy_waits.subobject_name, awr_seg_buff_busy_waits.obj_type
+        ), gc_busy AS (
+         SELECT awr_seg_gbl_cache_buff_busy.dbname,
+            awr_seg_gbl_cache_buff_busy.instance,
+            awr_seg_gbl_cache_buff_busy.begin_snap,
+            awr_seg_gbl_cache_buff_busy.owner,
+            awr_seg_gbl_cache_buff_busy.tablespace_name,
+            awr_seg_gbl_cache_buff_busy.object_name,
+            awr_seg_gbl_cache_buff_busy.subobject_name,
+            awr_seg_gbl_cache_buff_busy.obj_type,
+            avg(awr_seg_gbl_cache_buff_busy.gc_buffer_busy) AS gc_buffer_busy
+           FROM awr_seg_gbl_cache_buff_busy
+          GROUP BY awr_seg_gbl_cache_buff_busy.dbname, awr_seg_gbl_cache_buff_busy.instance, awr_seg_gbl_cache_buff_busy.begin_snap, awr_seg_gbl_cache_buff_busy.owner, awr_seg_gbl_cache_buff_busy.tablespace_name, awr_seg_gbl_cache_buff_busy.object_name, awr_seg_gbl_cache_buff_busy.subobject_name, awr_seg_gbl_cache_buff_busy.obj_type
+        )
+ SELECT l.dbname,
+    l.instance,
+    l.begin_snap,
+    l.snap_time,
+    l.owner,
+    l.tablespace_name,
+    l.object_name,
+    l.subobject_name,
+    l.obj_type,
+    l.logical_reads,
+    pr.physical_reads,
+    pw.physical_writes,
+    dr.direct_reads,
+    dw.direct_writes,
+    rreq.phys_read_requests,
+    wreq.phys_write_requests,
+    cr.cr_blocks_received,
+    cur.current_blocks_received,
+    u.unoptimized_reads,
+    ts.table_scans,
+    bc.db_block_changes,
+    rl.row_lock_waits,
+    i.itl_waits,
+    bb.buffer_busy_waits,
+    g.gc_buffer_busy,
+    (COALESCE(l.logical_reads, 0::numeric) + COALESCE(pr.physical_reads, 0::numeric) * 2::numeric + COALESCE(pw.physical_writes, 0::numeric) * 2::numeric + COALESCE(dr.direct_reads, 0::numeric) * 2::numeric + COALESCE(dw.direct_writes, 0::numeric) * 2::numeric + COALESCE(rreq.phys_read_requests, 0::numeric) + COALESCE(wreq.phys_write_requests, 0::numeric) + COALESCE(cr.cr_blocks_received, 0::numeric) + COALESCE(cur.current_blocks_received, 0::numeric) + COALESCE(u.unoptimized_reads, 0::numeric) + COALESCE(ts.table_scans, 0::numeric) + COALESCE(bc.db_block_changes, 0::numeric) + COALESCE(rl.row_lock_waits, 0::numeric) + COALESCE(i.itl_waits, 0::numeric) + COALESCE(bb.buffer_busy_waits, 0::numeric) + COALESCE(g.gc_buffer_busy, 0::numeric))::numeric(18,4) AS severity_score,row_number() over () AS mv_id
+   FROM logical_reads l
+     LEFT JOIN physical_reads pr ON pr.dbname = l.dbname AND pr.instance = l.instance AND pr.begin_snap = l.begin_snap AND pr.object_name = l.object_name
+     LEFT JOIN physical_writes pw ON pw.dbname = l.dbname AND pw.instance = l.instance AND pw.begin_snap = l.begin_snap AND pw.object_name = l.object_name
+     LEFT JOIN direct_reads dr ON dr.dbname = l.dbname AND dr.instance = l.instance AND dr.begin_snap = l.begin_snap AND dr.object_name = l.object_name
+     LEFT JOIN direct_writes dw ON dw.dbname = l.dbname AND dw.instance = l.instance AND dw.begin_snap = l.begin_snap AND dw.object_name = l.object_name
+     LEFT JOIN phys_read_requests rreq ON rreq.dbname = l.dbname AND rreq.instance = l.instance AND rreq.begin_snap = l.begin_snap AND rreq.object_name = l.object_name
+     LEFT JOIN phys_write_requests wreq ON wreq.dbname = l.dbname AND wreq.instance = l.instance AND wreq.begin_snap = l.begin_snap AND wreq.object_name = l.object_name
+     LEFT JOIN cr_blocks cr ON cr.dbname = l.dbname AND cr.instance = l.instance AND cr.begin_snap = l.begin_snap AND cr.object_name = l.object_name
+     LEFT JOIN current_blocks cur ON cur.dbname = l.dbname AND cur.instance = l.instance AND cur.begin_snap = l.begin_snap AND cur.object_name = l.object_name
+     LEFT JOIN unopt_reads u ON u.dbname = l.dbname AND u.instance = l.instance AND u.begin_snap = l.begin_snap AND u.object_name = l.object_name
+     LEFT JOIN table_scans ts ON ts.dbname = l.dbname AND ts.instance = l.instance AND ts.begin_snap = l.begin_snap AND ts.object_name = l.object_name
+     LEFT JOIN db_blk_chg bc ON bc.dbname = l.dbname AND bc.instance = l.instance AND bc.begin_snap = l.begin_snap AND bc.object_name = l.object_name
+     LEFT JOIN row_lck rl ON rl.dbname = l.dbname AND rl.instance = l.instance AND rl.begin_snap = l.begin_snap AND rl.object_name = rl.object_name
+     LEFT JOIN itl i ON i.dbname = l.dbname AND i.instance = l.instance AND i.begin_snap = l.begin_snap AND i.object_name = i.object_name
+     LEFT JOIN buff_busy bb ON bb.dbname = l.dbname AND bb.instance = l.instance AND bb.begin_snap = l.begin_snap AND bb.object_name = bb.object_name
+     LEFT JOIN gc_busy g ON g.dbname = l.dbname AND g.instance = l.instance AND g.begin_snap = l.begin_snap AND g.object_name = g.object_name
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_seg_summary_mv_id ON awr_seg_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+CREATE INDEX idx_seg_summary_dbinstsnap ON awr_seg_summary_mv (dbname, instance, begin_snap) tablespace awrparser_idx;
+CREATE INDEX idx_seg_summary_score ON awr_seg_summary_mv (severity_score DESC) tablespace awrparser_idx;
+
+------------------------------------------------------------
+Foreground Wait Event Summary
+------------------------------------------------------------
+DROP MATERIALIZED VIEW IF EXISTS public.awr_fg_wait_summary_mv cascade;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_fg_wait_summary_mv
+TABLESPACE awrparser
+AS
+ WITH fg_waits AS (
+         SELECT awr_foreground_wait_events.dbname,
+            awr_foreground_wait_events.instance,
+            awr_foreground_wait_events.begin_snap,
+            min(awr_foreground_wait_events.snap_time) AS snap_time,
+            awr_foreground_wait_events.event AS wait_event,
+            sum(awr_foreground_wait_events.waits) AS total_waits,
+            sum(awr_foreground_wait_events.total_wait_time_s) AS total_wait_time_s,
+            round(avg(awr_foreground_wait_events.avg_wait_ms), 3) AS avg_wait_ms,
+            max(awr_foreground_wait_events.avg_wait_ms) AS max_wait_ms,
+            min(awr_foreground_wait_events.avg_wait_ms) AS min_wait_ms,
+            round(avg(awr_foreground_wait_events.pct_db_time), 2) AS avg_pct_db_time
+           FROM awr_foreground_wait_events
+          WHERE awr_foreground_wait_events.pct_db_time > 5::numeric
+          GROUP BY awr_foreground_wait_events.dbname, awr_foreground_wait_events.instance, awr_foreground_wait_events.begin_snap, awr_foreground_wait_events.event
+        )
+ SELECT f.dbname,
+    f.instance,
+    f.begin_snap,
+    f.snap_time,
+    f.wait_event,
+    f.total_waits,
+    f.total_wait_time_s,
+    f.avg_wait_ms,
+    f.max_wait_ms,
+    f.min_wait_ms,
+    f.avg_pct_db_time,
+    round(COALESCE(f.avg_pct_db_time, 0::numeric) * 0.5 + COALESCE(f.total_wait_time_s, 0::numeric) * 0.3 + COALESCE(f.avg_wait_ms, 0::numeric) * 0.2, 2) AS severity_score, row_number() over () AS mv_id
+   FROM fg_waits f
+  WHERE f.total_wait_time_s > 0::numeric
+  ORDER BY (round(COALESCE(f.avg_pct_db_time, 0::numeric) * 0.5 + COALESCE(f.total_wait_time_s, 0::numeric) * 0.3 + COALESCE(f.avg_wait_ms, 0::numeric) * 0.2, 2)) DESC
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_fg_wait_summary_mv_id ON awr_fg_wait_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+CREATE INDEX idx_fg_wait_summary_dbinstsnap
+    ON public.awr_fg_wait_summary_mv USING btree
+    (dbname COLLATE pg_catalog."default", instance COLLATE pg_catalog."default", begin_snap)
+    TABLESPACE awrparser_idx;
+
+---------------------------------------------------------------
+Foreground wait event summary with wait class
+-----------------------------------------------------------------
+
+DROP MATERIALIZED VIEW IF EXISTS awr_fg_wait_event_summary_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_fg_wait_event_summary_mv
+TABLESPACE pg_default
+AS
+ SELECT e.dbname,
+    e.instance,
+    e.begin_snap,
+    min(e.snap_time) AS snap_time,
+    COALESCE(m.wait_class, 'Other'::text) AS wait_class,
+    e.event,
+    sum(e.waits) AS total_waits,
+    sum(e.total_wait_time_s) AS total_wait_time_s,
+    round(avg(e.avg_wait_ms), 2) AS avg_wait_ms,
+    round(avg(e.waits_per_txn), 2) AS waits_per_txn,
+    round(avg(e.pct_db_time), 2) AS pct_db_time,
+        CASE
+            WHEN avg(e.pct_db_time) >= 20::numeric THEN 5
+            WHEN avg(e.pct_db_time) >= 10::numeric THEN 4
+            WHEN avg(e.pct_db_time) >= 5::numeric THEN 3
+            WHEN avg(e.pct_db_time) >= 2::numeric THEN 2
+            ELSE 1
+        END AS severity_score, row_number() over () AS mv_id
+   FROM awr_foreground_wait_events e
+     LEFT JOIN awr_wait_event_master m ON btrim(lower(e.event)) = btrim(lower(m.event))
+  WHERE e.pct_db_time > 5::numeric
+  GROUP BY e.dbname, e.instance, e.begin_snap, m.wait_class, e.event
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_fg_wait_event_summary_mv_id ON awr_fg_wait_event_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+------------------------------------------------------------
+Background Wait Event Summary
+------------------------------------------------------------
+DROP MATERIALIZED VIEW IF EXISTS awr_bg_wait_summary_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_bg_wait_summary_mv
+TABLESPACE awrparser
+AS
+ WITH bg_waits AS (
+         SELECT awr_background_wait_events.dbname,
+            awr_background_wait_events.instance,
+            awr_background_wait_events.begin_snap,
+            min(awr_background_wait_events.snap_time) AS snap_time,
+            awr_background_wait_events.event AS wait_event,
+            sum(awr_background_wait_events.waits) AS total_waits,
+            sum(awr_background_wait_events.total_wait_time_s) AS total_wait_time_s,
+            round(avg(awr_background_wait_events.avg_wait_ms), 3) AS avg_wait_ms,
+            max(awr_background_wait_events.avg_wait_ms) AS max_wait_ms,
+            min(awr_background_wait_events.avg_wait_ms) AS min_wait_ms,
+            round(avg(awr_background_wait_events.pct_bg_time), 2) AS avg_pct_bg_time
+           FROM awr_background_wait_events
+          WHERE awr_background_wait_events.pct_bg_time > 5::numeric
+          GROUP BY awr_background_wait_events.dbname, awr_background_wait_events.instance, awr_background_wait_events.begin_snap, awr_background_wait_events.event
+        )
+ SELECT b.dbname,
+    b.instance,
+    b.begin_snap,
+    b.snap_time,
+    b.wait_event,
+    b.total_waits,
+    b.total_wait_time_s,
+    b.avg_wait_ms,
+    b.max_wait_ms,
+    b.min_wait_ms,
+    b.avg_pct_bg_time,
+    round(COALESCE(b.avg_pct_bg_time, 0::numeric) * 0.5 + COALESCE(b.total_wait_time_s, 0::numeric) * 0.3 + COALESCE(b.avg_wait_ms, 0::numeric) * 0.2, 2) AS severity_score, row_number() over () AS mv_id
+   FROM bg_waits b
+  WHERE b.total_wait_time_s > 0::numeric
+  ORDER BY (round(COALESCE(b.avg_pct_bg_time, 0::numeric) * 0.5 + COALESCE(b.total_wait_time_s, 0::numeric) * 0.3 + COALESCE(b.avg_wait_ms, 0::numeric) * 0.2, 2)) DESC
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_bg_wait_summary_mv_id ON awr_bg_wait_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+CREATE INDEX idx_bg_wait_summary_dbinstsnap
+    ON public.awr_bg_wait_summary_mv USING btree
+    (dbname COLLATE pg_catalog."default", instance COLLATE pg_catalog."default", begin_snap)
+    TABLESPACE awrparser_idx;
+
+----------------------------------------
+Background wait event summary with wait class
+--------------------------------------------------
+DROP MATERIALIZED VIEW IF EXISTS awr_bg_wait_event_summary_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_bg_wait_event_summary_mv
+TABLESPACE pg_default
+AS
+ SELECT e.dbname,
+    e.instance,
+    e.begin_snap,
+    min(e.snap_time) AS snap_time,
+    COALESCE(m.wait_class, 'Other'::text) AS wait_class,
+    e.event,
+    sum(e.waits) AS total_waits,
+    sum(e.total_wait_time_s) AS total_wait_time_s,
+    round(avg(e.avg_wait_ms), 2) AS avg_wait_ms,
+    round(avg(e.waits_per_txn), 2) AS waits_per_txn,
+    round(avg(e.pct_db_time), 2) AS pct_db_time,
+        CASE
+            WHEN avg(e.pct_db_time) >= 20::numeric THEN 5
+            WHEN avg(e.pct_db_time) >= 10::numeric THEN 4
+            WHEN avg(e.pct_db_time) >= 5::numeric THEN 3
+            WHEN avg(e.pct_db_time) >= 2::numeric THEN 2
+            ELSE 1
+        END AS severity_score, row_number() over () AS mv_id
+   FROM awr_foreground_wait_events e
+     LEFT JOIN awr_wait_event_master m ON btrim(lower(e.event)) = btrim(lower(m.event))
+  WHERE e.pct_db_time > 5::numeric
+  GROUP BY e.dbname, e.instance, e.begin_snap, m.wait_class, e.event
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_bg_wait_event_summary_mv_id ON awr_bg_wait_event_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+--------------------------------------------
+
+-- ==========================================
+-- Materialized View: AWR Wait Events Summary
+-- Combines Foreground and Background Wait Events
+-- ==========================================
+
+
+DROP MATERIALIZED VIEW IF EXISTS public.awr_wait_summary_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_wait_summary_mv
+TABLESPACE awrparser
+AS
+ WITH fg AS (
+         SELECT e.dbname,
+            e.instance,
+            e.begin_snap,
+            min(e.snap_time) AS snap_time,
+            COALESCE(m.wait_class, 'Other'::text) AS wait_class,
+            e.event,
+            sum(e.waits) AS waits,
+            sum(e.total_wait_time_s) AS total_wait_time_s,
+            round(avg(e.avg_wait_ms), 2) AS avg_wait_ms,
+            round(avg(e.waits_per_txn), 2) AS waits_per_txn,
+            round(avg(e.pct_db_time), 2) AS pct_time,
+            'Foreground'::text AS wait_scope
+           FROM awr_foreground_wait_events e
+             LEFT JOIN awr_wait_event_master m ON btrim(lower(e.event)) = btrim(lower(m.event))
+          WHERE e.pct_db_time > 5::numeric
+          GROUP BY e.dbname, e.instance, e.begin_snap, m.wait_class, e.event
+        ), bg AS (
+         SELECT e.dbname,
+            e.instance,
+            e.begin_snap,
+            min(e.snap_time) AS snap_time,
+            COALESCE(m.wait_class, 'Other'::text) AS wait_class,
+            e.event,
+            sum(e.waits) AS waits,
+            sum(e.total_wait_time_s) AS total_wait_time_s,
+            round(avg(e.avg_wait_ms), 2) AS avg_wait_ms,
+            round(avg(e.waits_per_txn), 2) AS waits_per_txn,
+            round(avg(e.pct_bg_time), 2) AS pct_time,
+            'Background'::text AS wait_scope
+           FROM awr_background_wait_events e
+             LEFT JOIN awr_wait_event_master m ON btrim(lower(e.event)) = btrim(lower(m.event))
+          WHERE e.pct_bg_time > 5::numeric
+          GROUP BY e.dbname, e.instance, e.begin_snap, m.wait_class, e.event
+        )
+ SELECT combined.dbname,
+    combined.instance,
+    combined.begin_snap,
+    combined.snap_time,
+    combined.wait_scope,
+    combined.wait_class,
+    combined.event,
+    combined.waits,
+    combined.total_wait_time_s,
+    combined.avg_wait_ms,
+    combined.waits_per_txn,
+    combined.pct_time,
+    round(COALESCE(combined.pct_time, 0::numeric) * 0.7 + COALESCE(combined.total_wait_time_s, 0::numeric) / 100.0 * 0.2 + COALESCE(combined.avg_wait_ms, 0::numeric) / 10.0 * 0.1, 2) AS severity_score, row_number() over () AS mv_id
+   FROM ( SELECT fg.dbname,
+            fg.instance,
+            fg.begin_snap,
+            fg.snap_time,
+            fg.wait_class,
+            fg.event,
+            fg.waits,
+            fg.total_wait_time_s,
+            fg.avg_wait_ms,
+            fg.waits_per_txn,
+            fg.pct_time,
+            fg.wait_scope
+           FROM fg
+        UNION ALL
+         SELECT bg.dbname,
+            bg.instance,
+            bg.begin_snap,
+            bg.snap_time,
+            bg.wait_class,
+            bg.event,
+            bg.waits,
+            bg.total_wait_time_s,
+            bg.avg_wait_ms,
+            bg.waits_per_txn,
+            bg.pct_time,
+            bg.wait_scope
+           FROM bg) combined
+  ORDER BY (round(COALESCE(combined.pct_time, 0::numeric) * 0.7 + COALESCE(combined.total_wait_time_s, 0::numeric) / 100.0 * 0.2 + COALESCE(combined.avg_wait_ms, 0::numeric) / 10.0 * 0.1, 2)) DESC
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_wait_summary_mv_id ON awr_wait_summary_mv (mv_id) TABLESPACE awrparser_idx;
+
+CREATE INDEX idx_wait_summary_dbinstsnap
+    ON public.awr_wait_summary_mv USING btree
+    (dbname COLLATE pg_catalog."default", instance COLLATE pg_catalog."default", begin_snap, wait_scope COLLATE pg_catalog."default", wait_class COLLATE pg_catalog."default")
+    TABLESPACE awrparser_idx;
+
+CREATE INDEX ix_wait_mv_snap
+    ON public.awr_wait_summary_mv USING btree
+    (dbname COLLATE pg_catalog."default", instance COLLATE pg_catalog."default", begin_snap)
+    TABLESPACE awrparser_idx;
+
+
+--------------------------------------------------------------------------
+view for per snap sql score and per snap segment score
+--------------------------------------------------------------------------
+
+DROP MATERIALIZED VIEW IF EXISTS public.awr_sql_object_map_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_sql_object_map_mv
+TABLESPACE awrparser
+AS
+ WITH t AS (
+         SELECT awr_sql_text_norm.sql_id,
+            awr_sql_text_norm.sql_text_clean
+           FROM awr_sql_text_norm
+        ), dml AS (
+         SELECT t.sql_id,
+            m.m[1] AS owner,
+            m.m[2] AS object
+           FROM t,
+            LATERAL regexp_matches(t.sql_text_clean, '(?:insert\s+into|update|delete\s+from|merge\s+into)\s+"?([a-z0-9_#$]+)"?\."?([a-z0-9_#$]+)"?'::text, 'gi'::text) m(m)
+        UNION ALL
+         SELECT t.sql_id,
+            NULL::text AS owner,
+            m.m[1] AS object
+           FROM t,
+            LATERAL regexp_matches(t.sql_text_clean, '(?:insert\s+into|update|delete\s+from|merge\s+into)\s+"?([a-z0-9_#$]+)"?'::text, 'gi'::text) m(m)
+        ), from_join AS (
+         SELECT t.sql_id,
+            m.m[1] AS owner,
+            m.m[2] AS object
+           FROM t,
+            LATERAL regexp_matches(t.sql_text_clean, '(?:from|join)\s+"?([a-z0-9_#$]+)"?\."?([a-z0-9_#$]+)"?'::text, 'gi'::text) m(m)
+        UNION ALL
+         SELECT t.sql_id,
+            NULL::text AS owner,
+            m.m[1] AS object
+           FROM t,
+            LATERAL regexp_matches(t.sql_text_clean, '(?:from|join)\s+"?([a-z0-9_#$]+)"?'::text, 'gi'::text) m(m)
+        )
+ SELECT DISTINCT lower(u.sql_id) AS sql_id,
+    lower(COALESCE(u.owner, ''::text)) AS owner,
+    lower(u.object) AS object,
+    u.owner IS NOT NULL AND u.owner <> ''::text AS has_owner, row_number() over () AS mv_id
+   FROM ( SELECT dml.sql_id,
+            dml.owner,
+            dml.object
+           FROM dml
+        UNION ALL
+         SELECT from_join.sql_id,
+            from_join.owner,
+            from_join.object
+           FROM from_join) u
+  WHERE u.object IS NOT NULL AND u.object <> ''::text
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_sql_object_map_mv_id ON awr_sql_object_map_mv (mv_id) TABLESPACE awrparser_idx;
+
+CREATE INDEX idx_awr_sql_object_map_obj
+    ON public.awr_sql_object_map_mv USING btree
+    (object COLLATE pg_catalog."default")
+    TABLESPACE awrparser_idx;
+CREATE INDEX idx_awr_sql_object_map_sql
+    ON public.awr_sql_object_map_mv USING btree
+    (sql_id COLLATE pg_catalog."default")
+    TABLESPACE awrparser_idx;
+
+-----------------------------------------
+Helper MV
+-- 1A) Normalize SQL text (lower, strip strings/comments, collapse whitespace)
+----------------------------------------
+
+DROP MATERIALIZED VIEW IF EXISTS public.awr_sql_text_norm_mv;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS public.awr_sql_text_norm_mv
+TABLESPACE awrparser
+AS
+ WITH src AS (
+         SELECT DISTINCT lower(awr_sql_text.sql_id) AS sql_id,
+            awr_sql_text.sql_text
+           FROM awr_sql_text
+        ), norm AS (
+         SELECT src.sql_id,
+            regexp_replace(regexp_replace(regexp_replace(lower(src.sql_text), '''([^'']|'''')*'''::text, ' '::text, 'g'::text), '--.*?(\n|$)'::text, ' '::text, 'g'::text), '/\*.*?\*/'::text, ' '::text, 'gs'::text) AS t
+           FROM src
+        )
+ SELECT norm.sql_id,
+    regexp_replace(norm.t, '\s+'::text, ' '::text, 'g'::text) AS sql_text_clean,row_number() over () AS mv_id
+   FROM norm
+WITH DATA;
+
+CREATE UNIQUE INDEX idx_awr_sql_text_norm_mv_id ON awr_sql_text_norm_mv (mv_id) TABLESPACE awrparser_idx;
+
+CREATE INDEX idx_awr_sql_text_norm_mv_sql_id
+    ON public.awr_sql_text_norm USING btree
+    (sql_id COLLATE pg_catalog."default")
+    TABLESPACE awrparser_idx;

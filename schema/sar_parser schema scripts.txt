@@ -1,0 +1,79 @@
+-------------------------------
+SAR CPU stats
+-------------------------------
+drop table sar_cpu_stats;
+
+CREATE TABLE sar_cpu_stats (
+    id SERIAL PRIMARY KEY,
+    hostname TEXT NOT NULL,
+    snap_time TIMESTAMP NOT NULL,
+    cpu TEXT NOT NULL,          -- 'all' or cpu id
+    usr_pct NUMERIC,
+    nice_pct NUMERIC,
+    system_pct NUMERIC,
+    iowait_pct NUMERIC,
+    steal_pct NUMERIC,
+    idle_pct NUMERIC,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_sar_cpu UNIQUE (hostname, snap_time, cpu, row_hash)
+) TABLESPACE awrparser;
+
+-------------------------------
+SAR Memory stats
+-------------------------------
+drop table sar_memory_stats;
+
+CREATE TABLE sar_memory_stats (
+    id SERIAL PRIMARY KEY,
+    hostname TEXT NOT NULL,
+    snap_time TIMESTAMP NOT NULL,
+    mem_free_mb NUMERIC,
+    mem_used_mb NUMERIC,
+    mem_used_pct NUMERIC,
+    buffers_mb NUMERIC,
+    cached_mb NUMERIC,
+	commit_mb NUMERIC,
+	commit_pct NUMERIC,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_sar_mem UNIQUE (hostname, snap_time, row_hash)
+) TABLESPACE awrparser;
+
+-------------------------------
+SAR Swap stats
+-------------------------------
+drop table sar_swap_stats;
+
+CREATE TABLE sar_swap_stats (
+    id SERIAL PRIMARY KEY,
+    hostname TEXT NOT NULL,
+    snap_time TIMESTAMP NOT NULL,
+    swap_free_mb NUMERIC,
+    swap_used_mb NUMERIC,
+	swap_used_pct NUMERIC,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_sar_swap UNIQUE (hostname, snap_time, row_hash)
+) TABLESPACE awrparser;
+
+-------------------------------
+SAR Disk stats
+-------------------------------
+drop table sar_disk_stats;
+
+CREATE TABLE sar_disk_stats (
+    id SERIAL PRIMARY KEY,
+    hostname TEXT NOT NULL,
+    snap_time TIMESTAMP NOT NULL,
+    device TEXT NOT NULL,
+    tps NUMERIC,
+	read_mb_per_sec NUMERIC,
+	write_mb_per_sec NUMERIC,
+    await_ms NUMERIC,
+    svctm_ms NUMERIC,
+	util_pct NUMERIC,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_sar_disk UNIQUE (hostname, snap_time, device, row_hash)
+) TABLESPACE awrparser;

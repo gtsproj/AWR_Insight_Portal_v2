@@ -1,0 +1,753 @@
+There is a issue in the master_parser.py and the modules script created.
+Issues observed are
+1. Data is either incorrectly inserted (column mismatch) or is not inserted at all
+2. If any section in the AWR  is empty / no records then the parser script instead of skipping the section, it
+populates the data of the next section.
+
+We need to revisit the master_parser.py and all the other module script o rectify these errors. Secondly I propose to created individual output files for each section. Need to parse only the columns mentioned in the table structure below and in the same order. This will help to easily map the table columns with the columns in the parsed output file. If possible records should be populated in the table during the parsing stage rather then executing it as a separate script. This will ensure continuity in the modules.
+
+The master_parser.py and the module parsers are working fine except for the missing section issue. 
+
+Below is the new table structure based on the AWR sections. In some places the name has been changed. Details of the same are mentioned against each column in the table structure.
+
+
+This table will have one entry for each database instance. The data will shown on the Grafana dashboard when the db name is selected from the drop down list
+
+Parser script - db_info_parser.py
+
+Table - awr_db_info
+db_name
+edition
+instance
+rac
+host_name
+platform
+cpu
+cores
+sockets
+memory
+
+The data in this table is populated from load profile section
+Parser script - load_profile.py
+
+Table - awr_load_profile 
+dbname (actual column header in awr is DB Name)
+instance
+instnum (actual column name is Inst Num)
+snap_time (actual column header in awr is snap time.)
+metric (There is no column header in the section)
+per_sec (actual column name in AWR report is Per Second)
+per_transaction (actual column name in AWR report is per transaction)
+begin_snap (actual column name in AWR report is begin snap)
+
+The data in this table is populated from instance efficiency section
+Parser script - instance_efficiency.py
+
+Table - awr_instance_efficiency
+dbname
+instance
+instnum 
+snap_time 
+metric (There is no column header in the section)
+value (There is no column header in the section)
+begin_snap 
+
+The data in this table is populated from io profile section
+Parser script - io_profile.py
+
+Table - awr_io_profile
+dbname
+instance
+instnum
+snap_time
+metric (There is no column header in the section)
+read_per_sec (actual column name in AWR report is read Per Second)
+write_per_sec (actual column name in AWR report is write Per Second)
+begin_snap
+
+The data in this table is populated from time model section section
+Parser script - time_model_stats.py
+
+Table - awr_time_model_stats
+dbname
+instance
+instnum
+snap_time
+statistic_name (actual column name is statistic name)
+time_s (actual column name is time (s))
+pct_of_db_time (actual column header in awr is % of DB Time)
+begin_snap
+
+The data in this table is populated from OS Statistics
+Parser script - operating_system_statistics_parser.py
+
+Table - awr_os_statistics
+dbname
+instance
+instnum
+snap_time 
+statistic
+value
+begin_snap
+
+The data in this table is populated from foreground wait class section
+Parser script - foreground_wait_class.py
+
+Table - awr_foreground_wait_class
+dbname
+instance
+instnum
+snap_time
+wait_class (actual column header in awr is Wait Class)
+waits
+total_wait_time_s (actual column header in awr is Total Wait Time (S))
+avg_wait_ms (Actual column header in awr is Avg wait. The values in this column needs to be converted to milliseconds for the purpose of standardization)
+pct_db_time (Actual column header in awr is %DB Time)
+begin_snap
+
+The data in this table is populated from foreground wait events section
+Parser script - foreground_wait_events.py
+
+Table - awr_foreground_wait_events
+dbname
+instance
+instnum
+snap_time
+event
+waits
+total_wait_time_s (actual column header in awr is Total Wait Time (S))
+avg_wait_ms (Actual column header in awr is Avg wait. The values in this column needs to be converted to milliseconds for the purpose of standardization)
+waits_per_txn (actual column header in awr is Waits /txn)
+pct_db_time (Actual column header in awr is % DB Time)
+begin_snap
+
+
+The data in this table is populated from background wait events section
+Parser script - background_wait_events_parser.py
+
+Table - awr_background_wait_events
+dbname
+instance
+instnum
+snap_time
+event
+waits
+total_wait_time_s (actual column header in awr is Total Wait Time (S))
+avg_wait_ms (Actual column header in awr is Avg wait. The values in this column needs to be converted to milliseconds for the purpose of standardization)
+waits_per_txn (actual column header in awr is Waits /txn)
+pct_bg_time (Actual column header in awr is % BG Time)
+begin_snap
+
+The data in this table is populated from sql statistics section. all the sub sections under sql statistics has been combined into one single table.
+Parser script - sql_elapsed_time_parser.py, 
+sql_cpu_time_parser.py, 
+sql_user_io_wait_parser.py, 
+sql_gets_parser.py, 
+sql_reads_parser.py, 
+sql_physical_reads_unopt_parser.py, 
+sql_executions_parser.py, 
+sql_parse_calls_parser.py, 
+sql_cluster_wait_parser.py
+sql_text_parser.py
+
+Table - awr_sql_stats  
+dbname
+instance
+instnum
+snap_time
+ordered_by (Based on sub section header like sql elapsed by time, sql order by cpu time, sql order by user I/O wait time and so on)
+sql_id (actual column header in awr is SQL Id)
+sql_module (actual column header in awr is SQL Modul)
+executions
+pct_total (actual column header in awr is % Total)
+pct_cpu (actual column header in awr is %CPU)
+pct_io (actual column header in awr is %IO)
+elapsed_time_s (actual column header in awr is Elapsed Time (S)) 
+elapsed_time_per_exec_s  (actual column header in awr is Elapsed Time per Exec (S))
+cpu_time_s (actual column header in awr is CPU Time (S))
+cpu_per_exec_s (actual column header in awr is CPU per Exec (S))
+user_io_time_s (actual column header in awr is User IO Time (S))
+uio_per_exec_s (actual column header in awr is UIOper Exec (S))
+buffer_gets (actual column header in awr is Buffer Gets) 
+gets_per_exec (actual column header in awr is Gets per Exec)
+physical_reads (actual column header in awr is Physical Reds)
+reads_per_exec (actual column header in awr is Reads per Exec)
+unoptimized_read_reqs (actual column header in awr is Unoptimized Read Requests)
+physical_read_reqs (actual column header in awr is Physical Read Reqs)
+unoptimized_reqs_per_exec (actual column header in awr is Unoptimized Reqs per exec)
+pctopt (actual column header in awr is %Opt)
+rows_processed (actual column header in awr is Rows Processed)
+rows_per_exec (actual column header in awr is Rows per Exec)
+parse_calls (actual column header in awr is Parse Calls) 
+pct_total_parses (actual column header in awr is % Total Parses)
+begin_snap 
+
+The data in this table is populated from Key Instance Activity Stats section
+Parser script - instance_activity_statistics_parser.py
+
+Table - awr_instance_activity_stats
+dbname
+instance
+instnum
+snap_time
+name
+statistic
+total
+per_second
+per_trans
+begin_snap
+
+The data in this table is populated from IO STATS sub section IOStat by Function summary
+Parser script - io_stat_function_summary_parser.py
+
+Table - awr_iostat_function
+dbname
+instance
+instnum
+snap_time
+function_name (actual column header name is Function Name) 
+reads (actual column header name in awr is Read:Data)
+reads_reqs_per_sec (actual column header name in awr is Reqa per Sec)
+reads_data_per_sec (actual colun header name in awr is Data per Sc)
+writes (atual column header in awr is Writes:Data)
+writes_reqs_per_sec (actual column header in awr is Reqs per Sec)
+writes_data_per_sec (actual column header name in awr is Data per Sec)
+waits (actual column header name in awr is Waits:Count)
+avg_time_ms (actual colun header name in awr is Avg Time. The values in this column needs to be converted to milliseconds for the purpose of standardization)
+sbegin_snap
+
+The data in this table is populated from IO STATS section IOStat by Filetype summary
+Parser script - io_stat_filetype_summary_parser.py
+
+Table - awr_iostat_filetype
+dbname
+instance
+instnum
+snap_time
+filetype_name (atual column header in awr is Filetype Name)
+reads (actual column header name in awr is Read:Data)
+reads_reqs_per_sec (actual column header name in awr is Reqa per Sec)
+reads_data_per_sec (actual colun header name in awr is Data per Sc)
+writes (atual column header in awr is Writes:Data)
+writes_reqs_per_sec (actual column header in awr is Reqs per Sec)
+writes_data_per_sec (actual column header name in awr is Data per Sec)
+small_read (actual column header in awr is Small Read)
+large_read (actual column header in awr is Large Read)
+begin_snap
+
+The data in this table is populated from IO STATS section IOStat by Function/Filetype summary
+Parser script - io_stat_function_filetype_parser.py
+
+Table - awr_iostat_func_filetype
+dbname
+instance
+instnum
+snap_time
+function_file_name (actual column header in awr is Function/File Name)
+reads (actual column header name in awr is Read:Data)
+reads_reqs_per_sec (actual column header name in awr is Reqa per Sec)
+reads_data_per_sec (actual colun header name in awr is Data per Sc)
+writes (atual column header in awr is Writes:Data)
+writes_reqs_per_sec (actual column header in awr is Reqs per Sec)
+writes_data_per_sec (actual column header name in awr is Data per Sec)
+waits (actual column header name in awr is Waits:Count)
+avg_time_ms (actual colun header name in awr is Avg Time. The values in this column needs to be converted to milliseconds for the purpose of standardization)
+begin_snap
+
+
+The data in this table is populated from IO STATS section Tablespace IO Stats
+Parser script - tablespace_io_stats_parser.py
+
+Table - awr_tablespace_io_stats
+dbname
+instance
+instnum
+snap_time
+tablespace
+reads 
+avg_read_sec (actual column header in awr is Av Rds/s)
+avg_read_ms (actual column header in awr is Av Rd(ms))
+writes 
+write_avg_sec (actual column header in awr is Writes Avg/s)
+write_avg_ms  (actual column header in awr is Av Writes(ms))
+buffer_waits (actual column header in awr is Buffer Waits)
+avg_buffer_wait_ms (actual column header in awr is Av Buff Wt(ms))
+begin_snap
+
+The data in this table is populated from IO STATS section File IO Stats
+Parser script - file_io_stats_parser.py
+
+Table - awr_file_io_stats
+dbname
+instance
+instnum
+snap_time
+tablespace
+filename
+reads
+avg_read_sec (actual column header in awr is Av Rds/s)
+avg_read_ms (actual column header in awr is Av Rd(ms))
+writes
+write_avg_sec (actual column header in awr is Writes Avg/s)
+write_avg_ms (actual column header in awr is Av Writes(ms))
+buffer_waits (actual column header in awr is Buffer Waits)
+avg_bufffer_wait_ms (actual column header in awr is Av Buff Wt(ms))
+begin_snap
+
+
+The data in this table is populated from SGA Target Advisory section.
+Parser script - advisory_statistics_parser.py
+
+Table - awr_advisory_sga
+dbname
+instance
+instnum
+snap_time
+sga_target_size_m (actual column header in awr is SGA Target Size (M))	
+sga_size_factor	 (actual column header in awr is SGA Size Factor)	
+est_db_time_s	(actual column header in awr is Est DB Time (s))	
+est_physical_reads (actual column header in awr is Est Physical Reads)
+begin_snap
+
+The data in this table is populated from PGA Memory Advisory
+Parser script - advisory_statistics_parser.py
+
+Table - awr_advisory_pga
+dbname
+instance
+instnum
+snap_time
+pga_target_est_mb (actual column name in awr is PGA Target Est (MB))
+size_factor (actual column header in awr is Size Factr)
+w_a_mb_processed (actual column header in awr is W/A MB Processed)
+estd_extra_written_to_disk (column header in awr is Estd Extra W/A MB Read/ Written to Disk)
+estd_pga_cache_hit_pct (actual header in awr is Estd PGA Cache Hit %)
+estd_pga_overalloc_count (actual header in awr is Estd PGA Overalloc Count)
+estd_time (actual column header in awr is Estd Time)
+begin_snap
+
+
+The data in this table is populated from Wait Statistics
+Parser script - wait_statistics_parser.py
+
+Table - awr_buffer_wait_statistics
+dbname
+instance
+instnum
+snap_time
+class
+waits
+total_wait_time_s (actual column header in awr is Total Wait Time (s))
+avg_time_ms (actual column header in awr is Avg Time (ms))
+begin_snap
+
+The data in this table is populated from Wait Statistics
+Parser script - enqueue_wait_statistics_parser.py
+
+Table - awr_enqeue_statistics
+dbname
+instance
+instnum
+snap_time
+enqueue_type_request_reason (actual column header in awr is Enqueue Type (Request Reason))
+requests 
+succ_gets (actual column header in awr is Succ Gets)
+failed_gets (actual column header in awr is Failed Gets)
+waits
+wt_time_s (actual column header in awr is Wt Time (s)) 
+av_wt_time_ms (actual colun header in awr is Av Wt Time(ms))
+begin_snap
+
+The data in this table is populated from Undo Segment Stats
+Parser script - undo_statistics_parser.py
+
+Table - awr_undo_statistics
+dbname
+instance
+instnum
+snap_time
+num_undo_blocks (actual column header in awr is Num Undo Blocks)
+number_of_transactions (actual column header in awr is Number of Transactions)
+max_qry_len_s (actual column header in awr is Max Qry Len (s))
+max_tx_concy (actual column header in awr is Max Tx Concy)
+begin_snap
+
+The data in this table is populated from the subsection Logical Reads of Segment statistics section. 
+Parser script - seg_logical_reads_parser.py
+
+Table - awr_seg_logical_reads
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+logical_reads (actual column header in awr is Logical Reads)
+pcttotal (actual column header in awr is % Total)
+begin_snap
+
+
+The data in this table is populated from the subsection Segments by Physical Reads of Segment statistics section. 
+Parser script - seg_phy_reads_parser.py
+
+Table - awr_seg_phy_reads
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+physical_reads (actual column header in awr is Physical Reads)
+pcttotal (actual column header in awr is % Total)
+begin_snap
+
+
+The data in this table is populated from the subsection Segments by Segments by Physical Read Requests of Segment statistics section. 
+Parser script - seg_phy_read_req.py
+
+Table - awr_seg_phy_read_req
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pcttotal (actual column header in awr is % Total)
+phys_read_requests (actual column header in awr is Phys Read Requests)
+begin_snap
+
+
+The data in this table is populated from the subsection Segments by UnOptimized Reads of Segment statistics section. 
+Parser script - seg_unopt_reads_parser.py
+
+Table - awr_seg_unopt_reads
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pcttotal (actual column header in awr is % Total)
+unoptimized_reads (actual column header in awr is Unoptimized Reads)
+begin_snap
+
+
+
+The data in this table is populated from the subsection Segments by Optimized Reads of Segment statistics section. 
+Parser script - seg_opt_reads_parser.py
+
+Table - awr_seg_opt_reads
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+optimized_reads (actual column header in awr is Optimized Reads)
+pcttotal (actual column header in awr is % Total)
+begin_snap
+
+
+The data in this table is populated from the subsection Segments by Direct Physical Reads of Segment statistics section. 
+Parser script - seg_direct_phy_reads_parser.py
+
+Table - awr_seg_direct_phy_reads
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pcttotal (actual column header in awr is % Total)
+direct_reads (actual column header in awr is Direct Reads)
+begin_snap
+
+The data in this table is populated from the subsection Segments by Physical Writes of Segment  statistics section. 
+Parser script - seg_seg_phy_writes.py
+
+Table - awr_seg_phy_writes
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+physical_writes (actual column header in awr is Physical Writes)
+pcttotal (actual column header in awr is % Total)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by Physical Writes requests of Segment  statistics section. 
+Parser script - awr_seg_phy_write_req_parser.py
+
+Table - awr_seg_phy_write_req
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pcttotal (actual column header in awr is % Total)
+phys_write_requests (actual column header in awr is Phys Write Requests)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by Direct Physical requests of Segment  statistics section. 
+Parser script - awr_seg_direct_phy_writes_parser.py
+
+Table - awr_seg_direct_phy_writes
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+direct_writes (actual column header in awr is Direct Writes)
+pcttotal (actual column header in awr is % Total)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by Table Scans of Segment  statistics section. 
+Parser script - awr_seg_table_scan_parser.py
+
+Table - awr_seg_table_scan
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+table_scans (actual column header in awr is Table Scans)
+pcttotal (actual column header in awr is % Total)
+begin_snap
+
+
+------------------
+The data in this table is populated from the subsection Segments by  Block Changes of Segment  statistics section. 
+Parser script - awr_seg_db_blk_chg_parser.py
+
+Table - awr_seg_db_blk_chg
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+db_block_changes (actual column header in awr is DB Block Changes)
+pct_of_capture (actual column header in awr is % of Capture)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by Row Lock Waits of Segment  statistics section. 
+Parser script - awr_seg_row_lck_waits_parser.py
+
+Table - awr_seg_row_lck_waits
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+row_lock_waits  (actual column header in awr is Row Lock Waits)
+pct_of_capture (actual column header in awr is % of Capture)
+begin_snap
+
+
+------------------
+The data in this table is populated from the subsection Segments by ITL Waits of Segment  statistics section. 
+Parser script - awr_seg_itl_waits_parser.py
+
+Table - awr_seg_itl_waits
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pct_of_capture (actual column header in awr is % of Capture)
+itl_waits (actual column header in awr is ITL Waits)
+buffer_busy_waits  (actual column header in awr is Buffer Busy Waits)
+gc_buffer_busy (actual column header in awr isGC Buffer Busy)
+cr_blocks_received (actual column header in awr is CR Blocks Received)
+current_blocks_recevied (actual column header in awr is Current Block Received)
+gc_remote_grants (actual column header in awr is GC Remote Grants)
+begin_snap
+
+
+------------------
+The data in this table is populated from the subsection Segments by ITL Waits of Segment  statistics section. 
+Parser script - awr_seg_itl_waits_parser.py
+
+Table - awr_seg_itl_waits
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pct_of_capture (actual column header in awr is % of Capture)
+itl_waits (actual column header in awr is ITL Waits)
+buffer_busy_waits  (actual column header in awr is Buffer Busy Waits)
+gc_buffer_busy (actual column header in awr isGC Buffer Busy)
+cr_blocks_received (actual column header in awr is CR Blocks Received)
+current_blocks_recevied (actual column header in awr is Current Block Received)
+gc_remote_grants (actual column header in awr is GC Remote Grants)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by ITL Waits of Segment  statistics section. 
+Parser script - awr_seg_itl_waits_parser.py
+
+Table - awr_seg_itl_waits
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pct_of_capture (actual column header in awr is % of Capture)
+itl_waits (actual column header in awr is ITL Waits)
+buffer_busy_waits  (actual column header in awr is Buffer Busy Waits)
+gc_buffer_busy (actual column header in awr isGC Buffer Busy)
+cr_blocks_received (actual column header in awr is CR Blocks Received)
+current_blocks_recevied (actual column header in awr is Current Block Received)
+gc_remote_grants (actual column header in awr is GC Remote Grants)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by ITL Waits of Segment  statistics section. 
+Parser script - awr_seg_itl_waits_parser.py
+
+Table - awr_seg_itl_waits
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+itl_waits (actual column header in awr is ITL Waits)
+pct_of_capture (actual column header in awr is % of Capture)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by Buffer Busy Waits of Segment  statistics section. 
+Parser script - awr_seg_buff_busy_waits_parser.py
+
+Table - awr_seg_buff_busy_waits
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+buffer_busy_waits  (actual column header in awr is Buffer Busy Waits)
+pct_of_capture (actual column header in awr is % of Capture)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by Global Cache Buffer Busy of Segment  statistics section. 
+Parser script - awr_seg_gbl_cache_buff_busy_parser.py
+
+Table - awr_seg_gbl_cache_buff_busy
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+gc_buffer_busy (actual column header in awr isGC Buffer Busy)
+pct_of_capture (actual column header in awr is % of Capture)
+begin_snap
+
+
+------------------
+The data in this table is populated from the subsection Segments by CR Blocks Received of Segment  statistics section. 
+Parser script - awr_seg_cr_blk_rec_parser.py
+
+Table - awr_seg_cr_blk_rec
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+cr_blocks_received (actual column header in awr is CR Blocks Received)
+pct_total (actual column header in awr is % of Capture)
+begin_snap
+
+------------------
+The data in this table is populated from the subsection Segments by Current Blocks of Segment  statistics section. 
+Parser script - awr_seg_cur_blk_rec_parser.py
+
+Table - awr_seg_cur_blk_rec
+dbname
+instance
+instnum
+snap_time
+owner
+tablespace_name (actual column header in awr is Tablespace Name)
+object_name (actual column header in awr is Object Name)
+subobject_name (actual column header in awr is Subobject Name)
+obj_type (actual column header in awr is Obj. Type)
+pct_total (actual column header in awr is % of Capture)
+current_blocks_recevied (actual column header in awr is Current Block Received)
+begin_snap
+
+------------------
