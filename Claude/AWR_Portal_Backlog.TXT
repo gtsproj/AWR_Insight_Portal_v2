@@ -1,0 +1,587 @@
+
+# AWR Insight Portal v2 — Issue & Enhancement Backlog
+Last updated: 2026-06-24
+
+---
+
+## COMPLETED — PREVIOUS SESSIONS
+
+| Item | Fix | Status |
+|---|---|---|
+| A1-A4 | AWR null fields — instance, instnum, snap_time, begin_snap | Done |
+| Portal | Starlette 1.3 TemplateResponse signature — all 15 calls fixed | Done |
+| Queue | PERMANENTLY FAILED reset mechanism working | Done |
+| master_parser | exec fallback downgraded WARNING→DEBUG, plan_parser excluded from AWR scans | Done |
+| generic_segment_parser | awr_seg_table_scans → awr_seg_table_scan | Done |
+| recommendation_engine | event_name → event column fixed | Done |
+| Execution plan | Single plan upload — paste and file working | Done |
+| Execution plan | Multi-plan spool file — auto-detected, all plans parsed and stored | Done |
+| SAR CPU parser | v4 rewrite — handles sysstat 10.x (AM/PM) and 12.x (24hr) formats | Done |
+| SAR binary files | WSL sadf -c + sar pipeline for version mismatch conversion | Done |
+| SAR timezone | TZ=Asia/Kolkata in WSL command — times stored as IST correctly | Done |
+| SAR hostname | hostname_override passed from portal form to parser | Done |
+| SAR HugePages | New parser + table + dashboard panels | Done |
+| SAR Sockets | New parser + table + dashboard panels | Done |
+| SAR Disk | 6 new per-device panels added to dashboard | Done |
+| Grafana B/C | SAR dashboard timestamp fix — $from_time → $__timeFrom() | Done |
+| utils.py | extract_workload_repo_metadata — handles Oracle 11g + 19c formats | Done |
+| Schema | Single master schema file — all 4 scripts consolidated | Done |
+| MV indexes | 5 duplicate uq_ index statements identified and removed | Done |
+
+---
+
+## COMPLETED — THIS SESSION (2026-06-24)
+
+### Automation & Intelligence
+| Item | Fix | Status |
+|---|---|---|
+| master_parser v3 | Auto-triggers recommendation_engine after every AWR parse via run() callable | Done |
+| master_parser v3 | Auto-triggers anomaly_detector after every AWR parse via detect() callable | Done |
+| master_parser v3 | _get_snap_range() resolves begin_snap/end_snap from awr_load_profile automatically | Done |
+| master_parser v3 | sar_hugepage_parser + sar_socket_parser added to _SAR_MODULES exclusion set | Done |
+| recommendation_engine | awr_sql_elapsed → awr_sql_elapsed_time table name fixed | Done |
+| recommendation_engine | awr_seg_table_scans → awr_seg_table_scan fixed | Done |
+| recommendation_engine | _fetch_sql_metrics() rewritten — 3 separate queries with correct column names | Done |
+| recommendation_engine | cpu_time_s → cpu_per_exec_s correct column name | Done |
+| recommendation_engine | conn.rollback() added per query to prevent cascade failures | Done |
+| recommendation_engine | run() callable added for master_parser programmatic trigger | Done |
+| anomaly_detector | SAR checks removed from detect_all() — AWR only | Done |
+| anomaly_detector | detect_sar() added — hostname + snap_time based | Done |
+| anomaly_detector | detect() callable added for master_parser auto-trigger | Done |
+| anomaly_detector | conn.rollback() added on each check — no cascade | Done |
+| anomaly_detector | event_name → event column fixed in AWR checks | Done |
+| anomaly_detector | AWR completion log line added | Done |
+| sar_master_parser | _run_sar_anomaly_detection() + _resolve_sar_time_range() added | Done |
+| sar_master_parser | SAR anomaly detection auto-triggered after every SAR file parse | Done |
+| sar_master_parser | Missing def process_sar_file line restored | Done |
+
+### Queue Monitor
+| Item | Fix | Status |
+|---|---|---|
+| queue_monitor.html | Filename shown in red/bold for FAILED rows | Done |
+| queue_monitor.html | Live auto-refresh counters every 10s (pending/processing/done/failed/DB count/names) | Done |
+| app.py | /api/queue/stats endpoint added for JS polling | Done |
+
+### Grafana Dashboards
+| Item | Fix | Status |
+|---|---|---|
+| D3 | Active Recommendations — query changed to BETWEEN snap range (was exact snap match) | Done |
+| D4 | Wait Events graph — bargauge → barchart with horizontal orientation | Done |
+| E1 | Baseline/Current dropdowns — now filter by instance; tag variables use __text/__value | Done |
+| E2 | event_name → event in wait events comparison query | Done |
+| E3 | awr_sql_elapsed → awr_sql_elapsed_time; elapsed_time_s → elapsed_time_per_exec_s | Done |
+| E4 | No data — resolved by correct tag setup via portal | Done |
+| Comparison dashboard | Complete rebuild — removed all DB/instance/snap dropdowns | Done |
+| Comparison dashboard | Only baseline_tag + current_tag textbox variables remain | Done |
+| Comparison dashboard | Comparison Period Info panel shows DB/instance/snap range/times from tags | Done |
+| Comparison dashboard | All data panels join on instance via tag — RAC-safe | Done |
+| Comparison dashboard | Duplicate rows in Period Info fixed — subquery LIMIT 1 approach | Done |
+
+### AWR Comparison Portal Page
+| Item | Fix | Status |
+|---|---|---|
+| comparison.html | Edit tag — inline form edit with pre-population | Done |
+| comparison.html | Delete tag — with confirm dialog | Done |
+| comparison.html | Instance dropdown added — cascades after DB selection | Done |
+| comparison.html | Start/End Snap changed from number inputs to dynamic dropdowns | Done |
+| comparison.html | Snap dropdowns load via /api/snaps?dbname=X&instance=Y | Done |
+| comparison.html | Dynamic "Open Comparison Dashboard" buttons — one per baseline+current pair | Done |
+| comparison.html | Button passes var-baseline_tag + var-current_tag URL params to Grafana | Done |
+| app.py | /api/instances endpoint added | Done |
+| app.py | /api/snaps updated to filter by instance | Done |
+| app.py | comparison_post handles edit mode (UPDATE) vs create mode (INSERT) | Done |
+| app.py | /comparison/delete route added | Done |
+| app.py | instance column added to awr_comparison_tags via ALTER TABLE ADD COLUMN IF NOT EXISTS | Done |
+| home.html | "AWR Before/After Comparison" link → /comparison portal page (not direct Grafana) | Done |
+
+### SQL Search
+| Item | Fix | Status |
+|---|---|---|
+| sql_search.html | Complete redesign — DB → Instance cascade before search enabled | Done |
+| sql_search.html | SQL ID search (exact) + SQL Text search (keyword) toggle | Done |
+| sql_search.html | SQL ID clickable link in text search results — drills to full text view | Done |
+| app.py | DISTINCT ON (sql_id) in both search functions — no duplicate rows | Done |
+| app.py | Full sql_text returned (was LEFT 400 chars) for text search | Done |
+| app.py | _search_sql_by_id() + _search_sql_text() both scoped to DB + instance | Done |
+
+---
+
+## COMPLETED THIS SESSION (2026-06-24 continued)
+
+| Item | Detail | Status |
+|---|---|---|
+| F1 | AWR Anomaly dashboard built — 6 stat panels, top anomalies, timeline, source breakdown, wait events, SQL | Done |
+| F1 | SAR Anomaly dashboard built — hostname+source+severity variables, all 6 SAR source sections | Done |
+| F3 | Queue counter auto-refresh — _queue_stats() function added to app.py, home page polls every 10s | Done |
+| Portal | Home page auto-refresh counters with live dot + timestamp | Done |
+| Portal | Active parsing banner — shows DB name when processing > 0 | Done |
+| All dashboards | Navigation links — all point to Portal Home (http://localhost:8000) | Done |
+
+---
+
+## PENDING — ENHANCEMENTS (Updated Priority Order)
+
+| # | Enhancement | Complexity | Status | Notes |
+|---|---|---|---|---|
+| 1 | SAR watcher + queue — auto-parse SAR files like AWR | Medium | Done | sar_watcher.py built; subfolder-per-hostname pattern |
+| 2 | Windows service wrapper — portal, watcher, queue_processor as Windows services | Medium | Done | install_services.bat using NSSM; 4 services registered |
+| 3 | Parallel processing — multiple DBs in parallel, sequential within same DB | Medium | Done | ThreadPoolExecutor in queue_processor; per-DB workers |
+| 4 | AI vs Rules toggle — switch recommendation mode | Medium | Pending | See brainstorm notes |
+| 5 | Execution plan comparison — baseline vs optimized diff | Medium | Pending | |
+| 6 | Portal logo | Low | Pending | |
+| 7 | AWR source options — remote repo / direct DB / local upload | High | Pending | See brainstorm notes |
+| 8 | SAR source options — remote repo / direct server / local upload | High | Pending | See brainstorm notes |
+| 9 | Windows PerfMon counters | High | Pending | See brainstorm notes |
+| 10 | Kernel tables graph — file-nr inode-nr | Low | Pending | |
+| 11 | Installation bundle | Medium | Pending | After all features complete |
+| 12 | License key + DB count restriction | Medium | Pending | After all features complete |
+| 13 | Schema userid/password — restrict table access | Medium | Pending | |
+| 14 | Portal login/password — setup menu | Medium | Pending | |
+| 15 | User + install guide — available within tool | Medium | Pending | |
+
+---
+
+## SUGGESTED WORK ORDER — NEXT SESSION
+
+### Round 1 — SAR Watcher (item 1)
+- sar_watcher.py — mirrors awr_watcher.py; watches SAR drop folder for sa*/txt files
+- Add to queue, trigger sar_master_parser via queue_processor
+- Portal SAR upload already works; watcher adds auto-detection
+
+### Round 2 — Windows Service Wrapper (item 2)
+- NSSM (Non-Sucking Service Manager) — simplest, no Python dependency
+- OR pywin32 ServiceFramework for pure Python
+- Services: portal (uvicorn), awr_watcher, sar_watcher, queue_processor
+- Single install script registers all 4 as Windows services with auto-restart
+
+### Round 3 — Parallel Processing (item 3)
+- Current: single queue_processor handles one file globally
+- Target: one worker thread per DB, sequential within same DB
+- Implementation: ThreadPoolExecutor with per-DB semaphores
+- Benefit: COLDBPRD and NEODBPRD parse simultaneously
+
+---
+
+## BRAINSTORM NOTES
+
+### AI vs Rules Toggle (item 4)
+- Rules mode = static JSON thresholds (always available, no API key)
+- AI mode = calls Claude API per snap for natural language recommendations
+- Toggle: Portal Settings page → stored in portal_config table
+- Badge in nav bar: 🔵 AI Mode / ⚙️ Rules Mode
+- API key in settings; if missing/expired → auto-fallback to Rules with warning
+- After expiry: switch to Rules automatically, warning on home page
+
+### AWR Source Options (item 7)
+- Local upload (current) — already working
+- Shared/network path — portal watches UNC path or mapped drive
+- Direct Oracle DB — cx_Oracle → DBA_HIST_* → DBMS_WORKLOAD_REPOSITORY
+- Config: db_connections table (host, port, service, credentials)
+- Fallback: Direct DB → Network path → Manual upload
+
+### SAR Source Options (item 8)
+- Local upload (current) — already working
+- SSH pull — portal SSHs to Linux server, runs sar -A, SCPs back
+- Scheduled pull — APScheduler daily pull from configured servers
+- Config: sar_servers table (hostname, SSH user, key path, sa_dir)
+
+### Windows PerfMon (item 9)
+- Collection via typeperf subprocess (built into Windows)
+- Key counters: CPU (% Processor Time), Memory (Available MBytes, Pages/sec),
+  Disk (Reads/sec, Writes/sec, Avg Disk sec/Read), Oracle process, Network
+- Schedule every 60s → perfmon_stats table → Grafana
+
+---
+
+## ARCHITECTURE & KEY DECISIONS
+
+### Trigger Flow (as of 2026-06-24)
+```
+AWR file parsed by master_parser.py
+  └─ All 48 AWR modules run (SAR + plan excluded)
+  └─ 7 Materialized Views refreshed (CONCURRENT)
+  └─ _get_snap_range() resolves begin_snap/end_snap from awr_load_profile
+  └─ recommendation_engine.run() — stores to awr_recommendations
+  └─ anomaly_detector.detect() per snap — stores to awr_anomalies (AWR metrics only)
+  └─ Archive to archive/<dbname>/
+
+SAR file parsed by sar_master_parser.py
+  └─ 10 SAR parsers run
+  └─ _resolve_sar_time_range() — queries sar_cpu_stats for recent rows
+  └─ anomaly_detector.detect_sar() — stores to awr_anomalies (SAR metrics only)
+```
+
+### Comparison Dashboard Flow
+```
+Portal /comparison → Create baseline + current tags (DB + Instance + Snap)
+  └─ "Open Comparison Dashboard" button → Grafana with ?var-baseline_tag=X&var-current_tag=Y
+       └─ Dashboard reads snap range from awr_comparison_tags
+       └─ No DB/instance dropdowns — everything scoped via tag JOIN
+```
+
+### Interface Detection Order (master_parser → sub-engines)
+- recommendation_engine: run() → generate_recommendations() → main() with sys.argv patch
+- anomaly_detector: detect() → run() → main() with sys.argv patch
+
+### PostgreSQL Transaction Safety
+- After a failed query, all subsequent queries on the same connection abort
+- Every independent query wrapped in try/except + conn.rollback()
+
+### SAR Timestamp Handling
+- Binary SAR files: TZ=Asia/Kolkata sadf -c + sar -A via WSL → correct IST timestamps
+- hostname_override parameter prevents WSL machine name appearing as hostname
+
+---
+
+## NOTES
+
+### SAR Drop Folder Convention
+Mirror of AWR reports folder structure. Pre-create one subfolder per server:
+```
+sar_drop\
+  TCLFSLPRDDB1\    ← drop sa01, sa02, sa03.txt here
+  TCLFSLPRDDB2\    ← add new servers by creating new subfolder
+```
+Watcher uses subfolder name as hostname. No renaming of sa01/sa02 files needed.
+Binary files (sa01, sa02) auto-converted via WSL sadf -c if WSL is available.
+Text files (.txt) queued directly. Both result in sar_queues\queue_<HOSTNAME>.json.
+Archive: sar_archive\<HOSTNAME>\ after queuing.
+
+### SAR Binary File Conversion
+Binary SAR files (sa01, sa02...) from Oracle Linux sysstat 10.1.5 need
+conversion before parsing. The portal handles this automatically via WSL:
+  wsl bash -c "TZ=Asia/Kolkata sadf -c <file> > /tmp/conv && TZ=Asia/Kolkata sar -A -f /tmp/conv"
+TZ=Asia/Kolkata is required so output times are IST not UTC.
+If WSL is unavailable: sar -A -f <file> > output.txt on the Linux server.
+
+### HugePages Interpretation
+hugused_pct near 100% is NORMAL for Oracle (SGA pre-allocates all HugePages).
+Alert condition: kbhugfree approaching 0 — Oracle cannot grow SGA further.
+Sudden drop in kbhugused = Oracle instance crashed or SGA shrunk.
+
+### AWR Comparison Workflow
+1. Portal → Comparison page → select DB + Instance
+2. Load snaps → select start/end snap → create baseline tag
+3. Create current tag for the after-fix snap range
+4. Click "Open Comparison Dashboard" — opens Grafana pre-loaded with both tags
+5. Dashboard shows Period Info table + Wait Events + SQL + Load Profile deltas
+
+---
+
+## SESSION UPDATE — 2026-06-26 (Evening)
+
+### Completed
+| Item | Fix | Status |
+|---|---|---|
+| Portal home page | SAR queue counters added (Pending/Processing/Done/Failed/Servers) | Done |
+| Portal home page | Active parsing banner shows both AWR DB names + SAR hostnames | Done |
+| Portal home page | Service Control panel added — Start/Stop/Restart/Pause/Resume/Clear Cache | Done |
+| Portal home page | Grafana link removed from top nav bar | Done |
+| Queue monitor | SAR queue section added — shows hostname, file type, status, timestamps | Done |
+| Queue monitor | Timestamps now in IST (datetime.now() not datetime.now(timezone.utc)) | Done |
+| watcher.py | AWR snap time extraction fixed — parts[-3]+parts[-2] not parts[-2]+parts[-1] | Done |
+| watcher.py | Files now enqueued in correct snap order | Done |
+| queue_processor.py | _drain() now persistent — stays running, picks up new files without restart | Done |
+| queue_processor.py | FIFO ordering enforced — sorts eligible items by queued_at before processing | Done |
+| app.py | _all_sar_queues() added — reads sar_queues\ folder | Done |
+| app.py | _queue_stats() extended — returns sar_pending/processing/done/failed/hosts | Done |
+| app.py | active_db shows ALL active DBs not just first one | Done |
+| app.py | Service control API — /api/services/status, /api/services/{action}, /api/cache/clear | Done |
+| app.py | net start/stop used instead of sc for service control | Done |
+| install_services.bat | Grafana auto-detected and registered as 5th Windows service | Done |
+| install_services.bat | Password removed from bat file — must be set manually in services.msc | Done |
+| awr_anomalies_dashboard | instance filter fixed — :raw modifier, allValue .* | Done |
+| awr_anomalies_dashboard | severity dropdown fixed — no duplicates, proper current value | Done |
+| awr_anomalies_dashboard | dbname blank-guard added — panels blank until DB selected | Done |
+| sar_anomalies_dashboard | hostname/source :raw modifier applied | Done |
+| sar_anomalies_dashboard | severity dropdown fixed — no duplicates | Done |
+| sar_anomalies_dashboard | hostname blank-guard added | Done |
+| awr_problem_areas | Recommended Actions column added — shows resolution_json steps | Done |
+| base.html | Grafana ↗ link removed from nav bar | Done |
+
+### Pending — Dashboards
+| # | Item | Detail |
+|---|---|---|
+| D1 | SAR+AWR Correlation dashboard | Upload JSON — need to fix: event_name→event, from_time/to_time errors, instance dropdown missing |
+| D2 | SAR System Overview | Upload JSON — need to fix: hostname default selection, make blank like Problem Areas |
+| D3 | AWR anomaly dashboard | Test after reimport — verify dbname blank on load, instance filter works |
+| D4 | SAR anomaly dashboard | Test after reimport — verify hostname populated, source populated, no duplicate severity |
+
+### Pending — Features
+| # | Enhancement | Status |
+|---|---|---|
+| 1 | Service control buttons — test Start/Stop/Restart/Pause/Resume/Clear Cache | Pending test |
+| 2 | AI vs Rules toggle | Pending |
+| 3 | Execution plan comparison | Pending |
+| 4 | AWR/SAR source options (remote/SSH) | Pending |
+| 5 | Portal logo | Pending |
+| 6 | Windows PerfMon counters | Pending |
+| 7 | Kernel tables graph | Pending |
+| 8 | User + install guide | Pending |
+| 9 | Schema userid/password | Pending |
+| 10 | Portal login/password | Pending |
+| 11 | License key + DB count restriction | Pending |
+| 12 | Installation bundle | Pending |
+
+---
+
+## SESSION UPDATE — 2026-06-29
+
+### Completed
+| Item | Fix | Status |
+|---|---|---|
+| AWR Anomaly dashboard | Rebuilt — only dbname + instance dropdowns, blank default, panels hidden until both selected | Done |
+| AWR Anomaly dashboard | Severity emoji fixed — &#x1F534; → 🔴 🟠 🟡 direct Unicode | Done |
+| AWR Anomaly dashboard | All stray severity/instance filters removed | Done |
+| SAR Anomaly dashboard | Rebuilt — only hostname dropdown, blank default | Done |
+| SAR Anomaly dashboard | Metric Source and Min Severity dropdowns removed (per user request — simpler) | Done |
+| SAR Anomaly dashboard | Hostname query from sar_cpu_stats (not sar_anomalies which may be empty) | Done |
+| SAR Anomaly dashboard | All HTML entity emojis fixed — 🔴 🟠 🟡 direct Unicode | Done |
+| SAR Anomaly dashboard | All stray source/severity filters removed from 16 panels | Done |
+| sar_master_parser.py | _resolve_sar_time_range() fixed — was using NOW()-10min (failed for historical data) | Done |
+| sar_master_parser.py | Now uses 3-strategy resolution: text lines → DB 30min window → DB latest day | Done |
+| AWR+SAR Correlation | Rebuilt from scratch — new variable order: DB→Instance→Start Snap→End Snap→Hostname | Done |
+| AWR+SAR Correlation | event_name → event column fix applied | Done |
+| AWR+SAR Correlation | from_time/to_time eliminated — SAR time range derived from AWR snap subquery | Done |
+| AWR+SAR Correlation | Instance dropdown added (was missing) | Done |
+| AWR+SAR Correlation | Blank defaults on all dropdowns — panels hidden until all selected | Done |
+| AWR+SAR Correlation | 4th panel added: OS Disk Utilisation % + Oracle Physical Reads | Done |
+| AWR+SAR Correlation | Hostname filter simplified — shows all SAR hosts (date overlap filter removed — AWR/SAR dates differ in test data) | Done |
+| home.html | SAR+AWR Correlation link renamed to AWR+SAR Correlation (pending deploy) | Pending |
+| awr_problem_areas | Recommended Actions column added to recommendations panel | Done |
+| base.html | Grafana ↗ link removed from nav bar | Done |
+
+### Pending — Dashboards
+| # | Item | Detail |
+|---|---|---|
+| D1 | SAR System Overview | Upload JSON — need to fix hostname default selection (make blank like Problem Areas) |
+| D2 | AWR+SAR Correlation | Test with matching AWR+SAR date range — currently AWR=Feb2024, SAR=Dec2023 |
+| D3 | home.html | Rename SAR+AWR Correlation link to AWR+SAR Correlation |
+
+### Pending — Features
+| # | Enhancement | Status |
+|---|---|---|
+| 1 | Service control buttons — test Start/Stop/Restart/Pause/Resume/Clear Cache | Pending test |
+| 2 | AI vs Rules toggle | Pending |
+| 3 | Execution plan comparison | Pending |
+| 4 | AWR/SAR source options (remote/SSH) | Pending |
+| 5 | Portal logo | Pending |
+| 6 | Windows PerfMon counters | Pending |
+| 7 | Kernel tables graph | Pending |
+| 8 | User + install guide | Pending |
+| 9 | Schema userid/password | Pending |
+| 10 | Portal login/password | Pending |
+| 11 | License key + DB count restriction | Pending |
+| 12 | Installation bundle | Pending |
+
+---
+
+## SESSION UPDATE — 2026-07-01
+
+### Completed
+| Item | Fix | Status |
+|---|---|---|
+| AWR+SAR Correlation dashboard | Rebuilt — DB→Instance→Start/End Snap→Hostname order, blank defaults, event_name→event, from/to eliminated | Done |
+| SAR System Overview | Hostname blank default, from/to dropdowns removed — Grafana time picker used | Done |
+| Portal logo | Avekshaa logo added to nav bar top-right | Done |
+| home.html | SAR+AWR → AWR+SAR Correlation link renamed | Done |
+| Colour scheme | Option A Deep Navy + Amber applied to base.html | Done |
+| Nav bar | Grafana link removed, AWR Compare renamed, Plan Compare added | Done |
+| Exec Plan Comparison | New page /exec-plan — upload/paste, side-by-side diff, save to exec_plan_headers, search/tag/delete | Done |
+| plan_parser.py | Parser fixed — seen_data_row bug, INDEX FAST FULL SCAN threshold, backward-compat wrappers added | Done |
+| Settings page | /settings — 7 sections: AI/Recommendations, Anomaly, AWR Source, SAR Source, License, Access, Users | Done |
+| Portal login | Login page /login, middleware enforcement, session cookies, 30min auto-logout | Done |
+| Forgot password | /forgot-password using admin PIN (default AWR@2024) stored in portal_config | Done |
+| User management | portal_users table, add/edit/change password via Settings → Users | Done |
+| Info strip | Thin bar below nav: AI mode pill, licensed DB/SAR counts, AWR+SAR progress bars, username | Done |
+| /api/portal-info | New endpoint serving info strip data | Done |
+| queue_processor.py | Daemon mode fixed — workers reliably restarted for all DBs in parallel | Done |
+| DB dropdown | exec_plan.html — dbname now a dropdown populated from /api/db-list | Done |
+| Reset button | exec_plan.html — Reset button clears both plan panes and results | Done |
+
+### Pending — Features (in agreed sequence)
+| # | Item | Detail |
+|---|---|---|
+| 1 | AI vs Rules toggle | Settings page built, toggle works — needs Ollama install + test |
+| 2 | AWR/SAR source options | Settings page built — needs end-to-end test |
+| 3 | Kernel tables graph | Pending |
+| 4 | Windows PerfMon counters | Pending |
+| 5 | Schema userid/password | Pending |
+| 6 | User + install guide | Pending |
+| 7 | License key + DB count restriction | Pending |
+| 8 | Installation bundle | Pending |
+
+### Pending — Tests
+| # | Item | Detail |
+|---|---|---|
+| T1 | Service control buttons | Start/Stop/Restart/Pause/Resume/Clear Cache on home page |
+| T2 | AWR+SAR Correlation | Test with matching AWR+SAR date range (AWR=Feb2024, SAR=Dec2023 — need same date data) |
+| T3 | Exec Plan upload | Verify parse_plan_text fix works for /upload/plan page |
+| T4 | Parallel AWR parsing | 42 pending files — verify all parse in parallel after queue_processor.py fix |
+
+### Key file locations (latest versions in /mnt/user-data/outputs/)
+| File | Deploy to |
+|---|---|
+| app.py | portal\ |
+| base.html | portal\templates\ |
+| home.html | portal\templates\ |
+| settings.html | portal\templates\ |
+| login.html | portal\templates\ |
+| forgot_password.html | portal\templates\ |
+| exec_plan.html | portal\templates\ |
+| plan_parser.py | modules\plan\ |
+| queue_processor.py | (project root) |
+| sar_master_parser.py | modules\sar\ |
+| awr_sar_correlation.json | Grafana import |
+| sar_overview.json | Grafana import |
+| sar_anomalies_dashboard.json | Grafana import |
+| awr_anomalies_dashboard.json | Grafana import |
+| portal_settings_schema.sql | Run in psql |
+| AWR_Portal_Backlog.TXT | Reference |
+
+### Architecture notes
+- Session store: in-memory dict _sessions in app.py (cleared on restart — users must re-login)
+- Default admin PIN for password reset: AWR@2024 (changeable in Settings → Access Control)
+- Default admin user: admin / Admin@123 (change immediately)
+- portal_login_required=true in portal_config enables login enforcement
+- session_timeout_mins=30 in portal_config (also enforced client-side via JS)
+- Info strip calls /api/portal-info on every page load (lightweight — cached 60s)
+
+---
+
+## SESSION UPDATE — 2026-07-02
+
+### Completed ✅
+| Item | Status |
+|---|---|
+| AWR parallel parsing (4 DBs) | Working |
+| AWR 5th DB auto-pickup | Working |
+| SAR parallel parser (2 DB servers) | Working |
+| Exec plan — file upload (multiple plans) | Working |
+| Exec plan — paste in text box | Working |
+| Plan compare | Working |
+| SAR watcher binary re-queuing bug | Fixed — .processing rename approach |
+| SAR timezone — store IST, bypass time picker | Fixed |
+| SAR overview — From/To date dropdowns | Done |
+| AWR+SAR Correlation — time picker bypass | Done |
+| queue_processor.py — separate AWR/SAR pools | Done |
+| fix_sar_queue.py / clean_sar_queue.py | Done |
+
+### Pending — Active Work
+| # | Item | Detail |
+|---|---|---|
+| P1 | Plan Compare — tag dropdown filter | Baseline tag snapshots should not appear in current(after fix) dropdown |
+| P2 | Plan Compare — mandatory fields | SQL ID mandatory, remove Tags, keep Label+SQL ID+DB Name only |
+| P3 | Plan Compare — saved plans search | Search by SQL ID not working — shows "loading" |
+| P4 | AWR Problem Areas — column width | Increase width of Event/Object, Root Cause, Recommended Actions columns |
+| P5 | AI recommendations — accept/reject | When Local AI or Cloud AI mode: accept/reject buttons + additional input textbox |
+| P6 | Correlation rules — top wait+SQL+segment | Include V1.3.6 correlation logic in current version |
+| P7 | Home page — Grafana service control | Show Grafana status + Start/Stop button, admin-only |
+| P8 | SAR Overview — date format | Both From/To dropdowns: DD-Mon-YYYY format, same ascending order |
+| P9 | SAR Overview — zoom to data | Auto-zoom after date selection (no manual click needed) |
+| P10 | AWR+SAR Correlation — dual Y axis | Disk utilisation suppressed by Oracle physical reads — needs dual Y axis |
+| P11 | Home page — log viewer | Dropdown to select log, display last 50 lines |
+| P12 | Service control — admin only | Start/Stop/Restart restricted to admin role |
+
+### Pending — Backlog Features
+| # | Item | Status |
+|---|---|---|
+| B1 | AI vs Rules toggle — Ollama test | Settings built, needs Ollama install |
+| B2 | Kernel tables graph | Pending |
+| B3 | Windows PerfMon counters | Pending |
+| B4 | Schema userid/password | Pending |
+| B5 | User + install guide | Pending |
+| B6 | License key enforcement | Pending |
+| B7 | Installation bundle | Pending |
+| B8 | AWR+SAR Correlation — test matching dates | Parked — need same date AWR+SAR data |
+| B9 | Service control buttons — full test | Pending |
+
+---
+
+## SESSION UPDATE — 2026-07-05
+
+### Completed ✅
+| Item | Status |
+|---|---|
+| AWR Intelligence dashboard — rebuilt from scratch | Done — no duplicates, donut charts, proper layout |
+| Correlation drill-down — click-through data links | Done — click Wait/SQL/Segment row to auto-populate |
+| Correlation panel — Recommendation removed | Done — only Segments/SQLs/Waits shown |
+| Correlation panel — segment formatting | Done — ► prefix, pipe separators, top 5 SQLs per segment |
+| Correlation panel — syntax errors fixed | Done — FETCH FIRST 5 ROWS, removed orphaned CTE comment |
+| Active Recommendations — duplicate rows fixed | Done — DISTINCT ON (category, title, event_or_object) |
+| Donut charts — All Values mode | Done — values:True in reduceOptions |
+| Nav links — fixed anomaly detection UID | Done — /d/awr-anomalies |
+| Hidden variables — open_drawer/focus_type/focus_value | Done — hide:2, set via URL on click |
+| Portal home page — updated dashboard links | Done — AWR Intelligence replaces Problem Areas |
+| SAR watcher — binary re-queuing bug fixed | Done — .processing rename prevents re-scan |
+| SAR timezone — all data now in IST | Done — WSL TZ=Asia/Kolkata restored, +5:30 for text files |
+| SAR Overview — date dropdowns DD-Mon-YYYY | Done — both From/To ascending, same format |
+| AWR+SAR Correlation — dual Y axis disk panel | Done — Oracle Physical Reads on right axis |
+| Log viewer on home page | Done — dropdown + last 50 lines display |
+| Grafana service in service control | Done — 5th tile + status |
+| Admin-only service control buttons | Done — is_admin check in home.html |
+| Plan compare — SQL ID mandatory | Done — required field, auto-fills plan B |
+| Plan compare — saved plans search fixed | Done — showTab rewritten with data-tab attributes |
+| AWR+SAR Correlation — IST timezone consistent with AWR | Done — no AT TIME ZONE needed |
+
+### Pending — Next in sequence
+| # | Item | Detail |
+|---|---|---|
+| N1 | AI vs Rules toggle — Ollama local AI | Settings page built, needs Ollama install + end-to-end test |
+| N2 | AWR/SAR source options | Settings page built, needs test |
+| N3 | Kernel tables graph | Pending |
+| N4 | Windows PerfMon counters | Pending |
+| N5 | Schema userid/password | Pending |
+| N6 | User + install guide | Pending |
+| N7 | License key enforcement | Pending |
+| N8 | Installation bundle | Pending |
+| N9 | Service control buttons — full end-to-end test | Pending |
+| N10 | AWR+SAR Correlation — test with matching date data | Parked |
+| N11 | AI recommendations — accept/reject UI | When AI mode active |
+| N12 | AWR Intelligence — column width fix (Problem Areas section) | Minor |
+
+---
+
+## SESSION UPDATE — 2026-07-06
+
+### Completed ✅
+| Item | Status |
+|---|---|
+| AI Recommendations page — full workflow | Done |
+| AI Recs — dropdown flow fixed (DB→Instance→Load Snaps→Start/End Snap) | Done |
+| AI Recs — SQL ID focus values fixed (awr_sql_elapsed_time table) | Done |
+| AI Recs — Ollama 404 fixed (model name resolution from tags) | Done |
+| AI Recs — Timeout removed for local AI | Done |
+| AI Recs — Claude API 400 fixed (model name claude-haiku-4-5) | Done |
+| AI Recs — Credit balance error shown as warning not failure | Done |
+| AI Recs — Accept/Reject/Revise workflow | Done |
+| AI Recs — Learning store (accepted recs → awr_ai_learnings) | Done |
+| AI prompt quality — pre-analysis, wait KB, focus-specific guidance | Done |
+| AWR Intelligence (AI mode) — data links fixed to correct UID | Done |
+| AWR Intelligence — split into Rules dashboard + AI dashboard | Done |
+| AWR Memory Advisory & Instance Efficiency — new dashboard | Done |
+| Home page — mode-aware dashboard links | Done |
+| Object metadata — schema, Oracle export script, CSV upload page | Done |
+| Metadata rules engine — 5 new metadata-driven rules | Done |
+| Plan parser — metadata enrichment (stats, blevel, clustering factor) | Done |
+
+### Pending — Active
+| # | Item | Detail |
+|---|---|---|
+| P1 | Home page metadata alert | Alert notification when metadata refresh is due (weekly/fortnightly/monthly). Frequency set in Settings. Flash on home page for each DB needing refresh |
+| P2 | AI Recs quality improvement | Local AI (llama3.1:8b) quality poor. Cloud AI (Claude Haiku) much better. No further code changes needed — quality is model-dependent |
+| P3 | Metadata upload — direct Oracle DB connection | Option B: portal connects directly to Oracle via cx_Oracle to auto-fetch dba_* views |
+
+### Pending — Backlog
+| # | Item | Detail |
+|---|---|---|
+| B1 | AWR/SAR source options — test | Settings page built, needs end-to-end test |
+| B2 | Kernel tables graph | Pending |
+| B3 | Windows PerfMon counters | Pending |
+| B4 | Schema userid/password | Pending |
+| B5 | User + install guide | Pending |
+| B6 | License key enforcement | Pending |
+| B7 | Installation bundle | Pending |
+| B8 | AWR+SAR Correlation — test with matching date data | Parked |
+| B9 | Service control — full end-to-end test | Pending |
+| B10 | AI Recs — session-level learning refinement | Future |
