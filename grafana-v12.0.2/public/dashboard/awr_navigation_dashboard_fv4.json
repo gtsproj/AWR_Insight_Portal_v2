@@ -1,0 +1,145 @@
+{
+  "id": null,
+  "uid": "fdv31-awr-nav",
+  "title": "fdv3.1 AWR Consolidated Navigation",
+  "timezone": "Coordinated Universal Time",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "30s",
+  "editable": true,
+  "tags": ["awr", "navigation"],
+  "templating": {
+    "list": [
+      {
+        "name": "dbname",
+        "label": "Database",
+        "type": "query",
+        "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" },
+        "query": "SELECT DISTINCT dbname FROM awr_load_profile ORDER BY 1"
+      },
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" },
+        "query": "SELECT DISTINCT instance FROM awr_load_profile WHERE dbname='$dbname' ORDER BY 1"
+      },
+      {
+        "name": "start_snap",
+        "label": "Start Snap",
+        "type": "query",
+        "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" },
+        "query": "SELECT DISTINCT begin_snap FROM awr_load_profile WHERE dbname='$dbname' AND instance='$instance' ORDER BY 1"
+      },
+      {
+        "name": "end_snap",
+        "label": "End Snap",
+        "type": "query",
+        "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" },
+        "query": "SELECT DISTINCT begin_snap FROM awr_load_profile WHERE dbname='$dbname' AND instance='$instance' ORDER BY 1"
+      }
+    ]
+  },
+
+  "panels": [
+    {
+      "id": 99,
+      "type": "text",
+      "title": "",
+      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 0 },
+      "options": {
+        "mode": "html",
+        "content": "<a href=\"/d/awr-home-v13/awr-insight-portal-v1-3?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"/d/awr-home-v13/awr-insight-portal-v1-3?from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters</a>"
+      },
+      "transparent": true
+    },
+    {
+      "id": 101,
+      "type": "stat",
+      "title": "Instance Performance",
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 2 },
+      "targets": [{ "refId": "A", "rawSql": "SELECT 1", "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" } }],
+      "options": { "textMode": "name", "graphMode": "none", "justifyMode": "center" },
+      "links": [{
+        "title": "Instance Performance",
+        "url": "/d/fdv31-instance-efficiency/fdv3-1-instance-efficiency?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to",  
+        "targetBlank": false
+      },
+	  {
+	    "title": "Instance Statistics",
+        "url": "/d/fdv31-instance-statistics/fdv-3-1-instance-statistics?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to",  
+        "targetBlank": false
+      }
+	  ]
+    },
+
+    {
+      "id": 102,
+      "type": "stat",
+      "title": "Load Profile",
+      "gridPos": { "h": 6, "w": 8, "x": 8, "y": 2 },
+      "targets": [{ "refId": "A", "rawSql": "SELECT 1", "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" } }],
+      "options": { "textMode": "name", "graphMode": "none", "justifyMode": "center" },
+      "links": [{
+        "title": "Open Load Profile",
+        "url": "/d/fdv31-load-landing/fdv3-1-load-profile-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to",
+        "targetBlank": false
+      }]
+    },
+
+    {
+      "id": 103,
+      "type": "stat",
+      "title": "IO Statistics",
+      "gridPos": { "h": 6, "w": 8, "x": 16, "y": 2 },
+      "targets": [{ "refId": "A", "rawSql": "SELECT 1", "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" } }],
+      "options": { "textMode": "name", "graphMode": "none", "justifyMode": "center" },
+      "links": [{
+        "title": "Open IO Statistics",
+        "url": "/d/fdv31-io-landing/fdv3-1-io-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to",
+        "targetBlank": false
+      }]
+    },
+    {
+      "id": 104,
+      "type": "stat",
+      "title": "Wait Event Statistics",
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 8 },
+      "targets": [{ "refId": "A", "rawSql": "SELECT 1", "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" } }],
+      "options": { "textMode": "name", "graphMode": "none", "justifyMode": "center" },
+      "links": [{
+        "title": "Open Wait Statistics",
+        "url": "/d/fdv31-wait-landing/fdv3-1-wait-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to",
+        "targetBlank": false
+      }]
+    },
+
+    {
+      "id": 105,
+      "type": "stat",
+      "title": "SQL Statistics",
+      "gridPos": { "h": 6, "w": 8, "x": 8, "y": 8 },
+      "targets": [{ "refId": "A", "rawSql": "SELECT 1", "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" } }],
+      "options": { "textMode": "name", "graphMode": "none", "justifyMode": "center" },
+      "links": [{
+        "title": "Open SQL Statistics",
+        "url": "/d/fdv31-sql-landing/fdv3-1-sql-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to",
+        "targetBlank": false
+      }]
+    },
+
+    {
+      "id": 106,
+      "type": "stat",
+      "title": "Segment Statistics",
+      "gridPos": { "h": 6, "w": 8, "x": 16, "y": 8 },
+      "targets": [{ "refId": "A", "rawSql": "SELECT 1", "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" } }],
+      "options": { "textMode": "name", "graphMode": "none", "justifyMode": "center" },
+      "links": [{
+        "title": "Open Segment Statistics",
+        "url": "/d/fdv31-segment-landing/fdv3-1-segment-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to",
+        "targetBlank": false
+      }]
+    }
+  ]
+}

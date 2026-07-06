@@ -1,0 +1,1016 @@
+{
+  "id": null,
+  "uid": "sar-overview",
+  "title": "SAR \u2014 System Resource Overview",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "1m",
+  "tags": [
+    "sar",
+    "system",
+    "performance"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0
+      },
+      {
+        "name": "hostname",
+        "label": "Hostname",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT DISTINCT hostname AS __text, hostname AS __value FROM sar_cpu_stats ORDER BY hostname;"
+      },
+      {
+        "name": "from_time",
+        "label": "From",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT DISTINCT snap_time::text AS __text, snap_time::text AS __value FROM sar_cpu_stats WHERE hostname='$hostname' ORDER BY snap_time LIMIT 200;"
+      },
+      {
+        "name": "to_time",
+        "label": "To",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT DISTINCT snap_time::text AS __text, snap_time::text AS __value FROM sar_cpu_stats WHERE hostname='$hostname' ORDER BY snap_time DESC LIMIT 200;"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 99,
+      "type": "text",
+      "title": "",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "content": "<a href=\"/d/awr-problem-areas/awr-problem-areas\" target=\"_self\">&#x2B05; AWR Problem Areas</a>",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+    {
+      "id": 100,
+      "type": "row",
+      "title": "\ud83d\udda5\ufe0f CPU",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "collapsed": false
+    },
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "CPU \u2014 %user / %system / %iowait / %idle",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 0,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, cpu,\n  usr_pct AS \"%user\", system_pct AS \"%system\",\n  iowait_pct AS \"%iowait\", idle_pct AS \"%idle\"\nFROM sar_cpu_stats\nWHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp AND cpu='all'\nORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "gauge",
+      "title": "CPU iowait% (latest)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 16,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(iowait_pct) AS value FROM sar_cpu_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp AND cpu='all'",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "auto",
+        "showThresholdLabels": false
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 40
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "gauge",
+      "title": "CPU idle% (latest)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 20,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(idle_pct) AS value FROM sar_cpu_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp AND cpu='all'",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "auto",
+        "showThresholdLabels": false
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 30
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 101,
+      "type": "row",
+      "title": "\ud83e\udde0 Memory",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "collapsed": false
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Memory \u2014 Used MB / Free MB",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  mem_used_mb AS \"Used MB\", mem_free_mb AS \"Free MB\",\n  cached_mb AS \"Cached MB\", buffers_mb AS \"Buffers MB\"\nFROM sar_memory_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "mbytes"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Memory \u2014 Used % / Commit %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  mem_used_pct AS \"%memused\", commit_pct AS \"%commit\"\nFROM sar_memory_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 102,
+      "type": "row",
+      "title": "\ud83d\udcbe Swap",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "collapsed": false
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Swap Used MB",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, swap_used_mb AS \"Swap Used MB\" FROM sar_swap_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "mbytes"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "gauge",
+      "title": "Swap Used %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 12,
+        "y": 21
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(swap_used_pct) AS value FROM sar_swap_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "auto",
+        "showThresholdLabels": false
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "Swap Free MB",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 21
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, swap_free_mb AS \"Swap Free MB\" FROM sar_swap_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "mbytes"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 103,
+      "type": "row",
+      "title": "\ud83d\udcbf Disk I/O",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "collapsed": false
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "Disk I/O \u2014 Read MB/s + Write MB/s (all devices)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 0,
+        "y": 29
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  SUM(read_mb_per_sec) AS \"Total Read MB/s\",\n  SUM(write_mb_per_sec) AS \"Total Write MB/s\"\nFROM sar_disk_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp GROUP BY snap_time ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "MBs"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "timeseries",
+      "title": "Disk %util (max device)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 29
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, MAX(util_pct) AS \"Max Device %util\"\nFROM sar_disk_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp GROUP BY snap_time ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 104,
+      "type": "row",
+      "title": "\ud83c\udf10 Network",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "collapsed": false
+    },
+    {
+      "id": 11,
+      "type": "timeseries",
+      "title": "Network \u2014 Total rxkB/s + txkB/s",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 0,
+        "y": 38
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, iface,\n  rxkb_per_sec AS \"rxkB/s\", txkb_per_sec AS \"txkB/s\"\nFROM sar_network_stats\nWHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp AND iface != 'lo'\nORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "KBs"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "Network Interface Utilisation %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 38
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, iface, ifutil_pct AS \"%ifutil\"\nFROM sar_network_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp AND iface != 'lo'\nORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 105,
+      "type": "row",
+      "title": "\ud83d\udcca Load & Context Switches",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "collapsed": false
+    },
+    {
+      "id": 13,
+      "type": "timeseries",
+      "title": "Run Queue Depth + Blocked Processes",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  runq_sz AS \"Run Queue\", blocked AS \"Blocked\"\nFROM sar_loadavg_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "timeseries",
+      "title": "Load Average (1/5/15 min)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 12,
+        "y": 47
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  ldavg_1 AS \"ldavg-1\", ldavg_5 AS \"ldavg-5\", ldavg_15 AS \"ldavg-15\"\nFROM sar_loadavg_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": "timeseries",
+      "title": "Context Switches / sec",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 20,
+        "y": 47
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, cswch_per_sec AS \"cswch/s\" FROM sar_ctxswitch_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 106,
+      "type": "row",
+      "title": "\ud83d\udcc4 Paging",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "collapsed": false
+    },
+    {
+      "id": 16,
+      "type": "timeseries",
+      "title": "Page Faults / sec (major is critical)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 16,
+        "x": 0,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  fault_per_sec AS \"Minor Faults/s\", majflt_per_sec AS \"MAJOR Faults/s\"\nFROM sar_paging_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 17,
+      "type": "gauge",
+      "title": "VM Efficiency %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(vmeff_pct) AS value FROM sar_paging_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "auto",
+        "showThresholdLabels": false
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

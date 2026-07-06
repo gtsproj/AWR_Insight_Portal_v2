@@ -1,0 +1,381 @@
+{
+  "id": null,
+  "uid": "fdv31-awr-iostat-consolidated",
+  "title": "fdv3.1 AWR IO Stats - Function And Filetype",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 453,
+  "refresh": "30s",
+  "tags": [
+    "awr"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0
+      },
+      {
+        "name": "dbname",
+        "label": "Database",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT dbname AS value, dbname AS label\n  FROM awr_load_profile\n) AS combined_results\nORDER BY value;"
+      },
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT instance AS value, instance AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname'\n) AS combined_results\nORDER BY value;"
+      },
+      {
+        "name": "start_snap",
+        "label": "Start Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "end_snap",
+        "label": "End Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;"
+      }
+    ]
+  },
+  "panels": [
+        {
+      "id": 99,
+      "type": "text",
+      "title": "Navigation Links",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "content": "\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Navigation</a>&nbsp;&nbsp;|&nbsp;&nbsp,\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters</a>",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+    {
+      "id": 1,
+      "type": "barchart",
+      "title": "Functions — Reads (MB)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "WITH t AS (\n  SELECT function_name, SUM(reads_mb) AS total_reads_mb\n  FROM awr_iostat_function\n  WHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  GROUP BY function_name\n)\nSELECT function_name as metric, total_reads_mb FROM t ORDER BY total_reads_mb DESC LIMIT 5;"
+        }
+      ],
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+	    "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0}
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "type": "barchart",
+      "title": "Functions — Writes (MB)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "WITH t AS (\n  SELECT function_name, SUM(writes_mb) AS total_writes_mb\n  FROM awr_iostat_function\n  WHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  GROUP BY function_name\n)\nSELECT function_name AS metric, total_writes_mb FROM t ORDER BY total_writes_mb DESC LIMIT 5;"
+        }
+      ],
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+	        "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Reads/sec Trend — Functions",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "WITH topf AS (\nSELECT function_name, SUM(reads_mb) AS total_reads_mb FROM awr_iostat_function\nWHERE '$dbname' != '' AND '$instance' != ''\nAND '$start_snap' != '' AND '$end_snap' != ''\nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND function_name NOT LIKE 'total%'GROUP BY function_name\nORDER BY total_reads_mb DESC\nLIMIT 5\n)\nSELECT f.snap_time AS time,\nf.function_name,\nAVG(f.reads_data_per_sec_mb) AS reads_mb_per_sec\nFROM awr_iostat_function f\nJOIN topf t ON f.function_name = t.function_name\nWHERE '$dbname' != '' AND '$instance' != ''\nAND '$start_snap' != '' AND '$end_snap' != ''\nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND f.function_name NOT LIKE 'TOTAL'\nGROUP BY f.snap_time, f.function_name\nORDER BY time;\n"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1, "unit": "megabytes", "decimals": 0 }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Writes/sec Trend — Functions",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "WITH topf AS (\nSELECT function_name, SUM(writes_mb) AS total_writes_mb\nFROM awr_iostat_function\nWHERE '$dbname' != '' AND '$instance' != ''\nAND '$start_snap' != '' AND '$end_snap' != ''\nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND function_name NOT LIKE 'TOTAL%'\nGROUP BY function_name\nORDER BY total_writes_mb DESC\nLIMIT 5\n)\nSELECT f.snap_time AS time,\nf.function_name,\nAVG(f.writes_data_per_sec_mb) AS writes_mb_per_sec\nFROM awr_iostat_function f\nJOIN topf t ON f.function_name = t.function_name\nWHERE '$dbname' != '' AND '$instance' != ''\nAND '$start_snap' != '' AND '$end_snap' != ''\nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND f.function_name NOT LIKE 'TOTAL%'\nGROUP BY f.snap_time, f.function_name\nORDER BY time;\n"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 6
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        },
+        "overrides": []
+      }
+    },
+	    {
+      "id": 5,
+      "type": "barchart",
+      "title": "Top Filetypes — Reads (MB)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT filetype_name AS metric, SUM(reads_mb) AS total_reads_mb\nFROM awr_iostat_filetype\nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nAND filetype_name NOT LIKE 'TOTAL%'\nGROUP BY filetype_name ORDER BY total_reads_mb DESC LIMIT 5;"
+        }
+      ],
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        },
+        "overrides": []
+      }
+    },
+	 {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Function/Filetype — Heat (reads+writes MB)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, function_file_name AS metric, (reads_mb + writes_mb) AS io_mb\nFROM awr_iostat_func_filetype\nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nAND function_file_name NOT LIKE 'TOTAL%'\nORDER BY time;"
+        }
+      ],
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        },
+        "overrides": []
+      }
+    },
+	{
+      "id": 7,
+      "type": "table",
+      "title": "IOStat — Combined Details (Function & Filetype)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "WITH fn AS (\nSELECT\n'FUNCTION' AS kind,\nfunction_name AS name,\nROUND(AVG(reads_mb)) AS avg_reads_mb,\nROUND(AVG(reads_reqs_per_sec)) AS avg_reads_reqs,\nROUND(AVG(reads_data_per_sec_mb)) AS avg_reads_per_sec_mb,\nROUND(AVG(writes_mb)) AS avg_writes_mb,\nROUND(AVG(writes_reqs_per_sec)) AS avg_writes_reqs,\nROUND(AVG(writes_data_per_sec_mb)) AS avg_writes_per_sec_mb,\nROUND(AVG(waits)) AS avg_waits,\nROUND(AVG(avg_time_ms)) AS avg_time_ms\nFROM awr_iostat_function\nWHERE '$dbname' != '' AND '$instance' != ''\nAND '$start_snap' != '' AND '$end_snap' != ''\nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND function_name NOT ILIKE 'TOTAL%'    GROUP BY function_name\n),\nft AS (\nSELECT\n'FILETYPE' AS kind,\nfiletype_name AS name,\nROUND(AVG(reads_mb), 2) AS avg_reads_mb,\nROUND(AVG(reads_reqs_per_sec), 2) AS avg_reads_reqs,\nROUND(AVG(reads_data_per_sec_mb), 2) AS avg_reads_per_sec_mb,\nROUND(AVG(writes_mb), 2) AS avg_writes_mb,\nROUND(AVG(writes_reqs_per_sec), 2) AS avg_writes_reqs,\nROUND(AVG(writes_data_per_sec_mb), 2) AS avg_writes_per_sec_mb,\nNULL::numeric AS avg_waits,\nNULL::numeric AS avg_time_ms\nFROM awr_iostat_filetype\nWHERE '$dbname' != '' AND '$instance' != ''\nAND '$start_snap' != '' AND '$end_snap' != ''\nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND filetype_name NOT ILIKE 'TOTAL%'    GROUP BY filetype_name\n),\ncombined AS (\nSELECT * FROM fn\nUNION ALL\nSELECT * FROM ft\n)\nSELECT *\nFROM combined\nORDER BY (avg_reads_mb + avg_writes_mb) DESC\nLIMIT 10;\n"
+        }
+      ],
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"decimals": 0 }
+        },
+        "overrides": [          
+		  { "matcher": { "id":"byName","options":"avg_reads_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
+		  { "matcher": { "id":"byName","options":"avg_reads_reqs" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
+		  { "matcher": { "id":"byName","options":"avg_reads_per_sec_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
+          { "matcher": { "id":"byName","options":"avg_writes_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
+          { "matcher": { "id":"byName","options":"avg_writes_reqs" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
+          { "matcher": { "id":"byName","options":"avg_writes_per_sec_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
+          { "matcher": { "id":"byName","options":"avg_waits" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
+          { "matcher": { "id":"byName","options":"avg_time_ms" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] }
+		  ]
+      }
+    }
+   ]
+}
+	  
+	  

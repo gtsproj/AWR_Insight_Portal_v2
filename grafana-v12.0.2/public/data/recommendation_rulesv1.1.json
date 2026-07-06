@@ -1,0 +1,15 @@
+{
+  "wait:db file sequential read": "High single-block IO latency. Check index access patterns, storage latency, and verify that hot blocks fit in buffer cache. Consider adding/adjusting indexes or reducing row-by-row lookups.",
+  "wait:direct path read": "Direct path reads indicate large scans. Consider partition pruning, proper parallelism, and verifying that large full scans are expected for the workload.",
+  "wait:enq: TX - row lock contention": "Row lock contention detected. Investigate conflicting DML transactions, commit frequency, and application logic. Consider shorter transactions and proper indexing to reduce hot spots.",
+  "wait:buffer busy waits": "Buffer contention on hot blocks. Consider spreading workload (hash partitioning), increasing INITRANS on hot segments, or addressing hot block access patterns.",
+  "wait:log file sync": "Commit latency is high. Check redo log device latency and size, verify low commit batching, and consider tuning filesystem or storage for sequential writes.",
+  "wait:log file parallel write": "Redo writes are delayed. Review I/O bandwidth, RAID cache, and synchronous write settings for redo logs. Consider separate redo disk group.",
+  "wait:latch free": "Latch contention observed. Check shared pool sizing, hot latch locations, and excessive library cache pinning.",
+  "wait:*": "General wait event. Review top SQLs and segments contributing around the chosen snaps. Correlate with IO, concurrency, or commit hotspots.",
+  "sql:high_cpu": "High CPU-consuming SQL detected. Review join methods, missing indexes, and plan stability. Consider using SQL Profiles or re-gathering stats if misestimation is observed.",
+  "sql:long_elapsed": "SQL shows long elapsed time. Check parallelism, data skew, and optimizer mode. Consider breaking the workload or using materialized results.",
+  "sql:*": "Problematic SQL. Validate plan stability, predicates, and join methods. Confirm proper indexing, up-to-date stats, and consider SQL profile/outline only after root cause analysis.",
+  "segment:undo$": "Undo tablespace shows contention. Review undo tablespace sizing and concurrent transaction behavior.",
+  "segment:*": "Hot segment detected. Validate access patterns, clustering, and partitioning. Consider targeted indexing, segment reorg, or ILM to reduce skew and hotspots."
+}

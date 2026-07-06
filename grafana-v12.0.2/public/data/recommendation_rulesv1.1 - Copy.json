@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "recommendations": {
+    "wait_events": {
+      "db file sequential read": "High sequential I/O latency indicates possible index inefficiency or random reads. Review storage latency and index usage.",
+      "enq: TX - row lock contention": "High row-lock waits suggest contention on DML-heavy tables. Tune commit frequency or review application locking logic.",
+      "log file sync": "Frequent commits or slow redo log I/O. Increase redo log size or separate redo onto low-latency storage."
+    },
+    "sql": {
+      "high_elapsed_time": "SQL consuming significant elapsed time; optimize joins and filter predicates.",
+      "high_cpu_time": "CPU-intensive SQL. Review execution plan, indexes, and statistics.",
+      "high_io_wait": "High User I/O time per execution. Investigate large scans or missing indexes."
+    },
+    "segments": {
+      "logical_reads": "Hot buffer cache usage. Consider partitioning or caching strategies.",
+      "physical_reads": "High physical reads suggest inefficient I/O path; validate segment placement and indexing.",
+      "buffer_busy_waits": "Buffer contention detected. Review concurrency on hot blocks and implement partitioning if possible."
+    },
+    "general": {
+      "thresholds": {
+        "red": "≥ 80 % severity – Critical performance degradation.",
+        "amber": "41 – 79 % – Needs tuning attention.",
+        "green": "≤ 40 % – Normal operating range."
+      },
+      "note": "These rules are applied dynamically in the correlation drawer when a row or pie slice is selected."
+    }
+  }
+}

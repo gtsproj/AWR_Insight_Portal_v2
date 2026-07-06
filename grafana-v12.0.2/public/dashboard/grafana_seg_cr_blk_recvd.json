@@ -1,0 +1,152 @@
+{
+  "id": null,
+  "uid": "fdv31-cr-blk-recvd-v1",
+  "title": "fdv3.1 Segment Statistics CR Blk Recvd",
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "30s",
+  "tags": [
+    "awr"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0
+      },
+      {
+        "name": "dbname",
+        "label": "Database",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT dbname AS value, dbname AS label\n  FROM awr_load_profile\n) AS combined_results\nORDER BY value;"
+      },
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT instance AS value, instance AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname'\n) AS combined_results\nORDER BY value;"
+      },
+      {
+        "name": "start_snap",
+        "label": "Start Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "end_snap",
+        "label": "End Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Navigation Links",
+      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 0 },
+      "options": {
+        "content": "\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Navigation</a>&nbsp;&nbsp;|&nbsp;&nbsp,\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters</a>",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+    {
+      "id": 3,
+      "type": "table",
+      "title": "Segment Details - CR Blocks Received",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },	  
+      "targets": [
+        {
+          "refId": "B",
+          "format": "table",
+          "rawSql": "WITH top_segments AS \n(  SELECT object_name,obj_type, subobject_name, avg(cr_blocks_received) \nFROM awr_seg_cr_blk_rec  \nWHERE '$dbanme' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''    \nAND dbname = '$dbname'    AND instance = '$instance'    \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int \nAND split_part('$end_snap',' - ',1)::int  \nAND pcttotal >= 10  \nGROUP BY object_name, obj_type,subobject_name  \nORDER BY    CASE      WHEN split_part('$start_snap',' - ',1)::int = split_part('$end_snap',' - ',1)::int \nTHEN MAX(cr_blocks_received) \nELSE AVG(cr_blocks_received)    \nEND DESC Limit 10)    \nSELECT   s.object_name, s.obj_type,s.subobject_name,  Avg(s.cr_blocks_received) AS CR_BLOCKS_RECEIVED,  ROUND(AVG(s.pcttotal),2) AS pct_total \nFROM awr_seg_cr_blk_rec s \nJOIN top_segments t ON t.object_name = s.object_name \nWHERE dbname = '$dbname'  AND instance = '$instance'  \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int \nAND split_part('$end_snap',' - ',1)::int \nGROUP BY s.object_name,s.obj_type,s.subobject_name  \nORDER BY CR_BLOCKS_RECEIVED DESC;"
+        }
+      ],
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+	    "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1
+          }
+        },
+        "overrides": []
+      }
+    }	
+  ]
+}
