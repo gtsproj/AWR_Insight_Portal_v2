@@ -1,0 +1,15365 @@
+SQL&gt; /
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+NAME
+</th>
+<th scope="col">
+WAIT_CLASS
+</th>
+</tr>
+<tr>
+<td>
+ASM COD rollback operation completion
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+ASM mount : wait for heartbeat
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+JS kgl get object wait
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+JS kill job wait
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+JS coord start wait
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML initialization
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML v1 open backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML v1 read backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML v1 write backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML v1 close backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML v1 query backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML v1 delete backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML create a backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML commit backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML command to channel
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML shutdown
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML obtain textual error
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML query backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML extended initialization
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML read backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML delete backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML restore backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML write backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML proxy initialize backup
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML proxy cancel
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML proxy commit backup piece
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML proxy session end
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML datafile proxy backup?
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML datafile proxy restore?
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML proxy initialize restore
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML proxy start data movement
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML data movement done?
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML proxy prepare to start
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML obtain a direct buffer
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML release a direct buffer
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML get base address
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+Backup: MML query for direct buffers
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+OFS operation completion
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+BA: Performance API
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+control file backup creation
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+multiple dbwriter suspend/resume for file offline
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+db flash cache dynamic disabling wait
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+switch logfile command
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+enq: MV - datafile move
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+datafile pre-create
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+wait for possible quiesce finish
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+concurrent I/O completion
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+datafile copy range completion
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+switch undo - offline
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+alter rbs offline
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+enq: TW - contention
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+index (re)build online start
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+index (re)build online cleanup
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+index (re)build online merge
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+index (re)build lock or pin object
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+alter system set dispatcher
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+connection pool wait
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+enq: DB - contention
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+enq: ZG - contention
+</td>
+<td>
+Administrative
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net break/reset to client
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+REPL Apply: apply DDL
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+External Procedure initial connection
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+External Procedure call
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: UL - contention
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+OLAP DML Sleep
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+WCR: replay lock order
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: PW - flush prewarm buffers
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: RO - contention
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: RO - fast object reuse
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: KO - fast object checkpoint
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: TM - contention
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: TX - row lock contention
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+Wait for Table Lock
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+enq: RC - Result Cache: Contention
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture: filter callback ruleset
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net break/reset to dblink
+</td>
+<td>
+Application
+</td>
+</tr>
+<tr>
+<td>
+ASM PST query : wait for [PM][grp][0] grant
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+lock remastering
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr disk read
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant ka
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant cluster flash cache read
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr cluster flash cache read
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr flash cache copy
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant read-mostly invalidation
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant read-only instance invalidation
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant 2-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant 3-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant busy
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant congested
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant ka
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant cluster flash cache read
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant read-mostly invalidation
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current grant read-only instance invalidation
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc transaction table
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc index operation
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc freelist
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc remaster
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc quiesce
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc recovery
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc flushed buffer
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc send complete
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current cancel
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr cancel
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc assume
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current index split
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc domain validation
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc recovery free
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc recovery quiesce
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc claim
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cancel retry
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+Service operation completion
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+service monitor: inst recovery completion
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+retry contact SCN lock master
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc buffer busy acquire
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc buffer busy release
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+pi renounce write complete
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+remote log force - buffer update
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+remote log force - buffer read
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+remote log force - SCN range
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+remote log force - session cleanout
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+remote log force - log switch/recovery
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current request
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr request
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr disk request
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr multi block request
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr multi block mixed
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr multi block grant
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current multi block request
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc block recovery request
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc imc multi block request
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc imc multi block quiesce
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr block remote read
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr block 2-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr block 3-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr block busy
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr block congested
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr failure
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr block lost
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current block 2-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current block 3-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current block busy
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current block congested
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current retry
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current block lost
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc current split
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant 2-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant 3-way
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant busy
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+gc cr grant congested
+</td>
+<td>
+Cluster
+</td>
+</tr>
+<tr>
+<td>
+remote log force - commit
+</td>
+<td>
+Commit
+</td>
+</tr>
+<tr>
+<td>
+log file sync
+</td>
+<td>
+Commit
+</td>
+</tr>
+<tr>
+<td>
+nologging standby txn commit
+</td>
+<td>
+Commit
+</td>
+</tr>
+<tr>
+<td>
+Nologging standby progress
+</td>
+<td>
+Commit
+</td>
+</tr>
+<tr>
+<td>
+enq: BB - 2PC across RAC instances
+</td>
+<td>
+Commit
+</td>
+</tr>
+<tr>
+<td>
+logout restrictor
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: MGA shared context root latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: MGA shared context latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: MGA heap latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: MGA pid alloc latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: MGA asr alloc latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: RI - Reader Farm SQL Isolation
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+Shared IO Pool Memory
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: cache buffers chains
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+buffer busy waits
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+db flash cache invalidate wait
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+log file sync: SCN ordering
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+row cache read
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+libcache interrupt action by LCK
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: IV - cross instance invalidation
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+cursor: mutex X
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+cursor: mutex S
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+cursor: pin X
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+cursor: pin S
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+cursor: pin S wait on X
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: CB - role operation
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: shared pool
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+LCK0 row cache object free
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+Unpin a recreatable chunk
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+library cache pin
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+library cache lock
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+library cache load lock
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+library cache: mutex X
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+library cache: bucket mutex X
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+library cache: dependency mutex X
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+library cache: mutex S
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+resmgr:internal state change
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+resmgr:sessions to exit
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+pipe put
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: TG - IMCDT global resource
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: TI - IMCDT object HT
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+result cache lock wait
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: KV - IMA key vector access
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+REPL Apply: dependency
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+Cube Build Master Wait for Jobs
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: TX - index contention
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: Undo Hint Latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: In memory undo latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: MQL Tracking Latch
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+IM buffer busy
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+IM buffer busy TXN
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+IM buffer busy SHR
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+securefile chain update
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: BE - Critical Block Allocation
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: HV - contention
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+SecureFile mutex
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+enq: WG - lock fso
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+Inmemory Populate: get loadscn
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+latch: row cache objects
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+row cache mutex
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+row cache lock
+</td>
+<td>
+Concurrency
+</td>
+</tr>
+<tr>
+<td>
+free buffer waits
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+memoptimize write buffer get
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+write complete waits
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+write complete waits: flash cache
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+latch: redo writing
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+latch: redo copy
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+log buffer space
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+log file switch (checkpoint incomplete)
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+log file switch (private strand flush incomplete)
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+log file switch (archiving needed)
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+log file switch completion
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+Global transaction acquire instance locks
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+REPL Apply: commit
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+wait for EMON to process ntfns
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+flashback buf free by RVWR
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+nologging range consumption list
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+enq: ST - contention
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+undo segment extension
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+undo segment tx slot
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+enq: TX - allocate ITL entry
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+statement suspended, wait error to be cleared
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+SecureFile log buffer
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+enq: HW - contention
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+enq: SS - contention
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+sort segment request
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+enq: SQ - contention
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+enq: SV -  contention
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+checkpoint completed
+</td>
+<td>
+Configuration
+</td>
+</tr>
+<tr>
+<td>
+ASM background timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+ASM cluster membership changes
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+iowp msg
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+iowp file id
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+netp network
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+gopp msg
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+auto-sqltune: wait graph update
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+WCR: replay client notify
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+WCR: replay clock
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+WCR: replay paused
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+JS external job
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+cell worker idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+recovery receiver idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+recovery coordinator idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+recovery logmerger idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+block compare coord process idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Txn Recovery Start
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Txn Recovery Reply
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+fbar timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+smon timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Metadata Update
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Space Manager: slave idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Index Merge Reply
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Index Merge Execute
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Index Merge Close
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: kdcph_mai
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: kdcphc_ack
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+imco timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+IMFS defer writes scheduler
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+memoptimize write drain idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+virtual circuit next request
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+shared server idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+dispatcher timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+cmon timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+pool server timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+lreg timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+JOX Jit Process Sleep
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+jobq slave wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+pipe get
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deque wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Idle Wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq Credit: need buffer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq Credit: send blkd
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Msg Fragment
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Parse Reply
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Execute Reply
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Execution Msg
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Table Q Normal
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Table Q Sample
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+REPL Apply: txns
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture/Apply: messages
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture: archive log
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+single-task message
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net message from client
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net vector message from client
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net vector message from dblink
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PL/SQL lock timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: emn coordinator idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+EMON slave idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Emon coordinator main loop
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Emon slave main loop
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: waiting for messages in the queue
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: waiting for time management or cleanup tasks
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: delete acknowledged messages
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: deallocate messages from Streams Pool
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: qmn coordinator idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: qmn slave idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+AQ: 12c message cache init wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+AQ Cross Master idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+AQPC idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: load balancer idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Sharded  Queues : Part Maintenance idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Sharded  Queues : Part Truncate idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture/Apply: RAC AQ qmn coordinator
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: opt idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+HS message to agent
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+VKTM Logical Idle Wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+VKTM Init Wait for GSGA
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+IORM Scheduler Slave Idle Wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+rdbms ipc message
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+i/o slave wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+OFS Receive Queue
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+OFS idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+VKRM Idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+wait for unread message on broadcast channel
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+wait for unread message on multiple broadcast channels
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+class slave wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+RMA: IPC0 completion sync
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+PING
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+watchdog main loop
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+process in prespawned state
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+pmon timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+pman timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+DNFS disp IO slave idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+DIAG idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+ges remote message
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+SCM slave idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LMS CR slave timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+gcs remote message
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+gcs yield cpu
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+heartbeat monitor sleep
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+GCR sleep
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+SGA: MMAN sleep for component shrink
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+DBWR timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Data Guard: Gap Manager
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Data Guard: controlfile update
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+MRP redo arrival
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Data Guard: Timer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LNS ASYNC archive log
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LNS ASYNC dest activation
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LNS ASYNC end of log
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+simulated log write delay
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+heartbeat redo informer
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LGWR real time apply sync
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LGWR worker group idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery slave idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance waiting for work
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance waiting restore start
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance Surrogate wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance Servlet wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance Comm SGA setup wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner builder: idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner builder: branch
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner preparer: idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner reader: log (idle)
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner reader: redo (idle)
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner merger: idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner client: transaction
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: other
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: activate
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: reset
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: find session
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: internal
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+Logical Standby Apply Delay
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery coordinator waits for slave cleanup
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery coordinator idle wait
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery control message reply
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery slave next change
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+nologging fetch slave idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+recovery sender idle
+</td>
+<td>
+Idle
+</td>
+</tr>
+<tr>
+<td>
+remote db operation
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+ASM remote SQL
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+remote db file write
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+IPC group service call
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+Data Guard network buffer stall reap
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+ARCH wait for net re-connect
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+ARCH wait for netserver start
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+LNS wait on LGWR
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+LGWR wait on LNS
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+ARCH wait for netserver init 2
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+ARCH wait for flow-control
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+ARCH wait for netserver detach
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+TCP Socket (KGAS)
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+virtual circuit wait
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+dispatcher listen timer
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+dedicated server timer
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+connection broker handoff
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net message to client
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net message to dblink
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net more data to client
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net more data to dblink
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net more data from client
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net message from dblink
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net more data from dblink
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net vector data to client
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net vector data from client
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net vector data to dblink
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+SQL*Net vector data from dblink
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+TEXT: URL_DATASTORE network wait
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+remote db file read
+</td>
+<td>
+Network
+</td>
+</tr>
+<tr>
+<td>
+null event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+events in waitclass Other
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WM - WLM Plan activation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch activity
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait list latch free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kslwait unit test event 1
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kslwait unit test event 2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kslwait unit test event 3
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+unspecified wait event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+global enqueue expand wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+free process state object
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+inactive session
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+process terminate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: call allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: session allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+check CPU wait times
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ADG switchover completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+process allocation slot
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+session allocation inc count
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CI - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges resource enqueue open retry sleep
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ksim generic wait event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DE - Update Draining Test
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+debugger command
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+oradebug request slot
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+oradebug request completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: ksm sga alloc latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+defer SGA allocation slave
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+SGA Allocator termination
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PGA memory operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PE - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PG - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ksbsrv
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ksbcic
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+process startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+process shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+prior spawner clean up
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: messages
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+rdbms ipc message block
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+rdbms ipc reply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: pdb enqueue hash chains
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: enqueue hash chains
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+imm op
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+slave exit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FP - global fob contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RE - block repair contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BM - clonedb bitmap file write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+asynch descriptor resize
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+OFS interrupted req not found
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FO - file system operation contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+resmgr:plan change
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KM - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CA - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KD - determine DBRM master
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+reliable message
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+broadcast mesg queue transition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+broadcast mesg recovery queue transition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+KSV master wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+master exit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ksv slave avail wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PV - syncstart
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PV - syncshut
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SP - contention 1
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SP - contention 2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SP - contention 3
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SP - contention 4
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SX - contention 5
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SX - contention 6
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+first spare wait event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+second spare wait event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Memory: Reg/Dereg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IPC send completion sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+OSD IPC library
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IPC wait for name service busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IPC busy async request
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IPC waiting for OSD resources
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ksxr poll remote instances
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ksxr wait for mount shared
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DBMS_LDAP: LDAP operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for FMON to come up
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FM - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XY - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: active service list
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: service drain list
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: last service list
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: java patching
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AS - service activation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+JAVA patching
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PD - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+oracle thread bootstrap
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+os thread creation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cleanup of aborted process
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RU - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RU - waiting
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+rolling migration: cluster quiesce
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LMON global data update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+rolling migration: orphans detected
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+process diagnostic dump
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MX - sync storage server info
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+master diskmon startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+master diskmon read
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DSKM to complete cell health check
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+pmon dblkr tst event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: ksolt lwth alloc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+lightweight thread operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+lightweight thread task completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WN - rw snapshot synchronization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+read/write snapshot completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZX - repopulation file write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+pmon cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+pmon shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GL: cross instance latch free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RMA: rlog allocate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RMA: RAC reconfig
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RMA: latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DNFS disp IO slave cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KA - ACL control status
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Nest operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DIAG lock acquisition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: ges resource hash list
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DFS lock handle
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges server process to shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges client process to exit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges global resource directory to be frozen
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges resource directory to be unfrozen
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs resource directory to be unfrozen
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges LMD to inherit communication channels
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges lmd sync during reconfig
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges wait for lmon to be ready
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges cgs registration
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for master scn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges yield cpu in reconfig
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges2 proc latch in rm latch get 1
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges2 proc latch in rm latch get 2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges lmd/lmses to freeze in rcfg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges lmd/lmses to unfreeze in rcfg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges lms sync during dynamic remastering and reconfig
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges LMON to join CGS group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges pmon to exit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges lmd and pmon to attach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs drm freeze begin
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs retry nowait latch get
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs remastering wait for read latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges cached resource cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges generic event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges instance reconfig name entry query
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges process with outstanding i/o
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges user error
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges enter server mode
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs enter server mode
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges ipc enter server mode
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs drm freeze in enter server mode
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs ddet enter server mode
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges cancel
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges resource cleanout during enqueue open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges resource cleanout during enqueue open-cvt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges master to get established for SCN op
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges LMON to get to FTDONE
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges1 LMON to wake up LMD - mrcvr
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges2 LMON to wake up LMD - mrcvr
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges2 LMON to wake up lms - mrcvr 2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges2 LMON to wake up lms - mrcvr 3
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges inquiry response
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges reusing os pid
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges LMON for send queues
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges LMD suspend for testing event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges performance test completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kjbopen wait for recovery domain attach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kjudomatt wait for recovery domain attach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kjudomdet wait for recovery domain detach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kjbdomalc allocate recovery domain - retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kjbdrmcvtq lmon drm quiesce: ping completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges RMS0 retry add redo log
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+readable standby redo apply remastering
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges DFS hang analysis phase 2 acks
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges/gcs diag dump
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+global plug and play automatic resource creation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs lmon dirtydetach step completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery instance recovery completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ack for a broadcasted res from a remote instance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kill all read-only instances in cluster
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: kjci process context latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: kjci request sequence latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DLM cross inst call completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DLM: shared instance mode init
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KI - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: kjoeq omni enqueue hash bucket latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DLM enqueue copy completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: kjoer owner hash bucket
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DLM Omni Enq Owner replication
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+KJC: Wait for msg sends to complete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ges message buffer allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kjctssqmg: quick message send wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs domain validation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: gcs resource hash
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+affinity expansion in replay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for sync ack
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for verification ack
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for assert messages to be sent
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for scn ack
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+lms flush message acks
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+name-service call wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CGS wait for IPC msg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR hang simulation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR mount phase II completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR disk votes
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR rr lock release
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR net-check message ack
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR rr update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR membership resolution
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR CSS join retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR slave process init
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR slave process shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMR slave acknowledgement msg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CGS skgxn join retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CGS ping operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs to be enabled
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+gcs log flush sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+KA: shared KGA not initialized
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: HM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCR ctx lock acquisition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCR CSS group lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCR CSS group join
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCR CSS group leave
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCR CSS group update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCR CSS group query
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AC - acquiring partition id
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LMA glob lock acquisition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LMA KGA glob lock acquisition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: GCS logfile block
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: GCS logfile write queue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LMFC reconfig operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PCFC: recovery domain valid
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+SGA: allocation forcing component growth
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+SGA: sga_target resize
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+control file heartbeat
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+control file diagnostic dump
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CF - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SW - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DS - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TC - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TC - contention2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer exterminate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kcbw: cache protect wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: cache buffers lru chain
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PW - perwarm status in dbw0
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: checkpoint queue latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: cache buffer handles
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kcbzps
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DBWR range invalidation sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer deadlock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cr request retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+influx scn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+writes stopped by instance recovery or database suspension
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+lock escalate retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+lock deadlock retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+prefetch warmup block being transferred
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery buffer pinned
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+tablespace key change
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+TSE SSO wallet reopen
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+force-cr-override flush
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CR - block range reuse ckpt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TR - serialize TS rekeys
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TR - database key open check
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TR - serialize system rekeys
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for MTTR advisory state object
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: object queue header operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BU - recovery set construct
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BU - recovery set takeover
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+retry CFTXN during close
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+get branch/thread/sequence enqueue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - Test access/locking
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Data Guard server operation completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+FAL archive wait 1 sec for REOPEN minimum
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+TEST: action sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+TEST: action hang
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RSGA: RAC reconfiguration
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - RAC-wide SGA initialize
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - RAC-wide SGA write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - RAC-wide SGA dump
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MRP stop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SA - standby redo logfiles
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WS -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MRP wait on process start
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MRP wait on process restart
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MRP wait on startup clear
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MRP inactivation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MRP wait on archivelog arrival
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MRP wait on archivelog archival
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - Far Sync Fail Over
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SA - MRP SRL access
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Monitor testing
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - redo_db table update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - redo_log table update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+log switch/archive
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - Switchover To Primary
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ARCH wait on c/f tx acquire 1
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS attach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS create
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS close
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS announce
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS register
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS detach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS ping
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RFS dispatch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - RFS global state contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - SNA access/locking
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR simulation latency wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LNS simulation latency wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASYNC Remote Write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+SYNC Remote Write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ARCH Remote Write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Attach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Detach
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Close
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Ping
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Remote SYNC Ping
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Slave Startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Slave Shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Writer Remote Sync Notify
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Writer Remote Sync Complete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport MISC
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo Transport Network Throttle
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - Network Throttle
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR-LNS wait on channel
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Data Guard: rtrt work
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Redo transport testing
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RZ - add element
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RZ - remove element
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Image redo gen delay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Long operation CF pause
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR wait for redo copy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: redo allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+log file switch (clearing log file)
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+log file sync: PDB shutdown abort
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+target log write size
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR any worker group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR all worker groups
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR worker group ordering
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR intra group sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LGWR intra group IO completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WL - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RN - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DFS db file lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PDB close/open on another instance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+database open on read-write instance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DF - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IS - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IP - open/close PDB
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PX - PDB instance recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FS - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FS - online log operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DM - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DM - access control
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RP - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: gc element
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+redo log switch request completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RT - thread internal enable/disable
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IR - contention2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IR - global serialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IR - local serialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IR - arbitrate instance recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - standby role transition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - multi instance redo apply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - any role transition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - PDB open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - datafile online
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - adg instance recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - preplugin recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MR - datafile pre-create
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+shutdown after switchover to standby
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cancel media recovery on switchover
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PDB lock domain invalidation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Recovery: scn growth limit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery coord wait for reply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery coord send blocked
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery slave wait for change
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - file shrink
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - proxy-copy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - multi-section restore header
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - multi-section restore section
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - space info datafile hdr update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - request autobackup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - perform autobackup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BR - perform catalog recovery area
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ID - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Backup Restore Throttle sleep
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Backup Restore Switch Bitmap sleep
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Backup Restore Event sleep
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RMAN wallet access limit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare1
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare3
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare4
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare5
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare6
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare7
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare8
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare9
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BS - Backup spare0
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AB - ABMR process start/stop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AB - ABMR process initialized
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Auto BMR completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Auto BMR RPC standby catchup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA lock db
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA lock storage loc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA lock timer queue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA lock scheduler
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA lock API
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA quiesce tasks
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA check quiesce tasks
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA quiesce servlets
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA check servlet quiescence
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA serialize unregister db
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA run scheduler
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA purge storage loc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA spare enq 10
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA invalidate plans
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZR - ZDLRA protect plans
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BC - drop container group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BC - create container
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BC - group - create container
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BC - drop container
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BC - group - create file
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BI - create file
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BI - identify file
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BI - delete file
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BZ - resize file
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BV - rebuild/validate group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance container synchronous read
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance container synchronous write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Backup Appliance container I/O
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Supplemental logging roles
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner builder: queue full
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner reader: redo slot
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner reader: memory
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner merger: redo slot
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: txn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: queue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner: session audit list
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner FSC: dictionary load completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MN - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZL - LogMiner foreign log metadata
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PL - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CP - Pluggable database resetlogs
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SB - logical standby metadata
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SB - table instantiation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Logical Standby Apply shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Logical Standby pin transaction
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Logical Standby dictionary build
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Logical Standby Terminal Apply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Logical Standby Debug
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Resolution of in-doubt txns
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XR - quiesce database
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XR - database force logging
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ADG query scn advance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ADG instance recovery complete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: obj/range reuse redo processing
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+standby query scn advance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+change tracking file synchronous read
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+change tracking file synchronous write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+change tracking file parallel write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+block change tracking buffer space
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CTWR media recovery checkpoint request
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - global space management
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - local space management
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - change stream ownership
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - state
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - state change gate 1
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - state change gate 2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - CTWR process start/stop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CT - reading
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery area: computing dropped files
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery area: computing obsolete files
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery area: computing backed up files
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery area: computing applied logs
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RS - file delete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RS - record reuse
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RS - prevent file delete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RS - prevent aging list update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RS - persist alert level
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RS - read alert level
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RS - write alert level
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FL - Flashback database log
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FL - Flashback db command
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FD - Marker generation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FD - Tablespace flashback on/off
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FD - Flashback coordinator
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FD - Flashback on/off
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FD - Restore point create/drop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FD - Flashback logical operations
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+flashback free VI log
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+flashback log switch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FW -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RVWR wait for flashback copy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery read buffer free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery redo cache buffer free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery change buffer free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery push change
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell smart flash keep
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell smart flash unkeep
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell ram cache population
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+parallel recovery coord: all replies
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+datafile move cleanup during resize
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Nologging Standby Unit Test
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Nonlogged block fetch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery receive buffer free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery cancel
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery remote file verification
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery active instance mapping setup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery new thread enable
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery file header update for checkpoint
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery file header update for fuzziness
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery coordinator apply  pending
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery coordinator marker apply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery coordinator message
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery merge pending
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery metadata latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery checkpoint
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery apply pending
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery fuzzy update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery message
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery slaves to be informed
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery move influx buffers
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery marker apply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery timestamp
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+recovery send buffer free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DBMS_ROLLING instruction completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Shadow lost write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+blocking txn id for DDL
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+transaction
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+inactive transaction branch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+txn to complete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PMON to cleanup pseudo-branches at svc stop time
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PMON to cleanup detached branches at shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+test long ops
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: undo global data
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+undo segment recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+unbound tx
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for change
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for another txn - undo rcv abort
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for another txn - txn abort
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for another txn - rollback to savepoint
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+undo_retention publish retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+txn cache read version
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TA - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TX - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: US - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for stopper event to be increased
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for a undo record
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for a paralle reco to abort
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IM - contention for blr
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TD - KTF dump entries
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TE - KTF broadcast
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CN - race with txn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CN - race with reg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CN - race with init
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: Change Notification Hash table latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CO - master slave det
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FE - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: change notification client cache latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: SGA Logging Log Latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: SGA Logging Bkt Latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MC - Securefile log
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MF - flush bkgnd periodic
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MF - creating swap in instance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MF - flush space
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MF - flush client
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MF - flush prior error
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MF - flush destroy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: ILM activity tracking latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: ILM access tracking extent
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IM CU busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZQ - register
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZQ - quiesce
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IM ADG space pressure
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TF - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: lob segment hash table latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: lob segment query latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: lob segment dispenser latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Wait for shrink lock2
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Wait for shrink lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+L1 validation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Wait for TT enqueue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kttm2d
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ktsambl
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ktfbtgex
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TS - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FB - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SK - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DW - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SU - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ktm: instance recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+instance state change
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SJ - Slave Task Cancel
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Space Manager: slave messages
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FH - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: IM area scb latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: IM area sb latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TZ - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IN - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZB - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: IM seg hdr latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: IM emb latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Analyze hash compare
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+index block split
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+internal test event (index split branch)
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+internal test event (index split leaf)
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kdblil wait before retrying ORA-54
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+dupl. cluster key
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+internal test event (index merge)
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DL - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: HQ - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: HP - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Securefile Write Gather Cache Yield Process
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WG - delete fso
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SL - get lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SL - escalate lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SL - get lock for undo
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZH - compression analysis
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Compression analysis
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SZ - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZC - FS Seg contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZD - FS CU mod
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SY - IM populate by other session
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JZ - Join group dictionary
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IM populate completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMXT Populate - drop HT
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IM FastStart deadlock retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IM ADO scheduler retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: IMFS defer write list
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMFS Flush defer writes
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+In-Memory populate: over pga limit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: Column stats entry latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+row cache cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+row cache process
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QA -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QD -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QF -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QG -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QJ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QN -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QR -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QS -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QT -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QU -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QX -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QY -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: QZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DV - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SO - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RAC: row cache lock nowait retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VA -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VD -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VF -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VG -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VJ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VN -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VR -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VS -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VT -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VU -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VX -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VY -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: VZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EA -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ED -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EF -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EG -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EJ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EN -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ER -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ES -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ET -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EU -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EX -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EY -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: EZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LA -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LD -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LF -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LG -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LJ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LN -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LR -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LS -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LT -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LU -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LX -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LY -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: LZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YA -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YD -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YF -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YG -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YJ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YN -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YR -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YS -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YT -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YU -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YX -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YY -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: YZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GA -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GD -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GF -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GG -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GJ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GN -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GR -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GS -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GT -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GU -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GX -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GY -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: GZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NA -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NC -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ND -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NF -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NG -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NI -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NJ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NL -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NN -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NO -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NP -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NR -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NS -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NT -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NU -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NX -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NY -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: NZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IV -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TP - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RW - MV metadata contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OC - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OL - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kkdlgon
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kkdlsipon
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kkdlhpon
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Remote Tool Request Reply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Remote Tool Request Free List
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kgltwait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kksfbc research
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kksscl hash split
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kksfbc child completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CU - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AE - lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Revoke: get object
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PF - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PZ - flush passwordfile metadata
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PZ - load passwordfile metadata
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IL - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CL - drop label
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CL - compare labels
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SG - OLS Add Group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SG - OLS Create Group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SG - OLS Drop Group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SG - OLS Alter Group Parent
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OP - OLS Store user entries
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OP - OLS Cleanup unused profiles
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+move audit tablespace delay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CC - decryption
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MK - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OW - initialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OW - termination
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RK - set key
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RK - queue wallet and TS keys
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: HC - HSM cache write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: HC - HSM cache read
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RL - RAC wallet lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PJ - modify DV policy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PJ - read DV policy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Row cache for Grant or Revoke
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZZ - update hash tables
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Failed Logon Delay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZA - add std audit table partition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZF - add fga audit table partition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZS - excl access to spill audit file
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: UT - transfer audit records
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PA - modify a privilege capture
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PA - read a privilege capture
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PC - update privilege capture info
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PC - read privilege capture info
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DX - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+pending global transaction(s)
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+free global transaction table entry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+library cache revalidation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+library cache shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE closure
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE check if exists
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE check if open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE get length
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE get name object
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE get path object
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+BFILE internal seek
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+resmgr:internal state cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+xdb schema cache initialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM cluster file access
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS initialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS group registration
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS group membership query
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS operation: data query
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS operation: data update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS Xgrp shared operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS operation: query
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS operation: action
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS operation: diagnostic
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GIPC operation: dump
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GPnP Initialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GPnP Termination
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GPnP Get Item
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GPnP Set Item
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GPnP Get Error
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ADR file lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ADR block file read
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ADR block file write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CRS call completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM: OFS Cluster membership update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+dispatcher shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: virtual circuit queues
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+listen endpoint status
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+listener registration dump
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+OJVM: Generic
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+select wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+jobq slave shutdown wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+jobq slave TJ process wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+job scheduler coordinator slave wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JD - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JQ - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OD - Serializing DDLs
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RAC referential constraint parent lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RAC: constraint DDL lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kkshgnc reloop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+optimizer stats update retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait active processes
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+SUPLOG PL wait for inflight pragma-d PL/SQL
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MD - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MS - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for kkpo ref-partitioning *TEST EVENT*
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+RAC reference partitioning descendants lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AP - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RH - quarantine
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX slave connection
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX slave release
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Send Wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX qref latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX server shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX create server
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX signal server
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Join ACK
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq Credit: free buffer
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Test for msg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Test for credit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Signal ACK RSG
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Signal ACK EXT
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: reap credit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Nsq: PQ descriptor query
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Nsq: PQ load info query
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq Credit: Session Stats
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Slave Session Stats
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Slave Join Frag
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PI - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PS - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DA - Slave Process Array
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: parallel query alloc buffer
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kxfxse
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kxfxsp
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Table Q qref
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Table Q Get Keys
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: Table Q Close
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GV$: slave acquisition retry wait time
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX hash elem being inserted
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: PX hash array latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AY - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TO - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ZP - Private Temporary Table
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IMCDT end of scans cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BF - allocation contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BF - PMON Join Filter cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RD - RAC load
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX key vector flatten
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX hash key vector cell
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX hash key vector merge
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX key vector use load
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX key vector create dgk init
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MG - MGA allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MG - client shared context allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kupp process wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Kupp process shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Data Pump slave startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Data Pump slave init
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KP - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Replication Dequeue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+knpc_acwm_AwaitChangedWaterMark
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+knpc_anq_AwaitNonemptyQueue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+knpsmai
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RG - Apply coord start/stop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture/Apply: database startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture/Apply: miscellaneous
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SI - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture/Apply: RAC inter-instance ack
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IA - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JI - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+qerex_gdml
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Retry DB Audit Record Insertion Delay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+opishd
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+secure protocol error delay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kpodplck wait before retrying ORA-54
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CQ - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+wait for EMON to spawn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+EMON termination
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AZ - AQ_SRVNTFN_Q Creation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Emon coordinator startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SE - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+tsm with timeout
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: waiting for busy instance for instance_name
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: index block pin/row lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - TM contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - DDL contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - INI contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - DDL-INI contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - INI sq contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - MC free sync at cross job start
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - MC free sync at cross job stop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - MC free sync at cross job end
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - MC free sync at export subshard
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - create eviction table
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - TM Job cache initialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - TM Job cache use
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ -  sq TM contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TQ - LB drop volatile shard
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ reload SO release
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Enqueue commit uncached
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Enqueue commit cached
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Dequeue update scn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Parallel cross update scn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Cross update scn
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Trucate subshard
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Cross export subshard
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Cross import subshard
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - Free shadow shard
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ indexed cached commit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ uncached commit WM update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ uncached dequeue
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Eq Ptn Mapping
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Dq Ptn Mapping
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Trnc mem free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Trnc mem free remote
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Trnc mem free by LB
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Trnc mem free by CP
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Enq commit incarnation wrap
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Rule evaluation segment load
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Evict: block truncate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Unevict PGA: setup subscriber
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Unevict PGA: Queue View
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Shid Gen
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Enq commit block truncate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Cross update scn for delay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ Cross Shard mem free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ rollback retry count update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ cached commit WM update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RQ - AQ cached dequeue by condition
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ propagation connection
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KR - Drop rule force
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KR - Add rule to ruleset
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KR - Remove rule from ruleset
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DP - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MH - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: ML - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PH - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SF - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XH - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WA - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: QueueTable kgl locks
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ spill debug idle
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ master shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQPC: new master
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ Background Master: slave start
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AQ - QPT fg map dqpt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AQ - QPT fg map qpt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT add qpt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT drop qpt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT add dqpt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT drop dqpt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT add qpt fg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT add dqpt fg
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT Trunc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT LB Trunc sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PQ - QPT XSTART Trunc sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ master: time mgmt/task cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ slave: time mgmt/task cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: BA - SUBBMAP contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ:non durable subscriber add or drop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ: RAC AQ Network
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: AQ Sharded subscriber statistics latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AQ OPT Operation Complete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: AQ OPT Background Master Latch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CX - TEXT: Index Specific Lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OT - TEXT: Generic Lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+XDB SGA initialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XC - XDB Configuration
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+NFS read delegation outstanding
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Data Guard Broker Wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - synch: DG Broker metadata
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - atomicity
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - Broker Chief Lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - synchronization: aifo master
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - new AI
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - synchronization: critical ai
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - RF - Database Automatic Disable
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - FSFO Observer Heartbeat
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - DG Broker Current File ID
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - FSFO Primary Shutdown suspended
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - Broker State Lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - FSFO string buffer
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - Broker NSV Lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RF - Broker LSBY FO Lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: OLAP Update Reply
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: OLAP Update Execute
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PX Deq: OLAP Update Close
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AW - AW$ table lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AW - AW state lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AW - user access for AW
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AW - AW generation lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AG - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AO - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OQ - xsoqhiAlloc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OQ - xsoqhiFlush
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OQ - xsoq*histrecb
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OQ - xsoqhiClose
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: OQ - xsoqhistrecb
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - client registration
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - rollback COD reservation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - background COD reservation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM cache freeze
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM ACD Relocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - group use
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - group block
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM File Destroy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM User
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Password File Update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Amdu Dump
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - disk offline
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM reserved
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - block repair
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM disk based alloc/dealloc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM file descriptor
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM file relocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM SR relocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Grow ACD
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM DD update SrRloc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM file chown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Register with IOServer
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM metadata replication
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - SR slice Clear/Mark
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Enable Remote ASM
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Disable Remote ASM
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Credential creation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Credential deletion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM file access req
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM client operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM client check
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM ATB COD creation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Create default DG key in OCR
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Audit file Delete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Audit file Cleanup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM VAT migration
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Update SR nomark flag
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM VAL cache
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM SR Segment Reuse
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM SR Segment Reuse Lookup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM SR Batch Allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Sparse Disk IOCTL
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM VAM Active
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Split Mirror File Create
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Split Mirror File Delete
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Mirror Prepare
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Mirror Split
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Drop Mirror
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM PDB Mirror Split
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - DB Mirror Prepare
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - DB Drop Mirror Copy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - DB Mirror Split
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - PDB Mirror Split
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Create Prepare Child file group
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - Change file group redundancy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Split Mirror ODM File Crt
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Split Mirror ODM File Del
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASMB Startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASMB Renew
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM: group unblock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM file create
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM ATE conversion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM resync from ATE
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Split Status Write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Split Status Read
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Client Assisted Offline
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AM - ASM Client Assisted Offline Chk
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM internal hang test
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM Instance startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer freelistbusy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer rememberlist busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer writeList full
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+no free buffers
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer write wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer invalidation wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+buffer dirty disabled
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM metadata cache frozen
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FZ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CM - gate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CM - instance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: CM - diskgroup dismount
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XQ - recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XQ - relocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XQ - purification
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AD - allocate AU
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AD - deallocate AU
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AD - relocate AU
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AD - flush writes to AU
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DO - disk online
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DO - disk online recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DO - Staleness Registry create
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DO - startup of MARK process
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+extent map load/unlock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+extent map locked
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XL - fault extent map
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Sync ASM rebalance
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Sync ASM discovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+File Directory Use
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DG - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DD - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: HD - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DQ -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM ioctl to dematerialize blocks
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: DN - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Cluster stabilization wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+Cluster Suspension wait
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASMB cookie valid check
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM background starting
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CSS cookie check
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM db client exists
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM file metadata operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM network foreground exits
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM check disk slices
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XB -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FA - access file
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RX - relocate extent
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RX - unlock extent
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AR -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AH -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+log write(odd)
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+log write(even)
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+checkpoint advanced
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FR - use the thread
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FR - recover the thread
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FG - serialize ACD relocate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FG - FG redo generation enq race
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FG - LGWR redo generation enq race
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FT - allow LGWR writes
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FT - disable LGWR writes
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FC - open an ACD thread
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FC - recover an ACD thread
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FX - issue ACD Xtnt Relocation CIC
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+rollback operations block full
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+rollback operations active
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RB - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM: MARK subscribe to msg channel
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM: Send msg to MARK
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IOS client reconnect to dif IOS
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: II -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IK -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IOS worker process startup
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+IOS worker process exit
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+call
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IC - IOServer clientID
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IF - file open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: IF - file close
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PT - ASM Storage May Split
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PM -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM concurrent diskgroup dismount
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM PST operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+global cache busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+lock release pending
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+dma prepare busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock cancel
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock open S
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock open X
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock cvt S
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock cvt X
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock esc X
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS lock esc
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS recovery lock open
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+GCS recovery lock convert
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+kfcl: instance recovery
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+no free locks
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+lock close
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KE -  contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: KQ - access ASM attribute
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM Volume Background
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM volume directive send
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM Volume Resource Action
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AV - persistent DG number
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AV - volume relocate
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AV - AVD client registration
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AV - add/enable first volume in DG
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM Scrubbing I/O
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM Async Scrub
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM Scrub Stop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM Scrub Running
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ASM: VAM activation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+DB Split Delay
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WF - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WT - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WP - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: FU - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: UF - undo stat flush per PDB
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WI - AWR import
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WE - AWR auto-export
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: WD - AWR mail package retrieval
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AWR Flush
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+AWR Metric Capture
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TB - SQL Tuning Base Cache Update
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TB - SQL Tuning Base Cache Load
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SH - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AF - task serialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MMON slave messages
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+MMON (Lite) shutdown
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MO - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MM - MMON Autotask scheduling
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TL - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TH - metric threshold evaluation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TK - Auto Task Serialization
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TK - Auto Task Slave Lockout
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RR - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+WCR: RAC message context busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+WCR: capture file IO write
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+WCR: Sync context busy
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: WCR: sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+latch: WCR: processes HT
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: RA - RT ADDM flood control
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: MW - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: TU - UMF topology
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+SPA slave messages
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JS - job run lock - synchronize
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JS - job recov lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JS - wdw op
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JS - evt notify
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JS - aq sync
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JG - queue lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JG - q mem clnup lck
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JG - contention
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JG - sch locl enqs
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JG - evt notify
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JG - evtsub add
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: JG - evtsub drop
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: AU - ADR Purge Operation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XD - ASM disk drop/add
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XD - ASM disk ONLINE
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: XD - ASM disk OFFLINE
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell worker online completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell worker retry
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell manager cancel work request
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell manager: CRS DG unmounted list
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+cell manager: CRS DG start
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+opening cell offload device
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+ioctl to cell offload device
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+reap block level offload operations
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SN - PDB SGA allocation
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SN - PDB SGA free
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: SN - PDB SGA protection
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+CDB: Per Instance Query for PDB Info
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+PDB relocate completion
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+enq: PB - PDB Lock
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+chunk move metadata prefetch
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+secondary event
+</td>
+<td>
+Other
+</td>
+</tr>
+<tr>
+<td>
+LogMiner builder: memory
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+LogMiner builder: DDL
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+LogMiner preparer: memory
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+LogMiner reader: buffer
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: enqueue blocked due to flow control
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture/Apply: memory
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture/Apply: flow control
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+Streams AQ: enqueue blocked on low memory
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+REPL Capture: subscribers to catch up
+</td>
+<td>
+Queueing
+</td>
+</tr>
+<tr>
+<td>
+resmgr:become active
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+resmgr: I/O rate limit
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+resmgr:large I/O queued
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+resmgr:cpu quantum
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+resmgr:pq queued
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+resmgr: redo throttle
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+PX Queuing: statement queue
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+enq: JX - cleanup of  queue
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+enq: JX - SQL statement queue
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+acknowledge over PGA limit
+</td>
+<td>
+Scheduler
+</td>
+</tr>
+<tr>
+<td>
+Standby redo I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+Network file transfer
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+File Repopulation Write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+PBR logfile IO
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+PBR logfile block write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+control file sequential read
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+control file single write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+control file parallel write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+recovery read
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+RFS sequential i/o
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+RFS random i/o
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+RFS write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+log file sequential read
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+log file single write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+log file parallel write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+log file pmem persist write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+log file pmem persist read
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+db file parallel write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+db file async I/O submit
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+flashback log file write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+flashback log file read
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+cell smart incremental backup
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+cell smart restore from backup
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+ASM sync relocation I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+ASM async relocation I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+kfk: async disk IO
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+iowp io
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+cell manager opening cell
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+cell manager closing cell
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+RMAN lost write reread
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+RMAN backup &amp; recovery I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+Log archive I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+Clonedb bitmap file write
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+Archiver slave I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+LGWR slave I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+DBWR slave I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+RMAN Tape slave I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+RMAN Disk slave I/O
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+cell manager discovering disks
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+io done
+</td>
+<td>
+System I/O
+</td>
+</tr>
+<tr>
+<td>
+Parameter File I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell list of blocks read request
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Disk file I/O Calibration
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Disk file Mirror Read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Disk file Mirror/Media Repair Write
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+direct path sync
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Datapump dump file I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+dbms_file_transfer I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+DG Broker configuration file I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Data file init write
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Log file init write
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Pluggable Database file copy
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+File Copy
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Shared IO Pool IO Completion
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+local write wait
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+buffer read retry
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+read by other session
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+db flash cache single block physical read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+db flash cache multiblock physical read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+db flash cache write
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+db file sequential read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+db file scattered read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+db file single write
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+db file parallel read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+direct path read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+direct path read temp
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+direct path write
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+direct path write temp
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+flashback log file sync
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell smart table scan
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell smart index scan
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell external table smart scan
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell statistics gather
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell smart file creation
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Archive Manager file transfer I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+securefile direct-read completion
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+securefile direct-write completion
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+BFILE read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+utl_file I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+DNFS disp IO slave completion
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+external table read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+external table write
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+external table open
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+external table seek
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+external table misc IO
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+dbverify reads
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+TEXT: File System I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+ASM sync cache disk read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+ASM IO for non-blocking poll
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+ASM Fixed Package I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+ASM Staleness File I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+ASM File Group Sync
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell single block physical read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell multiblock physical read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell list of blocks physical read
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell physical read no I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell single block read request
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+cell multiblock read request
+</td>
+<td>
+User I/O
+</td>
+</tr>
+<tr>
+<td>
+Disk file operations I/O
+</td>
+<td>
+User I/O
+</td>
+</tr>
+</table>
+<p>
+
+1918 rows selected.<br>
+<br>
+
+
+SQL&gt; spool off
+<br>

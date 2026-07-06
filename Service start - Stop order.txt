@@ -1,0 +1,43 @@
+Stop order (dependents first):
+
+net stop AWRQueueProcessor
+net stop SARWatcher
+net stop AWRWatcher
+net stop AWRPortal
+net stop Grafana
+
+Start order (foundation first):
+
+net start Grafana
+net start AWRPortal
+net start AWRWatcher
+net start SARWatcher
+net start AWRQueueProcessor
+
+Restart all (full sequence):
+
+net stop AWRQueueProcessor
+net stop SARWatcher
+net stop AWRWatcher
+net stop AWRPortal
+net stop Grafana
+
+py clear_cache.py
+
+net start Grafana
+net start AWRPortal
+net start AWRWatcher
+net start SARWatcher
+net start AWRQueueProcessor
+
+Check status of all services:
+
+sc query AWRPortal
+sc query AWRWatcher
+sc query SARWatcher
+sc query AWRQueueProcessor
+sc query Grafana
+
+Or check all in one command:
+
+for %s in (AWRPortal AWRWatcher SARWatcher AWRQueueProcessor Grafana) do @sc query %s | findstr "SERVICE_NAME STATE"

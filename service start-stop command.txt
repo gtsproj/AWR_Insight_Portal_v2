@@ -1,0 +1,12 @@
+py clear_cache.py
+
+net stop AWRPortal && net stop AWRQueueProcessor && net stop AWRWatcher && net stop SARWatcher && net stop Grafana
+
+net start AWRPortal && net start AWRQueueProcessor && net start AWRWatcher && net start SARWatcher && net start Grafana
+
+curl http://localhost:8000
+
+
+
+py reset_failed_queues.py
+

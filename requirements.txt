@@ -1,0 +1,19 @@
+# AWR Insight Portal v2 — Python dependencies
+# Install with: pip install -r requirements.txt
+
+beautifulsoup4>=4.12
+lxml>=5.0
+pandas>=2.0
+psycopg2-binary>=2.9
+watchdog>=4.0
+pyyaml>=6.0
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9
+jinja2>=3.1
+
+# Optional: Oracle direct connection
+# oracledb>=2.0
+
+# Optional: Anthropic cloud AI
+# anthropic>=0.20
