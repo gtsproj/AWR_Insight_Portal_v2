@@ -1,0 +1,13 @@
+#config/settings.yaml
+
+database:
+  uri: "postgresql://postgres:Admin123@localhost:5432/postgres"
+
+logging:
+  level: "INFO"
+  dir: "logs"
+
+paths:
+  awr_reports: "C:/awr_parser_project/awr_reports"
+  sar_reports: "C:/awr_parser_project/sar_reports"
+  parsed_output: "C:/awr_parser_project/parsed_output"

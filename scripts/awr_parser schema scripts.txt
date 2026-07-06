@@ -1,0 +1,500 @@
+-- =========================================================
+--  AWR Parser Database Schema (Phase 1)
+--  Includes: DB Info, Load Profile, Efficiency, IO, Waits,
+--  SQL, Instance Activity, Undo, Segment, Advisory, OS, BG Waits
+-- =========================================================
+
+-- ======================
+-- DB Info
+-- ======================
+CREATE TABLE awr_db_info (
+    id SERIAL PRIMARY KEY,
+    db_name TEXT NOT NULL,
+    edition TEXT,
+    instance TEXT NOT NULL,
+    rac TEXT,
+    host_name TEXT,
+    platform TEXT,
+    cpu INT,
+    cores INT,
+    sockets INT,
+    memory NUMERIC,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_db_info UNIQUE (db_name, instance, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Load Profile
+-- ======================
+CREATE TABLE awr_load_profile (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    metric TEXT,
+    per_sec NUMERIC,
+    per_transaction NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_load_profile UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Instance Efficiency
+-- ======================
+CREATE TABLE awr_instance_efficiency (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    metric TEXT,
+    value NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_instance_eff UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- IO Profile
+-- ======================
+CREATE TABLE awr_io_profile (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    metric TEXT,
+    read_per_sec NUMERIC,
+    write_per_sec NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_io_profile UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Time Model Stats
+-- ======================
+CREATE TABLE awr_time_model_stats (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    statistic_name TEXT,
+    time_s NUMERIC,
+    pct_of_db_time NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_time_model UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- OS Statistics
+-- ======================
+CREATE TABLE awr_os_statistics (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    statistic TEXT,
+    value NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_os_stats UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Foreground Wait Class
+-- ======================
+CREATE TABLE awr_foreground_wait_class (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    wait_class TEXT,
+    waits BIGINT,
+    total_wait_time_s NUMERIC,
+    avg_wait_ms NUMERIC,
+    pct_db_time NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_fg_wait_class UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Foreground Wait Events
+-- ======================
+CREATE TABLE awr_foreground_wait_events (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    event TEXT,
+    waits BIGINT,
+    total_wait_time_s NUMERIC,
+    avg_wait_ms NUMERIC,
+    waits_per_txn NUMERIC,
+    pct_db_time NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_fg_wait_events UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Background Wait Events
+-- ======================
+CREATE TABLE awr_background_wait_events (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    event TEXT,
+    waits BIGINT,
+    total_wait_time_s NUMERIC,
+    avg_wait_ms NUMERIC,
+    waits_per_txn NUMERIC,
+    pct_bg_time NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_bg_wait_events UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- SQL Stats
+-- ======================
+CREATE TABLE awr_sql_stats (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    ordered_by TEXT,
+    sql_id TEXT,
+    sql_module TEXT,
+    executions BIGINT,
+    pct_total NUMERIC,
+    pct_cpu NUMERIC,
+    pct_io NUMERIC,
+    elapsed_time_s NUMERIC,
+    elapsed_time_per_exec_s NUMERIC,
+    cpu_time_s NUMERIC,
+    cpu_per_exec_s NUMERIC,
+    user_io_time_s NUMERIC,
+    uio_per_exec_s NUMERIC,
+    buffer_gets BIGINT,
+    gets_per_exec NUMERIC,
+    physical_reads BIGINT,
+    reads_per_exec NUMERIC,
+    unoptimized_read_reqs BIGINT,
+    physical_read_reqs BIGINT,
+    unoptimized_reqs_per_exec NUMERIC,
+    pctopt NUMERIC,
+    rows_processed BIGINT,
+    rows_per_exec NUMERIC,
+    parse_calls BIGINT,
+    pct_total_parses NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_sql_stats UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Instance Activity Stats
+-- ======================
+CREATE TABLE awr_instance_activity_stats (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    name TEXT,
+    statistic TEXT,
+    total BIGINT,
+    per_second NUMERIC,
+    per_trans NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_inst_activity UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- IOStat by Function
+-- ======================
+CREATE TABLE awr_iostat_function (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    function_name TEXT,
+    reads BIGINT,
+    reads_reqs_per_sec NUMERIC,
+    reads_data_per_sec NUMERIC,
+    writes BIGINT,
+    writes_reqs_per_sec NUMERIC,
+    writes_data_per_sec NUMERIC,
+    waits BIGINT,
+    avg_time_ms NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_iostat_function UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- IOStat by Filetype
+-- ======================
+CREATE TABLE awr_iostat_filetype (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    filetype_name TEXT,
+    reads BIGINT,
+    reads_reqs_per_sec NUMERIC,
+    reads_data_per_sec NUMERIC,
+    writes BIGINT,
+    writes_reqs_per_sec NUMERIC,
+    writes_data_per_sec NUMERIC,
+    small_read NUMERIC,
+    large_read NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_iostat_filetype UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- IOStat by Function/Filetype
+-- ======================
+CREATE TABLE awr_iostat_func_filetype (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    function_file_name TEXT,
+    reads BIGINT,
+    reads_reqs_per_sec NUMERIC,
+    reads_data_per_sec NUMERIC,
+    writes BIGINT,
+    writes_reqs_per_sec NUMERIC,
+    writes_data_per_sec NUMERIC,
+    waits BIGINT,
+    avg_time_ms NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_iostat_func_filetype UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Tablespace IO Stats
+-- ======================
+CREATE TABLE awr_tablespace_io_stats (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    tablespace TEXT,
+    reads BIGINT,
+    avg_read_sec NUMERIC,
+    avg_read_ms NUMERIC,
+    writes BIGINT,
+    write_avg_sec NUMERIC,
+    write_avg_ms NUMERIC,
+    buffer_waits BIGINT,
+    avg_buffer_wait_ms NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_tblspc_io UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- File IO Stats
+-- ======================
+CREATE TABLE awr_file_io_stats (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    tablespace TEXT,
+    filename TEXT,
+    reads BIGINT,
+    avg_read_sec NUMERIC,
+    avg_read_ms NUMERIC,
+    writes BIGINT,
+    write_avg_sec NUMERIC,
+    write_avg_ms NUMERIC,
+    buffer_waits BIGINT,
+    avg_buffer_wait_ms NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_file_io UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Advisory SGA
+-- ======================
+CREATE TABLE awr_advisory_sga (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    sga_target_size_m NUMERIC,
+    sga_size_factor NUMERIC,
+    est_db_time_s NUMERIC,
+    est_physical_reads BIGINT,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_adv_sga UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Advisory PGA
+-- ======================
+CREATE TABLE awr_advisory_pga (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    pga_target_est_mb NUMERIC,
+    size_factor NUMERIC,
+    w_a_mb_processed NUMERIC,
+    estd_extra_written_to_disk NUMERIC,
+    estd_pga_cache_hit_pct NUMERIC,
+    estd_pga_overalloc_count BIGINT,
+    estd_time NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_adv_pga UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Buffer Wait Statistics
+-- ======================
+CREATE TABLE awr_buffer_wait_statistics (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    class TEXT,
+    waits BIGINT,
+    total_wait_time_s NUMERIC,
+    avg_time_ms NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_buf_waits UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Enqueue Statistics
+-- ======================
+CREATE TABLE awr_enqueue_statistics (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    enqueue_type_request_reason TEXT,
+    requests BIGINT,
+    succ_gets BIGINT,
+    failed_gets BIGINT,
+    waits BIGINT,
+    wt_time_s NUMERIC,
+    av_wt_time_ms NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_enqueue_stats UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Undo Statistics
+-- ======================
+CREATE TABLE awr_undo_statistics (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    num_undo_blocks BIGINT,
+    number_of_transactions BIGINT,
+    max_qry_len_s NUMERIC,
+    max_tx_concy NUMERIC,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_undo_stats UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
+
+-- ======================
+-- Segment Statistics
+-- ======================
+CREATE TABLE awr_segment_statistics (
+    id SERIAL PRIMARY KEY,
+    dbname TEXT NOT NULL,
+    instance TEXT NOT NULL,
+    instnum INT,
+    snap_time TIMESTAMP,
+    segment_type TEXT,
+    owner TEXT,
+    tablespace_name TEXT,
+    object_name TEXT,
+    subobject_name TEXT,
+    obj_type TEXT,
+    obj_num BIGINT,
+    dataobj_num BIGINT,
+    pcttotal NUMERIC,
+    logical_reads BIGINT,
+    physical_reads BIGINT,
+    phys_read_requests BIGINT,
+    unoptimized_reads BIGINT,
+    optimized_reads BIGINT,
+    direct_reads BIGINT,
+    physical_writes BIGINT,
+    phys_write_requests BIGINT,
+    direct_writes BIGINT,
+    table_scans BIGINT,
+    pct_of_capture NUMERIC,
+    db_block_changes BIGINT,
+    row_lock_waits BIGINT,
+    itl_waits BIGINT,
+    buffer_busy_waits BIGINT,
+    gc_buffer_busy BIGINT,
+    cr_blocks_received BIGINT,
+    current_blocks_received BIGINT,
+    gc_remote_grants BIGINT,
+    begin_snap INT,
+    row_hash CHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_awr_segment_stats UNIQUE (dbname, instance, begin_snap, row_hash)
+) tablespace awrparser;
