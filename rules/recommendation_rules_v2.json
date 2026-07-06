@@ -1,0 +1,948 @@
+{
+  "version": "2.0",
+  "description": "AWR Insight Portal — Enhanced Recommendation Rules. 60+ rules covering Wait Events, SQL, Segments, Instance Efficiency, Undo/Redo, SGA/PGA, and SAR-correlated diagnostics.",
+  "rules": [
+
+    // ═══════════════════════════════════════════════════════
+    // CATEGORY: WAIT EVENTS — I/O
+    // ═══════════════════════════════════════════════════════
+    {
+      "rule_id": "WAIT_001",
+      "category": "wait",
+      "event_pattern": "db file sequential read",
+      "condition": "pct_db_time > 15 OR avg_wait_ms > 10",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Single-Block I/O Latency",
+      "root_cause": "Single-block (index) reads are consuming significant DB time. Typically caused by: undersized buffer cache causing repeated disk reads of hot index blocks; storage latency on data/index files; full table scans misidentified as index lookups due to bad optimizer statistics; excessive row-by-row OLTP operations driving high random I/O.",
+      "resolution_steps": [
+        "1. Identify hot segments using Top Segments by Physical Reads — focus on objects with highest physical read count.",
+        "2. Verify buffer cache hit ratio — if < 95%, consider increasing DB_CACHE_SIZE.",
+        "3. Review top SQLs associated with this wait — check for nested loops on large tables without selective index.",
+        "4. Run the diagnostic SQL below to identify top objects causing single-block reads.",
+        "5. Check storage latency: if avg_wait_ms > 20ms, escalate to storage team for I/O response time review.",
+        "6. Consider caching hot small tables/indexes using ALTER TABLE ... CACHE or KEEP buffer pool.",
+        "7. For 19c+: verify Automatic Indexing recommendations in DBA_ADVISOR_FINDINGS."
+      ],
+      "diagnostic_sql": [
+        "-- Top objects causing db file sequential read in current AWR snap range\nSELECT owner, object_name, object_type, value AS physical_reads\nFROM v$segment_statistics\nWHERE statistic_name = 'physical reads'\nORDER BY value DESC FETCH FIRST 15 ROWS ONLY;",
+        "-- Buffer cache hit ratio\nSELECT 1 - (phy.value / (cur.value + con.value)) AS buffer_hit_ratio\nFROM v$sysstat phy, v$sysstat cur, v$sysstat con\nWHERE phy.name = 'physical reads'\n  AND cur.name = 'db block gets'\n  AND con.name = 'consistent gets';"
+      ],
+      "related_rules": ["WAIT_002", "SEG_001", "SGA_001"]
+    },
+
+    {
+      "rule_id": "WAIT_002",
+      "category": "wait",
+      "event_pattern": "db file scattered read",
+      "condition": "pct_db_time > 10 OR avg_wait_ms > 15",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Multi-Block I/O — Full Table/Index Scans",
+      "root_cause": "Multi-block reads (full table or fast full index scans) are consuming significant time. Usually caused by missing or unused indexes, poor join methods, stale optimizer statistics causing the optimizer to prefer full scans, or legitimately large analytical queries.",
+      "resolution_steps": [
+        "1. Identify which SQLs are driving full scans via Top SQL by Physical Reads dashboard.",
+        "2. Run EXPLAIN PLAN for top offending SQLs — look for FULL TABLE SCAN on large tables.",
+        "3. Check DBA_TAB_STATISTICS for stale stats: LAST_ANALYZED, STALE_STATS columns.",
+        "4. If scans are expected (analytics/batch), verify DB_FILE_MULTIBLOCK_READ_COUNT is set appropriately (default 128 on most versions).",
+        "5. Consider partitioning large tables if full scans span entire table but access only a date range.",
+        "6. For OLTP workloads: missing indexes are the primary cause — use SQL Access Advisor."
+      ],
+      "diagnostic_sql": [
+        "-- Tables with stale or missing statistics\nSELECT owner, table_name, num_rows, last_analyzed, stale_stats\nFROM dba_tab_statistics\nWHERE (stale_stats = 'YES' OR last_analyzed IS NULL)\n  AND owner NOT IN ('SYS','SYSTEM','DBSNMP')\nORDER BY num_rows DESC NULLS LAST\nFETCH FIRST 20 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_001", "SQL_003", "SEG_001"]
+    },
+
+    {
+      "rule_id": "WAIT_003",
+      "category": "wait",
+      "event_pattern": "direct path read",
+      "condition": "pct_db_time > 10",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Direct Path Reads — Large Segment Scans Bypassing Buffer Cache",
+      "root_cause": "Direct path reads bypass the buffer cache and read directly into PGA. Triggered for: parallel query operations; large table scans where the object size exceeds _SMALL_TABLE_THRESHOLD; sort operations spilling to disk; smart scans (Exadata). High direct path reads can indicate PGA pressure if sort areas are spilling.",
+      "resolution_steps": [
+        "1. Identify segments with high direct physical reads in the Segments dashboard.",
+        "2. Check if parallel query is being over-used: look for PARALLEL operations in top SQL plans.",
+        "3. Verify PGA aggregate target is adequate — check V$PGASTAT for 'cache hit percentage' (target > 95%).",
+        "4. For expected large analytical queries, ensure PARALLEL_DEGREE_POLICY is set appropriately.",
+        "5. If object is small and still causing direct reads, check _SMALL_TABLE_THRESHOLD parameter."
+      ],
+      "diagnostic_sql": [
+        "-- PGA usage and hit ratio\nSELECT name, value FROM v$pgastat\nWHERE name IN ('aggregate PGA target parameter','total PGA inuse','cache hit percentage','over allocation count');"
+      ],
+      "related_rules": ["WAIT_001", "PGA_001"]
+    },
+
+    {
+      "rule_id": "WAIT_004",
+      "category": "wait",
+      "event_pattern": "direct path read temp",
+      "condition": "pct_db_time > 5 OR avg_wait_ms > 20",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Temp Segment I/O — Sorts and Hash Joins Spilling to Disk",
+      "root_cause": "SQL operations (sort, hash join, bitmap operations) are spilling to the TEMP tablespace because PGA is insufficient. Every disk-based sort is 10–100x slower than an in-memory sort. Primary causes: PGA_AGGREGATE_TARGET too small; SQL with no predicate pushing causing huge intermediate result sets; hash joins on very large tables.",
+      "resolution_steps": [
+        "1. Identify top SQLs causing temp usage — look for high DISK_READS in V$SQL with sort-heavy plans.",
+        "2. Check PGA_AGGREGATE_TARGET and PGA_AGGREGATE_LIMIT — increase if over-allocation count > 0.",
+        "3. Review TEMP tablespace size and available space — ORA-01652 may be imminent if near full.",
+        "4. For individual SQLs: adding hints /*+ NO_MERGE */ or tuning join order can eliminate spills.",
+        "5. Check WORKAREA_SIZE_POLICY=AUTO — ensure it is not set to MANUAL (prevents auto PGA sizing)."
+      ],
+      "diagnostic_sql": [
+        "-- Sessions currently using TEMP\nSELECT s.sid, s.serial#, s.username, s.status,\n       t.blocks * 8192 / 1048576 AS temp_mb\nFROM v$session s, v$tempseg_usage t\nWHERE s.saddr = t.session_addr\nORDER BY temp_mb DESC;",
+        "-- TEMP tablespace free space\nSELECT tablespace_name, total_blocks * 8192/1048576 AS total_mb,\n       free_blocks * 8192/1048576 AS free_mb,\n       ROUND((1 - free_blocks/total_blocks)*100, 1) AS used_pct\nFROM dba_temp_free_space;"
+      ],
+      "related_rules": ["PGA_001", "UNDO_003"]
+    },
+
+    {
+      "rule_id": "WAIT_005",
+      "category": "wait",
+      "event_pattern": "log file sync",
+      "condition": "pct_db_time > 5 OR avg_wait_ms > 5",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Commit Latency — LGWR Redo Sync Delay",
+      "root_cause": "LGWR is taking too long to write redo to disk and signal the committing session. Root causes: redo log files on slow storage (rotational disk, NAS without write-back cache); redo log file size too small causing frequent log switches; high commit rate (chatty application doing row-by-row commits); ASYNC I/O not enabled for redo; storage subsystem latency.",
+      "resolution_steps": [
+        "1. Check redo log file location — must be on fastest available storage (dedicated SSD/NVMe or ASM).",
+        "2. Check redo log switch frequency: if switching > every 15 minutes, increase log file size to 1-4GB.",
+        "3. Verify DISK_ASYNCH_IO = TRUE and FILESYSTEMIO_OPTIONS includes ASYNC or DIRECTIO.",
+        "4. Review application commit patterns — batch commits (e.g. commit every 1000 rows) dramatically reduce log file sync waits.",
+        "5. Check for log file parallel write waits occurring simultaneously — indicates LGWR I/O issue.",
+        "6. For 19c+: consider NOLOGGING on bulk load operations."
+      ],
+      "diagnostic_sql": [
+        "-- Redo log switch frequency\nSELECT TO_CHAR(first_time,'YYYY-MM-DD HH24') AS hour,\n       COUNT(*) AS switches\nFROM v$log_history\nWHERE first_time > SYSDATE - 1\nGROUP BY TO_CHAR(first_time,'YYYY-MM-DD HH24')\nORDER BY 1 DESC;",
+        "-- Redo log file sizes and status\nSELECT l.group#, lf.member, l.bytes/1048576 AS size_mb, l.status\nFROM v$log l JOIN v$logfile lf ON l.group# = lf.group#\nORDER BY l.group#;"
+      ],
+      "related_rules": ["WAIT_006", "REDO_001"]
+    },
+
+    {
+      "rule_id": "WAIT_006",
+      "category": "wait",
+      "event_pattern": "log file parallel write",
+      "condition": "pct_db_time > 3 OR avg_wait_ms > 10",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "LGWR I/O Latency — Redo Log Write Performance",
+      "root_cause": "LGWR is experiencing high I/O latency writing redo log buffers. This directly causes log file sync waits for committing sessions. Causes: redo logs on shared/slow storage; RAID write penalty; missing write-back cache on storage controller; competing I/O from data files on the same spindles.",
+      "resolution_steps": [
+        "1. Separate redo log files onto dedicated storage, isolated from data files.",
+        "2. Enable ASYNC I/O: DISK_ASYNCH_IO=TRUE, FILESYSTEMIO_OPTIONS=SETALL.",
+        "3. Consider ASM for redo logs — ASM provides fine-grained I/O control.",
+        "4. Check for storage cache bypass settings — redo requires write-back cache for optimal performance.",
+        "5. For 19c+: LGWR can use multiple worker processes — verify LOG_PARALLELISM_MAX setting."
+      ],
+      "diagnostic_sql": [
+        "-- Average redo write time and size\nSELECT name, value FROM v$sysstat\nWHERE name IN ('redo writes','redo write time','redo blocks written','redo log space requests')\nORDER BY name;"
+      ],
+      "related_rules": ["WAIT_005", "REDO_001"]
+    },
+
+    {
+      "rule_id": "WAIT_007",
+      "category": "wait",
+      "event_pattern": "enq: TX - row lock contention",
+      "condition": "pct_db_time > 2 OR avg_wait_ms > 100",
+      "severity": "critical",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Row Lock Contention — Blocked DML Transactions",
+      "root_cause": "Sessions are waiting to acquire row-level locks held by other transactions. Causes: long-running uncommitted transactions blocking others; application not committing frequently enough; missing indexes causing lock escalation on lookup tables; sequence cache too low causing hot rows in sequence backing table.",
+      "resolution_steps": [
+        "1. Identify blocking sessions using the diagnostic SQL below — find who holds the lock and who is waiting.",
+        "2. Check the blocker's current SQL and how long it has been active.",
+        "3. Review application transaction boundaries — ensure COMMIT is issued after each logical unit of work.",
+        "4. For sequence-related locks: increase CACHE on the sequence (ALTER SEQUENCE ... CACHE 1000).",
+        "5. Check for implicit row-level locking patterns in application code (SELECT FOR UPDATE without SKIP LOCKED).",
+        "6. For deadlock patterns: check alert log for ORA-00060 and review trace files."
+      ],
+      "diagnostic_sql": [
+        "-- Current blocking sessions\nSELECT l1.sid AS waiting_sid, l1.type, l2.sid AS blocking_sid,\n       s.username AS blocker, s2.username AS waiter,\n       s2.sql_id AS waiting_sql\nFROM v$lock l1, v$lock l2, v$session s, v$session s2\nWHERE l1.block = 0 AND l2.block = 1\n  AND l1.id1 = l2.id1 AND l1.id2 = l2.id2\n  AND l1.sid = s2.sid AND l2.sid = s.sid;",
+        "-- Hot rows in last AWR period\nSELECT owner, object_name, row_lock_waits\nFROM (SELECT * FROM awr_seg_row_lck_waits\n      WHERE dbname = :dbname AND begin_snap = :snap\n      ORDER BY row_lock_waits DESC)\nFETCH FIRST 10 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_008", "SEG_004"]
+    },
+
+    {
+      "rule_id": "WAIT_008",
+      "category": "wait",
+      "event_pattern": "enq: TX - allocate ITL entry",
+      "condition": "pct_db_time > 1",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "ITL (Interested Transaction List) Contention",
+      "root_cause": "Blocks do not have enough ITL slots for concurrent transactions. Each block has a fixed number of ITL slots (controlled by INITRANS). When a block is full of ITL entries, new transactions must wait. Common on tables/indexes with high concurrent DML and low INITRANS setting.",
+      "resolution_steps": [
+        "1. Identify hot segments from Top Segments by ITL Waits dashboard.",
+        "2. Increase INITRANS on the affected tables/indexes: ALTER TABLE ... INITRANS 10.",
+        "3. Consider online rebuild (ALTER TABLE ... MOVE ONLINE) to allow INITRANS to take effect on existing blocks.",
+        "4. For indexes: ALTER INDEX ... REBUILD INITRANS 10.",
+        "5. Check PCTFREE setting — higher PCTFREE allows more ITL slots to expand within each block."
+      ],
+      "diagnostic_sql": [
+        "-- Objects with ITL waits\nSELECT owner, object_name, obj_type, itl_waits\nFROM awr_seg_itl_waits\nWHERE dbname = :dbname AND begin_snap BETWEEN :start_snap AND :end_snap\nORDER BY itl_waits DESC FETCH FIRST 10 ROWS ONLY;"
+      ],
+      "related_rules": ["SEG_004"]
+    },
+
+    {
+      "rule_id": "WAIT_009",
+      "category": "wait",
+      "event_pattern": "buffer busy waits",
+      "condition": "pct_db_time > 3 OR avg_wait_ms > 10",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Buffer Busy Waits — Hot Block Contention",
+      "root_cause": "Multiple sessions are competing to access the same buffer block simultaneously. Typically caused by: hot segment blocks (right-side of b-tree index with sequential inserts); high-concurrent access to header blocks; small INITRANS causing buffer pin waits; index block splits under high insert rates.",
+      "resolution_steps": [
+        "1. Identify hot segments from Top Segments by Buffer Busy Waits.",
+        "2. For sequential-key indexes: consider hash-partitioning the index or using a reverse key index.",
+        "3. Increase INITRANS on the hot segment to reduce buffer pin contention.",
+        "4. Consider partitioning the underlying table to spread block access across partition boundaries.",
+        "5. For header block waits on sequences: increase CACHE on the sequence."
+      ],
+      "diagnostic_sql": [
+        "-- Objects with buffer busy waits\nSELECT owner, object_name, obj_type, buffer_busy_waits\nFROM awr_seg_buff_busy_waits\nWHERE dbname = :dbname AND begin_snap BETWEEN :start_snap AND :end_snap\nORDER BY buffer_busy_waits DESC FETCH FIRST 10 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_008", "SEG_004", "SGA_001"]
+    },
+
+    {
+      "rule_id": "WAIT_010",
+      "category": "wait",
+      "event_pattern": "latch: shared pool",
+      "condition": "pct_db_time > 2",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Shared Pool Latch Contention",
+      "root_cause": "High contention on the shared pool latch indicates excessive hard parsing, fragmented shared pool, or cursor sharing issues. Sessions compete to allocate or search library cache memory. Root causes: literals in SQL (no bind variables); shared pool too small causing frequent aging-out; large PL/SQL objects being reloaded repeatedly.",
+      "resolution_steps": [
+        "1. Check hard parse rate from Load Profile — hard parses per second should be < 1% of total parses.",
+        "2. Ensure CURSOR_SHARING = FORCE if application uses literals (last resort — prefer fixing application).",
+        "3. Increase SHARED_POOL_SIZE if shared pool is frequently flushed or fragmented.",
+        "4. Check for large objects causing fragmentation: query V$DB_OBJECT_CACHE for large kept objects.",
+        "5. Pin large frequently-used packages: DBMS_SHARED_POOL.KEEP('PACKAGE_NAME','P').",
+        "6. Set OPEN_CURSORS appropriately for the application's cursor usage patterns."
+      ],
+      "diagnostic_sql": [
+        "-- Top non-shared cursors (literal SQL)\nSELECT substr(sql_text,1,80) AS sql_text, count(*) AS versions\nFROM v$sql\nGROUP BY substr(sql_text,1,80)\nHAVING count(*) > 50\nORDER BY versions DESC FETCH FIRST 20 ROWS ONLY;",
+        "-- Shared pool free memory and fragmentation\nSELECT name, bytes/1048576 AS mb FROM v$sgastat\nWHERE pool = 'shared pool'\n  AND name IN ('free memory','library cache','sql area')\nORDER BY name;"
+      ],
+      "related_rules": ["WAIT_011", "SGA_002", "SQL_004"]
+    },
+
+    {
+      "rule_id": "WAIT_011",
+      "category": "wait",
+      "event_pattern": "latch: library cache",
+      "condition": "pct_db_time > 2",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Library Cache Latch Contention",
+      "root_cause": "Excessive library cache latch waits indicate SQL being parsed repeatedly (hard parses) or cursor pinning/unpinning overhead. Often co-occurs with shared pool latch waits.",
+      "resolution_steps": [
+        "1. Same root actions as WAIT_010 — shared pool and library cache latches have the same root causes.",
+        "2. Check SESSION_CACHED_CURSORS parameter — increase to 50-100 to cache cursors per session.",
+        "3. Review application connection pooling — each new connection with cold cursor cache causes library cache hits.",
+        "4. Check for cursor leaks: sessions holding many open cursors without closing them."
+      ],
+      "diagnostic_sql": [
+        "-- Sessions with high open cursors\nSELECT s.sid, s.username, s.program, COUNT(c.cursor#) AS open_cursors\nFROM v$session s JOIN v$open_cursor c ON s.saddr = c.saddr\nGROUP BY s.sid, s.username, s.program\nORDER BY open_cursors DESC FETCH FIRST 20 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_010", "SGA_002"]
+    },
+
+    {
+      "rule_id": "WAIT_012",
+      "category": "wait",
+      "event_pattern": "enq: HW - contention",
+      "condition": "pct_db_time > 1",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Water Mark Contention — Segment Extension Under Load",
+      "root_cause": "Multiple sessions are simultaneously extending a segment, serialising on the HW enqueue that protects the high water mark. Common under high-concurrency INSERT workloads with small extents or AUTOEXTEND on slow storage.",
+      "resolution_steps": [
+        "1. Pre-allocate space: ALTER TABLE ... ALLOCATE EXTENT to pre-extend the segment before peak load.",
+        "2. Increase extent sizes in the tablespace definition to reduce the frequency of extensions.",
+        "3. Check storage performance when extending — slow AUTOEXTEND on HDD causes long HW waits.",
+        "4. For partitioned tables: use interval partitioning to reduce single-segment growth contention."
+      ],
+      "diagnostic_sql": [
+        "-- Segments that have grown recently\nSELECT owner, segment_name, segment_type, bytes/1048576 AS mb, extents\nFROM dba_segments\nWHERE extents > 100\nORDER BY extents DESC FETCH FIRST 20 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_013"]
+    },
+
+    {
+      "rule_id": "WAIT_013",
+      "category": "wait",
+      "event_pattern": "enq: ST - contention",
+      "condition": "pct_db_time > 1",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Space Management Contention — TEMP/UNDO Allocation Serialisation",
+      "root_cause": "Space transaction enqueue contention on TEMP or UNDO segments. Sessions serialize waiting to allocate or deallocate space blocks. Usually caused by heavy concurrent use of TEMP tablespace or concurrent undo segment extension.",
+      "resolution_steps": [
+        "1. For TEMP contention: add more tempfiles or increase tempfile sizes.",
+        "2. For UNDO contention: check UNDO_RETENTION and undo tablespace size.",
+        "3. Ensure UNDO_MANAGEMENT=AUTO and UNDO_TABLESPACE is set correctly.",
+        "4. Check if TEMP is near full — expand before peak."
+      ],
+      "diagnostic_sql": [
+        "-- TEMP tablespace usage\nSELECT tablespace_name, total_blocks*8192/1048576 AS total_mb,\n       (total_blocks-free_blocks)*8192/1048576 AS used_mb\nFROM dba_temp_free_space;"
+      ],
+      "related_rules": ["UNDO_001", "WAIT_004"]
+    },
+
+    {
+      "rule_id": "WAIT_014",
+      "category": "wait",
+      "event_pattern": "gc buffer busy acquire",
+      "condition": "pct_db_time > 3",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "RAC Global Cache Buffer Busy — Interconnect Hot Block",
+      "root_cause": "RAC-specific: a buffer requested from another instance is not yet available. Caused by hot blocks being transferred across the interconnect while multiple sessions from different nodes compete for the same buffer. Indicates: poorly distributed workload across RAC nodes; hot sequence/index blocks; application not partitioned across RAC nodes.",
+      "resolution_steps": [
+        "1. Identify hot segments from GC Buffer Busy Segments dashboard.",
+        "2. Review application connection distribution across RAC nodes — uneven distribution causes cross-instance contention.",
+        "3. For index contention: use hash partitioning to spread hot index blocks.",
+        "4. Increase sequence CACHE and NOORDER to reduce cross-instance sync.",
+        "5. Check interconnect bandwidth and latency — should be < 1ms for Oracle RAC.",
+        "6. Consider Application Services to route specific transactions to specific nodes."
+      ],
+      "diagnostic_sql": [
+        "-- GC statistics\nSELECT name, value FROM v$sysstat\nWHERE name LIKE 'gc%'\nORDER BY value DESC FETCH FIRST 20 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_009", "SEG_005"]
+    },
+
+    {
+      "rule_id": "WAIT_015",
+      "category": "wait",
+      "event_pattern": "read by other session",
+      "condition": "pct_db_time > 3",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Read Contention — Multiple Sessions Reading Same Block from Disk",
+      "root_cause": "A session is waiting for another session to read a block from disk into the buffer cache. Caused by: cache miss for popular blocks; inadequate buffer cache; cold-cache startup after instance restart; parallel queries all starting simultaneously and requesting the same blocks.",
+      "resolution_steps": [
+        "1. Increase DB_CACHE_SIZE to reduce cache misses on hot blocks.",
+        "2. For frequently-accessed small tables/indexes: use KEEP buffer pool (ALTER TABLE ... STORAGE (BUFFER_POOL KEEP)).",
+        "3. After instance restart: pre-warm cache using DBMS_SHARED_POOL.KEEP or by running warm-up queries.",
+        "4. For 19c+: Automatic SGA Management (MEMORY_TARGET) can help dynamically allocate more buffer cache.",
+        "5. Check for parallel query storms — stagger large parallel query execution times."
+      ],
+      "diagnostic_sql": [
+        "-- Buffer cache size and hit rate\nSELECT name, value FROM v$sysstat\nWHERE name IN ('physical reads','physical reads cache','physical reads direct','session logical reads');"
+      ],
+      "related_rules": ["SGA_001", "WAIT_001"]
+    },
+
+    // ═══════════════════════════════════════════════════════
+    // CATEGORY: SQL PERFORMANCE
+    // ═══════════════════════════════════════════════════════
+    {
+      "rule_id": "SQL_001",
+      "category": "sql",
+      "event_pattern": "high_elapsed_time",
+      "condition": "elapsed_time_s > 60 AND executions > 0",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Total Elapsed Time SQL",
+      "root_cause": "This SQL is consuming a disproportionate share of total database elapsed time. Can be caused by: poor execution plan (full scans, bad join methods); high execution frequency with moderate per-execution cost; data skew causing optimizer estimate errors; missing or outdated statistics; bind variable peeking causing one-size-fits-all plan.",
+      "resolution_steps": [
+        "1. Pull the full execution plan: SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(:sql_id, NULL, 'ALLSTATS LAST')).",
+        "2. Check for plan instability: query V$SQL_PLAN_STATISTICS_ALL for multiple plans.",
+        "3. Gather fresh statistics on all tables/indexes in the query.",
+        "4. Look for FULL TABLE SCAN on large tables — verify indexes exist and are being used.",
+        "5. Check if bind variable peeking is causing a bad plan: query V$SQL for BIND_DATA.",
+        "6. If plan is consistently bad: create a SQL Profile or SQL Plan Baseline to stabilize it.",
+        "7. For 19c+: check Automatic SQL Tuning advisor results in DBA_ADVISOR_FINDINGS."
+      ],
+      "diagnostic_sql": [
+        "-- Execution plan with runtime stats\nSELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(:sql_id, NULL, 'ALLSTATS LAST +OUTLINE'));",
+        "-- Plan history for this SQL\nSELECT plan_hash_value, executions, elapsed_time/1000000 AS elapsed_s,\n       last_active_time\nFROM v$sql\nWHERE sql_id = :sql_id\nORDER BY last_active_time DESC;"
+      ],
+      "related_rules": ["SQL_002", "SQL_003", "SQL_005"]
+    },
+
+    {
+      "rule_id": "SQL_002",
+      "category": "sql",
+      "event_pattern": "high_cpu",
+      "condition": "cpu_time_s > 30 AND executions > 0",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "CPU-Intensive SQL",
+      "root_cause": "SQL is consuming excessive CPU. Typical causes: large hash joins or sort operations in memory; excessive logical I/O (buffer gets) due to missing or inefficient indexes; function calls in WHERE clause preventing index use; complex analytical/window functions on large datasets; PL/SQL function calls within SQL.",
+      "resolution_steps": [
+        "1. Check buffer gets per execution — if > 100K, the SQL is doing excessive logical I/O.",
+        "2. Look for function-based index opportunities: WHERE UPPER(col) = 'VALUE' — add FBI.",
+        "3. Review join methods — nested loops on large tables cause O(n²) logical reads.",
+        "4. Check for unnecessary full-result-set processing (missing WHERE predicates).",
+        "5. If PL/SQL functions are in SQL: consider caching with RESULT_CACHE or rewriting as joins.",
+        "6. For analytical queries: ensure proper partitioning and partition pruning."
+      ],
+      "diagnostic_sql": [
+        "-- CPU-heavy SQLs in last AWR period\nSELECT sql_id, elapsed_time_s, cpu_time_s,\n       ROUND(cpu_time_s/NULLIF(elapsed_time_s,0)*100,1) AS cpu_pct,\n       executions\nFROM awr_sql_cpu_time\nWHERE dbname = :dbname AND begin_snap BETWEEN :start_snap AND :end_snap\nORDER BY cpu_time_s DESC FETCH FIRST 15 ROWS ONLY;"
+      ],
+      "related_rules": ["SQL_001", "SQL_004"]
+    },
+
+    {
+      "rule_id": "SQL_003",
+      "category": "sql",
+      "event_pattern": "high_physical_reads",
+      "condition": "physical_reads_per_exec > 10000",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Physical I/O SQL",
+      "root_cause": "This SQL is generating a large number of physical disk reads per execution, indicating: missing indexes causing full table scans; buffer cache too small to hold the working set; parallel query writing directly to disk bypassing cache; stale statistics causing poor join order.",
+      "resolution_steps": [
+        "1. Verify execution plan — identify FULL TABLE SCAN operations on large tables.",
+        "2. Check index availability: DBA_INDEXES on referenced tables.",
+        "3. If no suitable index exists, evaluate creating one based on predicate selectivity.",
+        "4. For DSS/analytics: consider result caching (RESULT_CACHE hint) for repetitive aggregations.",
+        "5. For 19c+: In-Memory Column Store may eliminate physical reads for frequently-scanned analytical tables."
+      ],
+      "diagnostic_sql": [
+        "-- Top SQLs by physical reads\nSELECT sql_id, physical_reads_total, physical_reads_per_exec, executions\nFROM awr_sql_reads\nWHERE dbname = :dbname AND begin_snap BETWEEN :start_snap AND :end_snap\nORDER BY physical_reads_total DESC FETCH FIRST 15 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_001", "WAIT_002", "SQL_001"]
+    },
+
+    {
+      "rule_id": "SQL_004",
+      "category": "sql",
+      "event_pattern": "high_parse_calls",
+      "condition": "parse_calls > 1000 AND parse_calls_pct > 80",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Excessive SQL Parsing — Soft or Hard Parse Rate",
+      "root_cause": "The SQL is being parsed on nearly every execution, indicating the cursor is not being reused. Causes: application not using bind variables (new cursor per literal value); SESSION_CACHED_CURSORS too low; connection pooling creating new sessions without cursor caching; CURSOR_SHARING=EXACT with literal-heavy SQL.",
+      "resolution_steps": [
+        "1. Check if SQL text contains literals — if yes, fix the application to use bind variables.",
+        "2. If fixing application is not possible: set CURSOR_SHARING=FORCE as a temporary measure.",
+        "3. Increase SESSION_CACHED_CURSORS from default (50) to 100-500 for connection-pool workloads.",
+        "4. Review OPEN_CURSORS limit — ORA-01000 may occur if cursors are leaked.",
+        "5. For 19c+: Adaptive Cursor Sharing can help with bind variable peeking issues."
+      ],
+      "diagnostic_sql": [
+        "-- Parse rate from load profile (already in Grafana)\nSELECT metric, per_sec FROM awr_load_profile\nWHERE dbname = :dbname AND begin_snap = :snap\n  AND metric IN ('Parses','Hard Parses','Soft Parse %')\nORDER BY metric;"
+      ],
+      "related_rules": ["WAIT_010", "WAIT_011", "SGA_002"]
+    },
+
+    {
+      "rule_id": "SQL_005",
+      "category": "sql",
+      "event_pattern": "high_version_count",
+      "condition": "version_count > 50",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Cursor Version Count — Cursor Explosion",
+      "root_cause": "A single SQL is being stored as many separate cursors in the shared pool, typically caused by: different bind variable data types between executions; session-level optimizer settings differing between sessions (optimizer_mode, nls_settings); CURSOR_SHARING=SIMILAR (deprecated); row-level security policies creating plan variations.",
+      "resolution_steps": [
+        "1. Query V$SQL_SHARED_CURSOR for this sql_id to see why cursors are not being shared.",
+        "2. Check for application sessions with different NLS or optimizer settings.",
+        "3. Review CURSOR_SHARING setting — SIMILAR is deprecated, use EXACT or FORCE.",
+        "4. If RLS policies are in use, verify they are consistent across sessions.",
+        "5. For 19c: consider using CURSOR_INVALIDATION=DEFERRED to reduce plan invalidation storms."
+      ],
+      "diagnostic_sql": [
+        "-- Reason cursors are not shared\nSELECT sql_id, reason FROM v$sql_shared_cursor\nWHERE sql_id = :sql_id FETCH FIRST 10 ROWS ONLY;"
+      ],
+      "related_rules": ["SQL_004", "WAIT_010"]
+    },
+
+    // ═══════════════════════════════════════════════════════
+    // CATEGORY: SEGMENTS
+    // ═══════════════════════════════════════════════════════
+    {
+      "rule_id": "SEG_001",
+      "category": "segment",
+      "event_pattern": "high_logical_reads",
+      "condition": "logical_reads > 1000000 OR pcttotal > 20",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Hot Segment — Excessive Logical I/O",
+      "root_cause": "This segment is being accessed by a very high number of logical reads, indicating it is a frequently-accessed hot object. It is likely the target of many nested loops, index range scans, or full scans. If it is an index, consider whether it is highly selective. If it is a table, investigate whether the full scan is expected.",
+      "resolution_steps": [
+        "1. Identify the top SQLs accessing this segment (cross-reference with Top SQL by Physical Reads).",
+        "2. If the segment is an index: verify it is being used selectively (check column selectivity).",
+        "3. If the segment is a table with full scans: consider partitioning or adding a more selective index.",
+        "4. For frequently-read small reference tables: pin in KEEP buffer pool.",
+        "5. Check if result caching (RESULT_CACHE) is applicable for read-mostly reference data."
+      ],
+      "diagnostic_sql": [],
+      "related_rules": ["WAIT_001", "WAIT_002", "SQL_001"]
+    },
+
+    {
+      "rule_id": "SEG_002",
+      "category": "segment",
+      "event_pattern": "high_physical_reads",
+      "condition": "physical_reads > 100000 OR pcttotal > 15",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Hot Segment — High Physical Reads",
+      "root_cause": "This segment is generating a large volume of physical disk reads, indicating it is not fitting in the buffer cache or is being accessed via direct reads. For tables: likely full scans. For indexes: heavy random read pattern typical of OLTP with insufficient buffer cache.",
+      "resolution_steps": [
+        "1. Check buffer cache size relative to this segment's size.",
+        "2. If segment is small (< 5% of buffer cache): consider KEEP buffer pool.",
+        "3. If segment is large: investigate whether direct path reads are expected (parallel query).",
+        "4. Review storage latency for the tablespace where this segment resides.",
+        "5. For 19c+: consider In-Memory option for frequently-scanned analytical tables."
+      ],
+      "diagnostic_sql": [],
+      "related_rules": ["WAIT_001", "WAIT_003", "SGA_001"]
+    },
+
+    {
+      "rule_id": "SEG_003",
+      "category": "segment",
+      "event_pattern": "high_table_scans",
+      "condition": "table_scans > 10000",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Segment with High Full Table Scan Count",
+      "root_cause": "This table is being fully scanned many times, indicating either: the table is small (acceptable) or there are missing indexes preventing the optimizer from choosing an index access path. High table scan counts on large tables are a significant performance concern.",
+      "resolution_steps": [
+        "1. Verify the table size — for tables < 10,000 blocks, full scans may be optimal.",
+        "2. For large tables: identify top SQLs accessing this table and check their WHERE predicates.",
+        "3. Consider composite indexes covering the most common filter predicates.",
+        "4. Check if the table has histograms — skewed data distributions require histograms for good plans."
+      ],
+      "diagnostic_sql": [
+        "-- Table scan history for this object\nSELECT owner, object_name, table_scans, pcttotal\nFROM awr_seg_table_scans\nWHERE dbname = :dbname AND begin_snap BETWEEN :start_snap AND :end_snap\n  AND table_scans > 1000\nORDER BY table_scans DESC;"
+      ],
+      "related_rules": ["WAIT_002", "SQL_001", "SQL_003"]
+    },
+
+    {
+      "rule_id": "SEG_004",
+      "category": "segment",
+      "event_pattern": "high_row_lock_waits",
+      "condition": "row_lock_waits > 1000",
+      "severity": "critical",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Segment with High Row Lock Contention",
+      "root_cause": "This segment has experienced a large number of row lock waits, indicating significant DML contention. The same rows are being modified by multiple concurrent transactions. This is often caused by: missing indexes on foreign key columns (locking parent row); application not releasing locks promptly; hotspot rows (e.g. a single status/counter row updated by all sessions).",
+      "resolution_steps": [
+        "1. Add indexes on foreign key columns to prevent parent-table lock escalation.",
+        "2. Review application transaction duration — ensure transactions are as short as possible.",
+        "3. For counter/sequence rows: replace with Oracle sequences or use SKIP LOCKED patterns.",
+        "4. Check for deadlock patterns in alert log (ORA-00060).",
+        "5. Consider partitioning hot tables to spread DML across more granular segments."
+      ],
+      "diagnostic_sql": [],
+      "related_rules": ["WAIT_007", "WAIT_008"]
+    },
+
+    {
+      "rule_id": "SEG_005",
+      "category": "segment",
+      "event_pattern": "high_gc_buffer_busy",
+      "condition": "gc_buffer_busy > 500",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "RAC: Hot Segment — Global Cache Buffer Busy",
+      "root_cause": "In a RAC environment, this segment is generating high Global Cache buffer busy waits, indicating cross-node block contention on the interconnect. The segment is being accessed by sessions on multiple nodes simultaneously.",
+      "resolution_steps": [
+        "1. Review application partitioning strategy — route transactions for the same key range to the same RAC node.",
+        "2. Consider hash-partitioning the segment to distribute access across nodes.",
+        "3. If segment is a lookup/reference table: consider caching it via DBMS_SHARED_POOL or In-Memory.",
+        "4. Check interconnect bandwidth and latency — must be < 1ms for RAC.",
+        "5. Review SERVICE configuration — use preferred/available services to control node affinity."
+      ],
+      "diagnostic_sql": [],
+      "related_rules": ["WAIT_014"]
+    },
+
+    // ═══════════════════════════════════════════════════════
+    // CATEGORY: INSTANCE EFFICIENCY
+    // ═══════════════════════════════════════════════════════
+    {
+      "rule_id": "INST_001",
+      "category": "instance_efficiency",
+      "event_pattern": "buffer_cache_hit_ratio",
+      "condition": "value < 95",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Low Buffer Cache Hit Ratio",
+      "root_cause": "The buffer cache hit ratio is below 95%, meaning more than 5% of logical reads are resulting in physical disk reads. Primary cause: DB_CACHE_SIZE is too small for the current workload's working set. Secondary cause: large direct-path read workloads that bypass the cache.",
+      "resolution_steps": [
+        "1. Review SGA Target Advisory in the database advisory section for recommended cache sizes.",
+        "2. Increase DB_CACHE_SIZE or SGA_TARGET to accommodate the working set.",
+        "3. Identify large full-scan SQLs that pollute the cache — consider setting NOCACHE on such queries.",
+        "4. For 21c: consider Automatic Memory Management (MEMORY_TARGET) if SGA+PGA flexibility is needed."
+      ],
+      "diagnostic_sql": [
+        "-- SGA Cache Advisory\nSELECT size_for_estimate, estd_physical_read_factor, estd_physical_reads\nFROM v$db_cache_advice\nWHERE name = 'DEFAULT' AND block_size = (SELECT value FROM v$parameter WHERE name='db_block_size')\nORDER BY size_for_estimate;"
+      ],
+      "related_rules": ["SGA_001", "WAIT_001", "WAIT_015"]
+    },
+
+    {
+      "rule_id": "INST_002",
+      "category": "instance_efficiency",
+      "event_pattern": "soft_parse_ratio",
+      "condition": "value < 95",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Low Soft Parse Ratio — Excessive Hard Parsing",
+      "root_cause": "Less than 95% of parses are soft parses (cursor reuse). Hard parses are consuming shared pool memory and CPU. Caused by application not using bind variables or not reusing cursors between calls.",
+      "resolution_steps": [
+        "1. Check Hard Parses/sec in Load Profile — should be close to 0.",
+        "2. Identify SQL with high version counts or parse calls as percentage of executions.",
+        "3. Fix application to use bind variables; escalate to application team with specific SQL examples.",
+        "4. Set SESSION_CACHED_CURSORS = 100 as an interim measure.",
+        "5. CURSOR_SHARING = FORCE as a last resort (can cause plan instability)."
+      ],
+      "diagnostic_sql": [
+        "-- Hard parse rate\nSELECT name, value FROM v$sysstat\nWHERE name IN ('parse count (hard)','parse count (total)','parse count (failures)');"
+      ],
+      "related_rules": ["SQL_004", "WAIT_010", "SGA_002"]
+    },
+
+    {
+      "rule_id": "INST_003",
+      "category": "instance_efficiency",
+      "event_pattern": "library_cache_hit_ratio",
+      "condition": "value < 99",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Low Library Cache Hit Ratio",
+      "root_cause": "SQL and PL/SQL objects are being aged out of the shared pool (library cache miss > 1%). Indicates shared pool is too small or highly fragmented.",
+      "resolution_steps": [
+        "1. Increase SHARED_POOL_SIZE — use Shared Pool Advisory from AWR advisory section.",
+        "2. Pin frequently-used PL/SQL packages: DBMS_SHARED_POOL.KEEP().",
+        "3. Eliminate literal SQL to reduce the number of distinct SQL cursors in the library cache.",
+        "4. Check for shared pool fragmentation — flush and monitor (last resort in production)."
+      ],
+      "diagnostic_sql": [
+        "-- Shared pool advisory\nSELECT shared_pool_size_for_estimate, estd_lc_time_saved_factor\nFROM v$shared_pool_advice\nORDER BY shared_pool_size_for_estimate;"
+      ],
+      "related_rules": ["SGA_002", "WAIT_010"]
+    },
+
+    {
+      "rule_id": "INST_004",
+      "category": "instance_efficiency",
+      "event_pattern": "execute_to_parse_ratio",
+      "condition": "value < 90",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Low Execute-to-Parse Ratio — Cursor Not Being Reused",
+      "root_cause": "Fewer than 90% of executions are reusing an existing cursor — sessions are parsing more than executing. Indicates application is not holding cursors open between calls, possibly closing and reopening cursors with every execution.",
+      "resolution_steps": [
+        "1. Review application connection layer — ensure cursors are held open and reused.",
+        "2. Increase SESSION_CACHED_CURSORS to reduce re-parse on re-open.",
+        "3. For connection pools: ensure pool is configured to reuse sessions without re-authentication."
+      ],
+      "diagnostic_sql": [],
+      "related_rules": ["INST_002", "SQL_004"]
+    },
+
+    // ═══════════════════════════════════════════════════════
+    // CATEGORY: SGA / MEMORY
+    // ═══════════════════════════════════════════════════════
+    {
+      "rule_id": "SGA_001",
+      "category": "sga",
+      "event_pattern": "buffer_cache_undersized",
+      "condition": "advisory_factor > 1.1",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Buffer Cache Potentially Undersized (Advisory Recommendation)",
+      "root_cause": "The DB Buffer Cache Advisory indicates that increasing the buffer cache would reduce physical reads by more than 10%. The current allocation is not sufficient for the working set of active queries.",
+      "resolution_steps": [
+        "1. Review V$DB_CACHE_ADVICE — find the size at which the improvement curve flattens.",
+        "2. Increase DB_CACHE_SIZE or SGA_TARGET based on advisory recommendation.",
+        "3. If SGA_TARGET is set: increase SGA_TARGET to allow dynamic expansion.",
+        "4. Ensure available OS memory after increasing SGA — check for swapping.",
+        "5. On Linux: set vm.swappiness=1 and lock SGA in memory with LOCK_SGA=TRUE."
+      ],
+      "diagnostic_sql": [
+        "-- Buffer Cache Advisory\nSELECT size_for_estimate AS cache_mb, estd_physical_reads,\n       ROUND(estd_physical_read_factor, 2) AS improvement_factor\nFROM v$db_cache_advice\nWHERE name = 'DEFAULT'\nORDER BY size_for_estimate;"
+      ],
+      "related_rules": ["INST_001"]
+    },
+
+    {
+      "rule_id": "SGA_002",
+      "category": "sga",
+      "event_pattern": "shared_pool_undersized",
+      "condition": "advisory_factor > 1.05",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Shared Pool Potentially Undersized (Advisory Recommendation)",
+      "root_cause": "The Shared Pool Advisory indicates that increasing the shared pool would improve library cache efficiency. The shared pool is too small to hold all active SQL cursors and PL/SQL packages without aging them out.",
+      "resolution_steps": [
+        "1. Review V$SHARED_POOL_ADVICE for recommended size.",
+        "2. Increase SHARED_POOL_SIZE or SGA_TARGET.",
+        "3. Eliminate literal SQL to drastically reduce shared pool pressure without increasing memory.",
+        "4. Pin large PL/SQL packages to prevent them from being aged out."
+      ],
+      "diagnostic_sql": [
+        "-- Shared Pool Advisory\nSELECT shared_pool_size_for_estimate AS pool_mb,\n       estd_lc_size AS estd_lc_mb,\n       ROUND(estd_lc_time_saved_factor, 3) AS time_saved_factor\nFROM v$shared_pool_advice\nORDER BY shared_pool_size_for_estimate;"
+      ],
+      "related_rules": ["INST_003", "WAIT_010"]
+    },
+
+    {
+      "rule_id": "PGA_001",
+      "category": "pga",
+      "event_pattern": "pga_cache_hit_low",
+      "condition": "pga_cache_hit_pct < 90",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Low PGA Cache Hit — Sort/Hash Operations Spilling to Disk",
+      "root_cause": "Less than 90% of PGA memory operations are being handled in memory — work areas (sorts, hash joins) are spilling to the TEMP tablespace. Caused by PGA_AGGREGATE_TARGET being too small for the concurrent workload.",
+      "resolution_steps": [
+        "1. Increase PGA_AGGREGATE_TARGET — Oracle recommends 20% of total RAM as a starting point for OLTP.",
+        "2. Monitor V$PGASTAT 'over allocation count' — any value > 0 indicates PGA pressure.",
+        "3. For specific large queries: use /*+ PQ_DISTRIBUTE */ hints to control parallel join strategies.",
+        "4. Ensure WORKAREA_SIZE_POLICY = AUTO (default) for automatic PGA management.",
+        "5. Check if PGA_AGGREGATE_LIMIT is set too low — it caps total PGA regardless of target."
+      ],
+      "diagnostic_sql": [
+        "-- PGA statistics\nSELECT name, value, unit FROM v$pgastat\nWHERE name IN ('aggregate PGA target parameter','aggregate PGA auto target',\n              'total PGA inuse','total PGA allocated','total freeable PGA memory',\n              'cache hit percentage','over allocation count');"
+      ],
+      "related_rules": ["WAIT_004", "WAIT_003"]
+    },
+
+    // ═══════════════════════════════════════════════════════
+    // CATEGORY: UNDO / REDO
+    // ═══════════════════════════════════════════════════════
+    {
+      "rule_id": "UNDO_001",
+      "category": "undo",
+      "event_pattern": "undo_tablespace_usage",
+      "condition": "undo_used_pct > 80",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Undo Tablespace Near Capacity",
+      "root_cause": "The UNDO tablespace is more than 80% full. This can lead to ORA-01555 (snapshot too old) errors for long-running queries and ORA-30036 (unable to extend undo segment) errors for DML. Root causes: long-running transactions not committing; UNDO_RETENTION too high for the available space; undo tablespace datafile not set to AUTOEXTEND.",
+      "resolution_steps": [
+        "1. Add a datafile to the UNDO tablespace immediately to prevent outage.",
+        "2. Identify long-running transactions: query V$UNDOSTAT and V$TRANSACTION.",
+        "3. Reduce UNDO_RETENTION if the value is high and causing excessive space usage.",
+        "4. Enable AUTOEXTEND ON for UNDO datafiles with a reasonable MAXSIZE.",
+        "5. For 19c: consider auto-tuning undo retention (UNDO_RETENTION=0 with UNDO_MANAGEMENT=AUTO)."
+      ],
+      "diagnostic_sql": [
+        "-- Undo tablespace usage\nSELECT tablespace_name, SUM(bytes)/1048576 AS total_mb,\n       SUM(bytes - NVL(free_space,0))/1048576 AS used_mb\nFROM dba_undo_extents GROUP BY tablespace_name;",
+        "-- Long-running transactions consuming undo\nSELECT s.sid, s.username, t.used_ublk*8192/1048576 AS undo_mb,\n       t.start_time, s.sql_id\nFROM v$transaction t JOIN v$session s ON t.ses_addr = s.saddr\nORDER BY t.used_ublk DESC FETCH FIRST 10 ROWS ONLY;"
+      ],
+      "related_rules": ["UNDO_002", "UNDO_003"]
+    },
+
+    {
+      "rule_id": "UNDO_002",
+      "category": "undo",
+      "event_pattern": "ora-01555",
+      "condition": "ora1555_count > 0",
+      "severity": "critical",
+      "oracle_versions": ["19c", "21c"],
+      "title": "ORA-01555 Snapshot Too Old — Undo Retention Insufficient",
+      "root_cause": "A query running for longer than the undo retention period could not reconstruct its consistent read view — undo blocks were overwritten before the query completed. Caused by: UNDO_RETENTION too low; undo tablespace too small to guarantee retention; long-running batch queries in an OLTP system with frequent commits.",
+      "resolution_steps": [
+        "1. Increase UNDO_RETENTION to at least the duration of your longest-running query (in seconds).",
+        "2. Resize undo tablespace to guarantee retention: size = UNDO_RETENTION × undo_block_per_sec × db_block_size.",
+        "3. Set GUARANTEE on the undo tablespace: ALTER TABLESPACE UNDOTBS1 RETENTION GUARANTEE.",
+        "4. For long-running reports: schedule them during low-DML periods.",
+        "5. If using Flashback Query: increase DB_FLASHBACK_RETENTION_TARGET."
+      ],
+      "diagnostic_sql": [
+        "-- ORA-01555 frequency from alert log (manual review required)\n-- Check DBA_SCHEDULER_JOB_RUN_DETAILS for long-running jobs overlapping with UNDO_RETENTION\nSELECT value FROM v$parameter WHERE name = 'undo_retention';"
+      ],
+      "related_rules": ["UNDO_001"]
+    },
+
+    {
+      "rule_id": "UNDO_003",
+      "category": "undo",
+      "event_pattern": "undo_generation_high",
+      "condition": "undo_per_sec > 1000",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Undo Generation Rate",
+      "root_cause": "The database is generating a high volume of undo blocks per second, indicating intensive DML activity. High undo generation increases redo generation (undo changes are also logged), puts pressure on the undo tablespace, and increases the risk of ORA-01555 for concurrent readers.",
+      "resolution_steps": [
+        "1. Identify top DML tables from DB Block Changes segment statistics.",
+        "2. Review batch job design — bulk deletes/updates generate massive undo.",
+        "3. For bulk operations: consider partition exchange (zero undo) or DBMS_PARALLEL_EXECUTE for chunked DML.",
+        "4. Use TRUNCATE instead of DELETE WHERE possible for full-table purges.",
+        "5. Ensure undo tablespace is adequately sized for the undo generation rate × retention period."
+      ],
+      "diagnostic_sql": [
+        "-- Undo generation from AWR\nSELECT name, value FROM v$sysstat\nWHERE name IN ('undo change vector size','transaction rollbacks','user rollbacks');"
+      ],
+      "related_rules": ["UNDO_001", "REDO_001", "SEG_004"]
+    },
+
+    {
+      "rule_id": "REDO_001",
+      "category": "redo",
+      "event_pattern": "redo_generation_high",
+      "condition": "redo_mb_per_sec > 50",
+      "severity": "medium",
+      "oracle_versions": ["19c", "21c"],
+      "title": "High Redo Generation Rate",
+      "root_cause": "The database is generating more than 50 MB/s of redo. This stresses the LGWR, causes more frequent log switches, and can lead to log file sync and log file parallel write waits. Caused by high DML volume, bulk operations, or index maintenance generating excessive undo/redo.",
+      "resolution_steps": [
+        "1. Increase redo log file size to reduce switch frequency (target: max 1 switch per 20 minutes).",
+        "2. Review bulk DML operations — use NOLOGGING for bulk inserts where recoverability allows.",
+        "3. Identify top redo-generating segments from Top Segments by DB Block Changes.",
+        "4. Ensure redo log files are on dedicated, fast storage.",
+        "5. Monitor archiving performance — if archive lag increases, archivers may be falling behind."
+      ],
+      "diagnostic_sql": [
+        "-- Redo generation stats\nSELECT name, value FROM v$sysstat\nWHERE name IN ('redo size','redo writes','redo blocks written','redo log space requests','redo log space wait time');"
+      ],
+      "related_rules": ["WAIT_005", "WAIT_006", "UNDO_003"]
+    },
+
+    // ═══════════════════════════════════════════════════════
+    // CATEGORY: SAR-CORRELATED (require both Oracle + OS data)
+    // ═══════════════════════════════════════════════════════
+    {
+      "rule_id": "SAR_001",
+      "category": "sar_correlated",
+      "event_pattern": "iowait_and_db_file_sequential_read",
+      "condition": "sar_iowait_pct > 20 AND oracle_wait_pct_db_time > 10",
+      "severity": "critical",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Correlated: OS I/O Wait + Oracle I/O Wait Events",
+      "root_cause": "Both the OS (SAR iowait%) and Oracle (db file sequential/scattered read % DB time) are elevated simultaneously. This confirms the bottleneck is at the storage layer — Oracle's I/O requests are genuinely waiting for disk, not just appearing as DB waits due to internal reasons. The storage subsystem is the confirmed bottleneck.",
+      "resolution_steps": [
+        "1. Confirm: check SAR disk stats — which devices have high %util and await_ms?",
+        "2. Identify the Oracle tablespace/datafile mapping to the busy device.",
+        "3. Escalate to storage team with specific device and time window.",
+        "4. Short-term: increase DB_CACHE_SIZE to reduce physical I/O volume.",
+        "5. Long-term: move hot datafiles to faster storage (NVMe SSD) or ASM with mixed disk groups."
+      ],
+      "diagnostic_sql": [
+        "-- Map Oracle datafile to filesystem path\nSELECT file#, name, bytes/1048576 AS size_mb, status FROM v$datafile ORDER BY file#;"
+      ],
+      "related_rules": ["WAIT_001", "WAIT_002"]
+    },
+
+    {
+      "rule_id": "SAR_002",
+      "category": "sar_correlated",
+      "event_pattern": "cpu_saturation_and_oracle_cpu",
+      "condition": "sar_cpu_idle_pct < 10 AND oracle_cpu_pct_db_time > 40",
+      "severity": "critical",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Correlated: OS CPU Saturation + Oracle CPU-Bound Workload",
+      "root_cause": "Both OS idle CPU < 10% and Oracle CPU is dominating DB time. The database is fully saturating the server CPUs. This typically means the workload has grown beyond the server's CPU capacity, or an inefficient SQL is running with excessive parallelism.",
+      "resolution_steps": [
+        "1. Identify top CPU-consuming SQL from the SQL by CPU dashboard.",
+        "2. Check for runaway parallel queries consuming all CPUs: SELECT * FROM V$PX_SESSION.",
+        "3. Reduce PARALLEL_MAX_SERVERS if parallel queries are monopolising CPUs.",
+        "4. Tune top CPU SQLs — reduce logical I/O per execution.",
+        "5. If workload is legitimately growing: review scale-up (more CPUs) or scale-out (RAC).",
+        "6. Set CPU_COUNT and PARALLEL_THREADS_PER_CPU to limit Oracle CPU consumption if sharing the server with other applications."
+      ],
+      "diagnostic_sql": [
+        "-- Current parallel sessions\nSELECT qcsid, count(*) AS slave_count, sql_id\nFROM v$px_session GROUP BY qcsid, sql_id ORDER BY slave_count DESC;"
+      ],
+      "related_rules": ["SQL_002"]
+    },
+
+    {
+      "rule_id": "SAR_003",
+      "category": "sar_correlated",
+      "event_pattern": "memory_pressure_and_oracle_pga",
+      "condition": "sar_mem_used_pct > 90 AND sar_majflt_per_sec > 10",
+      "severity": "critical",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Correlated: OS Memory Pressure + Oracle Memory Overallocation",
+      "root_cause": "The OS is under severe memory pressure (>90% used, major page faults occurring), and Oracle's SGA/PGA is being swapped to disk. This causes catastrophic performance degradation as Oracle I/O waits are actually OS paging operations, not storage operations.",
+      "resolution_steps": [
+        "1. IMMEDIATE: check if SGA is being swapped: ipcs -m on Linux to see SGA shared memory segments.",
+        "2. Lock SGA in memory: ALTER SYSTEM SET LOCK_SGA=TRUE (requires restart).",
+        "3. Reduce SGA_TARGET and PGA_AGGREGATE_TARGET to leave adequate OS free memory.",
+        "4. On Linux: set vm.swappiness=1 to strongly discourage swapping.",
+        "5. Review other processes on the OS consuming memory — Oracle should not share a server with memory-hungry applications.",
+        "6. Add physical RAM or move Oracle to a dedicated server."
+      ],
+      "diagnostic_sql": [],
+      "related_rules": ["SGA_001", "PGA_001"]
+    },
+
+    {
+      "rule_id": "SAR_004",
+      "category": "sar_correlated",
+      "event_pattern": "network_saturation_rac",
+      "condition": "sar_ifutil_pct > 60 AND oracle_gc_wait_pct > 5",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Correlated: RAC Interconnect Saturation + GC Wait Events",
+      "root_cause": "The network interface carrying Oracle RAC interconnect traffic is saturated (>60% utilisation), and Oracle is showing Global Cache wait events. Block transfers between RAC nodes are being delayed by network congestion.",
+      "resolution_steps": [
+        "1. Identify which network interface is the RAC interconnect: check /etc/oracle/olr.loc or cluster_interconnects parameter.",
+        "2. Verify interconnect is dedicated — should not share bandwidth with application traffic.",
+        "3. Consider upgrading interconnect to 25GbE or 100GbE if throughput is saturated.",
+        "4. Review application partitioning — reduce cross-node block transfers via service/node affinity.",
+        "5. Check for jumbo frames (MTU 9000) on the interconnect — improves throughput significantly."
+      ],
+      "diagnostic_sql": [
+        "-- RAC interconnect configuration\nSELECT name, value FROM v$parameter WHERE name = 'cluster_interconnects';"
+      ],
+      "related_rules": ["WAIT_014", "SEG_005"]
+    },
+
+    {
+      "rule_id": "SAR_005",
+      "category": "sar_correlated",
+      "event_pattern": "high_context_switch_and_latch",
+      "condition": "sar_cswch_per_sec > 100000 AND oracle_latch_wait_pct > 3",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Correlated: OS Context Switch Storm + Oracle Latch Contention",
+      "root_cause": "Extremely high OS context switch rate (>100K/sec) combined with Oracle latch waits indicates that many Oracle server processes are spinning and yielding the CPU while waiting for latches. This creates a feedback loop: more processes → more context switches → more latch contention.",
+      "resolution_steps": [
+        "1. Identify which Oracle latches are hot: SELECT * FROM V$LATCH ORDER BY misses DESC.",
+        "2. Resolve the underlying latch contention (see WAIT_010, WAIT_011 rules).",
+        "3. Check CPU_COUNT — ensure Oracle is not over-subscribed beyond physical CPUs.",
+        "4. Review SPIN_COUNT parameter — the number of times a latch is re-tried before yielding.",
+        "5. Reduce the number of active concurrent sessions if the server is CPU-starved."
+      ],
+      "diagnostic_sql": [
+        "-- Hot latches\nSELECT name, gets, misses, sleeps, ROUND(misses/NULLIF(gets,0)*100,2) AS miss_pct\nFROM v$latch\nWHERE misses > 1000\nORDER BY misses DESC FETCH FIRST 20 ROWS ONLY;"
+      ],
+      "related_rules": ["WAIT_010", "WAIT_011"]
+    },
+
+    {
+      "rule_id": "SAR_006",
+      "category": "sar_correlated",
+      "event_pattern": "high_run_queue_and_oracle_cpu",
+      "condition": "sar_runq_sz > cpu_count AND sar_blocked > 0",
+      "severity": "high",
+      "oracle_versions": ["19c", "21c"],
+      "title": "Correlated: CPU Run Queue Depth + I/O Blocked Processes",
+      "root_cause": "The OS run queue depth exceeds the number of CPUs (CPU saturation confirmed), AND there are blocked processes waiting for I/O. This combination means the server is simultaneously CPU-saturated and I/O-bound — a dual bottleneck situation typical of poorly-tuned bulk load operations or under-provisioned hardware.",
+      "resolution_steps": [
+        "1. Prioritise the dominant bottleneck — check whether CPU time or I/O wait time is higher in Oracle.",
+        "2. If I/O-dominated: address storage performance first (see SAR_001, WAIT_001).",
+        "3. If CPU-dominated: tune top CPU SQLs (see SQL_002, SAR_002).",
+        "4. Check for background jobs running during peak hours — reschedule to off-peak.",
+        "5. Review PARALLEL_MAX_SERVERS to prevent parallel queries from overloading both CPU and I/O simultaneously."
+      ],
+      "diagnostic_sql": [],
+      "related_rules": ["SAR_001", "SAR_002"]
+    }
+
+  ]
+}
