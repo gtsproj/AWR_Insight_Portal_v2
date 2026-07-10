@@ -1,4 +1,3 @@
-
 # AWR Insight Portal v2 — Issue & Enhancement Backlog
 Last updated: 2026-06-24
 
@@ -585,3 +584,99 @@ Sudden drop in kbhugused = Oracle instance crashed or SGA shrunk.
 | B8 | AWR+SAR Correlation — test with matching date data | Parked |
 | B9 | Service control — full end-to-end test | Pending |
 | B10 | AI Recs — session-level learning refinement | Future |
+
+---
+
+## SESSION UPDATE — 2026-07-07
+
+### Completed ✅
+| Item | Status |
+|---|---|
+| AWR+SAR Correlation dashboard | Tested and working |
+| User Guide (.docx) | Created — linked from portal nav bar |
+| Installation Guide (.docx) | Created — admin use only |
+| Home page redesign (Option B) | Stats bar + 3-col dashboard grid |
+| Metadata refresh alert | Amber banner on home page |
+
+### Decisions
+| Item | Decision |
+|---|---|
+| B1 AWR/SAR source test | Deferred — no remote server available for test. Framework to be built (see P4 below) |
+| B3 Windows PerfMon counters | Dropped — Oracle on Windows not preferred. May revisit in future version |
+| B8 AWR+SAR Correlation | Tested — working fine |
+
+### New Items
+| # | Item | Detail |
+|---|---|---|
+| P4 | Remote file fetch framework | AWR: local path (default) / Network UNC path / Direct Oracle DB. SAR: local path (default) / SSH pull from Linux. Uses WinSCP/SCP. Fetch only files newer than last parsed snap. Document in Installation Guide |
+| P5 | Service control — test | Start/Stop/Status for Portal/AWR Watcher/SAR Watcher/Queue/Grafana on home page — needs end-to-end test |
+
+### Pending — Active
+| # | Item | Detail |
+|---|---|---|
+| B6 | License key enforcement | Per-database licensing — next item |
+| B4 | Schema userid/password | Per-schema Oracle credentials |
+| B7 | Installation bundle | One-click installer for all components |
+| P4 | Remote file fetch framework | Build framework, document in Installation Guide |
+| P5 | Service control test | Home page start/stop buttons |
+
+---
+
+## SESSION UPDATE — 2026-07-08
+
+### Completed ✅
+| Item | Detail |
+|---|---|
+| License engine (B6) | modules/license_engine.py — compact 30-char key, MAC-bound, XOR encrypted, binary payload |
+| License enforcement middleware | app.py — blocks parse/AI/Grafana per enforcement matrix |
+| License settings page | settings.html — read-only DB/SAR/expiry fields populated from key, AI monthly limit editable |
+| License strip pill | base.html — trial/expiry status pill in nav bar, colour-coded, links to Settings |
+| MAC address detection | Physical LAN priority → Wi-Fi → other. Skips VMware/WSL/Docker/VPN/Local Area Connection* |
+| MAC override | license_mac_override in portal_config — pins specific adapter for multi-NIC servers |
+| Remote file fetch framework (P4) | modules/remote_fetch.py — AWR UNC/network, SAR SSH (paramiko + WinSCP fallback) |
+| Settings page JS crash fix | Missing try{ block + bad CSS string '#f97316"15' fixed |
+| AI Recs dropdown flow | DB → Instance (no auto) → Load Snaps button → Start/End (no auto) → Focus Type → Value |
+| AI Recs SQL ID dropdown | Fixed table name: awr_sql_stats → awr_sql_elapsed_time |
+| AI prompt quality | Pre-analysis, wait KB, per-exec metrics, focus-specific guidance, hallucination guards |
+| Cloud AI model name | claude-haiku-4-5 (not claude-haiku-4-5-20251001) |
+| Cloud AI credit error | Shown as amber warning not failure |
+| Ollama timeout removed | timeout=None for local AI calls |
+| Ollama model resolution | /api/tags lookup before /api/generate to resolve exact model name |
+| Home page redesign (Option B) | Compact stats bar (10 counters) + 3-col dashboard grid, Quick Actions removed |
+| Metadata refresh alert | Amber banner on home page — overdue DBs listed, dismissible until tomorrow |
+| Metadata refresh frequency | Settings → Access Control — weekly/fortnightly/monthly |
+| AWR Intelligence AI dashboard | Data links fixed to awr-intelligence-ai UID |
+| awr_db_info as license master | count_licensed_units uses DISTINCT ON (db_name, instance) from awr_db_info |
+| User Guide | AWR_Insight_Portal_v2_User_Guide.docx — 11 sections |
+| Installation Guide | AWR_Insight_Portal_v2_Installation_Guide.docx — 9 sections |
+| User Guide link | base.html nav bar → downloads User Guide |
+
+### License Design Decisions
+| Decision | Detail |
+|---|---|
+| No keyless mode | Portal requires license key — no evaluation without key |
+| Trial tiers | T15 (15 days) and T30 (30 days), 2 DB / 2 SAR limit |
+| Grace period | 7 days after expiry — all features work, red banner shown |
+| Hard block | Day 8+ after expiry — parse/Grafana/AI blocked, past data readable |
+| DB counting | Instance-wise: standalone=1, RAC node=1, CDB=1, PDB: first 3 free, extra=1 each |
+| SAR counting | 1 unit per unique hostname |
+| Key format | AVK-{TIER}-{22 base64url chars} ≈ 30 chars total |
+| Key binding | MAC address + checksum — no internet required for validation |
+| Renewal | New key from Avekshaa using server MAC address |
+| Server transfer | Re-key required (MAC changes) |
+| Cloud AI cap | Monthly recommendation count cap (default 200), configurable in Settings |
+
+### Pending — Active
+| # | Item | Detail |
+|---|---|---|
+| P3 | Direct Oracle DB connection | Framework documented — needs Oracle Instant Client + firewall approval |
+| P5 | Service control test | Home page start/stop buttons — end-to-end test pending |
+| B4 | Schema userid/password | Per-schema Oracle credentials |
+| B7 | Installation bundle | One-click installer |
+| B9 | Docs from GitHub | User + Install Guide to be rebuilt once GitHub files accessible |
+
+### Dropped
+| Item | Reason |
+|---|---|
+| B3 Windows PerfMon | Oracle on Windows not preferred — future version if required |
+| B1 AWR/SAR source test | No remote server available — framework built and documented |
