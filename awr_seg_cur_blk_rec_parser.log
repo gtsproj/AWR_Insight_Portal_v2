@@ -1,0 +1,344 @@
+[2026-07-10 11:52:17] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:52:17] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:53:03] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:53:03] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:53:12] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:53:12] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:53:35] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 11:53:35] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 11:53:35] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 11:54:06] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:54:06] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:54:14] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:54:14] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:54:45] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 11:54:45] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 11:54:45] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 11:54:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:54:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:55:25] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:55:25] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:55:49] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:55:49] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:55:57] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 11:55:57] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 11:55:57] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 11:56:36] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:56:36] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:56:39] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:56:39] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:57:12] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 11:57:12] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 11:57:12] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 11:57:30] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:57:30] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:57:50] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:57:50] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:58:16] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:58:16] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:58:26] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 11:58:26] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 11:58:26] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 11:59:03] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:59:03] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:59:03] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:59:03] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 11:59:40] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 11:59:40] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 11:59:40] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 11:59:51] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 11:59:51] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:00:15] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:00:15] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:00:41] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:00:41] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:00:47] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:00:47] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:00:47] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:01:23] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:01:23] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:01:33] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:01:33] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:01:55] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:01:55] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:01:55] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:02:24] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:02:24] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:02:31] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:02:31] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:03:02] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:03:02] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:03:02] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:03:12] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:03:12] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:03:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:03:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:04:01] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:04:01] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:04:11] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:04:11] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:04:11] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:04:51] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:04:51] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:04:54] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:04:54] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:05:23] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:05:23] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:05:24] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:05:47] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:05:47] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:06:06] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:06:06] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:06:36] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:06:36] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:06:36] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:06:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:06:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:07:16] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:07:16] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:07:46] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:07:46] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:07:46] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:08:24] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:08:24] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:08:58] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:08:58] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:08:58] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:09:34] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:09:34] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:09:52] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:09:52] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:10:09] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:10:09] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:10:09] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:10:45] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:10:45] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:10:45] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:10:45] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:11:24] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:11:24] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:11:24] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:11:44] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:11:44] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:11:59] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:11:59] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:12:35] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:12:35] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:12:35] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:12:37] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:12:37] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:13:10] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:13:10] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:13:27] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:13:27] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:13:47] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:13:47] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:13:47] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:14:19] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:14:19] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:14:22] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:14:22] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:15:00] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:15:00] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:15:00] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:15:08] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:15:08] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:15:38] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:15:38] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:15:56] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:15:56] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:16:15] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:16:15] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:16:15] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:16:43] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:16:43] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:16:52] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:16:52] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:17:27] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:17:27] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:17:27] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:17:31] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:17:31] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:18:05] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:18:05] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:18:22] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:18:22] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:18:39] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:18:39] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:18:40] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:19:13] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:19:13] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:19:16] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:19:16] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:19:48] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:19:48] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:19:48] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:20:05] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:20:05] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:20:27] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:20:27] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:20:53] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:20:53] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:20:56] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:20:56] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:20:56] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:21:38] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:21:38] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:21:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:21:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:26:13] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:26:13] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:26:15] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:26:15] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:26:15] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:26:15] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:26:15] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:26:20] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:26:20] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:27:30] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:27:30] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:27:55] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:27:55] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:27:56] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:27:56] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:27:56] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:28:59] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:28:59] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:29:04] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:29:04] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:29:52] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:29:52] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:29:53] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:29:53] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:29:53] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:30:12] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:30:12] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:30:57] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:30:57] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:31:05] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:31:05] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:31:07] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:31:07] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:31:07] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:31:07] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:31:07] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:31:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:31:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:32:21] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:32:21] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:32:21] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:32:21] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:32:21] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:32:44] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:32:44] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:32:48] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:32:48] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:33:32] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:33:32] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:33:32] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:33:32] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:33:32] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:33:37] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:33:37] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:34:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:34:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:34:43] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:34:43] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:35:06] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:35:06] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:35:06] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:35:08] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:35:08] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:35:36] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:35:36] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:36:18] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:36:18] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:36:18] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:36:20] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:36:20] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:36:30] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:36:30] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:36:32] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:36:32] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:37:26] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:37:26] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:37:32] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:37:32] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:37:32] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:37:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:37:42] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:38:49] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:38:49] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:38:50] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:38:50] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:39:13] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:39:13] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:39:13] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:39:21] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:39:21] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:39:46] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:39:46] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:40:44] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:40:44] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:40:44] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:40:55] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:40:55] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:40:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:40:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:41:02] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:41:02] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:42:04] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:42:04] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:42:21] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:42:21] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:42:21] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:42:25] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:42:25] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:43:11] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:43:11] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:43:11] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:43:11] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:43:43] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:43:43] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:43:43] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:43:44] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:43:44] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:44:09] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:44:09] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:44:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:44:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:44:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:44:58] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:44:58] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:44:58] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:44:58] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:46:15] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:46:15] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:46:16] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:46:16] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:46:16] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:46:45] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:46:45] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:47:25] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:47:25] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:47:26] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:47:26] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:47:26] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:48:28] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:48:28] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:48:41] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:48:41] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:48:41] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:48:43] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:48:43] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:49:48] INFO     | awr_seg_cur_blk_rec_parser | Found 5 rows in Segments by Current Blocks Received section
+[2026-07-10 12:49:48] INFO     | awr_seg_cur_blk_rec_parser | ✅ Parsed 5 Segments by Current Blocks Received records
+[2026-07-10 12:49:48] INFO     | awr_seg_cur_blk_rec_parser | ✅ Inserted 5 rows into awr_seg_cur_blk_rec
+[2026-07-10 12:49:54] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:49:54] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:51:04] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:51:04] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:52:14] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:52:14] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec
+[2026-07-10 12:53:24] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ Segments by Current Blocks Received section not found.
+[2026-07-10 12:53:24] WARNING  | awr_seg_cur_blk_rec_parser | ⚠️ No records to insert into awr_seg_cur_blk_rec

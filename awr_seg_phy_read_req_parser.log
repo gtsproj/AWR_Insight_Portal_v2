@@ -1,0 +1,453 @@
+[2026-07-10 11:52:13] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:52:13] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:52:13] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:52:57] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:52:57] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:52:57] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:53:08] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:53:08] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:53:08] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:53:28] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:53:28] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:53:28] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:54:02] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:54:02] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:54:02] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:54:07] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:54:07] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:54:07] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:54:38] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:54:38] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:54:38] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:54:55] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:54:55] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:54:55] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:55:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:55:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:55:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:55:45] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:55:45] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:55:45] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:55:50] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:55:50] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:55:50] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:56:30] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:56:30] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:56:30] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:56:36] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:56:36] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:56:36] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:57:04] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:57:04] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:57:05] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:57:26] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:57:26] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:57:26] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:57:43] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:57:43] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:57:43] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:58:13] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:58:13] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:58:13] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:58:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:58:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:58:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:58:56] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:58:56] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:58:56] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:59:00] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:59:00] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:59:00] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:59:32] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:59:32] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:59:32] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 11:59:47] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 11:59:47] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 11:59:47] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:00:08] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:00:08] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:00:09] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:00:37] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:00:37] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:00:37] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:00:41] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:00:41] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:00:41] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:01:16] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:01:16] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:01:16] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:01:29] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:01:29] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:01:29] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:01:49] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:01:49] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:01:49] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:02:21] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:02:21] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:02:21] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:02:25] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:02:25] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:02:25] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:02:56] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:02:56] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:02:56] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:03:09] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:03:09] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:03:09] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:03:35] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:03:35] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:03:35] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:03:58] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:03:58] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:03:58] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:04:04] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:04:04] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:04:04] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:04:46] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:04:46] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:04:46] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:04:47] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:04:47] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:04:47] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:05:17] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:05:17] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:05:17] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:05:43] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:05:43] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:05:43] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:05:59] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:05:59] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:05:59] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:06:30] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:06:30] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:06:30] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:06:37] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:06:37] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:06:37] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:07:10] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:07:10] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:07:10] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:07:40] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:07:40] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:07:40] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:08:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:08:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:08:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:08:52] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:08:52] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:08:52] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:09:28] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:09:28] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:09:28] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:09:48] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:09:48] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:09:48] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:10:02] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:10:02] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:10:02] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:10:38] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:10:38] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:10:38] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:10:41] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:10:41] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:10:41] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:11:17] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:11:17] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:11:17] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:11:40] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:11:40] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:11:40] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:11:53] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:11:53] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:11:53] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:12:29] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:12:29] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:12:29] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:12:34] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:12:34] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:12:34] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:13:03] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:13:03] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:13:03] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:13:24] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:13:24] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:13:24] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:13:40] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:13:40] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:13:41] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:14:14] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:14:14] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:14:14] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:14:15] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:14:15] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:14:15] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:14:53] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:14:53] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:14:53] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:15:05] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:15:05] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:15:05] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:15:30] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:15:30] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:15:31] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:15:53] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:15:53] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:15:53] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:16:07] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:16:07] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:16:07] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:16:40] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:16:40] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:16:40] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:16:45] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:16:45] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:16:45] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:17:21] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:17:21] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:17:21] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:17:27] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:17:27] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:17:27] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:17:59] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:17:59] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:17:59] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:18:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:18:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:18:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:18:33] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:18:33] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:18:33] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:19:09] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:19:09] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:19:09] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:19:10] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:19:10] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:19:10] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:19:42] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:19:42] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:19:42] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:20:02] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:20:02] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:20:02] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:20:21] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:20:21] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:20:21] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:20:50] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:20:50] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:20:50] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:20:50] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:20:50] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:20:50] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:21:31] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:21:31] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:21:31] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:21:39] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:21:39] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:21:39] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:26:08] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:26:08] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:26:08] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:26:09] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:26:09] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:26:09] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:26:09] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:26:09] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:26:09] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:26:10] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:26:10] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:26:10] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:27:22] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:27:22] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:27:22] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:27:46] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:27:46] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:27:46] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:27:46] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:27:46] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:27:46] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:28:42] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:28:42] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:28:42] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:28:55] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:28:55] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:28:55] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:29:45] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:29:45] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:29:45] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:29:46] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:29:46] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:29:46] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:30:08] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:30:08] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:30:08] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:30:47] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:30:47] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:30:47] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:31:00] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:31:00] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:31:00] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:31:00] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:31:00] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:31:00] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:31:01] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:31:01] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:31:01] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:31:53] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:31:53] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:31:53] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:32:13] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:32:13] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:32:13] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:32:14] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:32:14] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:32:14] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:32:34] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:32:34] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:32:34] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:32:45] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:32:45] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:32:45] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:33:25] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:33:25] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:33:25] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:33:26] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:33:26] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:33:26] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:33:33] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:33:33] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:33:33] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:34:30] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:34:30] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:34:30] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:34:37] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:34:37] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:34:37] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:35:00] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:35:00] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:35:00] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:35:01] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:35:01] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:35:01] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:35:32] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:35:32] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:35:32] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:36:11] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:36:11] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:36:11] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:36:14] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:36:14] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:36:14] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:36:22] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:36:22] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:36:22] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:36:25] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:36:25] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:36:25] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:37:19] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:37:19] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:37:19] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:37:21] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:37:21] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:37:22] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:37:29] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:37:29] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:37:29] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:38:37] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:38:37] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:38:37] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:38:44] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:38:44] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:38:44] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:39:05] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:39:05] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:39:05] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:39:13] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:39:13] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:39:13] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:39:41] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:39:41] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:39:41] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:40:31] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:40:31] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:40:31] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:40:41] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:40:41] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:40:41] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:40:46] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:40:46] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:40:46] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:40:51] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:40:51] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:40:51] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:41:59] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:41:59] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:41:59] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:42:14] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:42:14] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:42:14] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:42:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:42:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:42:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:42:59] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:42:59] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:42:59] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:43:05] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:43:05] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:43:05] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:43:36] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:43:36] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:43:36] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:43:38] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:43:38] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:43:38] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:44:04] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:44:04] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:44:04] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:44:48] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:44:48] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:44:48] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:44:51] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:44:51] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:44:51] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:44:51] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:44:51] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:44:52] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:46:08] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:46:08] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:46:08] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:46:08] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:46:08] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:46:09] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:46:35] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:46:35] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:46:36] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:47:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:47:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:47:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:47:19] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:47:19] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:47:19] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:48:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:48:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:48:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:48:34] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:48:34] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:48:34] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:48:36] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:48:36] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:48:36] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:49:42] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:49:42] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:49:42] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:49:47] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:49:47] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:49:47] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:50:58] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:50:58] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:50:58] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:52:08] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:52:08] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:52:08] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req
+[2026-07-10 12:53:18] INFO     | awr_seg_phy_read_req_parser | Found 5 rows in Segments by Physical Read Requests section
+[2026-07-10 12:53:18] INFO     | awr_seg_phy_read_req_parser | ✅ Parsed 5 Segments by Physical Read Requests records
+[2026-07-10 12:53:18] INFO     | awr_seg_phy_read_req_parser | ✅ Inserted 5 rows into awr_seg_phy_read_req

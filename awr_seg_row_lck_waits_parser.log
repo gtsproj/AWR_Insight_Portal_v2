@@ -1,0 +1,447 @@
+[2026-07-10 11:52:38] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 11:52:38] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 11:52:38] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 11:53:28] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 11:53:28] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 11:53:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 11:53:31] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 11:53:31] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 11:53:32] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 11:54:00] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 11:54:00] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 11:54:00] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 11:54:25] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 11:54:25] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 11:54:25] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 11:54:39] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 11:54:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 11:54:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 11:55:11] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 11:55:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 11:55:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 11:55:16] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 11:55:16] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 11:55:17] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 11:55:51] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 11:55:51] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 11:55:51] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 11:56:07] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 11:56:07] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 11:56:07] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 11:56:22] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 11:56:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 11:56:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 11:56:57] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 11:56:57] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 11:56:57] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 11:57:02] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 11:57:02] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 11:57:02] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 11:57:37] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 11:57:37] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 11:57:37] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 11:57:47] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 11:57:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 11:57:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 11:58:16] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 11:58:16] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 11:58:16] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 11:58:33] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 11:58:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 11:58:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 11:58:52] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 11:58:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 11:58:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 11:59:20] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 11:59:20] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 11:59:20] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 11:59:29] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 11:59:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 11:59:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 12:00:05] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:00:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:00:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:00:09] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:00:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:00:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:00:38] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:00:38] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:00:38] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:01:00] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:01:00] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:01:00] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:01:12] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:01:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:01:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:01:47] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:01:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:01:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:01:51] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:01:51] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:01:51] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:02:19] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:02:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:02:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:02:42] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:02:42] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:02:42] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:02:56] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:02:56] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:02:57] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:03:26] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:03:26] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:03:26] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:03:30] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:03:30] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:03:30] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:04:07] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:04:07] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:04:07] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:04:18] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:04:18] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:04:18] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:04:37] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:04:37] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:04:37] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:05:11] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:05:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:05:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:05:19] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:05:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:05:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:05:50] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:05:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:05:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:06:06] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:06:06] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:06:07] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:06:31] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:06:31] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:06:31] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:07:01] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:07:01] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:07:01] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:07:02] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:07:02] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:07:02] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:07:39] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:07:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:07:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:08:12] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:08:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:08:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:08:49] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:08:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:08:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:09:23] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:09:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:09:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:09:59] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:09:59] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:09:59] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:10:11] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 12:10:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 12:10:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 12:10:35] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:10:35] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:10:35] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:11:09] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 12:11:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 12:11:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 12:11:14] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 12:11:14] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 12:11:14] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 12:11:49] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:11:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:11:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:12:03] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 12:12:03] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 12:12:03] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 12:12:24] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 12:12:24] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 12:12:24] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 12:12:56] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:12:56] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:12:56] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:13:01] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:13:01] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:13:01] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:13:35] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 12:13:35] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 12:13:35] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 12:13:45] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:13:45] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:13:45] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:14:13] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:14:13] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:14:13] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:14:36] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:14:36] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:14:36] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:14:48] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 12:14:48] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 12:14:48] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 12:15:25] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:15:25] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:15:25] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:15:26] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:15:26] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:15:26] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:16:04] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 12:16:04] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 12:16:04] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 12:16:13] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:16:13] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:16:13] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:16:41] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:16:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:16:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:17:00] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:17:00] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:17:00] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:17:19] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 12:17:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 12:17:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 12:17:49] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:17:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:17:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:17:53] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:17:53] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:17:53] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:18:31] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:18:31] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:18:31] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:18:40] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:18:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:18:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:19:04] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:19:04] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:19:04] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:19:32] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:19:32] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:19:32] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:19:42] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:19:42] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:19:42] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:20:13] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:20:13] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:20:13] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:20:22] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:20:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:20:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:20:52] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:20:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:20:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:21:11] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:21:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:21:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:21:21] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:21:21] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:21:21] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:26:32] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 12:26:32] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 12:26:32] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 12:26:43] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 12:26:43] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 12:26:43] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 12:26:44] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:26:44] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:26:44] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:27:05] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:27:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:27:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:27:55] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 12:27:55] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 12:27:56] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 12:28:39] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 12:28:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 12:28:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 12:28:40] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:28:40] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:28:40] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:29:33] INFO     | awr_seg_row_lck_waits_parser | Found 4 rows in Segments by Row Lock Waits section
+[2026-07-10 12:29:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 4 Segments by Row Lock Waits records
+[2026-07-10 12:29:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 4 rows into awr_seg_row_lck_waits
+[2026-07-10 12:29:50] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:29:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:29:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:30:18] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:30:18] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:30:18] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:30:18] INFO     | awr_seg_row_lck_waits_parser | Found 3 rows in Segments by Row Lock Waits section
+[2026-07-10 12:30:18] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 3 Segments by Row Lock Waits records
+[2026-07-10 12:30:18] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 3 rows into awr_seg_row_lck_waits
+[2026-07-10 12:30:30] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:30:30] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:30:30] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:31:23] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:31:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:31:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:31:32] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:31:32] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:31:32] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:31:33] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 12:31:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 12:31:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 12:31:34] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:31:34] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:31:34] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:32:16] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:32:16] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:32:17] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:32:46] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:32:46] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:32:46] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:32:47] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 12:32:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 12:32:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 12:33:04] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:33:04] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:33:04] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:33:19] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:33:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:33:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:33:58] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:33:58] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:33:58] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:34:05] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:34:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:34:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:34:07] INFO     | awr_seg_row_lck_waits_parser | Found 2 rows in Segments by Row Lock Waits section
+[2026-07-10 12:34:07] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 2 Segments by Row Lock Waits records
+[2026-07-10 12:34:07] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 2 rows into awr_seg_row_lck_waits
+[2026-07-10 12:35:05] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:35:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:35:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:35:24] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:35:24] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:35:25] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:35:31] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:35:31] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:35:31] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:35:33] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:35:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:35:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:35:55] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:35:55] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:35:55] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:36:41] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:36:42] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:36:42] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:36:46] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:36:46] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:36:46] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:36:49] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:36:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:36:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:37:09] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:37:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:37:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:37:59] INFO     | awr_seg_row_lck_waits_parser | Found 16 rows in Segments by Row Lock Waits section
+[2026-07-10 12:37:59] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 16 Segments by Row Lock Waits records
+[2026-07-10 12:37:59] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 16 rows into awr_seg_row_lck_waits
+[2026-07-10 12:38:11] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:38:11] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:38:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:38:22] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:38:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:38:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:39:09] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:39:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:39:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:39:29] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:39:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:39:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:39:41] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:39:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:39:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:39:47] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:39:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:39:47] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:40:03] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:40:03] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:40:03] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:41:21] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:41:21] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:41:21] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:41:22] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:41:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:41:22] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:41:29] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:41:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:41:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:41:50] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:41:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:41:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:42:26] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:42:26] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:42:26] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:42:50] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:42:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:42:50] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:42:54] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:42:54] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:42:54] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:43:30] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:43:30] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:43:30] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:43:48] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:43:48] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:43:48] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:44:08] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:44:08] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:44:08] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:44:09] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:44:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:44:09] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:44:29] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:44:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:44:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:45:23] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:45:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:45:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:45:23] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:45:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:45:23] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:45:33] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:45:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:45:33] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:46:40] INFO     | awr_seg_row_lck_waits_parser | Found 14 rows in Segments by Row Lock Waits section
+[2026-07-10 12:46:40] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 14 Segments by Row Lock Waits records
+[2026-07-10 12:46:40] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 14 rows into awr_seg_row_lck_waits
+[2026-07-10 12:46:41] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:46:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:46:41] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:47:20] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:47:20] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:47:20] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:47:52] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:47:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:47:52] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:47:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:47:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:47:52] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:49:05] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:49:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:49:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:49:05] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:49:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:49:05] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:49:08] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:49:08] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:49:08] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:50:12] INFO     | awr_seg_row_lck_waits_parser | Found 5 rows in Segments by Row Lock Waits section
+[2026-07-10 12:50:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 5 Segments by Row Lock Waits records
+[2026-07-10 12:50:12] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 5 rows into awr_seg_row_lck_waits
+[2026-07-10 12:50:19] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:50:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:50:19] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:51:29] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:51:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:51:29] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:52:39] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:52:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:52:39] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits
+[2026-07-10 12:53:49] INFO     | awr_seg_row_lck_waits_parser | Found 1 rows in Segments by Row Lock Waits section
+[2026-07-10 12:53:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Parsed 1 Segments by Row Lock Waits records
+[2026-07-10 12:53:49] INFO     | awr_seg_row_lck_waits_parser | ✅ Inserted 1 rows into awr_seg_row_lck_waits

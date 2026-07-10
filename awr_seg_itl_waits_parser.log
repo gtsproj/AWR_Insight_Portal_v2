@@ -1,0 +1,453 @@
+[2026-07-10 11:52:27] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 11:52:27] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 11:52:27] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 11:53:15] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 11:53:15] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 11:53:15] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 11:53:21] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 11:53:21] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 11:53:21] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 11:53:46] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 11:53:46] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 11:53:46] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 11:54:15] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 11:54:15] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 11:54:15] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 11:54:26] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 11:54:26] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 11:54:26] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 11:54:57] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 11:54:57] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 11:54:57] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 11:55:06] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 11:55:06] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 11:55:06] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 11:55:36] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 11:55:36] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 11:55:36] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 11:55:57] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 11:55:57] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 11:55:57] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 11:56:08] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 11:56:08] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 11:56:08] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 11:56:47] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 11:56:47] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 11:56:47] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 11:56:48] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 11:56:48] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 11:56:48] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 11:57:23] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 11:57:23] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 11:57:24] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 11:57:37] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 11:57:37] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 11:57:37] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 11:58:02] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 11:58:02] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 11:58:02] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 11:58:24] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 11:58:24] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 11:58:24] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 11:58:37] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 11:58:37] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 11:58:38] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 11:59:10] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 11:59:10] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 11:59:10] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 11:59:14] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 11:59:14] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 11:59:15] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 11:59:51] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 11:59:51] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 11:59:51] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 11:59:59] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 11:59:59] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 11:59:59] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:00:26] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:00:26] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:00:26] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:00:50] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:00:50] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:00:50] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:00:58] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:00:58] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:00:58] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:01:34] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:01:34] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:01:34] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:01:41] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:01:41] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:01:42] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:02:06] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:02:06] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:02:06] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:02:32] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:02:32] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:02:33] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:02:43] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:02:43] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:02:43] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:03:13] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:03:13] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:03:13] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:03:20] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:03:20] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:03:20] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:03:54] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:03:54] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:03:54] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:04:09] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:04:09] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:04:09] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:04:23] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:04:23] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:04:23] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:05:00] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:05:00] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:05:01] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:05:05] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:05:05] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:05:05] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:05:36] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:05:36] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:05:36] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:05:56] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:05:56] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:05:56] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:06:18] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:06:18] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:06:18] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:06:48] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:06:48] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:06:48] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:06:50] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:06:50] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:06:50] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:07:25] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:07:25] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:07:25] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:07:58] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:07:58] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:07:58] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:08:36] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:08:36] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:08:36] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:09:10] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:09:10] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:09:10] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:09:45] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:09:45] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:09:45] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:10:00] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:10:00] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:10:00] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:10:21] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:10:21] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:10:21] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:10:53] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:10:53] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:10:53] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:10:55] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 12:10:55] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 12:10:56] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 12:11:36] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:11:36] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:11:36] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:11:52] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:11:52] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:11:52] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:12:10] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 12:12:10] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 12:12:10] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 12:12:46] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:12:46] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:12:46] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:12:47] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:12:47] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:12:47] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:13:22] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 12:13:22] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 12:13:22] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 12:13:36] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:13:36] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:13:36] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:13:59] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:13:59] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:13:59] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:14:27] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:14:27] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:14:27] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:14:34] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:14:34] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:14:34] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:15:11] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:15:11] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:15:11] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:15:16] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:15:16] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:15:16] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:15:50] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:15:50] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:15:50] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:16:04] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:16:04] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:16:04] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:16:27] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:16:27] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:16:27] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:16:51] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:16:51] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:16:51] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:17:04] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:17:04] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:17:05] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:17:39] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:17:39] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:17:39] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:17:39] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:17:39] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:17:39] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:18:17] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:18:17] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:18:17] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:18:31] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:18:31] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:18:31] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:18:50] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:18:50] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:18:50] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:19:22] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:19:22] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:19:22] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:19:28] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:19:28] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:19:28] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:19:59] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:19:59] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:19:59] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:20:13] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:20:13] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:20:13] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:20:39] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:20:39] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:20:39] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:21:02] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:21:02] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:21:02] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:21:08] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:21:08] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:21:08] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:21:49] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:21:49] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:21:49] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:21:50] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:21:50] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:21:50] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:26:21] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:26:21] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:26:21] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:26:26] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 12:26:26] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 12:26:26] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 12:26:26] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:26:26] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:26:26] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:26:38] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:26:38] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:26:38] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:27:41] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:27:41] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:27:41] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:28:15] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 12:28:15] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 12:28:15] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 12:28:16] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:28:16] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:28:16] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:29:18] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:29:18] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:29:18] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:29:25] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:29:25] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:29:25] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:30:04] INFO     | awr_seg_itl_waits_parser | Found 3 rows in Segments by ITL Waits section
+[2026-07-10 12:30:04] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 3 Segments by ITL Waits records
+[2026-07-10 12:30:04] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 3 rows into awr_seg_itl_waits
+[2026-07-10 12:30:04] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:30:04] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:30:04] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:30:20] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:30:20] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:30:21] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:31:14] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:31:14] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:31:14] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:31:14] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:31:14] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:31:14] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:31:18] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:31:18] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:31:18] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:31:19] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:31:19] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:31:19] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:32:07] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:32:07] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:32:07] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:32:32] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:32:32] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:32:32] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:32:33] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:32:33] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:32:33] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:32:55] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:32:55] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:32:55] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:32:59] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:32:59] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:32:59] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:33:43] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:33:43] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:33:43] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:33:44] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:33:44] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:33:44] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:33:45] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:33:45] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:33:45] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:34:53] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:34:53] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:34:53] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:35:04] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:35:04] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:35:04] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:35:17] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:35:17] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:35:18] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:35:20] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:35:20] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:35:20] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:35:44] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:35:44] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:35:45] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:36:28] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:36:28] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:36:28] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:36:32] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:36:32] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:36:32] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:36:38] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:36:38] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:36:38] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:36:49] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:36:49] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:36:49] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:37:41] INFO     | awr_seg_itl_waits_parser | Found 16 rows in Segments by ITL Waits section
+[2026-07-10 12:37:41] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 16 Segments by ITL Waits records
+[2026-07-10 12:37:41] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 16 rows into awr_seg_itl_waits
+[2026-07-10 12:37:53] INFO     | awr_seg_itl_waits_parser | Found 4 rows in Segments by ITL Waits section
+[2026-07-10 12:37:53] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 4 Segments by ITL Waits records
+[2026-07-10 12:37:53] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 4 rows into awr_seg_itl_waits
+[2026-07-10 12:38:02] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:38:02] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:38:02] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:38:58] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:38:58] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:38:58] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:39:08] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:39:08] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:39:08] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:39:26] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:39:26] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:39:26] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:39:33] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:39:33] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:39:33] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:39:54] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:39:54] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:39:54] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:41:02] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:41:02] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:41:03] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:41:08] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:41:08] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:41:08] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:41:09] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:41:09] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:41:10] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:41:24] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:41:24] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:41:24] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:42:15] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:42:15] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:42:15] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:42:34] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:42:34] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:42:34] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:42:37] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:42:37] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:42:37] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:43:20] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:43:20] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:43:20] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:43:27] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:43:27] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:43:27] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:43:54] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:43:54] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:43:54] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:43:55] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:43:55] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:43:56] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:44:18] INFO     | awr_seg_itl_waits_parser | Found 2 rows in Segments by ITL Waits section
+[2026-07-10 12:44:18] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 2 Segments by ITL Waits records
+[2026-07-10 12:44:18] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 2 rows into awr_seg_itl_waits
+[2026-07-10 12:45:09] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:45:09] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:45:09] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:45:10] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:45:10] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:45:10] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:45:14] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:45:14] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:45:14] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:46:26] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:46:26] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:46:27] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:46:28] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:46:28] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:46:28] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:47:01] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:47:01] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:47:01] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:47:37] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:47:37] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:47:37] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:47:38] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:47:38] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:47:38] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:48:46] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:48:46] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:48:46] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:48:52] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:48:52] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:48:52] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:48:54] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:48:54] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:48:55] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:49:59] INFO     | awr_seg_itl_waits_parser | Found 5 rows in Segments by ITL Waits section
+[2026-07-10 12:49:59] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 5 Segments by ITL Waits records
+[2026-07-10 12:49:59] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 5 rows into awr_seg_itl_waits
+[2026-07-10 12:50:05] INFO     | awr_seg_itl_waits_parser | Found 1 rows in Segments by ITL Waits section
+[2026-07-10 12:50:05] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 1 Segments by ITL Waits records
+[2026-07-10 12:50:05] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 1 rows into awr_seg_itl_waits
+[2026-07-10 12:51:16] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:51:16] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:51:16] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:52:26] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:52:26] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:52:26] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits
+[2026-07-10 12:53:36] INFO     | awr_seg_itl_waits_parser | Found 14 rows in Segments by ITL Waits section
+[2026-07-10 12:53:36] INFO     | awr_seg_itl_waits_parser | ✅ Parsed 14 Segments by ITL Waits records
+[2026-07-10 12:53:36] INFO     | awr_seg_itl_waits_parser | ✅ Inserted 14 rows into awr_seg_itl_waits

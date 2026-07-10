@@ -1,0 +1,447 @@
+[2026-07-10 11:52:54] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 11:52:55] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:52:55] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:53:47] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 11:53:48] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:53:48] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:53:48] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 11:53:50] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:53:51] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:54:20] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 11:54:22] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:54:22] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:54:40] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 11:54:41] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:54:41] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:54:59] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 11:55:01] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:55:01] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:55:31] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 11:55:31] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 11:55:32] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:55:32] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:55:33] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:55:33] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:56:11] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 11:56:13] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:56:13] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:56:22] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 11:56:23] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:56:23] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:56:43] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 11:56:45] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:56:45] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:57:11] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 11:57:13] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:57:13] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:57:23] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 11:57:25] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:57:25] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:57:59] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 11:58:00] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:58:00] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:58:00] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 11:58:01] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:58:01] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:58:37] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 11:58:39] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:58:39] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:58:47] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 11:58:48] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:58:48] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:59:12] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 11:59:14] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:59:14] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:59:33] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 11:59:34] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:59:34] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 11:59:49] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 11:59:51] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 11:59:51] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:00:23] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:00:24] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 12:00:24] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:00:24] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:00:26] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:00:26] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:00:58] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:00:59] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:00:59] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:01:15] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:01:16] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:01:16] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:01:31] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:01:32] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:01:32] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:02:06] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:02:07] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:02:08] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:02:08] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:02:09] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:02:09] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:02:38] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:02:39] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:02:39] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:02:55] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:02:57] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:02:57] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:03:17] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:03:18] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:03:18] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:03:44] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:03:45] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:03:45] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:03:46] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:03:48] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:03:48] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:04:27] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0300_0330.html
+[2026-07-10 12:04:29] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:04:29] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:04:32] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:04:33] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:04:33] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:04:58] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39716_39717.html
+[2026-07-10 12:04:59] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:04:59] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:05:28] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0530_0630.html
+[2026-07-10 12:05:29] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:05:29] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:05:41] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0300_0330.html
+[2026-07-10 12:05:42] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:05:42] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:06:10] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39716_39717.html
+[2026-07-10 12:06:12] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:06:12] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:06:23] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0530_0630.html
+[2026-07-10 12:06:24] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:06:24] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:06:51] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0300_0330.html
+[2026-07-10 12:06:53] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:06:53] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:07:16] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0530_0630.html
+[2026-07-10 12:07:17] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:07:17] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:07:21] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39716_39717.html
+[2026-07-10 12:07:23] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:07:23] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:07:59] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0400_0430.html
+[2026-07-10 12:08:01] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:08:01] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:08:33] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39717_39718.html
+[2026-07-10 12:08:34] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:08:35] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:09:09] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0400_0430.html
+[2026-07-10 12:09:11] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:09:11] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:09:44] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39717_39718.html
+[2026-07-10 12:09:45] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:09:45] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:10:19] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0400_0430.html
+[2026-07-10 12:10:21] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:10:21] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:10:27] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 12:10:28] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:10:28] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:10:54] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39717_39718.html
+[2026-07-10 12:10:56] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:10:56] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:11:25] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 12:11:26] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:11:26] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:11:34] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 12:11:36] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:11:36] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:12:10] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 12:12:11] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:12:11] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:12:19] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 12:12:20] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:12:20] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:12:44] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 12:12:46] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:12:46] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:13:11] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 12:13:12] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:13:12] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:13:22] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 12:13:23] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:13:23] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:13:56] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 12:13:57] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:13:57] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:14:00] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 12:14:01] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:14:01] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:14:32] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 12:14:34] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:14:34] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:14:51] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 12:14:52] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:14:52] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:15:08] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 12:15:09] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:15:10] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:15:40] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 12:15:41] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:15:41] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:15:47] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 12:15:49] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:15:49] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:16:26] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 12:16:27] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 12:16:27] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:16:27] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:16:28] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:16:28] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:17:02] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 12:17:03] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:17:03] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:17:14] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 12:17:15] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:17:15] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:17:40] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 12:17:41] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:17:41] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:18:04] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:18:05] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:18:05] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:18:14] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 12:18:15] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:18:16] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:18:51] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:18:52] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:18:52] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:18:55] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:18:57] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:18:57] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:19:23] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:19:25] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:19:25] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:19:47] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:19:49] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:19:49] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:20:02] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:20:04] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:20:04] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:20:33] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:20:34] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:20:34] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:20:37] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:20:38] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:20:38] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:21:13] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:21:14] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:21:14] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:21:25] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:21:27] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:21:27] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:21:40] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:21:42] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:21:42] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:26:54] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 12:26:55] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:26:56] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:27:11] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 12:27:13] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 12:27:15] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:27:15] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:27:15] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:27:16] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:27:47] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\10_1.html
+[2026-07-10 12:27:50] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:27:51] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:28:22] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 12:28:24] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:28:24] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:29:14] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 12:29:15] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 12:29:17] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:29:17] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:29:17] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:29:17] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:29:53] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0030_0130.html
+[2026-07-10 12:29:54] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:29:54] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:30:19] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\10_1.html
+[2026-07-10 12:30:21] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:30:22] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:30:38] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39713_39714.html
+[2026-07-10 12:30:38] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0000_0030.html
+[2026-07-10 12:30:40] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:30:40] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:30:40] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:30:40] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:30:45] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 12:30:46] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:30:46] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:31:38] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 12:31:40] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:31:40] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:31:53] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 12:31:54] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 12:31:55] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:31:55] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:31:56] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:31:56] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:32:04] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\10_1.html
+[2026-07-10 12:32:07] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:32:07] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:32:31] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0130_0230.html
+[2026-07-10 12:32:32] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:32:32] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:33:05] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 12:33:06] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 12:33:06] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:33:06] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:33:08] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:33:08] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:33:18] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 12:33:19] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:33:19] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:33:48] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\11_1.html
+[2026-07-10 12:33:52] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:33:52] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:34:18] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 12:34:20] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:34:20] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:34:30] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39714_39715.html
+[2026-07-10 12:34:31] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0100_0130.html
+[2026-07-10 12:34:31] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:34:32] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:34:33] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:34:33] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:35:18] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0230_0330.html
+[2026-07-10 12:35:19] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:35:20] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:35:51] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:35:53] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:35:53] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:35:54] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\11_1.html
+[2026-07-10 12:35:55] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:35:56] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:35:56] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:35:56] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:35:56] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:36:10] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:36:11] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:36:11] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:37:01] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:37:03] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:37:03] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:37:04] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:37:05] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:37:05] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:37:06] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:37:08] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:37:08] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:37:50] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\11_1.html
+[2026-07-10 12:37:54] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:37:54] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:38:21] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0330_0430.html
+[2026-07-10 12:38:23] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:38:24] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:38:41] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39715_39716.html
+[2026-07-10 12:38:43] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:38:43] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:38:49] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0200_0230.html
+[2026-07-10 12:38:51] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:38:51] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:39:25] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:39:26] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:39:26] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:39:59] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\12_1.html
+[2026-07-10 12:40:02] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39716_39717.html
+[2026-07-10 12:40:02] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:40:02] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:40:03] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:40:03] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:40:08] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0300_0330.html
+[2026-07-10 12:40:10] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:40:10] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:40:21] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:40:23] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:40:24] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:41:40] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0430_0530.html
+[2026-07-10 12:41:42] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:41:42] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:41:49] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39716_39717.html
+[2026-07-10 12:41:51] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:41:51] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:41:54] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0300_0330.html
+[2026-07-10 12:41:56] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:41:56] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:42:23] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\12_1.html
+[2026-07-10 12:42:26] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:42:26] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:42:43] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0530_0630.html
+[2026-07-10 12:42:45] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:42:45] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:43:14] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39716_39717.html
+[2026-07-10 12:43:16] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:43:16] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:43:16] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0300_0330.html
+[2026-07-10 12:43:18] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:43:18] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:43:47] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0530_0630.html
+[2026-07-10 12:43:48] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:43:48] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:44:17] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\12_1.html
+[2026-07-10 12:44:19] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:44:19] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:44:29] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39717_39718.html
+[2026-07-10 12:44:29] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0400_0430.html
+[2026-07-10 12:44:30] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:44:30] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:44:31] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:44:31] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:44:45] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\COLDBPRD\awr_COLDBPRD_1_221212_0530_0630.html
+[2026-07-10 12:44:47] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:44:47] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:45:42] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0400_0430.html
+[2026-07-10 12:45:43] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39717_39718.html
+[2026-07-10 12:45:44] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:45:44] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:45:44] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:45:44] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:46:07] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\9_1.html
+[2026-07-10 12:46:09] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:46:09] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:46:59] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0400_0430.html
+[2026-07-10 12:47:00] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:47:00] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:47:00] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39717_39718.html
+[2026-07-10 12:47:02] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:47:02] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:47:50] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\9_1.html
+[2026-07-10 12:47:52] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:47:52] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:48:12] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39718_39719.html
+[2026-07-10 12:48:13] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0500_0530.html
+[2026-07-10 12:48:14] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:48:14] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:48:15] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:48:15] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:49:25] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39718_39719.html
+[2026-07-10 12:49:26] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:49:26] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:49:29] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0500_0530.html
+[2026-07-10 12:49:30] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:49:30] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:49:32] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\ONE_LMS\9_1.html
+[2026-07-10 12:49:35] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:49:35] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:50:32] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\GTWPRD\awrrpt_1_39718_39719.html
+[2026-07-10 12:50:33] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:50:33] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:50:39] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0500_0530.html
+[2026-07-10 12:50:41] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:50:41] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:51:50] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0600_0630.html
+[2026-07-10 12:51:52] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:51:52] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:53:00] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0600_0630.html
+[2026-07-10 12:53:02] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:53:02] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency
+[2026-07-10 12:54:10] INFO     | instance_efficiency_parser | 🔍 Parsing Instance Efficiency section from C:\AWR_Insight_Portal_v2\awr_reports\DMS\awr_DMSDB_1_240116_0600_0630.html
+[2026-07-10 12:54:12] INFO     | instance_efficiency_parser | ✅ Extracted 11 Instance Efficiency rows
+[2026-07-10 12:54:12] INFO     | instance_efficiency_parser | ✅ Inserted 11 rows into awr_instance_efficiency

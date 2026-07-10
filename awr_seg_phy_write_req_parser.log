@@ -1,0 +1,447 @@
+[2026-07-10 11:52:34] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:52:34] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:52:34] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:53:24] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:53:24] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:53:24] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:53:28] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:53:28] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:53:28] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:53:55] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:53:55] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:53:55] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:54:22] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:54:22] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:54:22] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:54:35] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:54:35] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:54:35] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:55:06] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:55:06] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:55:06] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:55:13] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:55:13] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:55:13] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:55:46] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:55:46] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:55:46] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:56:04] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:56:04] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:56:04] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:56:18] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:56:18] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:56:18] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:56:54] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:56:54] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:56:54] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:56:58] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:56:58] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:56:58] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:57:33] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:57:33] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:57:33] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:57:44] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:57:44] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:57:44] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:58:12] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:58:12] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:58:12] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:58:30] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:58:30] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:58:30] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:58:47] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:58:47] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:58:47] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:59:17] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:59:17] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:59:17] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 11:59:24] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 11:59:24] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 11:59:24] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:00:00] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:00:00] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:00:00] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:00:06] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:00:06] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:00:06] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:00:34] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:00:34] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:00:34] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:00:57] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:00:57] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:00:57] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:01:07] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:01:07] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:01:07] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:01:43] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:01:43] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:01:43] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:01:48] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:01:48] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:01:48] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:02:15] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:02:15] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:02:15] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:02:39] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:02:39] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:02:39] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:02:52] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:02:52] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:02:52] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:03:22] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:03:22] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:03:22] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:03:27] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:03:27] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:03:27] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:04:02] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:04:02] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:04:03] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:04:15] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:04:15] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:04:15] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:04:32] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:04:32] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:04:32] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:05:08] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:05:08] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:05:08] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:05:15] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:05:15] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:05:15] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:05:45] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:05:45] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:05:45] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:06:03] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:06:03] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:06:03] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:06:27] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:06:27] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:06:27] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:06:57] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:06:57] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:06:58] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:06:58] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:06:58] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:06:58] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:07:35] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:07:35] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:07:35] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:08:07] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:08:07] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:08:07] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:08:45] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:08:45] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:08:45] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:09:19] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:09:19] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:09:19] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:09:54] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:09:54] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:09:54] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:10:07] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:10:07] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:10:07] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:10:30] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:10:30] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:10:30] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:11:05] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:11:05] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:11:05] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:11:09] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:11:09] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:11:09] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:11:45] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:11:45] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:11:45] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:11:59] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:11:59] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:11:59] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:12:20] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:12:20] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:12:20] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:12:52] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:12:52] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:12:52] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:12:56] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:12:56] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:12:56] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:13:31] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:13:31] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:13:31] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:13:42] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:13:42] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:13:42] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:14:08] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:14:08] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:14:08] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:14:33] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:14:33] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:14:33] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:14:43] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:14:43] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:14:43] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:15:21] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:15:21] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:15:21] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:15:22] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:15:22] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:15:22] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:16:00] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:16:00] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:16:00] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:16:10] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:16:10] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:16:10] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:16:36] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:16:36] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:16:36] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:16:57] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:16:57] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:16:57] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:17:14] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:17:14] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:17:14] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:17:46] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:17:46] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:17:46] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:17:48] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:17:48] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:17:48] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:18:26] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:18:26] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:18:26] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:18:37] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:18:37] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:18:37] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:18:59] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:18:59] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:18:59] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:19:29] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:19:29] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:19:29] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:19:37] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:19:37] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:19:37] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:20:08] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:20:08] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:20:08] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:20:19] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:20:19] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:20:19] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:20:48] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:20:48] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:20:48] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:21:08] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:21:08] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:21:08] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:21:17] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:21:17] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:21:17] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:26:28] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:26:28] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:26:28] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:26:37] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:26:37] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:26:37] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:26:37] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:26:37] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:26:38] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:26:56] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:26:56] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:26:56] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:27:50] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:27:50] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:27:50] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:28:31] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:28:31] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:28:31] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:28:32] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:28:32] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:28:32] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:29:29] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:29:29] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:29:29] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:29:43] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:29:43] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:29:43] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:30:13] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:30:13] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:30:13] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:30:13] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:30:13] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:30:13] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:30:27] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:30:27] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:30:27] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:31:20] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:31:20] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:31:20] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:31:28] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:32:13] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:32:13] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:32:13] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:32:41] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:32:41] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:32:41] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:32:42] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:32:42] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:32:42] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:33:01] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:33:01] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:33:01] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:33:12] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:33:12] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:33:12] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:33:54] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:33:54] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:33:54] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:33:57] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:33:57] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:33:57] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:33:58] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:33:58] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:33:58] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:35:01] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:35:01] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:35:01] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:35:18] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:35:18] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:35:18] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:35:26] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:35:26] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:35:27] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:35:29] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:35:29] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:35:29] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:35:51] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:35:51] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:35:52] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:36:37] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:36:37] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:36:37] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:36:41] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:36:41] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:36:41] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:36:45] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:36:45] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:36:45] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:37:02] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:37:02] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:37:02] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:37:53] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:37:53] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:37:54] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:38:05] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:38:05] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:38:05] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:38:14] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:38:14] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:38:14] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:39:06] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:39:06] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:39:06] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:39:23] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:39:23] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:39:23] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:39:35] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:39:35] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:39:35] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:39:42] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:39:42] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:39:43] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:40:00] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:40:00] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:40:00] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:41:15] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:41:15] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:41:15] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:41:16] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:41:16] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:41:16] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:41:22] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:41:22] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:41:22] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:41:43] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:41:43] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:41:43] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:42:23] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:42:23] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:42:23] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:42:44] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:42:44] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:42:44] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:42:48] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:42:48] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:42:48] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:43:27] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:43:27] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:43:27] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:43:41] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:43:41] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:43:41] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:44:04] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:44:04] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:44:04] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:44:05] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:44:05] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:44:05] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:44:25] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:44:25] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:44:25] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:45:18] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:45:18] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:45:18] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:45:18] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:45:18] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:45:18] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:45:27] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:45:27] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:45:27] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:46:35] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:46:35] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:46:35] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:46:36] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:46:36] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:46:36] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:47:14] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:47:14] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:47:14] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:47:47] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:47:47] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:47:47] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:47:47] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:47:47] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:47:47] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:48:58] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:48:58] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:48:58] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:49:01] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:49:01] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:49:01] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:49:04] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:49:04] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:49:04] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:50:08] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:50:08] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:50:08] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:50:15] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:50:15] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:50:15] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:51:25] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:51:25] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:51:25] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:52:35] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:52:35] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:52:35] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req
+[2026-07-10 12:53:45] INFO     | awr_seg_phy_write_req_parser | Found 5 rows in Segments by Physical Write Requests section
+[2026-07-10 12:53:45] INFO     | awr_seg_phy_write_req_parser | ✅ Parsed 5 Segments by Physical Write Requests records
+[2026-07-10 12:53:45] INFO     | awr_seg_phy_write_req_parser | ✅ Inserted 5 rows into awr_seg_phy_write_req

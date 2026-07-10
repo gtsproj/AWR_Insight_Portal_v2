@@ -1,0 +1,298 @@
+[2026-07-10 11:52:52] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 11:52:52] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 11:53:45] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 11:53:45] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 11:53:46] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 11:53:46] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 11:54:18] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 11:54:18] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 11:54:38] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 11:54:38] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 11:54:57] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 11:54:57] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 11:55:29] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 11:55:29] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 11:55:29] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 11:55:29] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 11:56:09] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 11:56:09] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 11:56:20] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 11:56:20] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 11:56:40] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 11:56:41] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 11:57:10] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 11:57:10] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 11:57:21] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 11:57:21] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 11:57:56] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 11:57:56] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 11:57:59] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 11:57:59] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 11:58:35] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 11:58:35] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 11:58:45] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 11:58:45] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 11:59:10] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 11:59:10] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 11:59:32] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 11:59:32] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 11:59:47] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 11:59:47] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 12:00:22] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:00:22] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:00:22] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:00:22] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:00:55] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:00:55] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:01:13] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:01:13] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:01:28] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:01:28] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:02:05] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:02:05] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:02:05] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:02:05] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:02:35] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:02:36] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:02:54] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:02:54] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:03:14] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:03:14] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:03:42] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:03:42] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:03:44] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:03:44] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:04:25] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:04:25] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:04:30] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:04:30] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:04:55] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:04:55] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:05:26] INFO     | foreground_wait_events | ✅ Parsed 73 Foreground Wait Event records.
+[2026-07-10 12:05:26] INFO     | foreground_wait_events | ✅ Inserted 73 rows into awr_foreground_wait_events
+[2026-07-10 12:05:38] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:05:38] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:06:08] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:06:08] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:06:21] INFO     | foreground_wait_events | ✅ Parsed 73 Foreground Wait Event records.
+[2026-07-10 12:06:21] INFO     | foreground_wait_events | ✅ Inserted 73 rows into awr_foreground_wait_events
+[2026-07-10 12:06:49] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:06:49] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:07:15] INFO     | foreground_wait_events | ✅ Parsed 73 Foreground Wait Event records.
+[2026-07-10 12:07:15] INFO     | foreground_wait_events | ✅ Inserted 73 rows into awr_foreground_wait_events
+[2026-07-10 12:07:18] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:07:19] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:07:57] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:07:57] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:08:30] INFO     | foreground_wait_events | ✅ Parsed 104 Foreground Wait Event records.
+[2026-07-10 12:08:31] INFO     | foreground_wait_events | ✅ Inserted 104 rows into awr_foreground_wait_events
+[2026-07-10 12:09:07] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:09:07] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:09:41] INFO     | foreground_wait_events | ✅ Parsed 104 Foreground Wait Event records.
+[2026-07-10 12:09:41] INFO     | foreground_wait_events | ✅ Inserted 104 rows into awr_foreground_wait_events
+[2026-07-10 12:10:16] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:10:16] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:10:25] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 12:10:25] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 12:10:51] INFO     | foreground_wait_events | ✅ Parsed 104 Foreground Wait Event records.
+[2026-07-10 12:10:52] INFO     | foreground_wait_events | ✅ Inserted 104 rows into awr_foreground_wait_events
+[2026-07-10 12:11:23] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 12:11:23] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 12:11:32] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 12:11:32] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 12:12:07] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:12:07] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:12:17] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 12:12:17] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 12:12:42] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 12:12:42] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 12:13:09] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 12:13:09] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 12:13:19] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:13:19] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:13:53] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 12:13:53] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 12:13:58] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 12:13:58] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 12:14:30] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:14:30] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:14:49] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 12:14:49] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 12:15:05] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 12:15:05] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 12:15:39] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 12:15:39] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 12:15:45] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:15:45] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:16:23] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 12:16:23] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 12:16:25] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 12:16:25] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 12:16:59] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:16:59] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:17:12] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 12:17:12] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 12:17:37] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 12:17:37] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 12:18:02] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:18:03] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:18:11] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:18:12] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:18:48] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:18:48] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:18:54] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:18:54] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:19:21] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:19:21] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:19:46] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:19:46] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:20:00] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:20:00] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:20:30] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:20:30] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:20:35] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:20:35] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:21:10] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:21:10] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:21:24] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:21:24] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:21:38] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:21:38] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:26:51] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 12:26:52] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 12:27:08] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 12:27:08] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 12:27:08] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:27:09] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:27:43] INFO     | foreground_wait_events | ✅ Parsed 37 Foreground Wait Event records.
+[2026-07-10 12:27:43] INFO     | foreground_wait_events | ✅ Inserted 37 rows into awr_foreground_wait_events
+[2026-07-10 12:28:19] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 12:28:19] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 12:29:10] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 12:29:10] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 12:29:11] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:29:11] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:29:51] INFO     | foreground_wait_events | ✅ Parsed 56 Foreground Wait Event records.
+[2026-07-10 12:29:51] INFO     | foreground_wait_events | ✅ Inserted 56 rows into awr_foreground_wait_events
+[2026-07-10 12:30:16] INFO     | foreground_wait_events | ✅ Parsed 37 Foreground Wait Event records.
+[2026-07-10 12:30:16] INFO     | foreground_wait_events | ✅ Inserted 37 rows into awr_foreground_wait_events
+[2026-07-10 12:30:35] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:30:35] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:30:36] INFO     | foreground_wait_events | ✅ Parsed 19 Foreground Wait Event records.
+[2026-07-10 12:30:36] INFO     | foreground_wait_events | ✅ Inserted 19 rows into awr_foreground_wait_events
+[2026-07-10 12:30:43] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 12:30:43] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 12:31:37] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 12:31:37] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 12:31:51] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:31:51] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:31:52] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 12:31:52] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 12:32:01] INFO     | foreground_wait_events | ✅ Parsed 37 Foreground Wait Event records.
+[2026-07-10 12:32:01] INFO     | foreground_wait_events | ✅ Inserted 37 rows into awr_foreground_wait_events
+[2026-07-10 12:32:29] INFO     | foreground_wait_events | ✅ Parsed 38 Foreground Wait Event records.
+[2026-07-10 12:32:29] INFO     | foreground_wait_events | ✅ Inserted 38 rows into awr_foreground_wait_events
+[2026-07-10 12:33:02] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:33:02] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:33:04] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 12:33:04] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 12:33:16] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 12:33:16] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 12:33:44] INFO     | foreground_wait_events | ✅ Parsed 33 Foreground Wait Event records.
+[2026-07-10 12:33:44] INFO     | foreground_wait_events | ✅ Inserted 33 rows into awr_foreground_wait_events
+[2026-07-10 12:34:17] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 12:34:17] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 12:34:27] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:34:27] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:34:29] INFO     | foreground_wait_events | ✅ Parsed 24 Foreground Wait Event records.
+[2026-07-10 12:34:29] INFO     | foreground_wait_events | ✅ Inserted 24 rows into awr_foreground_wait_events
+[2026-07-10 12:35:17] INFO     | foreground_wait_events | ✅ Parsed 29 Foreground Wait Event records.
+[2026-07-10 12:35:17] INFO     | foreground_wait_events | ✅ Inserted 29 rows into awr_foreground_wait_events
+[2026-07-10 12:35:49] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:35:49] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:35:50] INFO     | foreground_wait_events | ✅ Parsed 33 Foreground Wait Event records.
+[2026-07-10 12:35:50] INFO     | foreground_wait_events | ✅ Inserted 33 rows into awr_foreground_wait_events
+[2026-07-10 12:35:52] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:35:52] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:36:08] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:36:08] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:36:59] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:36:59] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:37:02] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:37:02] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:37:04] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:37:04] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:37:43] INFO     | foreground_wait_events | ✅ Parsed 33 Foreground Wait Event records.
+[2026-07-10 12:37:44] INFO     | foreground_wait_events | ✅ Inserted 33 rows into awr_foreground_wait_events
+[2026-07-10 12:38:18] INFO     | foreground_wait_events | ✅ Parsed 52 Foreground Wait Event records.
+[2026-07-10 12:38:18] INFO     | foreground_wait_events | ✅ Inserted 52 rows into awr_foreground_wait_events
+[2026-07-10 12:38:38] INFO     | foreground_wait_events | ✅ Parsed 94 Foreground Wait Event records.
+[2026-07-10 12:38:38] INFO     | foreground_wait_events | ✅ Inserted 94 rows into awr_foreground_wait_events
+[2026-07-10 12:38:46] INFO     | foreground_wait_events | ✅ Parsed 18 Foreground Wait Event records.
+[2026-07-10 12:38:47] INFO     | foreground_wait_events | ✅ Inserted 18 rows into awr_foreground_wait_events
+[2026-07-10 12:39:23] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:39:23] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:39:56] INFO     | foreground_wait_events | ✅ Parsed 32 Foreground Wait Event records.
+[2026-07-10 12:39:56] INFO     | foreground_wait_events | ✅ Inserted 32 rows into awr_foreground_wait_events
+[2026-07-10 12:39:59] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:39:59] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:40:05] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:40:05] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:40:19] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:40:19] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:41:38] INFO     | foreground_wait_events | ✅ Parsed 27 Foreground Wait Event records.
+[2026-07-10 12:41:38] INFO     | foreground_wait_events | ✅ Inserted 27 rows into awr_foreground_wait_events
+[2026-07-10 12:41:46] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:41:47] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:41:51] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:41:51] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:42:20] INFO     | foreground_wait_events | ✅ Parsed 32 Foreground Wait Event records.
+[2026-07-10 12:42:20] INFO     | foreground_wait_events | ✅ Inserted 32 rows into awr_foreground_wait_events
+[2026-07-10 12:42:41] INFO     | foreground_wait_events | ✅ Parsed 73 Foreground Wait Event records.
+[2026-07-10 12:42:41] INFO     | foreground_wait_events | ✅ Inserted 73 rows into awr_foreground_wait_events
+[2026-07-10 12:43:12] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:43:12] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:43:13] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:43:14] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:43:45] INFO     | foreground_wait_events | ✅ Parsed 73 Foreground Wait Event records.
+[2026-07-10 12:43:45] INFO     | foreground_wait_events | ✅ Inserted 73 rows into awr_foreground_wait_events
+[2026-07-10 12:44:13] INFO     | foreground_wait_events | ✅ Parsed 32 Foreground Wait Event records.
+[2026-07-10 12:44:13] INFO     | foreground_wait_events | ✅ Inserted 32 rows into awr_foreground_wait_events
+[2026-07-10 12:44:26] INFO     | foreground_wait_events | ✅ Parsed 104 Foreground Wait Event records.
+[2026-07-10 12:44:26] INFO     | foreground_wait_events | ✅ Inserted 104 rows into awr_foreground_wait_events
+[2026-07-10 12:44:27] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:44:27] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:44:43] INFO     | foreground_wait_events | ✅ Parsed 73 Foreground Wait Event records.
+[2026-07-10 12:44:43] INFO     | foreground_wait_events | ✅ Inserted 73 rows into awr_foreground_wait_events
+[2026-07-10 12:45:40] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:45:40] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:45:40] INFO     | foreground_wait_events | ✅ Parsed 104 Foreground Wait Event records.
+[2026-07-10 12:45:40] INFO     | foreground_wait_events | ✅ Inserted 104 rows into awr_foreground_wait_events
+[2026-07-10 12:46:03] INFO     | foreground_wait_events | ✅ Parsed 31 Foreground Wait Event records.
+[2026-07-10 12:46:03] INFO     | foreground_wait_events | ✅ Inserted 31 rows into awr_foreground_wait_events
+[2026-07-10 12:46:56] INFO     | foreground_wait_events | ✅ Parsed 17 Foreground Wait Event records.
+[2026-07-10 12:46:56] INFO     | foreground_wait_events | ✅ Inserted 17 rows into awr_foreground_wait_events
+[2026-07-10 12:46:58] INFO     | foreground_wait_events | ✅ Parsed 104 Foreground Wait Event records.
+[2026-07-10 12:46:58] INFO     | foreground_wait_events | ✅ Inserted 104 rows into awr_foreground_wait_events
+[2026-07-10 12:47:46] INFO     | foreground_wait_events | ✅ Parsed 31 Foreground Wait Event records.
+[2026-07-10 12:47:46] INFO     | foreground_wait_events | ✅ Inserted 31 rows into awr_foreground_wait_events
+[2026-07-10 12:48:10] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:48:10] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:48:11] INFO     | foreground_wait_events | ✅ Parsed 21 Foreground Wait Event records.
+[2026-07-10 12:48:11] INFO     | foreground_wait_events | ✅ Inserted 21 rows into awr_foreground_wait_events
+[2026-07-10 12:49:22] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:49:23] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:49:26] INFO     | foreground_wait_events | ✅ Parsed 21 Foreground Wait Event records.
+[2026-07-10 12:49:26] INFO     | foreground_wait_events | ✅ Inserted 21 rows into awr_foreground_wait_events
+[2026-07-10 12:49:29] INFO     | foreground_wait_events | ✅ Parsed 31 Foreground Wait Event records.
+[2026-07-10 12:49:29] INFO     | foreground_wait_events | ✅ Inserted 31 rows into awr_foreground_wait_events
+[2026-07-10 12:50:29] INFO     | foreground_wait_events | ✅ Parsed 102 Foreground Wait Event records.
+[2026-07-10 12:50:30] INFO     | foreground_wait_events | ✅ Inserted 102 rows into awr_foreground_wait_events
+[2026-07-10 12:50:37] INFO     | foreground_wait_events | ✅ Parsed 21 Foreground Wait Event records.
+[2026-07-10 12:50:37] INFO     | foreground_wait_events | ✅ Inserted 21 rows into awr_foreground_wait_events
+[2026-07-10 12:51:47] INFO     | foreground_wait_events | ✅ Parsed 15 Foreground Wait Event records.
+[2026-07-10 12:51:47] INFO     | foreground_wait_events | ✅ Inserted 15 rows into awr_foreground_wait_events
+[2026-07-10 12:52:57] INFO     | foreground_wait_events | ✅ Parsed 15 Foreground Wait Event records.
+[2026-07-10 12:52:57] INFO     | foreground_wait_events | ✅ Inserted 15 rows into awr_foreground_wait_events
+[2026-07-10 12:54:07] INFO     | foreground_wait_events | ✅ Parsed 15 Foreground Wait Event records.
+[2026-07-10 12:54:07] INFO     | foreground_wait_events | ✅ Inserted 15 rows into awr_foreground_wait_events

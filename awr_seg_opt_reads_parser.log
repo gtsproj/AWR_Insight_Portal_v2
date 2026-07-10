@@ -1,0 +1,447 @@
+[2026-07-10 11:52:30] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:52:31] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:52:31] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:53:19] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:53:19] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:53:19] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:53:25] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:53:25] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:53:25] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:53:51] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:53:51] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:53:51] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:54:18] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:54:18] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:54:18] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:54:30] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:54:30] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:54:30] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:55:01] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:55:01] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:55:02] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:55:10] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 11:55:10] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 11:55:10] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 11:55:41] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:55:41] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:55:41] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:56:00] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 11:56:00] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 11:56:00] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 11:56:13] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:56:13] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:56:13] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:56:50] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 11:56:50] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 11:56:50] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 11:56:53] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:56:53] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:56:53] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:57:28] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 11:57:28] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 11:57:28] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 11:57:41] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 11:57:41] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 11:57:41] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 11:58:07] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:58:07] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:58:07] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:58:27] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 11:58:27] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 11:58:27] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 11:58:42] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 11:58:42] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 11:58:42] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 11:59:14] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 11:59:14] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 11:59:14] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 11:59:19] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 11:59:19] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 11:59:19] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 11:59:56] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 11:59:56] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 11:59:56] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:00:03] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:00:03] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:00:03] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:00:30] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:00:30] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:00:30] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:00:53] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:00:53] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:00:53] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:01:03] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:01:03] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:01:03] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:01:38] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:01:38] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:01:38] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:01:45] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:01:45] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:01:45] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:02:10] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:02:10] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:02:10] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:02:36] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:02:36] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:02:36] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:02:48] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:02:48] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:02:48] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:03:17] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:03:17] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:03:17] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:03:24] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:03:24] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:03:24] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:03:58] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:03:58] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:03:58] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:04:12] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:04:12] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:04:12] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:04:27] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:04:27] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:04:27] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:05:04] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:05:04] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:05:04] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:05:10] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:05:10] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:05:10] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:05:40] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:05:40] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:05:41] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:05:59] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:05:59] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:06:00] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:06:22] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:06:22] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:06:22] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:06:53] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:06:53] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:06:53] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:06:54] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:06:54] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:06:54] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:07:30] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:07:30] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:07:30] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:08:03] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:08:03] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:08:03] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:08:40] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:08:40] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:08:40] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:09:14] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:09:14] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:09:14] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:09:49] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:09:49] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:09:49] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:10:04] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:10:04] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:10:04] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:10:25] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:10:25] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:10:25] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:10:57] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:10:57] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:10:57] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:11:04] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:11:04] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:11:04] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:11:40] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:11:40] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:11:40] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:11:56] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:11:56] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:11:56] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:12:15] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:12:15] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:12:15] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:12:49] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:12:49] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:12:49] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:12:52] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:12:52] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:12:52] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:13:26] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:13:26] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:13:26] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:13:39] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:13:39] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:13:39] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:14:04] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:14:04] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:14:04] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:14:30] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:14:30] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:14:30] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:14:38] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:14:38] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:14:38] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:15:16] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:15:16] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:15:16] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:15:19] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 12:15:19] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 12:15:19] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 12:15:55] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:15:55] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:15:55] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:16:07] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 12:16:07] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 12:16:07] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 12:16:31] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:16:31] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:16:31] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:16:54] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 12:16:54] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 12:16:54] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 12:17:09] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:17:09] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:17:09] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:17:42] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:17:42] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:17:42] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:17:44] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:17:44] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:17:44] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:18:21] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:18:21] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:18:21] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:18:34] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:18:34] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:18:34] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:18:55] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:18:55] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:18:55] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:19:25] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:19:25] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:19:25] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:19:32] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:19:32] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:19:32] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:20:04] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:20:04] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:20:04] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:20:16] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:20:16] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:20:16] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:20:43] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:20:43] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:20:43] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:21:05] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:21:05] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:21:05] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:21:12] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:21:12] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:21:12] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:26:25] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:26:25] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:26:25] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:26:31] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:26:31] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:26:31] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:26:31] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:26:31] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:26:31] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:26:47] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:26:47] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:26:47] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:27:46] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:27:46] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:27:46] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:28:22] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:28:22] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:28:22] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:28:23] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:28:23] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:28:23] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:29:24] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:29:24] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:29:24] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:29:33] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:29:33] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:29:33] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:30:08] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:30:08] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:30:09] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:30:09] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:30:09] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:30:09] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:30:24] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:30:24] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:30:24] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:31:17] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:31:17] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:31:17] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:31:21] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:31:21] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:31:21] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:31:23] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:31:23] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:31:23] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:31:23] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:31:23] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:31:23] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:32:10] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:32:10] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:32:10] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:32:37] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:32:37] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:32:37] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:32:38] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:32:38] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:32:38] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:32:58] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 12:32:58] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 12:32:58] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 12:33:05] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:33:05] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:33:05] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:33:49] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 12:33:49] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 12:33:49] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 12:33:49] INFO     | awr_seg_opt_reads_parser | Found 4 rows in Segments by Optimized Reads section
+[2026-07-10 12:33:49] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 4 Segments by Optimized Reads records
+[2026-07-10 12:33:50] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 4 rows into awr_seg_opt_reads
+[2026-07-10 12:33:51] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:33:51] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:33:51] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:34:58] INFO     | awr_seg_opt_reads_parser | Found 2 rows in Segments by Optimized Reads section
+[2026-07-10 12:34:58] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 2 Segments by Optimized Reads records
+[2026-07-10 12:34:58] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 2 rows into awr_seg_opt_reads
+[2026-07-10 12:35:11] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:35:11] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:35:11] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:35:22] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:35:22] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:35:22] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:35:24] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:35:24] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:35:24] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:35:48] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:35:48] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:35:48] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:36:33] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:36:33] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:36:33] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:36:36] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:36:36] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:36:36] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:36:42] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:36:42] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:36:42] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:36:56] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:36:56] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:36:56] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:37:48] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:37:48] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:37:48] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:37:59] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:37:59] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:37:59] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:38:07] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:38:07] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:38:07] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:39:02] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:39:02] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:39:02] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:39:15] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:39:15] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:39:15] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:39:30] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:39:30] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:39:31] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:39:37] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:39:37] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:39:37] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:39:57] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:39:57] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:39:57] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:41:09] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:41:09] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:41:09] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:41:13] INFO     | awr_seg_opt_reads_parser | Found 3 rows in Segments by Optimized Reads section
+[2026-07-10 12:41:13] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 3 Segments by Optimized Reads records
+[2026-07-10 12:41:13] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 3 rows into awr_seg_opt_reads
+[2026-07-10 12:41:15] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:41:15] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:41:16] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:41:33] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:41:33] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:41:33] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:42:19] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:42:19] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:42:19] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:42:39] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:42:39] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:42:39] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:42:42] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:42:42] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:42:42] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:43:23] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:43:23] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:43:23] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:43:34] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:43:34] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:43:34] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:43:59] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:43:59] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:43:59] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:44:00] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:44:00] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:44:00] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:44:21] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:44:21] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:44:21] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:45:14] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:45:14] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:45:14] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:45:14] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:45:14] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:45:14] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:45:20] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:45:20] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:45:21] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:46:31] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:46:31] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:46:31] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:46:32] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:46:32] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:46:32] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:47:07] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:47:07] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:47:07] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:47:42] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:47:42] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:47:42] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:47:42] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:47:42] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:47:43] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:48:52] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:48:52] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:48:52] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:48:56] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:48:56] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:48:57] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:48:59] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:48:59] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:48:59] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:50:04] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:50:04] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:50:04] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:50:10] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:50:10] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:50:10] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:51:20] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:51:20] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:51:20] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:52:30] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:52:30] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:52:30] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads
+[2026-07-10 12:53:40] INFO     | awr_seg_opt_reads_parser | Found 5 rows in Segments by Optimized Reads section
+[2026-07-10 12:53:40] INFO     | awr_seg_opt_reads_parser | ✅ Parsed 5 Segments by Optimized Reads records
+[2026-07-10 12:53:40] INFO     | awr_seg_opt_reads_parser | ✅ Inserted 5 rows into awr_seg_opt_reads

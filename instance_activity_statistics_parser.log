@@ -1,0 +1,447 @@
+[2026-07-10 11:52:54] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:52:54] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:52:54] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:53:47] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:53:47] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:53:47] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:53:48] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 11:53:48] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 11:53:48] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 11:54:20] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 11:54:20] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 11:54:20] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 11:54:40] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:54:40] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:54:40] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:54:59] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 11:54:59] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 11:54:59] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 11:55:31] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:55:31] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:55:31] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:55:31] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 11:55:31] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 11:55:31] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 11:56:11] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 11:56:11] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 11:56:11] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 11:56:22] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:56:22] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:56:22] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:56:43] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 11:56:43] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 11:56:43] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 11:57:11] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:57:11] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:57:11] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:57:23] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 11:57:23] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 11:57:23] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 11:57:58] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 11:57:59] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 11:57:59] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 11:58:00] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:58:00] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:58:00] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:58:37] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 11:58:37] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 11:58:37] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 11:58:46] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:58:46] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:58:47] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:59:12] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 11:59:12] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 11:59:12] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 11:59:33] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 11:59:33] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 11:59:33] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 11:59:49] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 11:59:49] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 11:59:49] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:00:23] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:00:23] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:00:23] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:00:24] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:00:24] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:00:24] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:00:58] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:00:58] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:00:58] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:01:15] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:01:15] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:01:15] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:01:31] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:01:31] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:01:31] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:02:06] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:02:06] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:02:06] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:02:07] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:02:07] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:02:07] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:02:38] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:02:38] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:02:38] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:02:55] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:02:55] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:02:55] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:03:17] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:03:17] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:03:17] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:03:44] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:03:44] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:03:44] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:03:46] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:03:46] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:03:46] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:04:27] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:04:27] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:04:27] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:04:32] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:04:32] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:04:32] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:04:58] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:04:58] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:04:58] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:05:28] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:05:28] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:05:28] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:05:41] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:05:41] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:05:41] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:06:10] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:06:10] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:06:10] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:06:23] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:06:23] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:06:23] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:06:51] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:06:51] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:06:51] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:07:16] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:07:16] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:07:16] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:07:21] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:07:21] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:07:21] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:07:59] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:07:59] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:07:59] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:08:33] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:08:33] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:08:33] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:09:09] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:09:09] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:09:09] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:09:44] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:09:44] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:09:44] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:10:19] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:10:19] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:10:19] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:10:27] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:10:27] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:10:27] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:10:54] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:10:54] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:10:54] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:11:25] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:11:25] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:11:25] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:11:34] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:11:34] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:11:34] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:12:10] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:12:10] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:12:10] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:12:19] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:12:19] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:12:19] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:12:44] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:12:44] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:12:44] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:13:10] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:13:10] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:13:11] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:13:22] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:13:22] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:13:22] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:13:56] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:13:56] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:13:56] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:14:00] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:14:00] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:14:00] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:14:32] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:14:32] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:14:32] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:14:51] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:14:51] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:14:51] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:15:08] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:15:08] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:15:08] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:15:40] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:15:40] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:15:40] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:15:47] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:15:47] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:15:47] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:16:26] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:16:26] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:16:26] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:16:27] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:16:27] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:16:27] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:17:02] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:17:02] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:17:02] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:17:14] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:17:14] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:17:14] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:17:40] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:17:40] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:17:40] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:18:04] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:18:04] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:18:04] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:18:14] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:18:14] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:18:14] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:18:50] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:18:50] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:18:51] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:18:55] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:18:55] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:18:55] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:19:23] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:19:23] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:19:23] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:19:47] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:19:47] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:19:47] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:20:02] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:20:02] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:20:02] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:20:32] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:20:32] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:20:33] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:20:37] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:20:37] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:20:37] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:21:12] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:21:12] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:21:12] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:21:25] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:21:25] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:21:25] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:21:40] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:21:40] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:21:40] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:26:54] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:26:54] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:26:54] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:27:11] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:27:11] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:27:11] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:27:12] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:27:12] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:27:13] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:27:47] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:27:47] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:27:47] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:28:22] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:28:22] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:28:22] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:29:13] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:29:13] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:29:14] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:29:15] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:29:15] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:29:15] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:29:52] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:29:52] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:29:53] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:30:19] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:30:19] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:30:19] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:30:38] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:30:38] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:30:38] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:30:38] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:30:38] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:30:38] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:30:44] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:30:44] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:30:45] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:31:38] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:31:38] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:31:38] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:31:53] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:31:53] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:31:53] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:31:54] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:31:54] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:31:54] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:32:04] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:32:04] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:32:04] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:32:31] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:32:31] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:32:31] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:33:05] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:33:05] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:33:05] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:33:06] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:33:06] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:33:06] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:33:18] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:33:18] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:33:18] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:33:48] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:33:48] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:33:48] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:34:18] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:34:18] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:34:18] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:34:30] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:34:30] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:34:30] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:34:31] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:34:31] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:34:31] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:35:18] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:35:18] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:35:18] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:35:51] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:35:51] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:35:51] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:35:54] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:35:54] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:35:54] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:35:54] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:35:54] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:35:55] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:36:10] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:36:10] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:36:10] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:37:01] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:37:01] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:37:01] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:37:04] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:37:04] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:37:04] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:37:06] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:37:06] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:37:06] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:37:50] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:37:50] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:37:50] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:38:21] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:38:21] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:38:21] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:38:41] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:38:41] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:38:41] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:38:49] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:38:49] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:38:49] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:39:25] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:39:25] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:39:25] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:39:59] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:39:59] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:39:59] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:40:01] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:40:01] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:40:02] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:40:08] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:40:08] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:40:08] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:40:21] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:40:21] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:40:21] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:41:40] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:41:40] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:41:40] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:41:49] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:41:49] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:41:49] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:41:54] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:41:54] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:41:54] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:42:23] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:42:23] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:42:23] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:42:43] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:42:43] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:42:43] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:43:14] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:43:14] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:43:14] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:43:16] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:43:16] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:43:16] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:43:47] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:43:47] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:43:47] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:44:17] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:44:17] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:44:17] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:44:29] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:44:29] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:44:29] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:44:29] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:44:29] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:44:29] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:44:45] INFO     | instance_activity_statistics_parser | Found 17 rows in Key Instance Activity Stats section
+[2026-07-10 12:44:45] INFO     | instance_activity_statistics_parser | ✅ Parsed 17 Key Instance Activity Stats records
+[2026-07-10 12:44:45] INFO     | instance_activity_statistics_parser | ✅ Inserted 17 rows into awr_instance_activity_stats
+[2026-07-10 12:45:42] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:45:42] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:45:42] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:45:43] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:45:43] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:45:43] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:46:07] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:46:07] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:46:07] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:46:59] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:46:59] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:46:59] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:47:00] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:47:00] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:47:00] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:47:49] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:47:49] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:47:50] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:48:12] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:48:12] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:48:12] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:48:13] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:48:13] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:48:13] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:49:25] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:49:25] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:49:25] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:49:28] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:49:28] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:49:29] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:49:32] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:49:32] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:49:32] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:50:32] INFO     | instance_activity_statistics_parser | Found 20 rows in Key Instance Activity Stats section
+[2026-07-10 12:50:32] INFO     | instance_activity_statistics_parser | ✅ Parsed 20 Key Instance Activity Stats records
+[2026-07-10 12:50:32] INFO     | instance_activity_statistics_parser | ✅ Inserted 20 rows into awr_instance_activity_stats
+[2026-07-10 12:50:39] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:50:39] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:50:39] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:51:50] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:51:50] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:51:50] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:53:00] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:53:00] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:53:00] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats
+[2026-07-10 12:54:10] INFO     | instance_activity_statistics_parser | Found 16 rows in Key Instance Activity Stats section
+[2026-07-10 12:54:10] INFO     | instance_activity_statistics_parser | ✅ Parsed 16 Key Instance Activity Stats records
+[2026-07-10 12:54:10] INFO     | instance_activity_statistics_parser | ✅ Inserted 16 rows into awr_instance_activity_stats

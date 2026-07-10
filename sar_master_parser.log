@@ -1,0 +1,612 @@
+[2026-07-10 11:54:26] INFO     | sar_master_parser | ============================================================
+[2026-07-10 11:54:26] INFO     | sar_master_parser | Processing SAR: sar02.txt
+[2026-07-10 11:54:26] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 11:54:26] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 11:54:26] INFO     | sar_master_parser |    SAR date: 12/02/2023
+[2026-07-10 11:54:28] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 11:54:28] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 11:54:28] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 11:54:29] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 11:54:30] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 11:54:30] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 11:54:30] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 11:54:30] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 11:54:30] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 11:54:30] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 11:54:30] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 11:54:30] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 11:54:31] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 11:54:32] INFO     | sar_master_parser | ============================================================
+[2026-07-10 11:54:32] INFO     | sar_master_parser | Processing SAR: sa02.txt
+[2026-07-10 11:54:32] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 11:54:32] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 11:54:32] INFO     | sar_master_parser |    SAR date: 12/01/2023
+[2026-07-10 11:54:34] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 11:54:34] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 11:54:34] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 11:54:36] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 11:54:36] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 11:54:36] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 11:54:36] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 11:54:36] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 11:54:36] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 11:54:37] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 11:54:37] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 11:54:37] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 11:54:37] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 11:54:38] INFO     | sar_master_parser | ============================================================
+[2026-07-10 11:54:38] INFO     | sar_master_parser | Processing SAR: sa03_text.txt
+[2026-07-10 11:54:38] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 11:54:38] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 11:54:38] INFO     | sar_master_parser |    SAR date: 12/02/2023
+[2026-07-10 11:54:40] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 11:54:40] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 11:54:40] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 11:54:41] INFO     | sar_master_parser | ============================================================
+[2026-07-10 11:54:41] INFO     | sar_master_parser | Processing SAR: LTPOL3VLMSDBO02_sa27.txt
+[2026-07-10 11:54:41] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 11:54:41] INFO     | sar_master_parser |    Host    : LTPOL3VLMSDBO02 (override - header had: LTPOL3VLMSDBO02)
+[2026-07-10 11:54:41] INFO     | sar_master_parser |    SAR date: 06/27/2026
+[2026-07-10 11:54:41] INFO     | sar_master_parser |   OK CPU                - 1859 rows
+[2026-07-10 11:54:41] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 11:54:42] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 11:54:42] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 11:54:42] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 11:54:43] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 11:54:43] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 11:54:43] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 11:54:43] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 11:54:43] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 11:54:43] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 11:54:43] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 11:54:44] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 11:54:44] INFO     | sar_master_parser |   OK Disk I/O           - 9009 rows
+[2026-07-10 11:54:44] INFO     | sar_master_parser |   OK Network            - 429 rows
+[2026-07-10 11:54:44] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 11:54:45] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 11:54:45] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 11:54:45] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 11:54:45] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 11:54:45] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 11:54:45] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for LTPOL3VLMSDBO02 …
+[2026-07-10 11:54:45] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for LTPOL3VLMSDBO02
+[2026-07-10 12:26:19] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:26:19] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa02_20260710122602.txt
+[2026-07-10 12:26:20] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:26:20] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:26:20] INFO     | sar_master_parser |    SAR date: 12/02/2023
+[2026-07-10 12:26:22] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:26:22] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:26:22] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:26:25] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:26:25] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:26:26] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:26:27] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:26:27] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa03_20260710122605.txt
+[2026-07-10 12:26:27] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:26:27] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:26:27] INFO     | sar_master_parser |    SAR date: 12/03/2023
+[2026-07-10 12:26:30] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:26:31] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:26:31] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:26:36] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:26:36] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:26:37] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:26:37] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:26:37] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:26:37] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:26:38] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:26:38] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:26:38] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:26:39] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:26:40] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:26:40] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa04_20260710122609.txt
+[2026-07-10 12:26:41] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:26:41] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:26:41] INFO     | sar_master_parser |    SAR date: 12/04/2023
+[2026-07-10 12:26:45] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:26:45] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:26:45] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:26:50] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:26:51] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:26:51] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:26:51] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:26:52] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:26:52] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:26:52] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:26:52] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:26:52] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:26:53] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:26:54] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:26:54] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa05_20260710122613.txt
+[2026-07-10 12:26:55] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:26:55] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:26:55] INFO     | sar_master_parser |    SAR date: 12/05/2023
+[2026-07-10 12:26:59] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:26:59] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:27:00] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:27:05] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:27:06] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:27:06] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:27:06] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:27:06] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:27:07] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:27:07] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:27:07] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:27:07] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:27:08] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:27:09] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:27:09] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa06_20260710122617.txt
+[2026-07-10 12:27:09] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:27:09] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:27:09] INFO     | sar_master_parser |    SAR date: 12/06/2023
+[2026-07-10 12:27:15] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:27:15] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:27:16] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:27:23] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:27:23] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:27:24] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:27:24] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:27:24] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:27:25] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:27:25] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:27:25] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:27:25] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:27:26] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:27:28] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:27:28] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa07_20260710122621.txt
+[2026-07-10 12:27:28] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:27:28] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:27:28] INFO     | sar_master_parser |    SAR date: 12/07/2023
+[2026-07-10 12:27:31] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:27:32] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:27:32] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:27:38] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:27:39] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:27:39] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:27:39] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:27:40] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:27:40] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:27:40] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:27:40] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:27:40] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:27:41] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:27:43] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:27:43] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa08_20260710122625.txt
+[2026-07-10 12:27:44] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:27:44] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:27:44] INFO     | sar_master_parser |    SAR date: 12/08/2023
+[2026-07-10 12:27:47] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:27:47] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:27:48] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:27:53] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:27:54] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:27:54] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:27:54] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:27:54] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:27:55] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:27:55] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:27:55] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:27:55] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:27:56] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:27:58] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:27:58] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa09_20260710122629.txt
+[2026-07-10 12:27:59] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:27:59] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:27:59] INFO     | sar_master_parser |    SAR date: 12/09/2023
+[2026-07-10 12:28:05] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:28:05] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:28:05] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:28:12] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:28:12] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:28:13] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:28:13] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:28:13] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:28:14] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:28:14] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:28:14] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:28:14] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:28:15] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:28:17] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:28:17] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa10_20260710122637.txt
+[2026-07-10 12:28:17] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:28:17] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:28:17] INFO     | sar_master_parser |    SAR date: 12/10/2023
+[2026-07-10 12:28:22] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:28:23] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:28:23] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:28:31] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:28:31] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:28:32] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:28:32] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:28:32] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:28:33] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:28:33] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:28:33] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:28:33] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:28:35] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:28:37] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:28:37] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa11_20260710122644.txt
+[2026-07-10 12:28:37] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:28:37] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:28:37] INFO     | sar_master_parser |    SAR date: 12/11/2023
+[2026-07-10 12:28:42] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:28:43] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:28:43] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:28:51] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:28:51] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:28:52] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:28:52] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:28:52] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:28:53] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:28:53] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:28:53] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:28:53] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:28:54] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:28:57] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:28:57] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa12_20260710122651.txt
+[2026-07-10 12:28:58] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:28:58] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:28:58] INFO     | sar_master_parser |    SAR date: 12/12/2023
+[2026-07-10 12:29:03] INFO     | sar_master_parser |   OK CPU                - 6149 rows
+[2026-07-10 12:29:04] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:29:04] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:29:11] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:29:12] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:29:12] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:29:13] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:29:13] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:29:13] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:29:13] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:29:13] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:29:13] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:29:14] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:29:16] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:29:16] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa13_20260710122657.txt
+[2026-07-10 12:29:16] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:29:16] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:29:16] INFO     | sar_master_parser |    SAR date: 12/13/2023
+[2026-07-10 12:29:17] INFO     | sar_master_parser |   OK CPU                - 616 rows
+[2026-07-10 12:29:17] INFO     | sar_master_parser |   OK Memory             - 8 rows
+[2026-07-10 12:29:17] INFO     | sar_master_parser |   OK Swap               - 8 rows
+[2026-07-10 12:29:17] INFO     | sar_master_parser |   OK Disk I/O           - 360 rows
+[2026-07-10 12:29:17] INFO     | sar_master_parser |   OK Network            - 32 rows
+[2026-07-10 12:29:18] INFO     | sar_master_parser |   OK Paging             - 8 rows
+[2026-07-10 12:29:18] INFO     | sar_master_parser |   OK Context Switch     - 8 rows
+[2026-07-10 12:29:18] INFO     | sar_master_parser |   OK Load Average       - 8 rows
+[2026-07-10 12:29:18] INFO     | sar_master_parser |   OK HugePages          - 8 rows
+[2026-07-10 12:29:18] INFO     | sar_master_parser |   OK Sockets            - 8 rows
+[2026-07-10 12:29:18] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:29:18] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:29:18] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:29:20] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:29:20] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa14_20260710122658.txt
+[2026-07-10 12:29:21] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:29:21] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:29:21] INFO     | sar_master_parser |    SAR date: 12/14/2023
+[2026-07-10 12:29:27] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:29:28] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:29:28] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:29:32] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:29:32] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:29:32] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:29:32] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:29:32] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:29:33] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:29:33] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:29:33] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:29:33] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:29:34] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:29:35] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:29:35] INFO     | sar_master_parser | Processing SAR: LTPOL3VLMSDBO02_sa27.txt
+[2026-07-10 12:29:35] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:29:35] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa15_20260710122705.txt
+[2026-07-10 12:29:35] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:29:35] INFO     | sar_master_parser |    Host    : LTPOL3VLMSDBO02 (override - header had: LTPOL3VLMSDBO02)
+[2026-07-10 12:29:35] INFO     | sar_master_parser |    SAR date: 06/27/2026
+[2026-07-10 12:29:36] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:29:36] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:29:36] INFO     | sar_master_parser |    SAR date: 12/15/2023
+[2026-07-10 12:29:37] INFO     | sar_master_parser |   OK CPU                - 1859 rows
+[2026-07-10 12:29:37] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:29:37] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:29:43] INFO     | sar_master_parser |   OK Disk I/O           - 9009 rows
+[2026-07-10 12:29:43] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:29:43] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:29:43] INFO     | sar_master_parser |   OK Network            - 429 rows
+[2026-07-10 12:29:44] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:29:44] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:29:44] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:29:44] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:29:44] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:29:44] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:29:44] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:29:44] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for LTPOL3VLMSDBO02 …
+[2026-07-10 12:29:45] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for LTPOL3VLMSDBO02
+[2026-07-10 12:29:47] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:29:47] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:29:48] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:29:48] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:29:48] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:29:48] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:29:48] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:29:48] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:29:48] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:29:49] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:29:50] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:29:50] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa16_20260710122713.txt
+[2026-07-10 12:29:51] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:29:51] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:29:51] INFO     | sar_master_parser |    SAR date: 12/16/2023
+[2026-07-10 12:29:53] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:29:53] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:29:53] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:29:56] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:29:56] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:29:57] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:29:57] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:29:57] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:29:57] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:29:57] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:29:57] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:29:57] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:29:58] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:29:59] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:29:59] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa17_20260710122723.txt
+[2026-07-10 12:29:59] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:29:59] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:29:59] INFO     | sar_master_parser |    SAR date: 12/17/2023
+[2026-07-10 12:30:02] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:30:03] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:30:03] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:30:05] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:30:05] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:30:05] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:30:06] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:30:06] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:30:06] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:30:06] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:30:06] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:30:06] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:30:07] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:30:08] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:30:08] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa18_20260710122731.txt
+[2026-07-10 12:30:08] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:30:08] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:30:08] INFO     | sar_master_parser |    SAR date: 12/18/2023
+[2026-07-10 12:30:11] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:30:11] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:30:11] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:30:14] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:30:14] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:30:14] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:30:14] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:30:15] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:30:15] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:30:15] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:30:15] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:30:15] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:30:16] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:30:17] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:30:17] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa19_20260710122739.txt
+[2026-07-10 12:30:17] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:30:17] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:30:17] INFO     | sar_master_parser |    SAR date: 12/19/2023
+[2026-07-10 12:30:20] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:30:20] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:30:20] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:30:23] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:30:23] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:30:23] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:30:23] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:30:23] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:30:24] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:30:24] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:30:24] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:30:24] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:30:25] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:30:26] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:30:26] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa20_20260710122745.txt
+[2026-07-10 12:30:26] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:30:26] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:30:26] INFO     | sar_master_parser |    SAR date: 12/20/2023
+[2026-07-10 12:30:29] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:30:29] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:30:29] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:30:32] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:30:32] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:30:32] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:30:32] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:30:32] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:30:33] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:30:33] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:30:33] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:30:33] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:30:34] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:30:35] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:30:35] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa21_20260710122752.txt
+[2026-07-10 12:30:35] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:30:35] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:30:35] INFO     | sar_master_parser |    SAR date: 12/21/2023
+[2026-07-10 12:30:38] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:30:38] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:30:38] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:30:40] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:30:40] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:30:41] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:30:41] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:30:41] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:30:41] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:30:41] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:30:41] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:30:41] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:30:42] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:30:43] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:30:43] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa22_20260710122801.txt
+[2026-07-10 12:30:43] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:30:43] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:30:43] INFO     | sar_master_parser |    SAR date: 12/22/2023
+[2026-07-10 12:30:46] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:30:46] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:30:46] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:30:49] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:30:49] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:30:49] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:30:49] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:30:49] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:30:49] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:30:50] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:30:50] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:30:50] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:30:50] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:30:51] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:30:51] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa23_20260710122810.txt
+[2026-07-10 12:30:52] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:30:52] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:30:52] INFO     | sar_master_parser |    SAR date: 12/23/2023
+[2026-07-10 12:30:55] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:30:55] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:30:55] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:30:59] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:30:59] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:30:59] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:30:59] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:31:00] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:31:00] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:31:00] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:31:00] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:00] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:01] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:31:02] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:31:02] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa24_20260710122819.txt
+[2026-07-10 12:31:02] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:31:02] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:31:02] INFO     | sar_master_parser |    SAR date: 12/24/2023
+[2026-07-10 12:31:05] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:31:05] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:31:05] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:31:08] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:31:08] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:31:08] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:31:08] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:31:08] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:31:09] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:31:09] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:31:09] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:09] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:10] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:31:11] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:31:11] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa25_20260710122830.txt
+[2026-07-10 12:31:11] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:31:11] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:31:11] INFO     | sar_master_parser |    SAR date: 12/25/2023
+[2026-07-10 12:31:14] INFO     | sar_master_parser |   OK CPU                - 11011 rows
+[2026-07-10 12:31:14] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:31:14] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:31:16] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:31:17] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:31:17] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:31:17] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:31:17] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:31:17] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:31:17] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:31:17] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:17] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:18] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:31:19] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:31:19] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa26_20260710122840.txt
+[2026-07-10 12:31:19] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:31:19] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:31:19] INFO     | sar_master_parser |    SAR date: 12/26/2023
+[2026-07-10 12:31:22] INFO     | sar_master_parser |   OK CPU                - 8470 rows
+[2026-07-10 12:31:22] INFO     | sar_master_parser |   OK Memory             - 110 rows
+[2026-07-10 12:31:22] INFO     | sar_master_parser |   OK Swap               - 110 rows
+[2026-07-10 12:31:24] INFO     | sar_master_parser |   OK Disk I/O           - 5500 rows
+[2026-07-10 12:31:24] INFO     | sar_master_parser |   OK Network            - 440 rows
+[2026-07-10 12:31:25] INFO     | sar_master_parser |   OK Paging             - 110 rows
+[2026-07-10 12:31:25] INFO     | sar_master_parser |   OK Context Switch     - 110 rows
+[2026-07-10 12:31:25] INFO     | sar_master_parser |   OK Load Average       - 110 rows
+[2026-07-10 12:31:25] INFO     | sar_master_parser |   OK HugePages          - 110 rows
+[2026-07-10 12:31:25] INFO     | sar_master_parser |   OK Sockets            - 110 rows
+[2026-07-10 12:31:25] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:25] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:26] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:31:28] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:31:28] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa27_20260710122848.txt
+[2026-07-10 12:31:28] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:31:28] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:31:28] INFO     | sar_master_parser |    SAR date: 11/27/2023
+[2026-07-10 12:31:29] INFO     | sar_master_parser |   OK CPU                - 4147 rows
+[2026-07-10 12:31:29] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:31:30] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:31:32] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:31:32] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:31:32] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:31:32] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:31:32] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:31:33] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:31:33] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:31:33] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:33] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:33] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:31:34] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:31:34] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa28_20260710122859.txt
+[2026-07-10 12:31:35] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:31:35] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:31:35] INFO     | sar_master_parser |    SAR date: 11/28/2023
+[2026-07-10 12:31:36] INFO     | sar_master_parser |   OK CPU                - 4147 rows
+[2026-07-10 12:31:36] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:31:36] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:31:38] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:31:39] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:31:39] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:31:39] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:31:39] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:31:39] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:31:39] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:31:39] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:39] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:40] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:31:41] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:31:41] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa29_20260710122907.txt
+[2026-07-10 12:31:41] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:31:41] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:31:41] INFO     | sar_master_parser |    SAR date: 11/29/2023
+[2026-07-10 12:31:42] INFO     | sar_master_parser |   OK CPU                - 4147 rows
+[2026-07-10 12:31:42] INFO     | sar_master_parser |   OK Memory             - 143 rows
+[2026-07-10 12:31:42] INFO     | sar_master_parser |   OK Swap               - 143 rows
+[2026-07-10 12:31:45] INFO     | sar_master_parser |   OK Disk I/O           - 7150 rows
+[2026-07-10 12:31:45] INFO     | sar_master_parser |   OK Network            - 572 rows
+[2026-07-10 12:31:45] INFO     | sar_master_parser |   OK Paging             - 143 rows
+[2026-07-10 12:31:45] INFO     | sar_master_parser |   OK Context Switch     - 143 rows
+[2026-07-10 12:31:45] INFO     | sar_master_parser |   OK Load Average       - 143 rows
+[2026-07-10 12:31:46] INFO     | sar_master_parser |   OK HugePages          - 143 rows
+[2026-07-10 12:31:46] INFO     | sar_master_parser |   OK Sockets            - 143 rows
+[2026-07-10 12:31:46] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:46] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:46] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1
+[2026-07-10 12:31:47] INFO     | sar_master_parser | ============================================================
+[2026-07-10 12:31:47] INFO     | sar_master_parser | Processing SAR: TCLFSLPRDDB1_sa30_20260710122917.txt
+[2026-07-10 12:31:47] INFO     | sar_master_parser | Text SAR: timestamps shifted to IST (+5:30)
+[2026-07-10 12:31:47] INFO     | sar_master_parser |    Host    : TCLFSLPRDDB1 (override - header had: TCLFSLPRDDB1)
+[2026-07-10 12:31:47] INFO     | sar_master_parser |    SAR date: 11/30/2023
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK CPU                - 1290 rows
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK Memory             - 30 rows
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK Swap               - 30 rows
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK Disk I/O           - 1320 rows
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK Network            - 120 rows
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK Paging             - 30 rows
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK Context Switch     - 30 rows
+[2026-07-10 12:31:48] INFO     | sar_master_parser |   OK Load Average       - 30 rows
+[2026-07-10 12:31:49] INFO     | sar_master_parser |   OK HugePages          - 30 rows
+[2026-07-10 12:31:49] INFO     | sar_master_parser |   OK Sockets            - 30 rows
+[2026-07-10 12:31:49] INFO     | sar_master_parser | SAR complete - OK
+[2026-07-10 12:31:49] INFO     | sar_master_parser | 🔍 Running SAR anomaly detection for TCLFSLPRDDB1 …
+[2026-07-10 12:31:49] INFO     | sar_master_parser | 🔍 SAR anomaly detection complete for TCLFSLPRDDB1

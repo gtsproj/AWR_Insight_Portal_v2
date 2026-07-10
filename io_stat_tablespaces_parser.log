@@ -1,0 +1,444 @@
+[2026-07-10 11:53:06] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:53:06] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:53:06] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:53:59] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:53:59] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:53:59] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:54:04] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 11:54:04] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 11:54:04] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 11:54:35] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 11:54:35] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 11:54:35] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 11:54:52] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:54:52] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:54:52] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:55:15] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 11:55:15] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 11:55:15] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 11:55:43] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:55:43] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:55:43] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:55:47] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 11:55:47] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 11:55:47] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 11:56:27] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 11:56:27] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 11:56:27] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 11:56:33] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:56:33] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:56:33] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:56:59] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 11:56:59] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 11:56:59] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 11:57:23] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:57:23] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:57:23] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:57:39] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 11:57:39] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 11:57:39] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 11:58:10] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:58:10] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:58:10] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:58:14] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 11:58:14] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 11:58:14] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 11:58:53] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 11:58:53] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 11:58:53] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 11:58:57] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:58:57] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:58:57] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 11:59:27] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 11:59:27] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 11:59:28] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 11:59:44] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 11:59:44] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 11:59:44] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:00:05] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:00:05] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:00:05] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:00:34] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:00:34] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:00:34] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:00:38] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:00:38] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:00:38] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:01:13] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:01:13] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:01:13] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:01:26] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:01:26] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:01:26] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:01:45] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:01:45] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:01:45] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:02:18] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:02:18] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:02:18] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:02:22] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:02:22] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:02:22] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:02:53] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:02:53] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:02:53] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:03:06] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:03:06] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:03:06] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:03:32] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:03:32] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:03:32] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:03:55] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:03:55] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:03:55] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:04:01] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:04:01] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:04:01] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:04:43] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:04:43] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:04:43] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:04:43] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:04:43] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:04:43] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:05:14] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:05:14] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:05:14] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:05:40] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:05:40] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:05:40] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:05:56] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:05:56] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:05:56] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:06:26] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:06:26] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:06:26] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:06:35] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:06:35] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:06:35] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:07:07] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:07:07] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:07:07] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:07:28] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:07:28] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:07:28] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:07:37] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:07:37] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:07:37] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:08:15] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:08:15] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:08:15] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:08:49] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:08:49] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:08:49] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:09:25] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:09:25] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:09:25] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:09:59] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:09:59] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:09:59] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:10:35] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:10:35] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:10:35] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:10:38] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:10:38] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:10:38] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:11:14] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:11:14] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:11:14] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:11:37] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:11:37] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:11:37] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:11:50] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:11:50] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:11:50] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:12:25] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:12:25] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:12:25] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:12:31] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:12:31] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:12:31] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:13:00] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:13:00] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:13:00] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:13:22] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:13:22] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:13:22] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:13:37] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:13:37] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:13:37] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:14:11] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:14:11] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:14:11] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:14:12] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:14:12] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:14:12] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:14:48] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:14:48] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:14:48] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:15:02] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:15:02] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:15:02] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:15:24] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:15:24] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:15:24] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:15:51] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:15:51] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:15:51] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:16:03] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:16:03] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:16:03] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:16:37] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:16:37] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:16:37] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:16:42] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:16:42] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:16:42] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:17:18] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:17:18] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:17:18] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:17:24] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:17:24] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:17:24] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:17:56] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:17:56] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:17:56] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:18:16] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:18:16] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:18:16] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:18:29] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:18:29] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:18:29] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:19:06] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:19:06] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:19:06] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:19:07] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:19:07] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:19:07] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:19:38] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:19:38] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:19:38] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:19:59] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:19:59] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:19:59] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:20:18] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:20:18] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:20:18] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:20:47] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:20:47] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:20:47] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:20:47] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:20:47] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:20:48] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:21:28] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:21:28] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:21:28] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:21:36] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:21:36] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:21:36] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:27:10] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:27:10] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:27:10] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:27:35] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:27:35] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:27:35] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:27:36] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:27:36] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:27:36] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:28:25] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:28:25] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:28:25] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:28:43] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:28:43] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:28:43] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:29:35] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:29:35] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:29:35] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:29:36] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:29:36] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:29:36] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:30:04] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:30:04] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:30:04] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:30:42] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:30:42] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:30:42] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:30:53] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:30:53] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:30:53] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:30:53] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:30:53] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:30:53] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:30:55] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:30:55] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:30:55] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:31:50] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:31:50] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:31:50] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:32:09] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:32:09] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:32:09] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:32:10] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:32:10] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:32:10] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:32:28] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:32:28] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:32:28] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:32:42] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:32:42] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:32:42] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:33:21] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:33:21] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:33:21] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:33:22] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:33:22] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:33:22] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:33:27] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:33:27] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:33:28] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:34:21] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:34:21] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:34:21] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:34:30] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:34:30] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:34:30] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:34:52] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:34:52] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:34:52] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:34:53] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:34:53] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:34:53] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:35:29] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:35:29] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:35:29] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:36:06] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:36:06] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:36:06] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:36:10] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:36:10] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:36:10] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:36:17] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:36:17] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:36:17] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:36:21] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:36:21] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:36:21] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:37:15] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:37:15] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:37:16] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:37:16] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:37:16] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:37:16] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:37:21] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:37:21] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:37:21] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:38:25] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:38:26] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:38:26] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:38:38] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:38:38] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:38:38] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:38:58] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:38:58] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:38:58] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:39:07] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:39:07] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:39:07] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:39:36] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:39:36] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:39:36] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:40:21] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:40:21] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:40:21] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:40:29] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:40:29] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:40:29] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:40:29] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:40:29] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:40:30] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:40:38] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:40:38] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:40:38] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:41:53] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:41:53] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:41:53] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:42:06] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:42:06] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:42:06] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:42:11] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:42:11] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:42:11] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:42:49] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:42:49] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:42:49] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:42:58] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:42:58] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:42:58] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:43:30] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:43:30] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:43:30] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:43:31] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:43:31] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:43:31] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:43:59] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:43:59] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:43:59] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:44:40] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:44:40] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:44:40] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:44:45] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:44:45] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:44:45] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:44:46] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:44:46] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:44:46] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:44:58] INFO     | io_stat_tablespaces_parser | Found 7 rows in Tablespace IO Stats section
+[2026-07-10 12:44:58] INFO     | io_stat_tablespaces_parser | ✅ Parsed 7 Tablespace IO Stats records
+[2026-07-10 12:44:58] INFO     | io_stat_tablespaces_parser | ✅ Inserted 7 rows into awr_tablespace_io_stats
+[2026-07-10 12:46:01] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:46:01] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:46:01] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:46:01] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:46:01] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:46:01] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:46:30] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:46:30] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:46:30] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:47:13] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:47:13] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:47:13] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:47:15] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:47:15] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:47:15] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:48:13] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:48:13] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:48:13] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:48:28] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:48:28] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:48:28] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:48:29] INFO     | io_stat_tablespaces_parser | Found 5 rows in Tablespace IO Stats section
+[2026-07-10 12:48:29] INFO     | io_stat_tablespaces_parser | ✅ Parsed 5 Tablespace IO Stats records
+[2026-07-10 12:48:29] INFO     | io_stat_tablespaces_parser | ✅ Inserted 5 rows into awr_tablespace_io_stats
+[2026-07-10 12:49:39] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:49:39] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:49:39] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:49:43] INFO     | io_stat_tablespaces_parser | Found 5 rows in Tablespace IO Stats section
+[2026-07-10 12:49:43] INFO     | io_stat_tablespaces_parser | ✅ Parsed 5 Tablespace IO Stats records
+[2026-07-10 12:49:43] INFO     | io_stat_tablespaces_parser | ✅ Inserted 5 rows into awr_tablespace_io_stats
+[2026-07-10 12:49:54] INFO     | io_stat_tablespaces_parser | Found 83 rows in Tablespace IO Stats section
+[2026-07-10 12:49:54] INFO     | io_stat_tablespaces_parser | ✅ Parsed 83 Tablespace IO Stats records
+[2026-07-10 12:49:54] INFO     | io_stat_tablespaces_parser | ✅ Inserted 83 rows into awr_tablespace_io_stats
+[2026-07-10 12:50:47] INFO     | io_stat_tablespaces_parser | Found 1 rows in Tablespace IO Stats section
+[2026-07-10 12:50:47] INFO     | io_stat_tablespaces_parser | ✅ Parsed 1 Tablespace IO Stats records
+[2026-07-10 12:50:47] INFO     | io_stat_tablespaces_parser | ✅ Inserted 1 rows into awr_tablespace_io_stats
+[2026-07-10 12:50:55] INFO     | io_stat_tablespaces_parser | Found 5 rows in Tablespace IO Stats section
+[2026-07-10 12:50:55] INFO     | io_stat_tablespaces_parser | ✅ Parsed 5 Tablespace IO Stats records
+[2026-07-10 12:50:56] INFO     | io_stat_tablespaces_parser | ✅ Inserted 5 rows into awr_tablespace_io_stats
+[2026-07-10 12:52:05] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:52:05] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:52:05] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:53:15] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:53:15] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:53:15] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
+[2026-07-10 12:54:25] INFO     | io_stat_tablespaces_parser | Found 4 rows in Tablespace IO Stats section
+[2026-07-10 12:54:25] INFO     | io_stat_tablespaces_parser | ✅ Parsed 4 Tablespace IO Stats records
+[2026-07-10 12:54:25] INFO     | io_stat_tablespaces_parser | ✅ Inserted 4 rows into awr_tablespace_io_stats
