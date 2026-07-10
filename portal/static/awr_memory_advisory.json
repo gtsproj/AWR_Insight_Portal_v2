@@ -1,0 +1,951 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 687,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='padding:4px 0'><a href='/d/awr-unified-intelligence' target='_self'>&#x2B05; AWR Intelligence</a> &nbsp;|&nbsp; <a href='http://localhost:8000' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomaly-detection' target='_self'>&#x1F6A8; Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a></div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 14,
+      "panels": [],
+      "title": "💾 SGA Memory Advisory",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "yellow",
+                "value": 5
+              },
+              {
+                "color": "green",
+                "value": 15
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "displayName",
+                "value": "Current SGA (MB)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "displayName",
+                "value": "Recommended SGA (MB)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "db_time_improvement_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "DB Time Improvement %"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Read Reduction %"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 15,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH sga_base AS (\nSELECT sga_target_size_m, sga_size_factor, AVG(est_db_time_s) AS  avg_db_time,  AVG(est_physical_reads) AS avg_reads\nFROM awr_advisory_sga \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nGROUP BY sga_target_size_m, sga_size_factor), \ncurrent_sga AS (\nSELECT AVG(sga_target_size_m) AS cur_sga_mb, AVG(avg_db_time) AS cur_db_time, AVG(avg_reads) AS cur_reads \nFROM sga_base \nWHERE sga_size_factor = 1), \nplateau_calc AS (\nSELECT *, LAG(avg_db_time) OVER (ORDER BY sga_target_size_m) AS prev_time, \nLAG(avg_reads) OVER (ORDER BY sga_target_size_m) AS prev_reads \nFROM sga_base WHERE sga_size_factor > 1), \noptimal_sga AS ( \nSELECT sga_target_size_m, avg_db_time AS opt_db_time, avg_reads AS opt_reads\nFROM plateau_calc \nWHERE   (prev_time - avg_db_time) / NULLIF(prev_time,0) < 0.01 OR (prev_reads - avg_reads) / NULLIF(prev_reads,0) < 0.01 \nORDER BY sga_target_size_m LIMIT 1), \nos_memory AS (\nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb,\nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb  \nFROM awr_os_statistics  \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int) \nSELECT \nROUND(c.cur_sga_mb) AS current_sga_mb, \nROUND(o.sga_target_size_m) AS recommended_sga_mb, \nROUND(((c.cur_db_time - o.opt_db_time) / c.cur_db_time) * 100, 2) AS db_time_improvement_pct, \nROUND(c.cur_reads) AS current_physical_reads,\nROUND(o.opt_reads) AS estimated_physical_reads,\nROUND(c.cur_reads - o.opt_reads) AS reduced_physical_reads, \nROUND(((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) * 100, 2) AS reduced_physical_reads_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.15 \nAND ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.05 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.30 THEN 'HIGH' \nWHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb)  AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb, \nCASE WHEN (m.free_ram_mb - o.sga_target_size_m) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nELSE 'OK TO IMPLEMENT' \nEND AS memory_validation_status \nFROM current_sga c \nJOIN optimal_sga o ON 1=1 \nJOIN os_memory m ON 1=1;",
+          "refId": "A"
+        }
+      ],
+      "title": "💾 SGA — DB Time Improvement % & Read Reduction %",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "memory_validation_status"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 260
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "INSUFFICIENT MEMORY – DO NOT APPLY": {
+                        "color": "red",
+                        "index": 1
+                      },
+                      "OK TO IMPLEMENT": {
+                        "color": "green",
+                        "index": 0
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "db_time_improvement_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.width",
+                "value": 160
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 301,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH sga_base AS (\nSELECT sga_target_size_m, sga_size_factor, AVG(est_db_time_s) AS  avg_db_time,  AVG(est_physical_reads) AS avg_reads\nFROM awr_advisory_sga \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nGROUP BY sga_target_size_m, sga_size_factor), \ncurrent_sga AS (\nSELECT AVG(sga_target_size_m) AS cur_sga_mb, AVG(avg_db_time) AS cur_db_time, AVG(avg_reads) AS cur_reads \nFROM sga_base \nWHERE sga_size_factor = 1), \nplateau_calc AS (\nSELECT *, LAG(avg_db_time) OVER (ORDER BY sga_target_size_m) AS prev_time, \nLAG(avg_reads) OVER (ORDER BY sga_target_size_m) AS prev_reads \nFROM sga_base WHERE sga_size_factor > 1), \noptimal_sga AS ( \nSELECT sga_target_size_m, avg_db_time AS opt_db_time, avg_reads AS opt_reads\nFROM plateau_calc \nWHERE   (prev_time - avg_db_time) / NULLIF(prev_time,0) < 0.01 OR (prev_reads - avg_reads) / NULLIF(prev_reads,0) < 0.01 \nORDER BY sga_target_size_m LIMIT 1), \nos_memory AS (\nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb,\nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb  \nFROM awr_os_statistics  \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int) \nSELECT \nROUND(c.cur_sga_mb) AS current_sga_mb, \nROUND(o.sga_target_size_m) AS recommended_sga_mb, \nROUND(((c.cur_db_time - o.opt_db_time) / c.cur_db_time) * 100, 2) AS db_time_improvement_pct, \nROUND(c.cur_reads) AS current_physical_reads,\nROUND(o.opt_reads) AS estimated_physical_reads,\nROUND(c.cur_reads - o.opt_reads) AS reduced_physical_reads, \nROUND(((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) * 100, 2) AS reduced_physical_reads_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.15 \nAND ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.05 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.30 THEN 'HIGH' \nWHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb)  AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb, \nCASE WHEN (m.free_ram_mb - o.sga_target_size_m) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nELSE 'OK TO IMPLEMENT' \nEND AS memory_validation_status \nFROM current_sga c \nJOIN optimal_sga o ON 1=1 \nJOIN os_memory m ON 1=1;",
+          "refId": "A"
+        }
+      ],
+      "title": "💾 SGA Advisory — Detailed Analysis",
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 303,
+      "panels": [],
+      "title": "🧮 PGA Memory Advisory",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "yellow",
+                "value": 5
+              },
+              {
+                "color": "green",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cache_hit_gain_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Cache Hit Gain %"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_disk_write_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk Write Reduction %"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 16,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH pga_base AS (\nSELECT pga_target_est_mb, size_factor, AVG(estd_pga_cache_hit_pct) AS avg_cache_hit, \nAVG(estd_extra_written_to_disk) AS avg_disk_writes \nFROM awr_advisory_pga \nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int \nGROUP BY pga_target_est_mb, size_factor), \ncurrent_pga AS ( \nSELECT AVG(pga_target_est_mb) AS cur_pga_mb, AVG(avg_cache_hit) AS cur_cache_hit, AVG(avg_disk_writes)   AS cur_disk_writes \nFROM pga_base \nWHERE size_factor = 1), \nplateau_calc AS ( \nSELECT *, \nLAG(avg_cache_hit)  OVER (ORDER BY pga_target_est_mb) AS prev_hit, \nLAG(avg_disk_writes) OVER (ORDER BY pga_target_est_mb) AS prev_disk \nFROM pga_base WHERE size_factor > 1), \noptimal_pga AS ( \nSELECT pga_target_est_mb,avg_cache_hit AS opt_cache_hit, avg_disk_writes AS opt_disk_writes \nFROM plateau_calc \nWHERE (avg_cache_hit - prev_hit) / NULLIF(prev_hit,0) < 0.01 OR (prev_disk - avg_disk_writes) / NULLIF(prev_disk,0) < 0.01 \nORDER BY pga_target_est_mb LIMIT 1), \nos_memory AS ( \nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb, \nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb \nFROM awr_os_statistics \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int), \npga_safety AS (\nSELECT *, \nCASE WHEN free_ram_mb > 8192 THEN 1.2 \nWHEN free_ram_mb > 4096 THEN 1.5 \nELSE 2.0 END AS risk_multiplier FROM os_memory) \nSELECT \nROUND(c.cur_pga_mb) AS current_pga_mb, \nROUND(o.pga_target_est_mb) AS recommended_pga_mb, \nROUND((o.opt_cache_hit - c.cur_cache_hit), 2) AS cache_hit_gain_pct, \nROUND(c.cur_disk_writes) AS current_disk_writes, \nROUND(o.opt_disk_writes) AS estimated_disk_writes, \nROUND(c.cur_disk_writes - o.opt_disk_writes) AS disk_write_reduction, \nROUND(((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) * 100,2) AS reduced_disk_write_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN (o.opt_cache_hit - c.cur_cache_hit) > 5 AND ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN (o.opt_cache_hit - c.cur_cache_hit) > 1 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.30 \nTHEN 'HIGH' \nWHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb) AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb,\nROUND(m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier),2) AS safe_ram_headroom_mb, \nCASE WHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 2048 THEN 'HIGH MEMORY PRESSURE' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 8192 THEN 'MODERATE MEMORY PRESSURE'\nELSE 'SAFE' END AS pga_memory_risk_status \nFROM current_pga c \nJOIN optimal_pga o ON 1=1 \nJOIN os_memory m   ON 1=1 \nJOIN pga_safety s  ON 1=1;",
+          "refId": "A"
+        }
+      ],
+      "title": "🧮 PGA — Cache Hit Gain % & Disk Write Reduction %",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "pga_memory_risk_status"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 240
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "HIGH MEMORY PRESSURE": {
+                        "color": "orange",
+                        "index": 2
+                      },
+                      "INSUFFICIENT MEMORY – DO NOT APPLY": {
+                        "color": "red",
+                        "index": 3
+                      },
+                      "MODERATE MEMORY PRESSURE": {
+                        "color": "yellow",
+                        "index": 1
+                      },
+                      "SAFE": {
+                        "color": "green",
+                        "index": 0
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cache_hit_gain_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_disk_write_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 302,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH pga_base AS (\nSELECT pga_target_est_mb, size_factor, AVG(estd_pga_cache_hit_pct) AS avg_cache_hit, \nAVG(estd_extra_written_to_disk) AS avg_disk_writes \nFROM awr_advisory_pga \nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int \nGROUP BY pga_target_est_mb, size_factor), \ncurrent_pga AS ( \nSELECT AVG(pga_target_est_mb) AS cur_pga_mb, AVG(avg_cache_hit) AS cur_cache_hit, AVG(avg_disk_writes)   AS cur_disk_writes \nFROM pga_base \nWHERE size_factor = 1), \nplateau_calc AS ( \nSELECT *, \nLAG(avg_cache_hit)  OVER (ORDER BY pga_target_est_mb) AS prev_hit, \nLAG(avg_disk_writes) OVER (ORDER BY pga_target_est_mb) AS prev_disk \nFROM pga_base WHERE size_factor > 1), \noptimal_pga AS ( \nSELECT pga_target_est_mb,avg_cache_hit AS opt_cache_hit, avg_disk_writes AS opt_disk_writes \nFROM plateau_calc \nWHERE (avg_cache_hit - prev_hit) / NULLIF(prev_hit,0) < 0.01 OR (prev_disk - avg_disk_writes) / NULLIF(prev_disk,0) < 0.01 \nORDER BY pga_target_est_mb LIMIT 1), \nos_memory AS ( \nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb, \nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb \nFROM awr_os_statistics \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int), \npga_safety AS (\nSELECT *, \nCASE WHEN free_ram_mb > 8192 THEN 1.2 \nWHEN free_ram_mb > 4096 THEN 1.5 \nELSE 2.0 END AS risk_multiplier FROM os_memory) \nSELECT \nROUND(c.cur_pga_mb) AS current_pga_mb, \nROUND(o.pga_target_est_mb) AS recommended_pga_mb, \nROUND((o.opt_cache_hit - c.cur_cache_hit), 2) AS cache_hit_gain_pct, \nROUND(c.cur_disk_writes) AS current_disk_writes, \nROUND(o.opt_disk_writes) AS estimated_disk_writes, \nROUND(c.cur_disk_writes - o.opt_disk_writes) AS disk_write_reduction, \nROUND(((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) * 100,2) AS reduced_disk_write_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN (o.opt_cache_hit - c.cur_cache_hit) > 5 AND ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN (o.opt_cache_hit - c.cur_cache_hit) > 1 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.30 \nTHEN 'HIGH' \nWHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb) AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb,\nROUND(m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier),2) AS safe_ram_headroom_mb, \nCASE WHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 2048 THEN 'HIGH MEMORY PRESSURE' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 8192 THEN 'MODERATE MEMORY PRESSURE'\nELSE 'SAFE' END AS pga_memory_risk_status \nFROM current_pga c \nJOIN optimal_pga o ON 1=1 \nJOIN os_memory m   ON 1=1 \nJOIN pga_safety s  ON 1=1;",
+          "refId": "A"
+        }
+      ],
+      "title": "🧮 PGA Advisory — Detailed Analysis",
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 19,
+      "panels": [],
+      "title": "⚙️ Instance Efficiency Ratios",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 90
+              },
+              {
+                "color": "green",
+                "value": 95
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 26
+      },
+      "id": 20,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%buffer%hit%'",
+          "refId": "A"
+        }
+      ],
+      "title": "Buffer Cache Hit %",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 90
+              },
+              {
+                "color": "green",
+                "value": 95
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 26
+      },
+      "id": 21,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%soft parse%'",
+          "refId": "A"
+        }
+      ],
+      "title": "Soft Parse %",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 97
+              },
+              {
+                "color": "green",
+                "value": 99
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 26
+      },
+      "id": 22,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%library%hit%'",
+          "refId": "A"
+        }
+      ],
+      "title": "Library Cache Hit %",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 80
+              },
+              {
+                "color": "green",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 26
+      },
+      "id": 23,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%execute to parse%'",
+          "refId": "A"
+        }
+      ],
+      "title": "Execute-to-Parse %",
+      "type": "gauge"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 41,
+  "tags": [
+    "awr",
+    "memory",
+    "sga",
+    "pga",
+    "efficiency"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "PostgreSQL",
+          "value": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Data Source",
+        "name": "ds",
+        "options": [],
+        "query": "postgres",
+        "refresh": 1,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Database",
+        "name": "dbname",
+        "options": [],
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT dbname AS value, dbname AS label  FROM awr_load_profile) AS t ORDER BY value;",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Instance",
+        "name": "instance",
+        "options": [],
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT instance AS value, instance AS label  FROM awr_load_profile WHERE dbname='${dbname}') AS t ORDER BY value;",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Start Snap",
+        "name": "start_snap",
+        "options": [],
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI') FROM awr_load_profile WHERE dbname='${dbname}' AND instance='${instance}' ORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "End Snap",
+        "name": "end_snap",
+        "options": [],
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI') FROM awr_load_profile WHERE dbname='${dbname}' AND instance='${instance}' ORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "timezone": "Asia/Kolkata",
+  "title": "AWR — Memory Advisory & Instance Efficiency",
+  "uid": "awr-memory-advisory",
+  "version": 3
+}
