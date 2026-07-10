@@ -1,0 +1,22 @@
+py modules\license_engine.py generate --tier T30 --mac YOUR_MAC --db 5 --sar 5 --expiry 2026-08-06 --customer TEST001 --name "Test"
+
+py modules\license_engine.py generate --tier T30 --mac  00-09-0F-AA-00-01 --db 2 --sar 1 --expiry 2026-07-13 --customer TEST001 --name "Test"
+
+
+License Key Format
+Trial - AVK-T30-aGFzaGVkdmFsdWVoZXJl   ← Trial 30 days
+Standard - AVK-STD-dGhpc2lzdGhlcmVhbGtleQ  ← Standard license
+Enterprise - AVK-ENT-ZW50ZXJwcmlzZWxpY2Vuc2U  ← Enterprise
+
+Generated license key for trial period. can we reduce the length of the hash key
+============================================================
+LICENSE KEY GENERATED
+============================================================
+Key:      AVK-T30-OnUmIAsBS11KIGNfUFhDATdRfXtUVVtDUVEnc3ECBm9iR09QARZpX0tzZhwvHVZpWU1QADkncHNMQVlVXllgWF9FUk56EDwoEkdRUTwkMmYAAgd9f0cAHAQZLkdDfRAKPRtWf0oIARY0MjZrVFFbV1pCfV9FWVFbdB59Ih4ACBgbFAwQChAFb2sAW0dUEmkY
+Tier:     Trial 30 Days
+MAC:      00-09-0F-AA-00-01
+DB Limit: 2
+SAR Limit:1
+Expiry:   2026-07-13
+Customer: TEST001 (Test)
+============================================================
