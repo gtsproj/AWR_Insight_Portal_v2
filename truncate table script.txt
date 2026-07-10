@@ -1,71 +1,86 @@
-truncate table awr_advisory_pga;
-truncate table awr_advisory_sga;
-truncate table awr_anomalies; 
-truncate table awr_background_wait_events;
-truncate table awr_buffer_wait_statistics;
-truncate table awr_change_log;
-truncate table awr_comparison_tags;
-truncate table awr_db_info;
-truncate table awr_enqueue_statistics;
-truncate table awr_execution_plans;
-truncate table awr_file_io_stats;
-truncate table awr_foreground_wait_class;
-truncate table awr_foreground_wait_events;
-truncate table awr_instance_activity_stats;
-truncate table awr_instance_efficiency;
-truncate table awr_io_profile;
-truncate table awr_iostat_filetype;
-truncate table awr_iostat_func_filetype;
-truncate table awr_iostat_function;
-truncate table awr_load_profile;
-truncate table awr_os_statistics;
-truncate table awr_recommendations;
-truncate table awr_repo_scan_log;
-truncate table awr_seg_buff_busy_waits;
-truncate table awr_seg_cr_blk_rec;
-truncate table awr_seg_cur_blk_rec;
-truncate table awr_seg_db_blk_chg;
-truncate table awr_seg_direct_phy_reads;
-truncate table awr_seg_direct_phy_writes;
-truncate table awr_seg_gbl_cache_buff_busy;
-truncate table awr_seg_itl_waits;
-truncate table awr_seg_logical_reads;
-truncate table awr_seg_opt_reads;
-truncate table awr_seg_phy_read_req;
-truncate table awr_seg_phy_reads;
-truncate table awr_seg_phy_write_req;
-truncate table awr_seg_phy_writes;
-truncate table awr_seg_row_lck_waits;
-truncate table awr_seg_table_scan;
-truncate table awr_seg_unopt_reads;
-truncate table awr_sql_cluster_wait_time;
-truncate table awr_sql_cpu_time;
-truncate table awr_sql_elapsed_time;
-truncate table awr_sql_executions;
-truncate table awr_sql_gets;
-truncate table awr_sql_parsed_calls;
-truncate table awr_sql_phy_reads_unopt;
-truncate table awr_sql_reads;
-truncate table awr_sql_text;
-truncate table awr_sql_user_io_time;
-truncate table awr_tablespace_io_stats;
-truncate table awr_time_model_stats;
-truncate table awr_undo_statistics;
-truncate table sar_anomalies;
-truncate table sar_cpu_stats;
-truncate table sar_ctxswitch_stats;
-truncate table sar_disk_stats;
-truncate table sar_hugepage_stats;
-truncate table sar_loadavg_stats; 
-truncate table sar_memory_stats;
-truncate table sar_network_stats; 
-truncate table sar_paging_stats;
-truncate table sar_socket_stats;
-truncate table sar_swap_stats; 
+-- ============================================================
+-- AWR Insight Portal v2 — Full Data Reset
+-- Keeps: master tables, config, users, rules
+-- Run BEFORE uploading fresh AWR reports
+-- ============================================================
 
 
+TRUNCATE TABLE awr_advisory_pga;
+TRUNCATE TABLE awr_advisory_sga;
+TRUNCATE TABLE awr_ai_learnings;
+TRUNCATE TABLE awr_ai_recommendations;
+TRUNCATE TABLE awr_anomalies;
+TRUNCATE TABLE awr_background_wait_events;
+TRUNCATE TABLE awr_buffer_wait_statistics;
+TRUNCATE TABLE awr_change_log;
+TRUNCATE TABLE awr_comparison_tags;
+TRUNCATE TABLE awr_db_info;
+TRUNCATE TABLE awr_enqueue_statistics;
+TRUNCATE TABLE exec_plan_headers CASCADE;
+TRUNCATE TABLE awr_file_io_stats;
+TRUNCATE TABLE awr_foreground_wait_class;
+TRUNCATE TABLE awr_foreground_wait_events;
+TRUNCATE TABLE awr_instance_activity_stats;
+TRUNCATE TABLE awr_instance_efficiency;
+TRUNCATE TABLE awr_io_profile;
+TRUNCATE TABLE awr_iostat_filetype;
+TRUNCATE TABLE awr_iostat_func_filetype;
+TRUNCATE TABLE awr_iostat_function;
+TRUNCATE TABLE awr_load_profile;
+TRUNCATE TABLE awr_object_metadata;
+TRUNCATE TABLE awr_os_statistics;
+TRUNCATE TABLE awr_recommendations;
+TRUNCATE TABLE awr_repo_scan_log;
+TRUNCATE TABLE awr_seg_buff_busy_waits;
+TRUNCATE TABLE awr_seg_cr_blk_rec;
+TRUNCATE TABLE awr_seg_cur_blk_rec;
+TRUNCATE TABLE awr_seg_db_blk_chg;
+TRUNCATE TABLE awr_seg_direct_phy_reads;
+TRUNCATE TABLE awr_seg_direct_phy_writes;
+TRUNCATE TABLE awr_seg_gbl_cache_buff_busy;
+TRUNCATE TABLE awr_seg_itl_waits;
+TRUNCATE TABLE awr_seg_logical_reads;
+TRUNCATE TABLE awr_seg_opt_reads;
+TRUNCATE TABLE awr_seg_phy_read_req;
+TRUNCATE TABLE awr_seg_phy_reads;
+TRUNCATE TABLE awr_seg_phy_write_req;
+TRUNCATE TABLE awr_seg_phy_writes;
+TRUNCATE TABLE awr_seg_row_lck_waits;
+TRUNCATE TABLE awr_seg_table_scan;
+TRUNCATE TABLE awr_seg_unopt_reads;
+TRUNCATE TABLE awr_sql_cluster_wait_time;
+TRUNCATE TABLE awr_sql_cpu_time;
+TRUNCATE TABLE awr_sql_elapsed_time;
+TRUNCATE TABLE awr_sql_executions;
+TRUNCATE TABLE awr_sql_gets;
+TRUNCATE TABLE awr_sql_parsed_calls;
+TRUNCATE TABLE awr_sql_phy_reads_unopt;
+TRUNCATE TABLE awr_sql_reads;
+TRUNCATE TABLE awr_sql_text;
+TRUNCATE TABLE awr_sql_user_io_time;
+TRUNCATE TABLE awr_tablespace_io_stats;
+TRUNCATE TABLE awr_time_model_stats;
+TRUNCATE TABLE awr_undo_statistics;
+TRUNCATE TABLE awr_licensed_dbs;
+TRUNCATE TABLE awr_license_audit;
+TRUNCATE TABLE remote_fetch_log;
+TRUNCATE TABLE sar_anomalies;
+TRUNCATE TABLE sar_cpu_stats;
+TRUNCATE TABLE sar_ctxswitch_stats;
+TRUNCATE TABLE sar_disk_stats;
+TRUNCATE TABLE sar_hugepage_stats;
+TRUNCATE TABLE sar_loadavg_stats;
+TRUNCATE TABLE sar_memory_stats;
+TRUNCATE TABLE sar_network_stats;
+TRUNCATE TABLE sar_paging_stats;
+TRUNCATE TABLE sar_socket_stats;
+TRUNCATE TABLE sar_swap_stats;
+TRUNCATE TABLE wait_event_trend;
 
-
-
-
-
+-- ============================================================
+-- Tables intentionally NOT truncated (master/config tables):
+--   awr_recommendation_rules  — manually maintained rules
+--   awr_wait_event_master     — wait event reference data
+--   portal_config             — settings and license key
+--   portal_users              — user accounts
+-- ============================================================

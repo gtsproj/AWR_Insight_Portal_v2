@@ -1,0 +1,43 @@
+optimized plan
+
+SQL_ID  1r3hdzcw4627x, child number 0
+-------------------------------------
+UPDATE MOBILE_LOGIN_USERS SET LOGIN_STATUS ='N', MLU_SESSION_ID_C =
+NULL, LOGOUT_TIME =SYSDATE WHERE APPL_USER_ID= (SELECT APPL_USER_ID
+FROM SEC_APPL_USERS_VIEW WHERE USER_ID = :B1 ) AND LOGIN_USER_ID=
+(SELECT MAX(LOGIN_USER_ID) FROM MOBILE_LOGIN_USERS WHERE APPL_USER_ID=
+(SELECT APPL_USER_ID FROM SEC_APPL_USERS_VIEW WHERE USER_ID = :B1 ))
+
+Plan hash value: 3841209875
+
+------------------------------------------------------------------------------------------------------
+| Id  | Operation                    | Name                  | Rows  | Bytes | Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------------
+|   0 | UPDATE STATEMENT             |                       |       |       |    12 (100)|          |
+|   1 |  UPDATE                      | MOBILE_LOGIN_USERS    |       |       |            |          |
+|*  2 |   TABLE ACCESS BY INDEX ROWID| MOBILE_LOGIN_USERS    |     1 |    25 |     3   (0)| 00:00:01 |
+|*  3 |    INDEX UNIQUE SCAN         | IND_LOGIN_USER_MOBILE |     1 |       |     2   (0)| 00:00:01 |
+|   4 |     SORT AGGREGATE           |                       |     1 |    11 |            |          |
+|*  5 |      TABLE ACCESS BY INDEX ROWID| MOBILE_LOGIN_USERS |     3 |    33 |     4   (0)| 00:00:01 |
+|*  6 |       INDEX RANGE SCAN       | IDX_MLU_APPL_STATUS   |     3 |       |     2   (0)| 00:00:01 |
+|   7 |    VIEW                      | index$_join$_005      |   163 |  2282 |    95   (0)| 00:00:01 |
+|*  8 |     HASH JOIN                |                       |       |       |            |          |
+|   9 |      INDEX FAST FULL SCAN    | SEC_APPL_USERS_PK     |   163 |  2282 |    43   (0)| 00:00:01 |
+|* 10 |      INDEX FAST FULL SCAN    | IDX_SEC_APPL          |   163 |  2282 |    76   (0)| 00:00:01 |
+------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("APPL_USER_ID"=)
+   3 - access("LOGIN_USER_ID"=)
+   5 - filter("APPL_USER_ID"=)
+   6 - access("APPL_USER_ID"= AND "LOGIN_STATUS"!='I')
+   8 - access(ROWID=ROWID)
+  10 - filter(UPPER("USER_ID")=:B1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+   - index IDX_MLU_APPL_STATUS used: CREATE INDEX IDX_MLU_APPL_STATUS ON MOBILE_LOGIN_USERS(APPL_USER_ID, LOGIN_STATUS)
+
