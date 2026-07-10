@@ -31,6 +31,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 _PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# Add project root and common to path
+sys.path.insert(0, _PROJECT_ROOT)
 sys.path.insert(0, os.path.join(_PROJECT_ROOT, "common"))
 
 from config_loader import load_config
@@ -66,8 +68,53 @@ os.makedirs(_templates_dir, exist_ok=True)
 
 app.mount("/static", StaticFiles(directory=_static_dir), name="static")
 templates = Jinja2Templates(directory=_templates_dir)
-from portal.filters import basename as _basename_filter
-templates.env.filters["basename"] = _basename_filter
+try:
+    from portal.filters import basename as _basename_filter
+    templates.env.filters["basename"] = _basename_filter
+except Exception as _fe:
+    logger.warning(f"Could not load portal.filters: {_fe}")
+    templates.env.filters["basename"] = lambda p: os.path.basename(p) if p else p
+
+def _get_grafana_url() -> str:
+    """
+    Get Grafana URL from portal_config.
+    Always reads from DB — no caching — so changes take effect immediately.
+    """
+    try:
+        cfg = _get_config()
+        url = cfg.get("grafana_url", "").strip().rstrip("/")
+        return url if url else "http://localhost:3000"
+    except Exception:
+        return "http://localhost:3000"
+
+def _get_portal_url(request: Request = None) -> str:
+    """
+    Get portal base URL.
+    Derives from the incoming request when available — guaranteed correct
+    since the browser is already connected to this address.
+    Falls back to portal_config value.
+    """
+    if request:
+        # Build from actual request: scheme://host (includes port if non-standard)
+        base = str(request.base_url).rstrip("/")
+        return base
+    try:
+        cfg = _get_config()
+        url = cfg.get("portal_url", "").strip().rstrip("/")
+        return url if url else "http://localhost:8000"
+    except Exception:
+        return "http://localhost:8000"
+
+def _url_context(request: Request = None) -> dict:
+    """Return URL context for template injection. Always fresh from DB."""
+    return {
+        "grafana_url": _get_grafana_url(),
+        "portal_url":  _get_portal_url(request),
+    }
+
+def _refresh_url_globals():
+    """No-op — kept for compatibility. URL context now read fresh per request."""
+    pass
 
 # Public routes — never require login
 _PUBLIC_PATHS = {"/login", "/logout", "/forgot-password", "/reset-password"}
@@ -108,6 +155,71 @@ async def enforce_login(request: Request, call_next):
             from fastapi.responses import JSONResponse as _JR
             return _JR({"detail": "Session expired — please log in"}, status_code=401)
         return RedirectResponse(f"/login?next={path}", status_code=303)
+    return await call_next(request)
+
+
+@app.middleware("http")
+async def enforce_license(request: Request, call_next):
+    """
+    License enforcement middleware.
+    Blocks parsing APIs and AI generation when license is expired/invalid.
+    Passes through login, settings, static, and read-only pages.
+    """
+    path = request.url.path
+
+    # Always allow
+    _lic_free = {"/login", "/logout", "/forgot-password", "/settings",
+                 "/service-control",
+                 "/api/license/status", "/api/license/mac-info", "/api/license/mac-debug",
+                 "/api/portal-info", "/api/queue-stats", "/api/queue-stats-sar",
+                 "/api/settings", "/api/snaps", "/api/db-list",
+                 "/api/instance-list", "/api/ai/history",
+                 "/api/services/status", "/api/cache/clear"}
+    if (path.startswith("/static") or path in _PUBLIC_PATHS or
+            path in _lic_free or path.startswith("/api/settings") or
+            path.startswith("/api/services/") or path.startswith("/api/logs")):
+        return await call_next(request)
+
+    # Cache license status for 5 minutes
+    import time as _t
+    now = _t.time()
+    if (not hasattr(app.state, '_lic_cache') or
+            now - getattr(app.state, '_lic_cache_ts', 0) > 300):
+        try:
+            sys.path.insert(0, os.path.join(_PROJECT_ROOT, "modules"))
+            from license_engine import get_license_status
+            conn = get_db_connection()
+            app.state._lic_cache    = get_license_status(conn)
+            app.state._lic_cache_ts = now
+            conn.close()
+        except Exception as e:
+            logger.debug(f"License cache refresh failed: {e}")
+            app.state._lic_cache    = {"allow_parse": True, "allow_grafana": True,
+                                        "allow_ai_new": True, "status": "ok"}
+            app.state._lic_cache_ts = now
+
+    lic = app.state._lic_cache
+
+    # Block AWR/SAR upload/parse APIs when not allowed
+    _parse_paths = ["/upload", "/api/queue", "/api/requeue", "/api/reprocess"]
+    if not lic.get("allow_parse", True):
+        if any(path.startswith(p) for p in _parse_paths):
+            if path.startswith("/api/"):
+                from fastapi.responses import JSONResponse as _JR
+                return _JR({
+                    "ok": False,
+                    "error": f"License: {lic.get('status_msg', 'License error')}. Parsing is blocked."
+                }, status_code=403)
+
+    # Block new AI recommendations when not allowed
+    if not lic.get("allow_ai_new", True):
+        if path == "/api/ai/recommend":
+            from fastapi.responses import JSONResponse as _JR
+            return _JR({
+                "ok": False,
+                "error": f"License: {lic.get('status_msg', 'License error')}. New AI recommendations are blocked."
+            }, status_code=403)
+
     return await call_next(request)
 
 
@@ -226,12 +338,14 @@ def _queue_stats() -> dict:
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
+    _refresh_url_globals()
     stats = _queue_stats()
     cfg   = _get_config("ai")
     return templates.TemplateResponse(request, "home.html",
         context={"stats": stats, "page": "home",
                  "is_admin": _is_admin(request),
-                 "ai_mode": cfg.get("ai_mode","rules")})
+                 "ai_mode": cfg.get("ai_mode","rules"),
+                 **_url_context(request)})
 
 
 # ── AWR Upload ────────────────────────────────────────────────────────
@@ -424,7 +538,7 @@ async def comparison_page(request: Request):
     tags = _get_comparison_tags()
     return templates.TemplateResponse(request, "comparison.html",
         context={"page": "comparison", "dbs": dbs,
-         "tags": tags, "message": None})
+         "tags": tags, "message": None, **_url_context(request)})
 
 
 @app.post("/comparison", response_class=HTMLResponse)
@@ -621,48 +735,86 @@ _SERVICES = {
 }
 
 def _service_status(svc_name: str) -> str:
-    """Return Running / Stopped / Paused / Unknown."""
+    """Return Running / Stopped / Paused / Unknown via sc query."""
     try:
         result = subprocess.run(
             ["sc", "query", svc_name],
-            capture_output=True, text=True, timeout=10
+            capture_output=True, text=True, timeout=10,
+            creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess,'CREATE_NO_WINDOW') else 0
         )
         out = result.stdout.upper()
-        if "RUNNING"  in out: return "Running"
-        if "STOPPED"  in out: return "Stopped"
-        if "PAUSED"   in out: return "Paused"
+        if "RUNNING"       in out: return "Running"
+        if "STOPPED"       in out: return "Stopped"
+        if "PAUSED"        in out: return "Paused"
         if "START_PENDING" in out: return "Starting"
         if "STOP_PENDING"  in out: return "Stopping"
+        # Service not found
+        if "FAILED" in out or result.returncode == 1060:
+            return "Not installed"
         return "Unknown"
-    except Exception:
-        return "Unknown"
-
-
-def _run_sc(action: str, svc_name: str) -> tuple[bool, str]:
-    """Run net start/stop or sc pause/continue on a service."""
-    try:
-        if action in ("start", "stop"):
-            cmd = ["net", action, svc_name]
-        elif action == "pause":
-            cmd = ["sc", "pause", svc_name]
-        elif action == "continue":
-            cmd = ["sc", "continue", svc_name]
-        else:
-            cmd = ["sc", action, svc_name]
-        result = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=30,
-            creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0
-        )
-        success = result.returncode == 0
-        msg = (result.stdout or result.stderr or "").strip()
-        return success, msg
     except Exception as e:
-        return False, str(e)
+        logger.debug(f"_service_status({svc_name}): {e}")
+        return "Unknown"
+
+
+def _run_sc(action: str, svc_name: str) -> tuple:
+    """
+    Run service control command.
+    Returns (success, message).
+
+    Notes:
+    - Uses 'net start/stop' for start/stop (more reliable than sc)
+    - Pause/resume implemented as stop/start since NSSM doesn't support sc pause
+    - Portal restart uses sc to trigger NSSM auto-restart (can't net start itself)
+    """
+    NO_WIN = subprocess.CREATE_NO_WINDOW if hasattr(subprocess,'CREATE_NO_WINDOW') else 0
+
+    def run(cmd):
+        r = subprocess.run(cmd, capture_output=True, text=True,
+                          timeout=30, creationflags=NO_WIN)
+        msg = (r.stdout + r.stderr).strip()
+        return r.returncode == 0, msg
+
+    try:
+        current = _service_status(svc_name)
+
+        if action == "start":
+            if current == "Running":
+                return True, "Already running"
+            return run(["net", "start", svc_name])
+
+        elif action == "stop":
+            if current in ("Stopped", "Not installed"):
+                return True, "Already stopped"
+            return run(["net", "stop", svc_name])
+
+        elif action == "restart":
+            if current == "Running":
+                ok, msg = run(["net", "stop", svc_name])
+                if not ok and "not started" not in msg.lower():
+                    return False, f"Stop failed: {msg}"
+                import time; time.sleep(3)
+            ok, msg = run(["net", "start", svc_name])
+            return ok, msg
+
+        elif action in ("pause", "resume"):
+            # NSSM services don't support sc pause/continue
+            # Return informational message instead of failing silently
+            return False, (f"Pause/Resume not supported for NSSM services. "
+                          f"Use Stop/Start instead.")
+
+        else:
+            return False, f"Unknown action: {action}"
+
+    except subprocess.TimeoutExpired:
+        return False, "Command timed out after 30s"
+    except Exception as e:
+        return False, str(e)[:200]
 
 
 @app.get("/api/services/status")
-async def api_services_status():
-    """Return status of all 4 portal services."""
+async def api_services_status(request: Request):
+    """Return status of all portal services via sc query."""
     return JSONResponse({
         key: _service_status(svc)
         for key, svc in _SERVICES.items()
@@ -674,40 +826,110 @@ async def api_service_action(action: str, request: Request):
     """
     Control portal services.
     action : start | stop | restart | pause | resume
-    Body   : {"service": "all" | "portal" | "watcher" | "sar" | "queue"}
+    Body   : {"service": "all" | "portal" | "watcher" | "sar" | "queue" | "grafana"}
+
+    Notes:
+    - Pause/Resume not supported for NSSM services
+    - Portal self-restart: stop the service, NSSM auto-restarts after AppRestartDelay
     """
+    if not _is_admin(request):
+        return JSONResponse({"error": "Admin access required"}, status_code=403)
+
     valid_actions = {"start", "stop", "restart", "pause", "resume"}
     if action not in valid_actions:
         raise HTTPException(400, f"Invalid action '{action}'")
 
-    body    = await request.json()
-    target  = body.get("service", "all")
-    keys    = list(_SERVICES.keys()) if target == "all" else [target]
+    body   = await request.json()
+    target = body.get("service", "all")
+    keys   = list(_SERVICES.keys()) if target == "all" else [target]
     invalid = [k for k in keys if k not in _SERVICES]
     if invalid:
         raise HTTPException(400, f"Unknown service(s): {invalid}")
 
-    import time
+    # Pause/Resume not supported for NSSM
+    if action in ("pause", "resume"):
+        return JSONResponse({
+            "action":  action,
+            "warning": "Pause/Resume is not supported for NSSM services. Use Stop/Start instead.",
+            "results": {k: {"ok": False,
+                            "msg": "Not supported — use Stop/Start",
+                            "status": _service_status(_SERVICES[k])} for k in keys}
+        })
+
+    # Portal self-restart — stop service, NSSM auto-restarts it
+    if action == "restart" and "portal" in keys:
+        import asyncio
+        results = {}
+        other_keys = [k for k in keys if k != "portal"]
+        for key in other_keys:
+            ok, msg = _run_sc("restart", _SERVICES[key])
+            await asyncio.sleep(0.5)
+            results[key] = {"ok": ok, "msg": msg[:200],
+                            "status": _service_status(_SERVICES[key])}
+
+        # Portal restart — use schtasks to schedule stop after response is sent
+        # NSSM auto-restarts the service after AppRestartDelay
+        svc_name = _SERVICES["portal"]
+        try:
+            task_cmd = f"net stop {svc_name}"
+            r = subprocess.run([
+                "schtasks", "/Create",
+                "/TN",  "AWRPortalRestart",
+                "/TR",  task_cmd,
+                "/SC",  "ONCE",
+                "/ST",  (datetime.now() + __import__('datetime').timedelta(seconds=3)).strftime("%H:%M"),
+                "/F", "/RL", "HIGHEST",
+            ], capture_output=True, text=True, timeout=10,
+               creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess,'CREATE_NO_WINDOW') else 0)
+
+            if r.returncode == 0:
+                results["portal"] = {"ok": True,
+                                      "msg": "Stopping in ~3s — NSSM auto-restarts",
+                                      "status": "Stopping"}
+            else:
+                # Fallback: PowerShell
+                subprocess.Popen(
+                    ["powershell", "-NonInteractive", "-WindowStyle", "Hidden",
+                     "-Command",
+                     f"Start-Job -ScriptBlock {{ Start-Sleep 3; net stop {svc_name} }}"],
+                    creationflags=(subprocess.CREATE_NO_WINDOW |
+                                   subprocess.CREATE_NEW_PROCESS_GROUP)
+                    if hasattr(subprocess,'CREATE_NO_WINDOW') else 0,
+                )
+                results["portal"] = {"ok": True,
+                                      "msg": "Stopping in ~3s via PS — NSSM auto-restarts",
+                                      "status": "Stopping"}
+        except Exception as e:
+            results["portal"] = {"ok": False, "msg": str(e)[:200], "status": "Unknown"}
+
+        return JSONResponse({"action": action, "results": results})
+
+    # Standard start/stop
+    import asyncio
     results = {}
     for key in keys:
-        svc = _SERVICES[key]
-        if action == "restart":
-            _run_sc("stop", svc)
-            time.sleep(3)
-            ok, msg = _run_sc("start", svc)
-        elif action == "resume":
-            ok, msg = _run_sc("continue", svc)
-        else:
-            ok, msg = _run_sc(action, svc)
-        time.sleep(1)
-        results[key] = {"ok": ok, "msg": msg[:200], "status": _service_status(svc)}
+        ok, msg = _run_sc(action, _SERVICES[key])
+        await asyncio.sleep(0.5)
+        results[key] = {"ok": ok, "msg": msg[:200],
+                        "status": _service_status(_SERVICES[key])}
 
     return JSONResponse({"action": action, "results": results})
 
 
 @app.post("/api/cache/clear")
-async def api_cache_clear():
-    """Delete all __pycache__ folders under the project root."""
+async def api_cache_clear(request: Request):
+    """
+    Clear Python __pycache__ folders.
+    If restart=true, schedules portal restart via Windows Task Scheduler
+    (schtasks) — runs 3 seconds after response is sent, fully independent
+    of the portal process.
+    """
+    body = {}
+    try:    body = await request.json()
+    except: pass
+    do_restart = body.get("restart", False)
+
+    # Clear cache
     cleared = []
     errors  = []
     for root, dirs, _ in os.walk(_PROJECT_ROOT):
@@ -719,9 +941,54 @@ async def api_cache_clear():
                     cleared.append(path)
                 except Exception as e:
                     errors.append(f"{path}: {e}")
+
+    restart_msg = None
+    if do_restart:
+        svc_name = _SERVICES.get("portal", "AWRPortal")
+        try:
+            # Create a one-time scheduled task to stop+start the service
+            # Task runs 3 seconds from now — well after the HTTP response is sent
+            # schtasks /Create is natively available on all Windows versions
+            # /F = force overwrite if task exists, /Z = delete after run
+            task_cmd = f"net stop {svc_name}"
+            result = subprocess.run([
+                "schtasks", "/Create",
+                "/TN",  "AWRPortalRestart",
+                "/TR",  task_cmd,
+                "/SC",  "ONCE",
+                "/ST",  (datetime.now() + __import__('datetime').timedelta(seconds=3)).strftime("%H:%M"),
+                "/F",                    # overwrite if exists
+                "/RL", "HIGHEST",        # run with highest privileges
+            ], capture_output=True, text=True, timeout=10,
+               creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess,'CREATE_NO_WINDOW') else 0)
+
+            if result.returncode == 0:
+                restart_msg = "Portal stopping in ~3s — NSSM will auto-restart it"
+            else:
+                # Fallback: PowerShell Start-Job
+                ps_cmd = (
+                    f"Start-Job -ScriptBlock {{"
+                    f" Start-Sleep 3; "
+                    f" net stop {svc_name}"
+                    f"}}"
+                )
+                subprocess.Popen(
+                    ["powershell", "-NonInteractive", "-WindowStyle", "Hidden",
+                     "-Command", ps_cmd],
+                    creationflags=(subprocess.CREATE_NO_WINDOW |
+                                   subprocess.CREATE_NEW_PROCESS_GROUP)
+                    if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0,
+                )
+                restart_msg = "Portal stopping in ~3s via PowerShell — NSSM will auto-restart"
+
+        except Exception as e:
+            errors.append(f"Restart schedule error: {e}")
+            restart_msg = f"Cache cleared but restart failed: {e}. Restart portal manually."
+
     return JSONResponse({
-        "cleared": len(cleared),
-        "errors":  errors,
+        "cleared":     len(cleared),
+        "errors":      errors,
+        "restart_msg": restart_msg,
     })
 
 
@@ -872,16 +1139,23 @@ async def api_log_viewer(log_name: str, lines: int = 50):
 
 @app.get("/api/portal-info")
 async def api_portal_info(request: Request):
-    """Returns AI mode, license limits, usage counts and session user for info strip."""
-    cfg     = _get_config()
-    usage   = _get_license_usage()
-    sess    = _get_session(request)
+    """Returns AI mode, license limits from key, usage counts and session user for info strip."""
+    cfg  = _get_config()
+    sess = _get_session(request)
+
+    # Get limits from validated key — not from editable config fields
+    lic = _check_license()
+    db_limit  = lic.get("db_limit",  5)
+    sar_limit = lic.get("sar_limit", 5)
+    if db_limit  == -1: db_limit  = 9999  # ENT unlimited — show as large number
+    if sar_limit == -1: sar_limit = 9999
+
     return JSONResponse({
         "ai_mode":           cfg.get("ai_mode", "rules"),
-        "license_db_count":  cfg.get("license_db_count", "5"),
-        "license_sar_count": cfg.get("license_sar_count", "5"),
-        "db_used":           usage["db_used"],
-        "sar_used":          usage["sar_used"],
+        "license_db_count":  db_limit,
+        "license_sar_count": sar_limit,
+        "db_used":           lic.get("db_used",  0),
+        "sar_used":          lic.get("sar_used", 0),
         "username":          sess.get("username", ""),
     })
 
@@ -890,6 +1164,14 @@ async def api_portal_info(request: Request):
 async def api_db_list():
     """Return list of known DB names for dropdowns."""
     return JSONResponse({"dbs": _db_list()})
+
+
+@app.get("/service-control", response_class=HTMLResponse)
+async def service_control_page(request: Request):
+    return templates.TemplateResponse(request, "service_control.html", context={
+        "page":     "service_control",
+        "is_admin": _is_admin(request),
+    })
 
 
 @app.get("/exec-plan", response_class=HTMLResponse)
@@ -1334,6 +1616,27 @@ def _get_license_usage() -> dict:
         conn.close()
 
 
+def _check_license() -> dict:
+    """Full license status using license_engine."""
+    try:
+        sys.path.insert(0, os.path.join(_PROJECT_ROOT, "modules"))
+        from license_engine import get_license_status
+        conn = get_db_connection()
+        result = get_license_status(conn)
+        conn.close()
+        return result
+    except Exception as e:
+        logger.warning(f"License check failed: {e}")
+        return {
+            "status": "error", "status_msg": f"License check error: {e}",
+            "valid": False, "allow_parse": True, "allow_grafana": True,
+            "allow_ai_new": True, "allow_ai_past": True,
+            "db_used": 0, "sar_used": 0, "db_limit": 5, "sar_limit": 5,
+            "days_left": -1, "tier": "", "tier_name": "",
+            "mac_address": "", "ai_monthly_used": 0, "ai_monthly_limit": 200,
+        }
+
+
 def _get_users() -> list:
     conn = get_db_connection()
     try:
@@ -1484,6 +1787,7 @@ async def api_settings_save(request: Request):
     session = _get_session(request)
     updated_by = session.get("username", "admin")
     _set_config(fields, updated_by)
+    _refresh_url_globals()  # pick up grafana_url / portal_url changes immediately
     return JSONResponse({"ok": True})
 
 
@@ -1627,6 +1931,65 @@ async def api_change_password(request: Request):
 
 
 # ── AI Recommendation & Object Metadata Routes ───────────────────────
+
+@app.get("/api/license/mac-debug")
+async def api_mac_debug():
+    """Debug endpoint — shows exactly what MAC validation sees."""
+    try:
+        sys.path.insert(0, os.path.join(_PROJECT_ROOT, "modules"))
+        from license_engine import get_mac_address, get_all_physical_macs
+        import psutil, uuid as _uuid
+
+        primary = get_mac_address()
+        all_macs = get_all_physical_macs()
+
+        # Also get raw uuid.getnode() MAC
+        node_mac = _uuid.UUID(int=_uuid.getnode()).hex[-12:]
+        node_mac_fmt = ":".join(node_mac[i:i+2] for i in range(0,12,2)).upper()
+
+        # Get all psutil MACs raw
+        raw_macs = []
+        for name, addrs in psutil.net_if_addrs().items():
+            for a in addrs:
+                s = a.address or ""
+                if (":" in s or "-" in s) and len(s) in (17,14):
+                    raw_macs.append({"iface": name, "mac": s.upper()})
+
+        return JSONResponse({
+            "primary_mac":    primary,
+            "primary_stripped": primary.replace(":","").upper(),
+            "uuid_node_mac":  node_mac_fmt,
+            "all_physical":   all_macs,
+            "all_raw_psutil": raw_macs,
+        })
+    except Exception as e:
+        return JSONResponse({"error": str(e)})
+
+
+@app.get("/api/license/mac-info")
+async def api_mac_info():
+    """Return MAC address info for all physical adapters."""
+    try:
+        sys.path.insert(0, os.path.join(_PROJECT_ROOT, "modules"))
+        from license_engine import get_mac_address, get_all_physical_macs, get_machine_fingerprint
+        return JSONResponse({
+            "primary_mac":   get_mac_address(),
+            "fingerprint":   get_machine_fingerprint(),
+            "all_adapters":  get_all_physical_macs(),
+        })
+    except Exception as e:
+        return JSONResponse({"primary_mac": "", "fingerprint": "", "all_adapters": [], "error": str(e)})
+
+
+@app.get("/api/license/status")
+async def api_license_status():
+    """Return full license validation status from license engine."""
+    lic = _check_license()
+    # Serialise date objects
+    if lic.get("expiry") and not isinstance(lic["expiry"], str):
+        lic["expiry"] = lic["expiry"].isoformat()
+    return JSONResponse(lic)
+
 
 @app.get("/api/instance-list")
 async def api_instance_list(dbname: str = ""):
