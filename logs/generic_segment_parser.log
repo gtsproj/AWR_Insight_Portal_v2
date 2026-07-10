@@ -1,0 +1,128 @@
+[2026-07-10 15:09:08] INFO     | generic_segment_parser | Generic segment parser: 10_1.html
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Logical Reads: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Physical Reads: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Physical Read Requests: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Physical Writes: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Physical Write Requests: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Reads: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Writes: 2 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Buffer Busy Waits: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by Row Lock Waits: 5 rows
+[2026-07-10 15:09:09] INFO     | generic_segment_parser | ✅ Segments by ITL Waits: 5 rows
+[2026-07-10 15:09:10] WARNING  | generic_segment_parser | Section not found: 'Segments by CR Blocks Received'
+[2026-07-10 15:09:10] WARNING  | generic_segment_parser | Section not found: 'Segments by Current Blocks Received'
+[2026-07-10 15:09:10] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache Buffer Busy'
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | ✅ Segments by DB Blocks Changes: 5 rows
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | ✅ Segments by Table Scans: 2 rows
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | ✅ Segments by Optimized Reads: 5 rows
+[2026-07-10 15:09:10] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache CR Blocks Received'
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_logical_reads
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_reads
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_read_req
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_writes
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_write_req
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_direct_phy_reads
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 2 rows → awr_seg_direct_phy_writes
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_buff_busy_waits
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_row_lck_waits
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_itl_waits
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_db_blk_chg
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 2 rows → awr_seg_table_scan
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_opt_reads
+[2026-07-10 15:09:10] INFO     | generic_segment_parser | Segment parsing complete — 13 section(s), 59 total rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | Generic segment parser: 11_1.html
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Logical Reads: 5 rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Physical Reads: 5 rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Physical Read Requests: 5 rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Physical Writes: 5 rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Physical Write Requests: 5 rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Reads: 5 rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Writes: 1 rows
+[2026-07-10 15:09:12] INFO     | generic_segment_parser | ✅ Segments by Buffer Busy Waits: 5 rows
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | ✅ Segments by Row Lock Waits: 5 rows
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | ✅ Segments by ITL Waits: 5 rows
+[2026-07-10 15:09:13] WARNING  | generic_segment_parser | Section not found: 'Segments by CR Blocks Received'
+[2026-07-10 15:09:13] WARNING  | generic_segment_parser | Section not found: 'Segments by Current Blocks Received'
+[2026-07-10 15:09:13] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache Buffer Busy'
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | ✅ Segments by DB Blocks Changes: 5 rows
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | ✅ Segments by Table Scans: 1 rows
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | ✅ Segments by Optimized Reads: 5 rows
+[2026-07-10 15:09:13] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache CR Blocks Received'
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_logical_reads
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_reads
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_read_req
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_writes
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_write_req
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_direct_phy_reads
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 1 rows → awr_seg_direct_phy_writes
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_buff_busy_waits
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_row_lck_waits
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_itl_waits
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_db_blk_chg
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 1 rows → awr_seg_table_scan
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_opt_reads
+[2026-07-10 15:09:13] INFO     | generic_segment_parser | Segment parsing complete — 13 section(s), 57 total rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | Generic segment parser: 12_1.html
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Logical Reads: 5 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Physical Reads: 5 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Physical Read Requests: 5 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Physical Writes: 5 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Physical Write Requests: 5 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Reads: 5 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Writes: 1 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Buffer Busy Waits: 5 rows
+[2026-07-10 15:09:15] INFO     | generic_segment_parser | ✅ Segments by Row Lock Waits: 5 rows
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | ✅ Segments by ITL Waits: 5 rows
+[2026-07-10 15:09:16] WARNING  | generic_segment_parser | Section not found: 'Segments by CR Blocks Received'
+[2026-07-10 15:09:16] WARNING  | generic_segment_parser | Section not found: 'Segments by Current Blocks Received'
+[2026-07-10 15:09:16] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache Buffer Busy'
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | ✅ Segments by DB Blocks Changes: 5 rows
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | ✅ Segments by Table Scans: 1 rows
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | ✅ Segments by Optimized Reads: 5 rows
+[2026-07-10 15:09:16] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache CR Blocks Received'
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_logical_reads
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_reads
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_read_req
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_writes
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_write_req
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_direct_phy_reads
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 1 rows → awr_seg_direct_phy_writes
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_buff_busy_waits
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_row_lck_waits
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_itl_waits
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_db_blk_chg
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 1 rows → awr_seg_table_scan
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_opt_reads
+[2026-07-10 15:09:16] INFO     | generic_segment_parser | Segment parsing complete — 13 section(s), 57 total rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | Generic segment parser: 9_1.html
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Logical Reads: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Physical Reads: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Physical Read Requests: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Physical Writes: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Physical Write Requests: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Reads: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Direct Physical Writes: 1 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Buffer Busy Waits: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by Row Lock Waits: 5 rows
+[2026-07-10 15:09:18] INFO     | generic_segment_parser | ✅ Segments by ITL Waits: 5 rows
+[2026-07-10 15:09:19] WARNING  | generic_segment_parser | Section not found: 'Segments by CR Blocks Received'
+[2026-07-10 15:09:19] WARNING  | generic_segment_parser | Section not found: 'Segments by Current Blocks Received'
+[2026-07-10 15:09:19] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache Buffer Busy'
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | ✅ Segments by DB Blocks Changes: 5 rows
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | ✅ Segments by Table Scans: 1 rows
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | ✅ Segments by Optimized Reads: 5 rows
+[2026-07-10 15:09:19] WARNING  | generic_segment_parser | Section not found: 'Segments by Global Cache CR Blocks Received'
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_logical_reads
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_reads
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_read_req
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_writes
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_phy_write_req
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_direct_phy_reads
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 1 rows → awr_seg_direct_phy_writes
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_buff_busy_waits
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_row_lck_waits
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_itl_waits
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_db_blk_chg
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 1 rows → awr_seg_table_scan
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Inserted 5 rows → awr_seg_opt_reads
+[2026-07-10 15:09:19] INFO     | generic_segment_parser | Segment parsing complete — 13 section(s), 57 total rows
