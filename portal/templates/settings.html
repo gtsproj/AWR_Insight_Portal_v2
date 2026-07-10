@@ -4,16 +4,18 @@
 {% block content %}
 <style>
 /* ── Layout ── */
-.settings-layout{display:grid;grid-template-columns:200px 1fr;gap:0;min-height:calc(100vh - 130px)}
-.settings-nav{background:var(--surface);border-right:1px solid var(--border);padding:16px 0}
-.settings-nav a{display:block;padding:10px 20px;color:var(--text2);font-size:.9rem;
-                text-decoration:none;border-left:3px solid transparent;transition:.15s}
+.settings-layout{display:block}
+.settings-nav{display:flex;flex-wrap:wrap;gap:2px;background:var(--surface);
+              border:1px solid var(--border);border-radius:var(--radius);
+              padding:6px;margin-bottom:20px}
+.settings-nav a{padding:7px 14px;color:var(--text2);font-size:.84rem;
+                text-decoration:none;border-radius:calc(var(--radius) - 2px);
+                transition:.15s;white-space:nowrap;border:none}
 .settings-nav a:hover{color:var(--text);background:var(--surface2)}
-.settings-nav a.active{color:var(--accent);border-left-color:var(--accent);
-                        background:var(--surface2);font-weight:600}
-.settings-nav .nav-section{font-size:.72rem;color:var(--text2);letter-spacing:.1em;
-                            text-transform:uppercase;padding:16px 20px 4px;opacity:.6}
-.settings-body{padding:28px 32px;overflow-y:auto}
+.settings-nav a.active{color:var(--accent);background:var(--surface2);font-weight:600;
+                        box-shadow:inset 0 -2px 0 var(--accent)}
+.settings-nav .nav-sep{width:1px;background:var(--border);margin:4px 4px;flex-shrink:0}
+.settings-body{padding:0}
 
 /* ── Section panels ── */
 .s-panel{display:none}.s-panel.active{display:block}
@@ -120,15 +122,14 @@
 
 <div class="settings-layout">
 
-  <!-- ── Sidebar nav ──────────────────────────────────────────────── -->
+  <!-- ── Horizontal tab bar ─────────────────────────────────────── -->
   <div class="settings-nav">
-    <div class="nav-section">Engine</div>
     <a href="#" class="active" onclick="showSection('ai',this)">🤖 AI / Recommendations</a>
-    <a href="#" onclick="showSection('anomaly',this)">📊 Anomaly Thresholds</a>
-    <div class="nav-section">Data Sources</div>
+    <a href="#" onclick="showSection('anomaly',this)">📊 Anomaly Detection</a>
+    <div class="nav-sep"></div>
     <a href="#" onclick="showSection('awr_source',this)">🗄 AWR Source</a>
     <a href="#" onclick="showSection('sar_source',this)">🖥 SAR Source</a>
-    <div class="nav-section">Administration</div>
+    <div class="nav-sep"></div>
     <a href="#" onclick="showSection('license',this)">🔑 License</a>
     <a href="#" onclick="showSection('access',this)">🔒 Access Control</a>
     <a href="#" onclick="showSection('users',this)">👤 Users</a>
@@ -147,7 +148,10 @@
     <!-- ── AI / Recommendations ──────────────────────────────────── -->
     <div id="s-ai" class="s-panel active">
       <div class="s-title">🤖 AI / Recommendation Engine</div>
-      <div class="s-desc">Choose how the portal generates tuning recommendations. Rules mode always works offline. Local AI keeps data on-premise — recommended for BFSI. Cloud AI sends data externally.</div>
+      <div class="s-desc">
+        All three modes are available to all license tiers — select based on your infrastructure and data residency requirements.
+        Rules Engine is always available offline. Local AI and Cloud AI are owned and operated by you.
+      </div>
 
       <div class="s-card">
         <div class="s-card-title">Recommendation Mode</div>
@@ -156,22 +160,22 @@
             <input type="radio" name="ai_mode" value="rules" {% if cfg.ai_mode=='rules' %}checked{% endif %}>
             <div class="mode-icon">⚙️</div>
             <div class="mode-name">Rules Engine</div>
-            <div class="mode-desc">Built-in rule library. No internet. No API key. Always available.</div>
+            <div class="mode-desc">Built-in Avekshaa rule library. No internet, no API key, no cost. Always available.</div>
             <span class="mode-badge badge-safe">✅ Default · Air-gap safe</span>
           </label>
           <label class="mode-card {% if cfg.ai_mode=='local_ai' %}selected{% endif %}" onclick="selectMode(this,'local_ai')">
             <input type="radio" name="ai_mode" value="local_ai" {% if cfg.ai_mode=='local_ai' %}checked{% endif %}>
             <div class="mode-icon">🖥️</div>
             <div class="mode-name">Local AI (Ollama)</div>
-            <div class="mode-desc">Runs on your server. Data never leaves premises. Best for BFSI/NBFC.</div>
-            <span class="mode-badge badge-safe">✅ On-premise · BFSI safe</span>
+            <div class="mode-desc">Ollama runs on your server. You install and manage it. Data never leaves premises. Best for BFSI/NBFC.</div>
+            <span class="mode-badge badge-safe">✅ Customer-owned · BFSI safe</span>
           </label>
           <label class="mode-card {% if cfg.ai_mode=='cloud_ai' %}selected{% endif %}" onclick="selectMode(this,'cloud_ai')">
             <input type="radio" name="ai_mode" value="cloud_ai" {% if cfg.ai_mode=='cloud_ai' %}checked{% endif %}>
             <div class="mode-icon">☁️</div>
             <div class="mode-name">Cloud AI</div>
-            <div class="mode-desc">Claude, OpenAI, Gemini, Azure. Better quality, needs internet + API key.</div>
-            <span class="mode-badge badge-warn">⚠️ Data sent externally</span>
+            <div class="mode-desc">Your API key, your cost. Claude, OpenAI, Gemini, Azure. Best quality recommendations.</div>
+            <span class="mode-badge badge-warn">⚠️ Your API key · Data sent externally</span>
           </label>
         </div>
       </div>
@@ -246,6 +250,11 @@
       <button class="s-btn s-btn-primary" onclick="saveSection('ai')" {% if not is_admin %}disabled{% endif %}>
         💾 Save AI Settings
       </button>
+      <div style="font-size:.75rem;color:var(--text2);margin-top:10px;line-height:1.6">
+        <strong>Monthly Cloud AI limit</strong> — controls maximum cloud AI recommendations per calendar month.
+        Set in Settings → License → Monthly Cloud AI Limit (default 200). This protects against unexpected API costs.
+        Resets on the 1st of each month. Has no effect on Rules Engine or Local AI.
+      </div>
     </div>
 
     <!-- ── Anomaly Thresholds ─────────────────────────────────────── -->
@@ -421,27 +430,59 @@
     <!-- ── License ───────────────────────────────────────────────── -->
     <div id="s-license" class="s-panel">
       <div class="s-title">🔑 License Information</div>
-      <div class="s-desc">License details control how many Oracle databases and SAR servers can be monitored. Contact Avekshaa for license keys.</div>
+      <div class="s-desc">
+        License controls the number of Oracle DB instances and SAR servers that can be monitored.
+        All recommendation modes (Rules / Local AI / Cloud AI) are available on all license tiers.
+        Contact <strong>Avekshaa Technologies</strong> with your server MAC address for license keys and renewals.
+      </div>
       <div class="s-card">
         <div class="s-card-title">Current License Status</div>
-        <div class="license-grid" style="margin-bottom:16px">
+        <!-- Live status banner -->
+        <div id="lic-status-banner" style="padding:10px 14px;border-radius:var(--radius);
+             font-size:.84rem;border:1px solid var(--border);margin-bottom:14px;
+             color:var(--text2)">Checking license status...</div>
+
+        <div class="license-grid" style="margin-bottom:14px">
           <div class="lic-stat">
-            <div class="lic-val" id="lic-db-used">{{ license.db_used }}</div>
-            <div class="lic-label">DBs in use / {{ cfg.license_db_count }} licensed</div>
+            <div class="lic-val" id="lic-db-used">—</div>
+            <div class="lic-label">DB instances used / <span id="lic-db-limit">—</span> licensed</div>
           </div>
           <div class="lic-stat">
-            <div class="lic-val" id="lic-sar-used">{{ license.sar_used }}</div>
-            <div class="lic-label">SAR servers in use / {{ cfg.license_sar_count }} licensed</div>
+            <div class="lic-val" id="lic-sar-used">—</div>
+            <div class="lic-label">SAR servers used / <span id="lic-sar-limit">—</span> licensed</div>
           </div>
           <div class="lic-stat">
-            <div class="lic-val" style="font-size:1rem" id="lic-expiry">{{ cfg.license_expiry or 'Not set' }}</div>
-            <div class="lic-label">License expiry</div>
+            <div class="lic-val" style="font-size:1rem" id="lic-expiry">{{ cfg.license_expiry or '—' }}</div>
+            <div class="lic-label">Expiry — <span id="lic-days-left"></span></div>
+          </div>
+          <div class="lic-stat">
+            <div class="lic-val" style="font-size:.9rem" id="lic-tier">—</div>
+            <div class="lic-label">License Tier</div>
+          </div>
+          <div class="lic-stat">
+            <div class="lic-val" style="font-size:.85rem" id="lic-customer">—</div>
+            <div class="lic-label">Customer</div>
+          </div>
+          <div class="lic-stat">
+            <div class="lic-val" id="lic-ai-used" style="font-size:.9rem">—</div>
+            <div class="lic-label">Cloud AI recs this month / <span id="lic-ai-limit">200</span> limit</div>
           </div>
         </div>
+
+        <!-- PDB info (hidden unless PDBs present) -->
+        <div id="lic-pdb-info" style="display:none;font-size:.8rem;color:var(--text2);
+             margin-bottom:10px;padding:6px 10px;background:var(--surface2);
+             border-radius:var(--radius)"></div>
+
+        <!-- AI cap warning -->
+        <div id="lic-ai-warn" style="display:none;font-size:.8rem;color:#ef4444;
+             margin-bottom:10px">⚠️ Monthly Cloud AI recommendation cap reached — resets on 1st of next month.</div>
+
         <div class="s-row">
           <div class="s-field">
             <label class="s-label">License Key</label>
-            <input class="s-input" id="license_key" value="{{ cfg.license_key }}" placeholder="AVK-XXXX-XXXX-XXXX">
+            <input class="s-input" id="license_key" value="{{ cfg.license_key }}"
+                   placeholder="AVK-STD-xxxxxxxxxxxxxx">
           </div>
           <div class="s-field">
             <label class="s-label">Customer Name</label>
@@ -450,32 +491,189 @@
         </div>
         <div class="s-row three">
           <div class="s-field">
-            <label class="s-label">Licensed DB Count</label>
-            <input class="s-input" id="license_db_count" type="number" value="{{ cfg.license_db_count }}">
+            <label class="s-label">Licensed DB Count
+              <span style="font-size:.7rem;color:var(--text2);font-weight:400"> — from key</span>
+            </label>
+            <div class="s-input" id="lic-db-count-display"
+                 style="background:var(--surface2);color:var(--text2);cursor:not-allowed;
+                        display:flex;align-items:center">
+              {{ cfg.license_db_count or '—' }}
+            </div>
+            <input type="hidden" id="license_db_count" value="{{ cfg.license_db_count }}">
           </div>
           <div class="s-field">
-            <label class="s-label">Licensed SAR Server Count</label>
-            <input class="s-input" id="license_sar_count" type="number" value="{{ cfg.license_sar_count }}">
+            <label class="s-label">Licensed SAR Server Count
+              <span style="font-size:.7rem;color:var(--text2);font-weight:400"> — from key</span>
+            </label>
+            <div class="s-input" id="lic-sar-count-display"
+                 style="background:var(--surface2);color:var(--text2);cursor:not-allowed;
+                        display:flex;align-items:center">
+              {{ cfg.license_sar_count or '—' }}
+            </div>
+            <input type="hidden" id="license_sar_count" value="{{ cfg.license_sar_count }}">
           </div>
           <div class="s-field">
-            <label class="s-label">Expiry Date</label>
-            <input class="s-input" id="license_expiry" type="date" value="{{ cfg.license_expiry }}">
+            <label class="s-label">Monthly Cloud AI Limit</label>
+            <input class="s-input" id="ai_monthly_limit" type="number"
+                   value="{{ cfg.ai_monthly_limit or 200 }}"
+                   title="Max cloud AI recommendations per calendar month">
+          </div>
+        </div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">Expiry Date
+              <span style="font-size:.7rem;color:var(--text2);font-weight:400"> — from key</span>
+            </label>
+            <div class="s-input" id="lic-expiry-display"
+                 style="background:var(--surface2);color:var(--text2);cursor:not-allowed;
+                        display:flex;align-items:center">
+              {{ cfg.license_expiry or '—' }}
+            </div>
+            <input type="hidden" id="license_expiry" value="{{ cfg.license_expiry }}">
           </div>
         </div>
         <div style="margin-top:12px">
-          <div class="s-label" style="margin-bottom:6px">Server MAC Address (for license generation)</div>
-          <div class="mac-box" id="mac-address">{{ mac_address }}</div>
+          <div class="s-label" style="margin-bottom:4px">Network Adapters
+            <span style="font-size:.72rem;color:var(--text2)">(provide Primary LAN MAC to Avekshaa for license generation)</span>
+          </div>
+          <div id="lic-mac-list" style="font-size:.82rem">
+            <div id="lic-mac" class="mac-box">{{ mac_address }}</div>
+          </div>
+          <div style="font-size:.72rem;color:var(--text2);margin-top:4px">
+            ⓘ Physical LAN adapter MAC is used by default. Wi-Fi MAC is used only if no LAN adapter is connected.
+            Virtual adapters (VMware, WSL, Docker, VPN) are excluded.
+          </div>
+          <div style="margin-top:10px">
+            <label class="s-label">MAC Override
+              <span style="font-size:.72rem;color:var(--text2);font-weight:400">
+                — Pin a specific MAC for license validation (recommended for servers with multiple adapters)
+              </span>
+            </label>
+            <input class="s-input" id="license_mac_override"
+                   value="{{ cfg.license_mac_override or '' }}"
+                   placeholder="e.g. E4:A8:DF:E0:63:3B  (leave blank for auto-detect)">
+            <div style="font-size:.72rem;color:var(--text2);margin-top:3px">
+              Copy the MAC of the adapter to use from the list above → paste here → Save License → generate key using this same MAC.
+            </div>
+          </div>
         </div>
       </div>
-      <button class="s-btn s-btn-primary" onclick="saveSection('license')" {% if not is_admin %}disabled{% endif %}>
-        💾 Save License
-      </button>
+
+      <!-- DB Breakdown (hidden until data loads) -->
+      <div id="lic-breakdown-card" class="s-card" style="display:none;margin-top:12px">
+        <div class="s-card-title">DB Instance Breakdown</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.8rem">
+          <thead>
+            <tr style="background:var(--surface2);color:var(--text2)">
+              <th style="padding:5px 8px;text-align:left">Database / Instance</th>
+              <th style="padding:5px 8px;text-align:left">Type</th>
+              <th style="padding:5px 8px;text-align:left">PDB Detail</th>
+              <th style="padding:5px 8px;text-align:center">Units</th>
+            </tr>
+          </thead>
+          <tbody id="lic-db-breakdown"></tbody>
+        </table>
+        <div style="font-size:.72rem;color:var(--text2);margin-top:8px">
+          PDB rule: first {{ cfg.pdb_free_count or 3 }} PDBs per CDB are free.
+          Additional PDBs count as 1 unit each.
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center;margin-top:14px">
+        <button class="s-btn s-btn-primary" onclick="saveSection('license')"
+                {% if not is_admin %}disabled{% endif %}>💾 Save License</button>
+        <button class="s-btn s-btn-secondary" onclick="checkLicenseStatus()">🔄 Check Status</button>
+      </div>
+      <div style="font-size:.76rem;color:var(--text2);margin-top:10px;line-height:1.6">
+        <strong>License renewal:</strong> Contact Avekshaa Technologies with your server MAC address above.
+        A new key will be issued for the renewal period.<br>
+        <strong>Server transfer:</strong> If the portal is moved to a new server, a re-key is required (MAC changes).<br>
+        <strong>Upgrade:</strong> To increase DB or SAR server limits, contact Avekshaa for an upgraded key.
+      </div>
+
+      <!-- Tier comparison -->
+      <div class="s-card" style="margin-top:12px">
+        <div class="s-card-title">License Tiers</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.8rem">
+          <thead>
+            <tr style="background:var(--surface2)">
+              <th style="padding:6px 10px;text-align:left;color:var(--text2)">Tier</th>
+              <th style="padding:6px 10px;text-align:center;color:var(--text2)">DB Instances</th>
+              <th style="padding:6px 10px;text-align:center;color:var(--text2)">SAR Servers</th>
+              <th style="padding:6px 10px;text-align:center;color:var(--text2)">Modes</th>
+              <th style="padding:6px 10px;text-align:center;color:var(--text2)">Period</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tier, name, db, sar, period in [
+              ('T15','Trial 15 Days','2','2','15 days'),
+              ('T30','Trial 30 Days','2','2','30 days'),
+              ('STD','Standard','5','5','1 year'),
+              ('PRO','Professional','15','15','1 year'),
+              ('ENT','Enterprise','Unlimited','Unlimited','1 year'),
+            ] %}
+            <tr style="border-top:1px solid var(--border);
+                       {% if cfg.license_tier == tier %}background:var(--accent)18{% endif %}">
+              <td style="padding:6px 10px;font-weight:600">
+                {{ name }}
+                {% if cfg.license_tier == tier %}
+                <span style="font-size:.7rem;color:var(--accent);margin-left:6px">← current</span>
+                {% endif %}
+              </td>
+              <td style="padding:6px 10px;text-align:center">{{ db }}</td>
+              <td style="padding:6px 10px;text-align:center">{{ sar }}</td>
+              <td style="padding:6px 10px;text-align:center;color:#10b981">Rules + Local AI + Cloud AI</td>
+              <td style="padding:6px 10px;text-align:center;color:var(--text2)">{{ period }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div style="font-size:.72rem;color:var(--text2);margin-top:8px">
+          All tiers include all recommendation modes. Grace period: 7 days after expiry.
+          PDB rule: first 3 PDBs per CDB are included free.
+        </div>
+      </div>
     </div>
 
     <!-- ── Access Control ────────────────────────────────────────── -->
     <div id="s-access" class="s-panel">
       <div class="s-title">🔒 Access Control</div>
-      <div class="s-desc">Control who can access the portal. When login is enabled all users must authenticate before viewing any page.</div>
+      <div class="s-desc">Control who can access the portal and configure network URLs for intranet access.</div>
+
+      <!-- Network / URL Configuration -->
+      <div class="s-card">
+        <div class="s-card-title">🌐 Network Configuration</div>
+        <div style="font-size:.8rem;color:var(--text2);margin-bottom:12px">
+          Configure the actual server IP or hostname so Grafana dashboard links work from other machines on the intranet.
+          Leave as <code>localhost</code> for single-machine access only.
+        </div>
+        <div class="s-row">
+          <div class="s-field">
+            <label class="s-label">Portal URL
+              <span style="font-size:.72rem;color:var(--text2);font-weight:400"> — used for inter-service links</span>
+            </label>
+            <input class="s-input" id="portal_url"
+                   value="{{ cfg.portal_url or 'http://localhost:8000' }}"
+                   placeholder="http://192.168.1.100:8000">
+          </div>
+          <div class="s-field">
+            <label class="s-label">Grafana URL
+              <span style="font-size:.72rem;color:var(--text2);font-weight:400"> — used for all dashboard links</span>
+            </label>
+            <input class="s-input" id="grafana_url"
+                   value="{{ cfg.grafana_url or 'http://localhost:3000' }}"
+                   placeholder="http://192.168.1.100:3000">
+          </div>
+        </div>
+        <div style="font-size:.76rem;color:var(--text2);margin-top:8px;line-height:1.6">
+          <strong>Example for intranet:</strong>
+          Portal URL = <code>http://192.168.1.100:8000</code> &nbsp;|&nbsp;
+          Grafana URL = <code>http://192.168.1.100:3000</code><br>
+          After saving, all Grafana dashboard links on the home page will use the configured URL.
+          Remote users on the intranet can then open dashboards directly.
+        </div>
+      </div>
+
       <div class="s-card">
         <div class="s-card-title">Portal Access</div>
         <div class="toggle-row">
@@ -518,7 +716,7 @@
             <option value="1440" {% if cfg.session_timeout_mins=='1440' %}selected{% endif %}>24 hours</option>
           </select>
         </div>
-      </div>
+      </div>{# end Portal Access card #}
       <button class="s-btn s-btn-primary" onclick="saveSection('access')" {% if not is_admin %}disabled{% endif %}>
         💾 Save Access Settings
       </button>
@@ -663,6 +861,138 @@ function selectProvider(card, pid, defaultModel) {
 }
 
 // ── Source toggles ────────────────────────────────────────────────────
+async function checkLicenseStatus() {
+  const banner = document.getElementById('lic-status-banner');
+  if (!banner) return;
+
+  // Load MAC info in parallel (fire and forget)
+  fetch('/api/license/mac-info').then(r=>r.json()).then(d=>{
+    const listEl = document.getElementById('lic-mac-list');
+    if (!listEl) return;
+    if (d.all_adapters && d.all_adapters.length > 0) {
+      listEl.innerHTML = d.all_adapters.map(a => {
+        const isPrimary = a.mac === d.primary_mac;
+        const typeColor = a.type==='LAN' ? '#10b981' : a.type==='Wi-Fi' ? '#3b82f6' : '#94a3b8';
+        return `<div class="mac-box" style="margin-bottom:4px;
+                  ${isPrimary ? 'border-color:var(--accent)' : 'opacity:.7'}">
+          <span style="color:${typeColor};font-weight:600;margin-right:8px">${a.type}</span>
+          <span style="font-family:monospace">${a.mac}</span>
+          <span style="color:var(--text2);margin-left:8px;font-size:.75rem">${a.name}</span>
+          ${isPrimary ? '<span style="color:var(--accent);margin-left:8px;font-size:.72rem">★ Primary (used for license)</span>' : ''}
+          ${!a.is_up ? '<span style="color:#94a3b8;margin-left:6px;font-size:.72rem">disconnected</span>' : ''}
+        </div>`;
+      }).join('');
+    }
+    const fpEl = document.getElementById('lic-fingerprint');
+    if (fpEl && d.fingerprint) fpEl.textContent = d.fingerprint;
+  }).catch(()=>{});
+
+  // Main license status check
+  try {
+    const r = await fetch('/api/license/status');
+    const d = await r.json();
+
+    // Colour map
+    const cm = {
+      ok:             {bg:'#10b98115',bc:'#10b98140',tc:'#10b981'},
+      expiry_warning: {bg:'#f59e0b15',bc:'#f59e0b40',tc:'#f59e0b'},
+      grace:          {bg:'#f9731615',bc:'#f9731640',tc:'#f97316'},
+      expired:        {bg:'#ef444415',bc:'#ef444440',tc:'#ef4444'},
+      db_exceeded:    {bg:'#ef444415',bc:'#ef444440',tc:'#ef4444'},
+      sar_exceeded:   {bg:'#ef444415',bc:'#ef444440',tc:'#ef4444'},
+      no_key:         {bg:'#f59e0b15',bc:'#f59e0b40',tc:'#f59e0b'},
+      mac_mismatch:   {bg:'#ef444415',bc:'#ef444440',tc:'#ef4444'},
+      evaluation:     {bg:'#3b82f615',bc:'#3b82f640',tc:'#3b82f6'},
+      error:          {bg:'#33415515',bc:'#33415540',tc:'#94a3b8'},
+    };
+    const c = cm[d.status] || cm.error;
+    banner.style.cssText = `background:${c.bg};border-color:${c.bc};color:${c.tc};
+      padding:10px 14px;border-radius:var(--radius);font-size:.84rem;
+      border:1px solid;margin-bottom:14px`;
+    banner.textContent = d.status_msg || d.message || 'Unknown status';
+
+    // Update expiry
+    const daysEl = document.getElementById('lic-days-left');
+    if (daysEl && d.days_left !== undefined) {
+      daysEl.textContent = d.days_left > 0 ? `${d.days_left} days remaining`
+                         : d.days_left === 0 ? 'expires today'
+                         : d.in_grace ? `in grace period (${7+d.days_left} days left)`
+                         : 'expired';
+      daysEl.style.color = d.expiry_warning || d.in_grace ? '#f59e0b'
+                         : d.hard_expired ? '#ef4444' : '';
+    }
+
+    // Update read-only display fields from validated key
+    const dbDisp  = document.getElementById('lic-db-count-display');
+    const sarDisp = document.getElementById('lic-sar-count-display');
+    const expDisp = document.getElementById('lic-expiry-display');
+    const dbHid   = document.getElementById('license_db_count');
+    const sarHid  = document.getElementById('license_sar_count');
+    const expHid  = document.getElementById('license_expiry');
+
+    const dbVal  = d.db_limit  === -1 ? 'Unlimited (ENT)' : (d.db_limit  ?? '—');
+    const sarVal = d.sar_limit === -1 ? 'Unlimited (ENT)' : (d.sar_limit ?? '—');
+    const expVal = d.expiry || '—';
+
+    if (dbDisp)  dbDisp.textContent  = dbVal;
+    if (sarDisp) sarDisp.textContent = sarVal;
+    if (expDisp) expDisp.textContent = expVal;
+    // Keep hidden inputs in sync so save() writes correct values
+    if (dbHid  && d.db_limit  != null) dbHid.value  = d.db_limit  === -1 ? 999 : d.db_limit;
+    if (sarHid && d.sar_limit != null) sarHid.value = d.sar_limit === -1 ? 999 : d.sar_limit;
+    if (expHid && d.expiry)            expHid.value  = d.expiry;
+
+    // Update stat grid counters
+    const el = id => document.getElementById(id);
+    if (el('lic-db-used'))  el('lic-db-used').textContent  = d.db_used  ?? '—';
+    if (el('lic-db-limit')) el('lic-db-limit').textContent = d.db_limit === -1 ? '∞' : (d.db_limit ?? '—');
+    if (el('lic-sar-used')) el('lic-sar-used').textContent = d.sar_used ?? '—';
+    if (el('lic-sar-limit'))el('lic-sar-limit').textContent= d.sar_limit === -1 ? '∞' : (d.sar_limit ?? '—');
+    if (el('lic-tier'))     el('lic-tier').textContent     = d.tier_name || '—';
+    if (el('lic-customer')) el('lic-customer').textContent = d.customer_name || '—';
+    if (el('lic-mac'))      el('lic-mac').textContent      = d.mac_address   || '—';
+
+    // AI usage
+    if (el('lic-ai-used'))  el('lic-ai-used').textContent  = d.ai_monthly_used ?? 0;
+    if (el('lic-ai-limit')) el('lic-ai-limit').textContent = d.ai_monthly_limit ?? 200;
+    if (d.ai_cap_reached && el('lic-ai-warn')) {
+      el('lic-ai-warn').style.display = 'block';
+    }
+
+    // PDB info
+    if (d.pdb_free > 0 || d.pdb_charged > 0) {
+      const pdbEl = document.getElementById('lic-pdb-info');
+      if (pdbEl) {
+        pdbEl.textContent = `PDBs: ${d.pdb_free} free + ${d.pdb_charged} charged`;
+        pdbEl.style.display = 'block';
+      }
+    }
+
+    // DB breakdown
+    if (d.db_breakdown && d.db_breakdown.length > 0) {
+      const tbl = document.getElementById('lic-db-breakdown');
+      if (tbl) {
+        tbl.innerHTML = d.db_breakdown.map(b =>
+          `<tr>
+            <td style="padding:4px 8px">${b.dbname}</td>
+            <td style="padding:4px 8px">${b.type}</td>
+            <td style="padding:4px 8px">${b.pdb_count ? `${b.pdb_count} PDBs (${b.pdb_free} free + ${b.pdb_charged} charged)` : '—'}</td>
+            <td style="padding:4px 8px;text-align:center">${b.units}</td>
+          </tr>`
+        ).join('');
+        document.getElementById('lic-breakdown-card').style.display = 'block';
+      }
+    }
+
+  } catch(e) {
+    if (banner) {
+      banner.style.cssText = 'color:#ef4444;padding:8px;font-size:.84rem';
+      banner.textContent = 'Error checking license status: ' + e.message;
+    }
+  }
+}
+setTimeout(checkLicenseStatus, 400);
+
 function toggleAwrSource(val) {
   document.getElementById('awr-local-cfg').style.display   = val === 'local'     ? '' : 'none';
   document.getElementById('awr-network-cfg').style.display = val === 'network'   ? '' : 'none';
@@ -688,8 +1018,10 @@ async function saveSection(section) {
     sar_source: ['sar_source_type','sar_tz_offset','sar_local_path','sar_ssh_host','sar_ssh_port',
                  'sar_ssh_user','sar_ssh_key_path','sar_ssh_remote_path'],
     license: ['license_key','license_customer','license_db_count',
-              'license_sar_count','license_expiry'],
-    access: ['session_timeout_mins', 'admin_reset_pin', 'metadata_refresh_days'],
+              'license_sar_count','license_expiry','ai_monthly_limit',
+              'license_mac_override'],
+    access: ['session_timeout_mins', 'admin_reset_pin', 'metadata_refresh_days',
+             'portal_login_required', 'portal_url', 'grafana_url'],
   };
 
   // ai_mode comes from radio

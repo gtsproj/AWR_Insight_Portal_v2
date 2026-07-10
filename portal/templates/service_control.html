@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+{% block title %} — Service Control{% endblock %}
+{% block content %}
+<style>
+.svc-row{display:flex;align-items:center;gap:10px;padding:10px 14px;
+         background:var(--surface2);border-radius:var(--radius);margin-bottom:6px}
+.svc-name{font-size:.88rem;font-weight:600;min-width:160px}
+.svc-desc{font-size:.75rem;color:var(--text2);flex:1}
+.svc-btns{display:flex;gap:5px;flex-shrink:0}
+.svc-btn{padding:4px 12px;font-size:.78rem;border-radius:var(--radius);
+         border:none;cursor:pointer;font-weight:600;transition:.15s}
+.svc-btn:hover{opacity:.85}
+.btn-start{background:#10b981;color:#fff}
+.btn-stop{background:#ef4444;color:#fff}
+.btn-restart{background:#f59e0b;color:#000}
+.btn-cache{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.grp-bar{display:flex;gap:8px;padding:10px 0;border-top:1px solid var(--border);margin-top:8px}
+</style>
+
+<h1 style="font-size:1.2rem;color:var(--accent);margin-bottom:16px">🖥️ Service Control</h1>
+
+{# ── Service Rows ── #}
+<div class="card">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <h2 style="margin:0">Services</h2>
+    <span style="font-size:.75rem;color:var(--text2)">Status refreshes every 10s</span>
+  </div>
+
+  {# AWR Watcher #}
+  <div class="svc-row">
+    <span class="svc-name">📂 AWR Watcher</span>
+    <span id="svc-watcher" class="badge" style="background:#333;min-width:80px;text-align:center">…</span>
+    <span class="svc-desc">Monitors awr_reports\ folder — queues new AWR HTML files for parsing</span>
+    {% if is_admin %}
+    <div class="svc-btns">
+      <button class="svc-btn btn-start"   onclick="svc('start','watcher')">▶ Start</button>
+      <button class="svc-btn btn-stop"    onclick="svc('stop','watcher')">⏹ Stop</button>
+      <button class="svc-btn btn-restart" onclick="svc('restart','watcher')">↺ Restart</button>
+    </div>
+    {% endif %}
+  </div>
+
+  {# SAR Watcher #}
+  <div class="svc-row">
+    <span class="svc-name">📊 SAR Watcher</span>
+    <span id="svc-sar" class="badge" style="background:#333;min-width:80px;text-align:center">…</span>
+    <span class="svc-desc">Monitors sar_drop\ folder — queues new SAR files for parsing</span>
+    {% if is_admin %}
+    <div class="svc-btns">
+      <button class="svc-btn btn-start"   onclick="svc('start','sar')">▶ Start</button>
+      <button class="svc-btn btn-stop"    onclick="svc('stop','sar')">⏹ Stop</button>
+      <button class="svc-btn btn-restart" onclick="svc('restart','sar')">↺ Restart</button>
+    </div>
+    {% endif %}
+  </div>
+
+  {# Queue Processor #}
+  <div class="svc-row">
+    <span class="svc-name">⚙️ Queue Processor</span>
+    <span id="svc-queue" class="badge" style="background:#333;min-width:80px;text-align:center">…</span>
+    <span class="svc-desc">Processes AWR + SAR parse queue — 4 AWR workers, 2 SAR workers</span>
+    {% if is_admin %}
+    <div class="svc-btns">
+      <button class="svc-btn btn-start"   onclick="svc('start','queue')">▶ Start</button>
+      <button class="svc-btn btn-stop"    onclick="svc('stop','queue')">⏹ Stop</button>
+      <button class="svc-btn btn-restart" onclick="svc('restart','queue')">↺ Restart</button>
+    </div>
+    {% endif %}
+  </div>
+
+  {# Grafana #}
+  <div class="svc-row">
+    <span class="svc-name">📈 Grafana</span>
+    <span id="svc-grafana" class="badge" style="background:#333;min-width:80px;text-align:center">…</span>
+    <span class="svc-desc">Grafana dashboard server — port 3000</span>
+    {% if is_admin %}
+    <div class="svc-btns">
+      <button class="svc-btn btn-start" onclick="svc('start','grafana')">▶ Start</button>
+      <button class="svc-btn btn-stop"  onclick="svc('stop','grafana')">⏹ Stop</button>
+    </div>
+    {% endif %}
+  </div>
+
+  {# Portal #}
+  <div class="svc-row">
+    <span class="svc-name">🌐 Portal (this app)</span>
+    <span id="svc-portal" class="badge" style="background:#10b981;min-width:80px;text-align:center">Running</span>
+    <span class="svc-desc">FastAPI portal — port 8000. Clears Python cache then stops — NSSM auto-restarts</span>
+    {% if is_admin %}
+    <div class="svc-btns">
+      <button class="svc-btn btn-cache" onclick="clearCache()">
+        🗑 Clear Cache &amp; Restart
+      </button>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if is_admin %}
+  <div class="grp-bar">
+    <span style="font-size:.78rem;color:var(--text2);align-self:center">Watchers + Queue:</span>
+    <button class="svc-btn btn-start"   onclick="svcGroup('start',['watcher','sar','queue'])">▶ Start All</button>
+    <button class="svc-btn btn-stop"    onclick="svcGroup('stop',['watcher','sar','queue'])">⏹ Stop All</button>
+    <button class="svc-btn btn-restart" onclick="svcGroup('restart',['watcher','sar','queue'])">↺ Restart All</button>
+  </div>
+  {% endif %}
+
+  <div id="svc-msg" style="margin-top:8px;font-size:.82rem;color:var(--text2);min-height:18px"></div>
+</div>
+
+{# ── Log Viewer ── #}
+<div class="card" style="margin-top:10px">
+  <h2>Log Viewer</h2>
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
+    <select id="log-select" style="background:var(--surface2);border:1px solid var(--border);
+      color:var(--text);padding:7px 12px;border-radius:var(--radius);font-size:.85rem;
+      outline:none;flex:1;min-width:220px" onchange="loadLog()">
+      <option value="">-- Select Log --</option>
+      <option value="portal">🌐 Portal (portal_stderr.log)</option>
+      <option value="watcher">📂 AWR Watcher (watcher.log)</option>
+      <option value="sar_watcher">📊 SAR Watcher (sar_watcher.log)</option>
+      <option value="queue">⚙️ Queue Processor (queue_processor.log)</option>
+      <option value="anomaly">🚨 Anomaly Detector (anomaly_detector.log)</option>
+    </select>
+    <select id="log-lines" style="background:var(--surface2);border:1px solid var(--border);
+      color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.85rem;outline:none">
+      <option value="50">Last 50 lines</option>
+      <option value="100">Last 100 lines</option>
+      <option value="200">Last 200 lines</option>
+    </select>
+    <button class="btn btn-sm" style="background:var(--surface2);color:var(--text2)"
+            onclick="loadLog()">🔄 Refresh</button>
+    <button class="btn btn-sm" style="background:var(--surface2);color:var(--text2)"
+            onclick="toggleAutoRefresh()" id="auto-refresh-btn">⏵ Auto-refresh</button>
+  </div>
+  <pre id="log-output" style="background:var(--surface2);border:1px solid var(--border);
+    border-radius:var(--radius);padding:12px;font-size:.74rem;font-family:monospace;
+    height:380px;overflow-y:auto;color:var(--text2);white-space:pre-wrap;word-break:break-all;
+    margin:0">Select a log file above to view output.</pre>
+  <div style="font-size:.72rem;color:var(--text2);margin-top:6px" id="log-timestamp"></div>
+</div>
+
+<script>
+(function() {
+  const INTERVAL_MS = 10000;
+  let autoRefresh = false;
+  let autoTimer   = null;
+
+  // ── Badge colours ──────────────────────────────────────────────
+  const BADGE_COLOURS = {
+    'Running':       '#10b981',
+    'Starting':      '#f59e0b',
+    'Stopped':       '#ef4444',
+    'Stopping':      '#f97316',
+    'Not installed': '#64748b',
+    'Unknown':       '#334155',
+  };
+
+  function badge(id, status) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent      = status;
+    el.style.background = BADGE_COLOURS[status] || '#334155';
+  }
+
+  function setMsg(msg, colour) {
+    const el = document.getElementById('svc-msg');
+    if (el) { el.textContent = msg; el.style.color = colour || 'var(--text2)'; }
+  }
+
+  // ── Service status refresh ──────────────────────────────────────
+  async function refreshServices() {
+    try {
+      const r = await fetch('/api/services/status');
+      if (!r.ok) return;
+      const d = await r.json();
+      Object.entries(d).forEach(([k, s]) => badge('svc-' + k, s));
+    } catch(_) {}
+  }
+
+  // ── Individual service action ───────────────────────────────────
+  window.svc = async function(action, service) {
+    setMsg(`${action} ${service}…`, '#f59e0b');
+    badge('svc-' + service, action === 'stop' ? 'Stopping' : 'Starting');
+    try {
+      const r = await fetch(`/api/services/${action}`, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({service})
+      });
+      const d = await r.json();
+      if (d.warning) {
+        setMsg(`⚠ ${d.warning}`, '#f59e0b');
+      } else {
+        const res = d.results?.[service] || {};
+        setMsg(`${service}: ${res.msg || res.status || 'done'}`,
+               res.ok ? '#10b981' : '#f59e0b');
+      }
+      setTimeout(refreshServices, 2000);
+    } catch(e) {
+      setMsg(`Error: ${e.message}`, '#ef4444');
+    }
+  };
+
+  // ── Group action ───────────────────────────────────────────────
+  window.svcGroup = async function(action, services) {
+    setMsg(`${action} services…`, '#f59e0b');
+    services.forEach(s => badge('svc-' + s, action === 'stop' ? 'Stopping' : 'Starting'));
+    const results = [];
+    for (const svc of services) {
+      try {
+        const r = await fetch(`/api/services/${action}`, {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({service: svc})
+        });
+        const d = await r.json();
+        const res = d.results?.[svc] || {};
+        results.push(`${svc}: ${res.status || 'done'}`);
+        badge('svc-' + svc, res.status || '…');
+      } catch(e) {
+        results.push(`${svc}: error`);
+      }
+    }
+    setMsg(`${action} complete — ${results.join(' | ')}`, '#10b981');
+    setTimeout(refreshServices, 2000);
+  };
+
+  // ── Clear cache & restart portal ───────────────────────────────
+  window.clearCache = async function() {
+    if (!confirm('Clear Python cache and restart the portal?\nThis page will reload in ~15 seconds.')) return;
+    setMsg('Clearing Python cache…', '#f59e0b');
+    badge('svc-portal', 'Stopping');
+    try {
+      const r = await fetch('/api/cache/clear', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({restart: true})
+      });
+      const d = await r.json();
+      setMsg(`Cache cleared (${d.cleared} folders). ${d.restart_msg || 'Restarting…'}`, '#f59e0b');
+      let countdown = 15;
+      const timer = setInterval(() => {
+        countdown--;
+        setMsg(`Portal restarting — page reloads in ${countdown}s…`, '#f59e0b');
+        if (countdown <= 0) { clearInterval(timer); location.reload(); }
+      }, 1000);
+    } catch(e) {
+      setMsg(`Error: ${e.message}`, '#ef4444');
+      badge('svc-portal', 'Unknown');
+    }
+  };
+
+  // ── Log viewer ─────────────────────────────────────────────────
+  window.loadLog = async function() {
+    const logType = document.getElementById('log-select').value;
+    const lines   = document.getElementById('log-lines').value || 50;
+    const out     = document.getElementById('log-output');
+    const ts      = document.getElementById('log-timestamp');
+    if (!logType) return;
+    out.textContent = 'Loading…';
+    try {
+      const r = await fetch(`/api/logs/${logType}?lines=${lines}`);
+      if (!r.ok) { out.textContent = `Error: HTTP ${r.status}`; return; }
+      const d = await r.json();
+      out.textContent = d.content || '(empty)';
+      out.scrollTop   = out.scrollHeight;
+      if (ts) ts.textContent = `Last loaded: ${new Date().toLocaleTimeString()}  |  ${d.path || ''}`;
+    } catch(e) {
+      out.textContent = `Error: ${e.message}`;
+    }
+  };
+
+  window.toggleAutoRefresh = function() {
+    autoRefresh = !autoRefresh;
+    const btn = document.getElementById('auto-refresh-btn');
+    if (autoRefresh) {
+      btn.textContent = '⏸ Auto-refresh ON';
+      btn.style.color = '#10b981';
+      autoTimer = setInterval(loadLog, 5000);
+    } else {
+      btn.textContent = '⏵ Auto-refresh';
+      btn.style.color = '';
+      clearInterval(autoTimer);
+    }
+  };
+
+  // ── Boot ───────────────────────────────────────────────────────
+  setInterval(refreshServices, INTERVAL_MS);
+  refreshServices();
+})();
+</script>
+{% endblock %}

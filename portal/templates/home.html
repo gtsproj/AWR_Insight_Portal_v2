@@ -118,18 +118,18 @@
       📊 AWR Analysis
     </div>
     {% if ai_mode in ('local_ai','cloud_ai') %}
-    <a href="http://localhost:3000/d/awr-intelligence-ai" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/awr-intelligence-ai" target="_blank" class="dl">
       🧠 AWR Intelligence
       <small>Wait · SQL · Segment · Correlation</small></a>
     {% else %}
-    <a href="http://localhost:3000/d/awr-unified-intelligence" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/awr-unified-intelligence" target="_blank" class="dl">
       🧠 AWR Intelligence
       <small>Wait · SQL · Segment · Correlation &amp; Recommendations</small></a>
     {% endif %}
-    <a href="http://localhost:3000/d/awr-memory-advisory" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/awr-memory-advisory" target="_blank" class="dl">
       💾 Memory Advisory
       <small>SGA · PGA · Instance Efficiency</small></a>
-    <a href="http://localhost:3000/d/awr-anomaly-detection" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/awr-anomaly-detection" target="_blank" class="dl">
       🚨 AWR Anomaly Detection
       <small>Trend analysis · Baseline deviation</small></a>
   </div>
@@ -140,13 +140,13 @@
                 margin-bottom:10px;font-weight:600;border-bottom:1px solid var(--border);padding-bottom:6px">
       🖥️ SAR &amp; Correlation
     </div>
-    <a href="http://localhost:3000/d/sar-overview" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/sar-overview" target="_blank" class="dl">
       🖥️ SAR System Overview
       <small>CPU · Memory · Disk · Network</small></a>
-    <a href="http://localhost:3000/d/sar-anomalies" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/sar-anomalies" target="_blank" class="dl">
       🚨 SAR Anomaly Detection
       <small>OS resource anomalies</small></a>
-    <a href="http://localhost:3000/d/sar-awr-correlation" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/sar-awr-correlation" target="_blank" class="dl">
       🔗 AWR+SAR Correlation
       <small>Oracle vs OS resource comparison</small></a>
   </div>
@@ -166,7 +166,7 @@
     <a href="/exec-plan" class="dl">
       📋 Execution Plan Compare
       <small>Side-by-side plan diff</small></a>
-    <a href="http://localhost:3000/d/fdv31-awr-nav" target="_blank" class="dl">
+    <a href="{{ grafana_url }}/d/fdv31-awr-nav" target="_blank" class="dl">
       📌 AWR Navigation Hub ↗
       <small>Cross-dashboard navigation</small></a>
   </div>
@@ -174,250 +174,136 @@
 </div>
 
 
-{# ── Service Control Panel ── #}
+
+{# ── Service Status Strip (compact — full control on Services page) ── #}
 <div class="card" style="margin-top:4px">
-  <h2>Service Control</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:14px" id="svc-status-grid">
-    {% for key, label in [('portal','Portal'),('watcher','AWR Watcher'),('sar','SAR Watcher'),('queue','Queue Processor'),('grafana','Grafana')] %}
-    <div style="background:var(--surface2);border-radius:var(--radius);padding:10px 14px;display:flex;align-items:center;justify-content:space-between">
-      <span style="font-size:.85rem">{{ label }}</span>
-      <span id="svc-{{ key }}" class="badge" style="background:#333">…</span>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <h2 style="margin:0">Service Status</h2>
+    <a href="/service-control" class="btn btn-sm"
+       style="background:var(--surface2);color:var(--text);font-size:.78rem">
+      🖥️ Service Control →
+    </a>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    {% for key, label in [('portal','🌐 Portal'),('watcher','📂 AWR Watcher'),
+                           ('sar','📊 SAR Watcher'),('queue','⚙️ Queue'),
+                           ('grafana','📈 Grafana')] %}
+    <div style="display:flex;align-items:center;gap:6px;padding:5px 10px;
+                background:var(--surface2);border-radius:var(--radius);font-size:.82rem">
+      <span>{{ label }}</span>
+      <span id="svc-{{ key }}" class="badge" style="background:#333;font-size:.72rem">…</span>
     </div>
     {% endfor %}
   </div>
-  {% if is_admin %}
-  <div style="display:flex;flex-wrap:wrap;gap:8px">
-    <button class="btn btn-sm" style="background:#10b981;color:#fff" onclick="svcAction('start','all')">▶ Start All</button>
-    <button class="btn btn-sm btn-danger" onclick="svcAction('stop','all')">⏹ Stop All</button>
-    <button class="btn btn-sm" style="background:var(--warn);color:#000" onclick="svcAction('restart','all')">↺ Restart All</button>
-    <button class="btn btn-sm" style="background:#1e2340;color:#e2e8f0" onclick="svcAction('pause','all')">⏸ Pause All</button>
-    <button class="btn btn-sm" style="background:#334155;color:#e2e8f0" onclick="svcAction('resume','all')">⏯ Resume All</button>
-    <span style="border-left:1px solid var(--border);margin:0 4px"></span>
-    <button class="btn btn-sm" style="background:var(--surface2);color:var(--text)" onclick="clearCache()">🗑 Clear Cache &amp; Restart Portal</button>
-  </div>
-  {% else %}
-  <div style="font-size:.8rem;color:var(--text2);padding:6px 0">🔒 Service control available to admin users only.</div>
-  {% endif %}
-  <div id="svc-msg" style="margin-top:10px;font-size:.82rem;color:var(--text2);min-height:18px"></div>
-</div>
-
-{# ── Log Viewer ── #}
-<div class="card" style="margin-top:4px">
-  <h2>Log Viewer</h2>
-  <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
-    <select id="log-select" style="background:var(--surface2);border:1px solid var(--border);
-      color:var(--text);padding:7px 12px;border-radius:var(--radius);font-size:.85rem;outline:none;flex:1"
-      onchange="loadLog()">
-      <option value="">-- Select Log --</option>
-      <option value="portal">Portal (portal_stderr.log)</option>
-      <option value="watcher">AWR Watcher (watcher.log)</option>
-      <option value="sar_watcher">SAR Watcher (sar_watcher.log)</option>
-      <option value="queue">Queue Processor (queue_processor.log)</option>
-      <option value="anomaly">Anomaly Detector (anomaly_detector.log)</option>
-    </select>
-    <button class="btn btn-sm" style="background:var(--surface2);color:var(--text2)"
-            onclick="loadLog()">🔄 Refresh</button>
-  </div>
-  <pre id="log-output" style="background:var(--surface2);border:1px solid var(--border);
-    border-radius:var(--radius);padding:12px;font-size:.75rem;font-family:monospace;
-    height:260px;overflow-y:auto;color:var(--text2);white-space:pre-wrap;word-break:break-all">
-Select a log file above to view the last 50 lines.</pre>
 </div>
 
 <script>
 (function () {
-  const INTERVAL_MS = 10000;
-
-  const SVC_COLOURS = {
-    'Running':  { bg: '#1b5e20', text: '#fff' },
-    'Stopped':  { bg: '#b71c1c', text: '#fff' },
-    'Paused':   { bg: '#e65100', text: '#fff' },
-    'Starting': { bg: '#0d47a1', text: '#fff' },
-    'Stopping': { bg: '#4a148c', text: '#fff' },
-    'Unknown':  { bg: '#333',    text: '#ccc' },
-  };
+  const INTERVAL_MS = 15000;
 
   function setSc(id, cls) {
     const el = document.getElementById(id);
     if (el) el.className = 'sc' + (cls ? ' ' + cls : '');
   }
 
-  function setMsg(msg, colour) {
-    const el = document.getElementById('svc-msg');
-    if (el) { el.textContent = msg; el.style.color = colour || 'var(--text2)'; }
-  }
-
-  // ── Queue stats refresh ──────────────────────────────────────────
+  // ── Queue stats refresh ───────────────────────────────────────────
   async function refreshStats() {
     try {
-      const res = await fetch('/api/queue/stats');
-      if (!res.ok) return;
-      const d = await res.json();
+      const r = await fetch('/api/queue-stats');
+      if (!r.ok) return;
+      const d = await r.json();
 
-      document.getElementById('val-pending').textContent    = d.pending    ?? 0;
-      document.getElementById('val-processing').textContent = d.processing ?? 0;
-      document.getElementById('val-done').textContent       = d.done       ?? 0;
-      document.getElementById('val-failed').textContent     = d.failed     ?? 0;
-      document.getElementById('val-dbs').textContent        = d.db_count   ?? 0;
-
-      setSc('stat-pending',    d.pending > 10 ? 'err' : d.pending === 0 ? 'ok' : '');
-      setSc('stat-processing', d.processing > 0 ? 'warn' : '');
+      const setText = (id, val) => { const e=document.getElementById(id); if(e) e.textContent=val; };
+      setText('val-pending',    d.pending    ?? 0);
+      setText('val-processing', d.processing ?? 0);
+      setText('val-done',       d.done       ?? 0);
+      setText('val-failed',     d.failed     ?? 0);
+      setText('val-dbs',        d.db_count   ?? 0);
+      setSc('stat-pending',    (d.pending??0) > 10 ? 'err' : (d.pending??0) === 0 ? 'ok' : '');
+      setSc('stat-processing', (d.processing??0) > 0 ? 'warn' : '');
       setSc('stat-done',       'ok');
-      setSc('stat-failed',     d.failed > 0 ? 'err' : '');
+      setSc('stat-failed',     (d.failed??0) > 0 ? 'err' : '');
       setSc('stat-dbs',        'info');
 
-      document.getElementById('sar-val-pending').textContent    = d.sar_pending    ?? 0;
-      document.getElementById('sar-val-processing').textContent = d.sar_processing ?? 0;
-      document.getElementById('sar-val-done').textContent       = d.sar_done       ?? 0;
-      document.getElementById('sar-val-failed').textContent     = d.sar_failed     ?? 0;
-      document.getElementById('sar-val-hosts').textContent      = d.sar_host_count ?? 0;
-
+      setText('sar-val-pending',    d.sar_pending    ?? 0);
+      setText('sar-val-processing', d.sar_processing ?? 0);
+      setText('sar-val-done',       d.sar_done       ?? 0);
+      setText('sar-val-failed',     d.sar_failed     ?? 0);
+      setText('sar-val-hosts',      d.sar_host_count ?? 0);
       setSc('sar-stat-pending',    (d.sar_pending??0) > 10 ? 'err' : (d.sar_pending??0) === 0 ? 'ok' : '');
       setSc('sar-stat-processing', (d.sar_processing??0) > 0 ? 'warn' : '');
       setSc('sar-stat-done',       'ok');
       setSc('sar-stat-failed',     (d.sar_failed??0) > 0 ? 'err' : '');
       setSc('sar-stat-hosts',      'info');
 
+      // Active parsing banner
       const banner = document.getElementById('active-banner');
-      const dbName = document.getElementById('active-db-name');
-      const awrActive = d.processing > 0;
-      const sarActive = (d.sar_processing ?? 0) > 0;
-      if (awrActive || sarActive) {
-        let parts = [];
-        if (awrActive) parts.push(`AWR: ${d.active_db || (d.db_names||[]).join(',')} (${d.processing} file${d.processing>1?'s':''})`);
-        if (sarActive) parts.push(`SAR: ${d.active_sar || (d.sar_hosts||[]).join(',')} (${d.sar_processing} file${d.sar_processing>1?'s':''})`);
-        dbName.textContent = parts.join('  |  ');
-        document.getElementById('active-count').textContent = '';
-        banner.style.display = '';
-      } else {
-        banner.style.display = 'none';
+      if (banner) {
+        if ((d.processing??0) > 0) {
+          document.getElementById('active-db-name').textContent = d.active_db || '';
+          document.getElementById('active-count').textContent   = `${d.processing} file(s) parsing`;
+          banner.style.display = 'block';
+        } else {
+          banner.style.display = 'none';
+        }
       }
-
-      const dot = document.getElementById('live-dot');
-      dot.style.background = '#facc15';
-      setTimeout(() => dot.style.background = '#22c55e', 400);
-      const now = new Date();
-      document.getElementById('refresh-status').textContent =
-        'Updated ' + now.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
-
-    } catch (_) {}
+    } catch(_) {}
   }
 
-  // ── Log viewer ───────────────────────────────────────────────────
-  window.loadLog = async function() {
-    const sel = document.getElementById('log-select').value;
-    const out = document.getElementById('log-output');
-    if (!sel) { out.textContent = 'Select a log file above to view the last 50 lines.'; return; }
-    out.textContent = 'Loading…';
-    try {
-      const res = await fetch(`/api/logs/${sel}?lines=50`);
-      if (!res.ok) { out.textContent = 'Error loading log: ' + res.statusText; return; }
-      const d = await res.json();
-      out.textContent = d.content || '(empty)';
-      out.scrollTop   = out.scrollHeight;
-    } catch(e) { out.textContent = 'Error: ' + e; }
-  };
-
-  // ── Metadata refresh alert ────────────────────────────────────────
-(async function checkMetadataRefresh() {
-  // Check if dismissed today
-  const dismissKey = 'meta_alert_dismissed';
-  const dismissed  = localStorage.getItem(dismissKey);
-  const today      = new Date().toDateString();
-  if (dismissed === today) return;
-
-  try {
-    const r = await fetch('/api/metadata/refresh-status');
-    const d = await r.json();
-    if (!d.overdue_count) return;
-
-    const banner   = document.getElementById('metadata-alert-banner');
-    const listEl   = document.getElementById('meta-alert-list');
-    const freqEl   = document.getElementById('meta-freq-label');
-    if (!banner || !listEl) return;
-
-    freqEl.textContent = `Refresh frequency: ${d.freq_label}`;
-
-    const overdue = d.alerts.filter(a => a.status !== 'ok');
-    listEl.innerHTML = overdue.map(a => {
-      const icon = a.status === 'missing' ? '🔴' : '🟡';
-      const age  = a.days_old != null
-        ? `${a.days_old} days old`
-        : 'never uploaded';
-      const count = a.object_count
-        ? ` · ${a.object_count.toLocaleString()} objects`
-        : '';
-      return `${icon} <strong>${a.dbname}</strong> — ${age}${count}`;
-    }).join('<br>');
-
-    banner.style.display = 'block';
-  } catch(_) {}
-})();
-
-window.dismissMetaAlert = function() {
-  const today = new Date().toDateString();
-  localStorage.setItem('meta_alert_dismissed', today);
-  const banner = document.getElementById('metadata-alert-banner');
-  if (banner) banner.style.display = 'none';
-};
+  // ── Service status strip ──────────────────────────────────────────
   async function refreshServices() {
     try {
       const res = await fetch('/api/services/status');
       if (!res.ok) return;
       const d = await res.json();
-      for (const [key, status] of Object.entries(d)) {
+      const colours = {
+        'Running': '#10b981', 'Starting': '#f59e0b', 'Stopped': '#ef4444',
+        'Stopping': '#f97316', 'Not installed': '#64748b', 'Unknown': '#334155',
+      };
+      Object.entries(d).forEach(([key, status]) => {
         const el = document.getElementById('svc-' + key);
-        if (!el) continue;
-        const c = SVC_COLOURS[status] || SVC_COLOURS['Unknown'];
-        el.textContent = status;
-        el.style.background = c.bg;
-        el.style.color = c.text;
-      }
-    } catch (_) {}
+        if (!el) return;
+        el.textContent      = status;
+        el.style.background = colours[status] || '#334155';
+      });
+    } catch(_) {}
   }
 
-  // ── Service action ───────────────────────────────────────────────
-  window.svcAction = async function(action, service) {
-    setMsg(`${action} ${service}…`, 'var(--warn)');
+  // ── Metadata refresh alert ────────────────────────────────────────
+  (async function checkMetadataRefresh() {
+    const dismissKey = 'meta_alert_dismissed';
+    const dismissed  = localStorage.getItem(dismissKey);
+    const today      = new Date().toDateString();
+    if (dismissed === today) return;
     try {
-      const res = await fetch(`/api/services/${action}`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({service})
-      });
-      const d = await res.json();
-      const ok = Object.values(d.results).every(r => r.ok);
-      const statuses = Object.entries(d.results)
-        .map(([k, v]) => `${k}: ${v.status}`).join('  |  ');
-      setMsg(`${action} complete — ${statuses}`, ok ? 'var(--accent2)' : 'var(--warn)');
-      setTimeout(refreshServices, 1500);
-    } catch (e) {
-      setMsg(`Error: ${e}`, 'var(--danger)');
-    }
-  };
+      const r = await fetch('/api/metadata/refresh-status');
+      const d = await r.json();
+      if (!d.overdue_count) return;
+      const banner = document.getElementById('metadata-alert-banner');
+      const listEl = document.getElementById('meta-alert-list');
+      const freqEl = document.getElementById('meta-freq-label');
+      if (!banner || !listEl) return;
+      if (freqEl) freqEl.textContent = `Refresh frequency: ${d.freq_label}`;
+      const overdue = d.alerts.filter(a => a.status !== 'ok');
+      listEl.innerHTML = overdue.map(a => {
+        const icon = a.status === 'missing' ? '🔴' : '🟡';
+        const age  = a.days_old != null ? `${a.days_old} days old` : 'never uploaded';
+        const count = a.object_count ? ` · ${a.object_count.toLocaleString()} objects` : '';
+        return `${icon} <strong>${a.dbname}</strong> — ${age}${count}`;
+      }).join('<br>');
+      banner.style.display = 'block';
+    } catch(_) {}
+  })();
 
-  // ── Clear cache & restart portal ────────────────────────────────
-  window.clearCache = async function() {
-    setMsg('Clearing cache…', 'var(--warn)');
-    try {
-      const r1 = await fetch('/api/cache/clear', {method:'POST'});
-      const d1 = await r1.json();
-      setMsg(`Cache cleared (${d1.cleared} folders). Restarting portal…`, 'var(--warn)');
-      await fetch('/api/services/restart', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({service: 'portal'})
-      });
-      setMsg('Portal restarting — page will reload in 8s…', 'var(--accent2)');
-      setTimeout(() => location.reload(), 8000);
-    } catch (e) {
-      setMsg(`Error: ${e}`, 'var(--danger)');
-    }
+  window.dismissMetaAlert = function() {
+    localStorage.setItem('meta_alert_dismissed', new Date().toDateString());
+    const banner = document.getElementById('metadata-alert-banner');
+    if (banner) banner.style.display = 'none';
   };
 
   // ── Boot ─────────────────────────────────────────────────────────
   setInterval(refreshStats,    INTERVAL_MS);
-  setInterval(refreshServices, INTERVAL_MS);
+  setInterval(refreshServices, INTERVAL_MS * 2);
   refreshStats();
   refreshServices();
 })();

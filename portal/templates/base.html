@@ -12,17 +12,20 @@
 body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;display:flex;flex-direction:column}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 
-/* ── Top nav bar ── */
+/* ── Top nav bar — two rows ── */
 .nav{background:var(--surface);border-bottom:1px solid var(--border);
-     padding:0 16px;display:flex;align-items:center;gap:2px;height:56px;flex-wrap:nowrap}
+     padding:0;display:flex;flex-direction:column}
+.nav-row1{display:flex;align-items:center;padding:0 16px;height:52px;gap:2px}
+.nav-row2{display:none}  /* merged into info strip */
 .nav-brand{display:flex;flex-direction:column;justify-content:center;
            margin-right:12px;flex-shrink:0}
 .nav-brand-line1{font-size:1rem;font-weight:700;color:var(--accent);white-space:nowrap}
 .nav-brand-line2{font-size:.7rem;color:var(--text2);white-space:nowrap}
-.nav a{color:var(--text2);padding:6px 10px;border-radius:var(--radius);
+.nav a{color:var(--text2);padding:5px 9px;border-radius:var(--radius);
        font-size:.82rem;transition:.15s;white-space:nowrap;text-decoration:none;flex-shrink:0}
-.nav a:hover,.nav a.active{background:var(--surface2);color:var(--text)}
-.nav-sep{width:1px;height:24px;background:var(--border);margin:0 4px;flex-shrink:0}
+.nav-row1 a:hover,.nav-row1 a.active{background:var(--surface2);color:var(--text)}
+.nav-row2 a:hover,.nav-row2 a.active{background:var(--surface);color:var(--text)}
+.nav-sep{width:1px;height:18px;background:var(--border);margin:0 4px;flex-shrink:0}
 
 /* ── Info strip below nav ── */
 .info-strip{background:#0d1120;border-bottom:1px solid var(--border);
@@ -97,30 +100,33 @@ pre{background:var(--surface2);padding:14px;border-radius:var(--radius);overflow
 </head>
 <body>
 <nav class="nav">
-  <!-- Brand -->
-  <div class="nav-brand" style="margin-right:10px">
-    <div class="nav-brand-line1">⚡ AWR Insight Portal</div>
-    <div class="nav-brand-line2">Oracle Performance Analysis</div>
+  <!-- Row 1: Brand + main nav links + logo -->
+  <div class="nav-row1">
+    <div class="nav-brand">
+      <div class="nav-brand-line1">⚡ AWR Insight Portal</div>
+      <div class="nav-brand-line2">Oracle Performance Analysis</div>
+    </div>
+    <div class="nav-sep"></div>
+    <a href="/" class="{% if page=='home' %}active{% endif %}" title="Home — Dashboards">🏠 Home</a>
+    <div class="nav-sep"></div>
+    <a href="/upload/awr"  class="{% if page=='upload' %}active{% endif %}"     title="Upload AWR HTML reports">📥 AWR Upload</a>
+    <a href="/upload/sar"  class="{% if page=='sar' %}active{% endif %}"        title="Upload SAR files">📥 SAR Upload</a>
+    <a href="/upload/plan" class="{% if page=='plan' %}active{% endif %}"       title="Upload Execution Plan">📥 Exec Plan</a>
+    <div class="nav-sep"></div>
+    <a href="/queues"     class="{% if page=='queues' %}active{% endif %}"      title="AWR & SAR Queue Monitor">📋 Queue Monitor</a>
+    <a href="/comparison" class="{% if page=='comparison' %}active{% endif %}"  title="Compare AWR before/after tuning">🔀 AWR Compare</a>
+    <a href="/exec-plan"  class="{% if page=='exec_plan' %}active{% endif %}"   title="Compare execution plans">🔍 Plan Compare</a>
+    <a href="/sql-search" class="{% if page=='sql_search' %}active{% endif %}"  title="Search SQL by ID or text">🔎 SQL Search</a>
+    <div class="nav-sep"></div>
+    <a href="/ai-recommendations" class="{% if page=='ai_rec' %}active{% endif %}" title="AI-powered performance recommendations">🤖 AI Recs</a>
+    <a href="/metadata"   class="{% if page=='metadata' %}active{% endif %}"    title="Oracle object metadata upload">🗄️ Metadata</a>
+    <!-- Logo anchored to far right -->
+    <a href="/" style="margin-left:auto;display:flex;align-items:center;text-decoration:none;flex-shrink:0">
+      <img src="/static/logo.jpg" alt="Avekshaa" style="height:40px;width:auto;object-fit:contain">
+    </a>
   </div>
-  <div class="nav-sep"></div>
-  <a href="/" class="{% if page=='home' %}active{% endif %}">🏠 Home</a>
-  <a href="/upload/awr" class="{% if page=='upload' %}active{% endif %}">📤 AWR</a>
-  <a href="/upload/sar" class="{% if page=='sar' %}active{% endif %}">📊 SAR</a>
-  <a href="/upload/plan" class="{% if page=='plan' %}active{% endif %}">📋 Exec Plan</a>
-  <a href="/queues" class="{% if page=='queues' %}active{% endif %}">⚙️ Queues</a>
-  <a href="/comparison" class="{% if page=='comparison' %}active{% endif %}">🔄 AWR Compare</a>
-  <a href="/exec-plan" class="{% if page=='exec_plan' %}active{% endif %}">📋 Plan Compare</a>
-  <a href="/sql-search" class="{% if page=='sql_search' %}active{% endif %}">🔍 SQL</a>
-  <div class="nav-sep"></div>
-  <a href="/ai-recommendations" class="{% if page=='ai_rec' %}active{% endif %}">🤖 AI Recs</a>
-  <a href="/metadata" class="{% if page=='metadata' %}active{% endif %}">📚 Metadata</a>
-  <a href="/settings" class="{% if page=='settings' %}active{% endif %}">⚙️ Settings</a>
-  <a href="/logout" style="color:#ef4444"
-     onclick="return confirm('Sign out of AWR Insight Portal?')">↪ Logout</a>
-  <!-- Logo pushed to right -->
-  <a href="/" style="margin-left:auto;display:flex;align-items:center;text-decoration:none;flex-shrink:0">
-    <img src="/static/logo.jpg" alt="Avekshaa" style="height:40px;width:auto;object-fit:contain">
-  </a>
+
+
 </nav>
 
 <!-- ── Info strip ─────────────────────────────────────────────────── -->
@@ -148,10 +154,24 @@ pre{background:var(--surface2);padding:14px;border-radius:var(--radius);overflow
     </div>
   </div>
 
-  <!-- Right: links -->
-  <div class="info-right">
-    <a href="/settings#s-users" style="font-size:.75rem;color:var(--text2)" title="User Guide">📖 User Guide</a>
+  <!-- Right: admin links + license pill + user -->
+  <div class="info-right" style="gap:8px">
+    <a href="/service-control" style="font-size:.75rem;color:var(--text2);text-decoration:none;
+       {% if page=='service_control' %}color:var(--accent){% endif %}"
+       title="Service Control">🖥️ Services</a>
+    <a href="/settings" style="font-size:.75rem;color:var(--text2);text-decoration:none;
+       {% if page=='settings' %}color:var(--accent){% endif %}"
+       title="Settings">⚙️ Settings</a>
+    <span style="width:1px;height:14px;background:var(--border);flex-shrink:0"></span>
+    <span id="lic-strip-pill" style="display:none;font-size:.72rem;padding:2px 9px;
+          border-radius:20px;border:0.5px solid;cursor:pointer;white-space:nowrap"
+          onclick="window.location='/settings'" title="Click to manage license"></span>
+    <a href="/static/AWR_Insight_Portal_v2_User_Guide.docx"
+       style="font-size:.75rem;color:var(--text2);text-decoration:none"
+       title="Download User Guide" download>📖 User Guide</a>
     <span id="strip-user" style="font-size:.75rem;color:var(--text2)"></span>
+    <a href="/logout" style="font-size:.75rem;color:#ef4444;text-decoration:none"
+       onclick="return confirm('Sign out?')" title="Sign out">🚪</a>
   </div>
 </div>
 
@@ -217,6 +237,54 @@ pre{background:var(--surface2);padding:14px;border-radius:var(--radius);overflow
     if (data.username) {
       document.getElementById('strip-user').textContent = '👤 ' + data.username;
     }
+
+    // License strip pill — fetch separately for full status
+    try {
+      const lr = await fetch('/api/license/status');
+      const ld = await lr.json();
+      const pill = document.getElementById('lic-strip-pill');
+      if (!pill) return;
+
+      const st = ld.status;
+      const dl = ld.days_left;
+
+      // Colour config per status
+      const cfg = {
+        ok:             {bg:'#10b98112',bc:'#10b98150',tc:'#0d9268', show: false},
+        expiry_warning: {bg:'#f59e0b12',bc:'#f59e0b60',tc:'#b87c10', show: true},
+        grace:          {bg:'#ef444412',bc:'#ef444450',tc:'#c53030', show: true},
+        expired:        {bg:'#ef444412',bc:'#ef444450',tc:'#c53030', show: true},
+        db_exceeded:    {bg:'#ef444412',bc:'#ef444450',tc:'#c53030', show: true},
+        sar_exceeded:   {bg:'#ef444412',bc:'#ef444450',tc:'#c53030', show: true},
+        no_key:         {bg:'#ef444412',bc:'#ef444450',tc:'#c53030', show: true},
+        mac_mismatch:   {bg:'#ef444412',bc:'#ef444450',tc:'#c53030', show: true},
+        evaluation:     {bg:'#3b82f612',bc:'#3b82f650',tc:'#1d5fa8', show: true},
+      };
+
+      // Always show for trial tiers regardless of status
+      const isTrial = ld.is_trial;
+      const c = cfg[st] || {bg:'#f59e0b12',bc:'#f59e0b60',tc:'#b87c10',show:true};
+      const shouldShow = c.show || isTrial;
+      if (!shouldShow) return;
+
+      // Build label
+      let label = '';
+      if (st === 'no_key')       label = '⚠ No license key';
+      else if (st === 'mac_mismatch') label = '⚠ MAC mismatch';
+      else if (st === 'expired') label = '⚠ License expired';
+      else if (st === 'grace')   label = `⚠ Grace · ${7 + dl}d left`;
+      else if (st === 'db_exceeded')  label = '⚠ DB limit exceeded';
+      else if (st === 'sar_exceeded') label = '⚠ SAR limit exceeded';
+      else if (isTrial && dl >= 0)    label = `Trial · ${dl}d left`;
+      else if (st === 'expiry_warning') label = `Expires in ${dl}d`;
+      else return;  // licensed + ok — don't show pill
+
+      pill.textContent  = label;
+      pill.style.display       = 'inline-block';
+      pill.style.background    = c.bg;
+      pill.style.borderColor   = c.bc;
+      pill.style.color         = c.tc;
+    } catch(_) {}
   } catch(_){}
 })();
 </script>
