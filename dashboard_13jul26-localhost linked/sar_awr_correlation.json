@@ -1,0 +1,373 @@
+{
+  "id": null,
+  "uid": "sar-awr-correlation",
+  "title": "SAR+AWR \u2014 OS vs Oracle Correlation",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "2m",
+  "tags": [
+    "sar",
+    "awr",
+    "correlation"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0
+      },
+      {
+        "name": "hostname",
+        "label": "Hostname",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT DISTINCT hostname AS __text, hostname AS __value FROM sar_cpu_stats ORDER BY hostname;"
+      },
+      {
+        "name": "from_time",
+        "label": "From",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT DISTINCT snap_time::text AS __text, snap_time::text AS __value FROM sar_cpu_stats WHERE hostname='$hostname' ORDER BY snap_time LIMIT 200;"
+      },
+      {
+        "name": "to_time",
+        "label": "To",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT DISTINCT snap_time::text AS __text, snap_time::text AS __value FROM sar_cpu_stats WHERE hostname='$hostname' ORDER BY snap_time DESC LIMIT 200;"
+      },
+      {
+        "name": "dbname",
+        "label": "Oracle DB",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT DISTINCT dbname AS __text, dbname AS __value FROM awr_load_profile ORDER BY dbname;"
+      },
+      {
+        "name": "start_snap",
+        "label": "Start Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') FROM awr_load_profile WHERE dbname='$dbname' ORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "end_snap",
+        "label": "End Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') FROM awr_load_profile WHERE dbname='$dbname' ORDER BY label NULLS FIRST;"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 99,
+      "type": "text",
+      "title": "",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "content": "<b>Correlation Dashboard</b> \u2014 Overlays Oracle wait events with OS metrics on the same timeline to confirm storage/CPU/memory root causes.",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+    {
+      "id": 200,
+      "type": "row",
+      "title": "I/O Correlation: Oracle Wait vs OS iowait",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "collapsed": false
+    },
+    {
+      "id": 10,
+      "type": "timeseries",
+      "title": "Oracle I/O Waits % DB Time  vs  OS iowait %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "Oracle_IO",
+          "format": "time_series",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT snap_time AT TIME ZONE 'Asia/Kolkata' AS time,\n  event_name, pct_db_time AS \"Oracle Wait % DB Time\"\nFROM awr_foreground_wait_events\nWHERE dbname='$dbname' AND instance='$hostname' AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int AND event_name IN ('db file sequential read','db file scattered read','direct path read')\nORDER BY snap_time"
+        },
+        {
+          "refId": "SAR_IO",
+          "format": "time_series",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT snap_time AS time, iowait_pct AS \"OS iowait %\" FROM sar_cpu_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp AND cpu='all' ORDER BY snap_time"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OS iowait %"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 201,
+      "type": "row",
+      "title": "CPU Correlation: Oracle CPU % vs OS CPU",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "collapsed": false
+    },
+    {
+      "id": 11,
+      "type": "timeseries",
+      "title": "Oracle CPU Time % vs OS CPU user/system %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "targets": [
+        {
+          "refId": "Oracle_CPU",
+          "format": "time_series",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT snap_time AT TIME ZONE 'Asia/Kolkata' AS time,\n  ROUND(AVG(pct_cpu),1) AS \"Oracle CPU %\"\nFROM awr_sql_cpu_time\nWHERE dbname='$dbname' AND instance='$hostname' AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nGROUP BY snap_time ORDER BY snap_time"
+        },
+        {
+          "refId": "SAR_CPU",
+          "format": "time_series",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT snap_time AS time, usr_pct AS \"OS user %\", system_pct AS \"OS system %\" FROM sar_cpu_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp AND cpu='all' ORDER BY snap_time"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 202,
+      "type": "row",
+      "title": "Memory Correlation: Oracle PGA vs OS Memory",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "collapsed": false
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "OS Memory Used % + Swap Used MB  (memory pressure indicator)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "targets": [
+        {
+          "refId": "SAR_MEM",
+          "format": "time_series",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT snap_time AS time, mem_used_pct AS \"Mem Used %\", commit_pct AS \"Commit %\" FROM sar_memory_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time"
+        },
+        {
+          "refId": "SAR_SWAP",
+          "format": "time_series",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT snap_time AS time, swap_used_mb AS \"Swap Used MB\" FROM sar_swap_stats WHERE hostname = '$hostname' AND snap_time BETWEEN '$from_time'::timestamp AND '$to_time'::timestamp ORDER BY snap_time"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    }
+  ]
+}

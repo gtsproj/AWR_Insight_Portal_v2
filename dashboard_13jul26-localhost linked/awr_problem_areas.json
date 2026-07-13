@@ -1,0 +1,732 @@
+{
+  "id": null,
+  "uid": "awr-problem-areas",
+  "title": "AWR \u2014 Problem Areas & Recommendations",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "1m",
+  "tags": [
+    "awr",
+    "problems",
+    "recommendations"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0
+      },
+      {
+        "name": "dbname",
+        "label": "Database",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT dbname AS value, dbname AS label FROM awr_load_profile\n) AS t ORDER BY value;"
+      },
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT instance AS value, instance AS label FROM awr_load_profile WHERE dbname = '$dbname'\n) AS t ORDER BY value;"
+      },
+      {
+        "name": "start_snap",
+        "label": "Start Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label FROM awr_load_profile WHERE dbname = '$dbname' AND instance = '$instance'\n) AS t ORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "end_snap",
+        "label": "End Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label FROM awr_load_profile WHERE dbname = '$dbname' AND instance = '$instance'\n) AS t ORDER BY label NULLS FIRST;"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 99,
+      "type": "text",
+      "title": "Navigation",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "content": "<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap\" target=\"_self\">&#x2B05; Return to Navigation</a>",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+    {
+      "id": 100,
+      "type": "row",
+      "title": "\u26a0\ufe0f Top Wait Events (% DB Time)",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "collapsed": false
+    },
+    {
+      "id": 1,
+      "type": "table",
+      "title": "Top 10 Wait Events \u2014 % DB Time",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 14,
+        "x": 0,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  event_name AS \"Wait Event\",\n  ROUND(AVG(pct_db_time),1) AS \"% DB Time\",\n  ROUND(AVG(avg_wait_ms),2) AS \"Avg Wait (ms)\",\n  SUM(total_waits) AS \"Total Waits\",\n  CASE WHEN AVG(pct_db_time)>20 THEN '\ud83d\udd34 CRITICAL'\n       WHEN AVG(pct_db_time)>10 THEN '\ud83d\udfe0 HIGH'\n       WHEN AVG(pct_db_time)>5  THEN '\ud83d\udfe1 MEDIUM'\n       ELSE '\ud83d\udfe2 LOW' END AS \"Severity\"\nFROM awr_foreground_wait_events\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\nGROUP BY event_name\nORDER BY \"% DB Time\" DESC NULLS LAST\nLIMIT 10",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "% DB Time",
+            "desc": true
+          }
+        ],
+        "footer": {
+          "show": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% DB Time"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 5
+                    },
+                    {
+                      "color": "red",
+                      "value": 20
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "bargauge",
+      "title": "Wait Events \u2014 % DB Time",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 10,
+        "x": 14,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT event_name AS \"metric\",\n  ROUND(AVG(pct_db_time),1) AS \"value\"\nFROM awr_foreground_wait_events\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND pct_db_time > 1\nGROUP BY event_name\nORDER BY \"value\" DESC LIMIT 10",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "valueMode": "color"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          },
+          "mappings": [],
+          "color": {
+            "mode": "thresholds"
+          }
+        }
+      }
+    },
+    {
+      "id": 101,
+      "type": "row",
+      "title": "\ud83d\udc22 Top SQL by Elapsed Time",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "collapsed": false
+    },
+    {
+      "id": 3,
+      "type": "table",
+      "title": "Top 10 SQL \u2014 Elapsed Time",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  sql_id AS \"SQL ID\",\n  ROUND(SUM(elapsed_time_s),1) AS \"Total Elapsed (s)\",\n  ROUND(AVG(elapsed_time_s),2) AS \"Avg Elapsed (s)\",\n  SUM(executions)::INT AS \"Executions\",\n  ROUND(SUM(cpu_time_s),1) AS \"Total CPU (s)\",\n  CASE WHEN SUM(elapsed_time_s)>3600 THEN '\ud83d\udd34 CRITICAL'\n       WHEN SUM(elapsed_time_s)>300  THEN '\ud83d\udfe0 HIGH'\n       WHEN SUM(elapsed_time_s)>60   THEN '\ud83d\udfe1 MEDIUM'\n       ELSE '\ud83d\udfe2 LOW' END AS \"Severity\"\nFROM awr_sql_elapsed\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\nGROUP BY sql_id\nORDER BY \"Total Elapsed (s)\" DESC NULLS LAST\nLIMIT 10",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Elapsed (s)"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 300
+                    },
+                    {
+                      "color": "red",
+                      "value": 3600
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 102,
+      "type": "row",
+      "title": "\ud83d\udd25 Hot Segments",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "collapsed": false
+    },
+    {
+      "id": 4,
+      "type": "table",
+      "title": "Top Segments \u2014 Logical Reads",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 23
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT owner||'.'||object_name AS \"Segment\", obj_type AS \"Type\",\n  SUM(logical_reads)::BIGINT AS \"Logical Reads\",\n  ROUND(AVG(pcttotal),1) AS \"% Total\"\nFROM awr_seg_logical_reads\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\nGROUP BY owner, object_name, obj_type\nORDER BY \"Logical Reads\" DESC LIMIT 10",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "table",
+      "title": "Top Segments \u2014 Physical Reads",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 23
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT owner||'.'||object_name AS \"Segment\", obj_type AS \"Type\",\n  SUM(physical_reads)::BIGINT AS \"Physical Reads\",\n  ROUND(AVG(pcttotal),1) AS \"% Total\"\nFROM awr_seg_phy_reads\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\nGROUP BY owner, object_name, obj_type\nORDER BY \"Physical Reads\" DESC LIMIT 10",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "type": "row",
+      "title": "\u2699\ufe0f Instance Efficiency Ratios",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "collapsed": false
+    },
+    {
+      "id": 6,
+      "type": "gauge",
+      "title": "Buffer Cache Hit %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 32
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%buffer%hit%'",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "auto",
+        "showThresholdLabels": false
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 90
+              },
+              {
+                "color": "green",
+                "value": 95
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "gauge",
+      "title": "Soft Parse %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 32
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%soft parse%'",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 90
+              },
+              {
+                "color": "green",
+                "value": 95
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "gauge",
+      "title": "Library Cache Hit %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 32
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%library%hit%'",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 97
+              },
+              {
+                "color": "green",
+                "value": 99
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "gauge",
+      "title": "Execute-to-Parse %",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 32
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT AVG(value) AS \"value\"\nFROM awr_instance_efficiency\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND metric ILIKE '%execute to parse%'",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 80
+              },
+              {
+                "color": "green",
+                "value": 90
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 104,
+      "type": "row",
+      "title": "\ud83d\udca1 Recommendations",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "collapsed": false
+    },
+    {
+      "id": 10,
+      "type": "table",
+      "title": "Active Recommendations",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE severity\n    WHEN 'critical' THEN '\ud83d\udd34 CRITICAL'\n    WHEN 'high'     THEN '\ud83d\udfe0 HIGH'\n    WHEN 'medium'   THEN '\ud83d\udfe1 MEDIUM'\n    ELSE                 '\ud83d\udfe2 LOW' END AS \"Severity\",\n  rule_id AS \"Rule ID\",\n  category AS \"Category\",\n  title AS \"Issue\",\n  event_or_object AS \"Event / Object\",\n  LEFT(root_cause, 150) AS \"Root Cause (summary)\"\nFROM awr_recommendations\nWHERE dbname = '$dbname'\n  AND begin_snap = split_part('$start_snap',' - ',1)::int\nORDER BY\n  CASE severity WHEN 'critical' THEN 1 WHEN 'high' THEN 2 WHEN 'medium' THEN 3 ELSE 4 END,\n  category",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Severity"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Issue"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 280
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Root Cause (summary)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 400
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

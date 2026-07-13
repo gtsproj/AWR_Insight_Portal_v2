@@ -1,0 +1,419 @@
+{
+  "id": null,
+  "uid": "awr-comparison",
+  "title": "AWR \u2014 Before vs After Comparison",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "5m",
+  "tags": [
+    "awr",
+    "comparison"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0
+      },
+      {
+        "name": "dbname",
+        "label": "Database",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT dbname AS value, dbname AS label FROM awr_load_profile\n) AS t ORDER BY value;"
+      },
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT instance AS value, instance AS label FROM awr_load_profile WHERE dbname = '$dbname'\n) AS t ORDER BY value;"
+      },
+      {
+        "name": "start_snap",
+        "label": "Start Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label FROM awr_load_profile WHERE dbname = '$dbname' AND instance = '$instance'\n) AS t ORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "end_snap",
+        "label": "End Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label FROM awr_load_profile WHERE dbname = '$dbname' AND instance = '$instance'\n) AS t ORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "baseline_tag",
+        "label": "Baseline (Before)",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT tag_name AS __text, tag_name AS __value FROM awr_comparison_tags WHERE dbname = '$dbname' AND tag_type='baseline' ORDER BY created_at DESC;"
+      },
+      {
+        "name": "current_tag",
+        "label": "Current (After)",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "query": "SELECT tag_name AS __text, tag_name AS __value FROM awr_comparison_tags WHERE dbname = '$dbname' AND tag_type='current' ORDER BY created_at DESC;"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 99,
+      "type": "text",
+      "title": "Navigation",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "content": "<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap\" target=\"_self\">&#x2B05; Return to Navigation</a>",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+    {
+      "id": 200,
+      "type": "text",
+      "title": "Comparison Period Info",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "options": {
+        "content": "\n<div style='background:#1a1a2e;padding:12px;border-radius:6px;font-family:monospace'>\n<b style='color:#4fc3f7'>BASELINE (Before):</b> $baseline_tag &nbsp;&nbsp;|&nbsp;&nbsp;\n<b style='color:#81c784'>CURRENT (After):</b> $current_tag<br/>\n<small style='color:#aaa'>Select tags using the dropdowns above. Tags must be created first via the AWR portal or SQL.</small>\n</div>",
+        "mode": "html"
+      }
+    },
+    {
+      "id": 201,
+      "type": "row",
+      "title": "Wait Events \u2014 Before vs After",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "collapsed": false
+    },
+    {
+      "id": 10,
+      "type": "table",
+      "title": "Wait Events \u2014 Before vs After (Delta)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "WITH baseline AS (\n  SELECT event_name, AVG(pct_db_time) AS pct_before, AVG(avg_wait_ms) AS ms_before\n  FROM awr_foreground_wait_events w\n  JOIN awr_comparison_tags t ON t.dbname = w.dbname\n    AND w.begin_snap BETWEEN t.snap_start AND t.snap_end\n    AND t.tag_name = '$baseline_tag' AND t.tag_type = 'baseline'\n  WHERE w.dbname = '$dbname'\n  GROUP BY event_name\n),\ncurrent_data AS (\n  SELECT event_name, AVG(pct_db_time) AS pct_after, AVG(avg_wait_ms) AS ms_after\n  FROM awr_foreground_wait_events w\n  JOIN awr_comparison_tags t ON t.dbname = w.dbname\n    AND w.begin_snap BETWEEN t.snap_start AND t.snap_end\n    AND t.tag_name = '$current_tag' AND t.tag_type = 'current'\n  WHERE w.dbname = '$dbname'\n  GROUP BY event_name\n)\nSELECT\n  COALESCE(b.event_name, c.event_name) AS \"Wait Event\",\n  ROUND(COALESCE(b.pct_before,0),1) AS \"Before (% DB Time)\",\n  ROUND(COALESCE(c.pct_after,0),1) AS \"After (% DB Time)\",\n  ROUND(COALESCE(b.ms_before,0),2) AS \"Before Avg Wait (ms)\",\n  ROUND(COALESCE(c.ms_after,0),2) AS \"After Avg Wait (ms)\",\n  ROUND((COALESCE(c.pct_after,0) - COALESCE(b.pct_before,0)) /\n        NULLIF(COALESCE(b.pct_before,0),0) * 100, 1) AS \"Change %\"\nFROM baseline b FULL OUTER JOIN current_data c USING (event_name)\nWHERE COALESCE(b.pct_before,0) > 1 OR COALESCE(c.pct_after,0) > 1\nORDER BY ABS(COALESCE(c.pct_after,0) - COALESCE(b.pct_before,0)) DESC\nLIMIT 15",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Change %",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Change %"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": -20
+                    },
+                    {
+                      "color": "red",
+                      "value": -50
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 202,
+      "type": "row",
+      "title": "SQL Performance \u2014 Before vs After",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "collapsed": false
+    },
+    {
+      "id": 11,
+      "type": "table",
+      "title": "Top SQL \u2014 Elapsed Time Comparison",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "WITH baseline AS (\n  SELECT sql_id, AVG(elapsed_time_s) AS elapsed_before, SUM(executions) AS exec_before\n  FROM awr_sql_elapsed w\n  JOIN awr_comparison_tags t ON t.dbname = w.dbname\n    AND w.begin_snap BETWEEN t.snap_start AND t.snap_end\n    AND t.tag_name = '$baseline_tag' AND t.tag_type = 'baseline'\n  WHERE w.dbname = '$dbname'\n  GROUP BY sql_id\n),\ncurrent_data AS (\n  SELECT sql_id, AVG(elapsed_time_s) AS elapsed_after, SUM(executions) AS exec_after\n  FROM awr_sql_elapsed w\n  JOIN awr_comparison_tags t ON t.dbname = w.dbname\n    AND w.begin_snap BETWEEN t.snap_start AND t.snap_end\n    AND t.tag_name = '$current_tag' AND t.tag_type = 'current'\n  WHERE w.dbname = '$dbname'\n  GROUP BY sql_id\n)\nSELECT\n  COALESCE(b.sql_id, c.sql_id) AS \"SQL ID\",\n  ROUND(COALESCE(b.elapsed_before,0),2) AS \"Before Avg Elapsed (s)\",\n  ROUND(COALESCE(c.elapsed_after,0),2) AS \"After Avg Elapsed (s)\",\n  COALESCE(b.exec_before,0)::INT AS \"Before Executions\",\n  COALESCE(c.exec_after,0)::INT AS \"After Executions\",\n  ROUND((COALESCE(c.elapsed_after,0) - COALESCE(b.elapsed_before,0)) /\n        NULLIF(COALESCE(b.elapsed_before,0),0) * 100, 1) AS \"Change %\"\nFROM baseline b FULL OUTER JOIN current_data c USING (sql_id)\nWHERE COALESCE(b.elapsed_before,0) > 5 OR COALESCE(c.elapsed_after,0) > 5\nORDER BY ABS(COALESCE(c.elapsed_after,0) - COALESCE(b.elapsed_before,0)) DESC\nLIMIT 15",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Change %",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Change %"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": -20
+                    },
+                    {
+                      "color": "red",
+                      "value": -50
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 203,
+      "type": "row",
+      "title": "Load Profile \u2014 Before vs After",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "collapsed": false
+    },
+    {
+      "id": 12,
+      "type": "table",
+      "title": "Load Profile Metrics Comparison",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "WITH baseline AS (\n  SELECT metric, AVG(per_sec) AS val_before\n  FROM awr_load_profile w\n  JOIN awr_comparison_tags t ON t.dbname = w.dbname\n    AND w.begin_snap BETWEEN t.snap_start AND t.snap_end\n    AND t.tag_name = '$baseline_tag' AND t.tag_type = 'baseline'\n  WHERE w.dbname = '$dbname'\n  GROUP BY metric\n),\ncurrent_data AS (\n  SELECT metric, AVG(per_sec) AS val_after\n  FROM awr_load_profile w\n  JOIN awr_comparison_tags t ON t.dbname = w.dbname\n    AND w.begin_snap BETWEEN t.snap_start AND t.snap_end\n    AND t.tag_name = '$current_tag' AND t.tag_type = 'current'\n  WHERE w.dbname = '$dbname'\n  GROUP BY metric\n)\nSELECT\n  COALESCE(b.metric, c.metric) AS \"Metric\",\n  ROUND(COALESCE(b.val_before,0),2) AS \"Before (per sec)\",\n  ROUND(COALESCE(c.val_after,0),2) AS \"After (per sec)\",\n  ROUND((COALESCE(c.val_after,0) - COALESCE(b.val_before,0)) /\n        NULLIF(COALESCE(b.val_before,0),0) * 100, 1) AS \"Change %\"\nFROM baseline b FULL OUTER JOIN current_data c USING (metric)\nORDER BY ABS(COALESCE(c.val_after,0) - COALESCE(b.val_before,0)) / NULLIF(COALESCE(b.val_before,0),0) DESC NULLS LAST\nLIMIT 20",
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          }
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Change %",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Change %"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": -20
+                    },
+                    {
+                      "color": "red",
+                      "value": -50
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "id": null,
+  "uid": "fdv31-sql-text-viewer",
+  "title": "fdv3.1 SQL Text Viewer",
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "30s",
+  "tags": [
+    "awr"
+	],
+  "templating": {
+    "list": [
+      {
+        "type": "query",
+        "name": "dbname",
+        "label": "Database",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "query": "SELECT DISTINCT dbname AS value, dbname AS label FROM awr_sql_summary_mv ORDER BY dbname",
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      },
+      {
+        "type": "query",
+        "name": "instance",
+        "label": "Instance",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "query": "SELECT DISTINCT instance AS value, instance AS label FROM awr_sql_summary_mv WHERE dbname = '$dbname' ORDER BY instance",
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      },
+      {
+        "type": "query",
+        "name": "start_snap",
+        "label": "Start Snap",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "query": "SELECT begin_snap::text || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label, begin_snap::text AS value FROM awr_sql_summary_mv WHERE dbname = '$dbname' AND instance = '$instance' ORDER BY begin_snap",
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      },
+      {
+        "type": "query",
+        "name": "end_snap",
+        "label": "End Snap",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "query": "SELECT begin_snap::text || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label, begin_snap::text AS value FROM awr_sql_summary_mv WHERE dbname = '$dbname' AND instance = '$instance' ORDER BY begin_snap DESC",
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      },
+      {
+        "type": "query",
+        "name": "sql_id",
+        "label": "SQL ID",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "query": "SELECT value, label \nFROM (  SELECT sql_id AS value, sql_id AS label,MAX(severity_score) AS severity_score  \nFROM awr_sql_summary_mv  \nWHERE dbname = '$dbname'    AND instance = '$instance'    \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int \nAND split_part('$end_snap',' - ',1)::int  \nGROUP BY sql_id  \nORDER BY MAX(severity_score) DESC   LIMIT 10) t \nORDER BY value",
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Navigation",
+      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 0 },
+      "options": {
+        "content": "<a href=\"/d/fdv31-sql-summary-top-10-by-severity/fdv3-1-sql-summary-top-10-by-severity-v2?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap\" target=\"_self\">⬅ Return to SQL Summary</a> &nbsp;|&nbsp; <a href=\"/d/sql-text-viewer/sql-text-viewer?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&var-sql_id=\" target=\"_self\">🔄 Reset Filters</a>",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+	{
+  "id": 2,
+  "type": "table",
+  "title": "SQL Text",
+  "gridPos": { "h": 5, "w": 24, "x": 0, "y": 2 },
+  "options": {
+    "showHeader": true,
+    "wrap": true,
+    "cellHeight": "auto"
+  },
+  "fieldConfig": {
+    "defaults": {
+      "custom": {
+        "width": 200	
+      }
+    },
+    "overrides": [
+      {
+        "matcher": { "id": "byName", "options": "sql_text" },
+        "properties": [
+          { "id": "custom.width", "value": 1200 },
+          { "id": "custom.align", "value": "left" }
+        ]
+      }
+    ]
+  },
+"overrides": [
+  {
+    "matcher": {
+      "id": "byName",
+      "options": "sql_text"
+    },
+    "properties": [
+      {
+        "id": "custom.width",
+        "value": 600
+      },
+      {
+        "id": "custom.displayMode",
+        "value": "auto"
+      },
+      {
+        "id": "custom.align",
+        "value": "left"
+      },
+      {
+        "id": "custom.cellOptions",
+        "value": {
+          "type": "string",
+          "wrap": true,
+          "showValue": true
+        }
+      }
+    ]
+  }
+],
+  "targets": [
+    {
+      "refId": "A",
+      "format": "table",
+      "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" },
+      "rawSql": "SELECT sql_id, regexp_replace(sql_text, E'\\s+', ' ', 'g') AS sql_text\nFROM awr_sql_text\nWHERE dbname = '$dbname'\n  AND instance = '$instance'\n  AND sql_id = '$sql_id'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nORDER BY created_at DESC\nLIMIT 1;"
+    }
+  ]
+}
+  ]
+}
