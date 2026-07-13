@@ -1484,6 +1484,9 @@ async def api_plans_list(q: str = ""):
                 if r.get("created_at"):
                     r["created_at"] = r["created_at"].isoformat()
         return JSONResponse({"plans": rows})
+    except Exception as e:
+        logger.error(f"api_plans_list error: {e}")
+        return JSONResponse({"error": str(e), "plans": []}, status_code=500)
     finally:
         conn.close()
 
@@ -1782,12 +1785,34 @@ async def settings_page(request: Request):
 async def api_settings_save(request: Request):
     if not _is_admin(request):
         raise HTTPException(403, "Admin access required")
-    body    = await request.json()
-    fields  = body.get("fields", {})
-    session = _get_session(request)
+    body       = await request.json()
+    fields     = body.get("fields", {})
+    session    = _get_session(request)
     updated_by = session.get("username", "admin")
     _set_config(fields, updated_by)
-    _refresh_url_globals()  # pick up grafana_url / portal_url changes immediately
+    _refresh_url_globals()
+
+    # If a license key was saved, extract and store tier + counts from the key
+    if "license_key" in fields and fields["license_key"].strip():
+        try:
+            from modules.license_engine import validate_license_key
+            ki = validate_license_key(fields["license_key"].strip())
+            if ki.get("valid") or ki.get("tier"):
+                derived = {
+                    "license_tier":      ki.get("tier", ""),
+                    "license_db_count":  str(ki.get("db_limit", "")),
+                    "license_sar_count": str(ki.get("sar_limit", "")),
+                    "license_expiry":    ki.get("expiry").isoformat()
+                                         if ki.get("expiry") else "",
+                }
+                # Customer name is entered manually in the UI (not in key payload)
+                # Keep existing value if not provided in this save
+                if fields.get("license_customer", "").strip():
+                    derived["license_customer"] = fields["license_customer"].strip()
+                _set_config(derived, updated_by)
+        except Exception as e:
+            logger.debug(f"License key extraction on save: {e}")
+
     return JSONResponse({"ok": True})
 
 
@@ -1981,6 +2006,166 @@ async def api_mac_info():
         return JSONResponse({"primary_mac": "", "fingerprint": "", "all_adapters": [], "error": str(e)})
 
 
+# ── DB Master CRUD ───────────────────────────────────────────────────
+
+@app.get("/api/db-master")
+async def api_db_master_list():
+    """Return all entries in awr_db_master with license slot info."""
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            # Get db_limit from license key
+            cur.execute("SELECT value FROM portal_config WHERE key='license_key'")
+            row      = cur.fetchone()
+            key_info = {}
+            if row and row[0]:
+                from modules.license_engine import validate_license_key
+                key_info = validate_license_key(row[0])
+            db_limit = key_info.get("db_limit", 5)
+            if db_limit == -1:
+                db_limit = 9999
+
+            cur.execute("""
+                SELECT id, db_name, instance_name, inst_no,
+                       host_name, db_type, description, active,
+                       added_at, added_by
+                FROM awr_db_master
+                ORDER BY added_at
+            """)
+            rows = cur.fetchall()
+        conn.close()
+
+        dbs = []
+        for r in rows:
+            dbs.append({
+                "id":            r[0],
+                "db_name":       r[1],
+                "instance_name": r[2] or "",
+                "inst_no":       r[3] or 1,
+                "host_name":     r[4] or "",
+                "db_type":       r[5] or "STANDALONE",
+                "description":   r[6] or "",
+                "active":        r[7],
+                "added_at":      r[8].isoformat() if r[8] else "",
+                "added_by":      r[9] or "",
+            })
+
+        active_count = sum(1 for d in dbs if d["active"])
+        return JSONResponse({
+            "dbs":          dbs,
+            "db_limit":     db_limit,
+            "active_count": active_count,
+            "slots_free":   max(0, db_limit - active_count),
+        })
+    except Exception as e:
+        return JSONResponse({"error": str(e), "dbs": [], "db_limit": 0,
+                             "active_count": 0, "slots_free": 0})
+
+
+@app.post("/api/db-master/add")
+async def api_db_master_add(request: Request):
+    """Add a DB to awr_db_master."""
+    if not _is_admin(request):
+        raise HTTPException(403, "Admin access required")
+    body = await request.json()
+    db_name       = (body.get("db_name") or "").strip().upper()
+    instance_name = (body.get("instance_name") or "").strip()
+    inst_no       = int(body.get("inst_no") or 1)
+    host_name     = (body.get("host_name") or "").strip()
+    db_type       = (body.get("db_type") or "STANDALONE").strip().upper()
+    description   = (body.get("description") or "").strip()
+    session       = _get_session(request)
+    added_by      = session.get("username", "admin")
+
+    if not db_name:
+        raise HTTPException(400, "db_name is required")
+
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            # Check license slot availability
+            cur.execute("SELECT value FROM portal_config WHERE key='license_key'")
+            row = cur.fetchone()
+            if row and row[0]:
+                from modules.license_engine import validate_license_key
+                ki = validate_license_key(row[0])
+                db_limit = ki.get("db_limit", 5)
+                if db_limit != -1:
+                    cur.execute(
+                        "SELECT COUNT(*) FROM awr_db_master WHERE active = TRUE"
+                    )
+                    active_count = cur.fetchone()[0]
+                    if active_count >= db_limit:
+                        conn.close()
+                        return JSONResponse({
+                            "ok": False,
+                            "error": f"License allows {db_limit} DB(s). "
+                                     f"All {db_limit} slot(s) are used. "
+                                     f"Upgrade license to add more databases."
+                        }, status_code=400)
+
+            cur.execute("""
+                INSERT INTO awr_db_master
+                    (db_name, instance_name, inst_no, host_name,
+                     db_type, description, active, added_by)
+                VALUES (%s, %s, %s, %s, %s, %s, TRUE, %s)
+                ON CONFLICT (db_name, inst_no)
+                DO UPDATE SET
+                    instance_name = EXCLUDED.instance_name,
+                    host_name     = EXCLUDED.host_name,
+                    db_type       = EXCLUDED.db_type,
+                    description   = EXCLUDED.description,
+                    active        = TRUE,
+                    added_by      = EXCLUDED.added_by
+                RETURNING id
+            """, (db_name, instance_name, inst_no, host_name,
+                  db_type, description, added_by))
+            new_id = cur.fetchone()[0]
+        conn.commit()
+        conn.close()
+        return JSONResponse({"ok": True, "id": new_id})
+    except Exception as e:
+        return JSONResponse({"ok": False, "error": str(e)}, status_code=500)
+
+
+@app.post("/api/db-master/toggle")
+async def api_db_master_toggle(request: Request):
+    """Toggle active/inactive for a DB entry."""
+    if not _is_admin(request):
+        raise HTTPException(403, "Admin access required")
+    body    = await request.json()
+    db_id   = int(body.get("id", 0))
+    active  = bool(body.get("active", True))
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute(
+                "UPDATE awr_db_master SET active=%s WHERE id=%s",
+                (active, db_id)
+            )
+        conn.commit()
+        conn.close()
+        return JSONResponse({"ok": True})
+    except Exception as e:
+        return JSONResponse({"ok": False, "error": str(e)}, status_code=500)
+
+
+@app.delete("/api/db-master/{db_id}")
+async def api_db_master_delete(db_id: int, request: Request):
+    """Remove a DB from awr_db_master."""
+    if not _is_admin(request):
+        raise HTTPException(403, "Admin access required")
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute("DELETE FROM awr_db_master WHERE id=%s", (db_id,))
+        conn.commit()
+        conn.close()
+        return JSONResponse({"ok": True})
+    except Exception as e:
+        return JSONResponse({"ok": False, "error": str(e)}, status_code=500)
+
+
 @app.get("/api/license/status")
 async def api_license_status():
     """Return full license validation status from license engine."""
@@ -1988,6 +2173,14 @@ async def api_license_status():
     # Serialise date objects
     if lic.get("expiry") and not isinstance(lic["expiry"], str):
         lic["expiry"] = lic["expiry"].isoformat()
+    # customer_name is stored in portal_config (not in binary key payload)
+    # Add it to the response so the settings page displays correctly
+    if not lic.get("customer_name"):
+        try:
+            cfg = _get_config()
+            lic["customer_name"] = cfg.get("license_customer", "")
+        except Exception:
+            pass
     return JSONResponse(lic)
 
 
