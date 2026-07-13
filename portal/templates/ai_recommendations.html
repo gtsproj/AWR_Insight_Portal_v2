@@ -325,7 +325,7 @@ async function generateRecommendation() {
   if (!beginSnap) { showToast('❌ Select a start snap','err'); return; }
   if (!endSnap)   { showToast('❌ Select an end snap','err'); return; }
 
-  resEl.innerHTML = '<div style="color:var(--text2)">⏳ Generating — may take 20-60s for local AI...</div>';
+  resEl.innerHTML = '<div style="color:var(--text2)">⏳ Generating — may take {% if ai_mode == "cloud_ai" %}10-30s for Cloud AI{% elif ai_mode == "local_ai" %}20-60s for Local AI (Ollama){% else %}a few seconds for Rules Engine{% endif %}...</div>';
 
   try {
     const res = await fetch('/api/ai/recommend', {

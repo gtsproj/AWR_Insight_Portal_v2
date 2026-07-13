@@ -582,6 +582,97 @@
       <div style="display:flex;gap:10px;align-items:center;margin-top:14px">
         <button class="s-btn s-btn-primary" onclick="saveSection('license')"
                 {% if not is_admin %}disabled{% endif %}>💾 Save License</button>
+
+      <!-- ── Licensed Databases ──────────────────────────────────── -->
+      <div class="s-card" style="margin-top:16px">
+        <div class="s-card-title">🗄️ Licensed Databases
+          <span id="db-master-slots" style="font-size:.75rem;color:var(--text2);
+                font-weight:400;margin-left:8px"></span>
+        </div>
+        <div style="font-size:.8rem;color:var(--text2);margin-bottom:12px">
+          Only databases registered here will be parsed by the queue processor.
+          AWR reports for unregistered databases will be rejected with an error.
+        </div>
+
+        <!-- DB list table -->
+        <table style="width:100%;border-collapse:collapse;font-size:.8rem" id="db-master-table">
+          <thead>
+            <tr style="background:var(--surface2)">
+              <th style="padding:6px 10px;text-align:left;color:var(--text2)">DB Name</th>
+              <th style="padding:6px 10px;text-align:left;color:var(--text2)">Instance Name</th>
+              <th style="padding:6px 10px;text-align:center;color:var(--text2)">Inst#</th>
+              <th style="padding:6px 10px;text-align:left;color:var(--text2)">Host</th>
+              <th style="padding:6px 10px;text-align:left;color:var(--text2)">Type</th>
+              <th style="padding:6px 10px;text-align:left;color:var(--text2)">Description</th>
+              <th style="padding:6px 10px;text-align:center;color:var(--text2)">Active</th>
+              {% if is_admin %}<th style="padding:6px 10px;text-align:center;color:var(--text2)">Actions</th>{% endif %}
+            </tr>
+          </thead>
+          <tbody id="db-master-tbody">
+            <tr><td colspan="8" style="padding:12px;text-align:center;color:var(--text2)">
+              Loading…
+            </td></tr>
+          </tbody>
+        </table>
+
+        <!-- Add DB form -->
+        {% if is_admin %}
+        <div id="db-master-add-form" style="margin-top:14px;padding:12px;
+             background:var(--surface2);border-radius:var(--radius);display:none">
+          <div style="font-size:.82rem;font-weight:600;margin-bottom:10px;color:var(--accent)">
+            ➕ Add Database
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 80px 1fr 140px;gap:8px;margin-bottom:8px">
+            <div>
+              <label class="s-label">DB Name *</label>
+              <input class="s-input" id="nm-db_name" placeholder="e.g. COLDBPRD"
+                     style="text-transform:uppercase">
+            </div>
+            <div>
+              <label class="s-label">Instance Name</label>
+              <input class="s-input" id="nm-instance_name" placeholder="e.g. COLDBPRD1">
+            </div>
+            <div>
+              <label class="s-label">Inst#</label>
+              <input class="s-input" id="nm-inst_no" type="number" value="1" min="1">
+            </div>
+            <div>
+              <label class="s-label">Host Name</label>
+              <input class="s-input" id="nm-host_name" placeholder="e.g. dbserver01">
+            </div>
+            <div>
+              <label class="s-label">Type</label>
+              <select class="s-select" id="nm-db_type">
+                <option value="STANDALONE">Standalone</option>
+                <option value="RAC">RAC</option>
+                <option value="CDB">CDB</option>
+                <option value="PDB">PDB</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:10px">
+            <label class="s-label">Description</label>
+            <input class="s-input" id="nm-description" placeholder="Optional notes">
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="s-btn s-btn-primary" onclick="addDbMaster()">✅ Add Database</button>
+            <button class="s-btn s-btn-secondary"
+                    onclick="document.getElementById('db-master-add-form').style.display='none'">
+              Cancel
+            </button>
+          </div>
+          <div id="db-master-add-msg" style="margin-top:8px;font-size:.8rem"></div>
+        </div>
+
+        <div style="margin-top:10px;display:flex;gap:8px" id="db-master-add-btn-row">
+          <button class="s-btn s-btn-secondary" id="db-master-add-btn"
+                  onclick="document.getElementById('db-master-add-form').style.display='block';
+                           this.closest('#db-master-add-btn-row').style.display='none'">
+            ➕ Add Database
+          </button>
+        </div>
+        {% endif %}
+      </div>
         <button class="s-btn s-btn-secondary" onclick="checkLicenseStatus()">🔄 Check Status</button>
       </div>
       <div style="font-size:.76rem;color:var(--text2);margin-top:10px;line-height:1.6">
@@ -594,7 +685,7 @@
       <!-- Tier comparison -->
       <div class="s-card" style="margin-top:12px">
         <div class="s-card-title">License Tiers</div>
-        <table style="width:100%;border-collapse:collapse;font-size:.8rem">
+        <table id="lic-tier-table" style="width:100%;border-collapse:collapse;font-size:.8rem">
           <thead>
             <tr style="background:var(--surface2)">
               <th style="padding:6px 10px;text-align:left;color:var(--text2)">Tier</th>
@@ -605,25 +696,32 @@
             </tr>
           </thead>
           <tbody>
-            {% for tier, name, db, sar, period in [
+            {% for row in [
               ('T15','Trial 15 Days','2','2','15 days'),
               ('T30','Trial 30 Days','2','2','30 days'),
               ('STD','Standard','5','5','1 year'),
               ('PRO','Professional','15','15','1 year'),
               ('ENT','Enterprise','Unlimited','Unlimited','1 year'),
             ] %}
-            <tr style="border-top:1px solid var(--border);
-                       {% if cfg.license_tier == tier %}background:var(--accent)18{% endif %}">
+            {% set t_code = row[0] %}
+            {% set t_name = row[1] %}
+            {% set t_db   = row[2] %}
+            {% set t_sar  = row[3] %}
+            {% set t_per  = row[4] %}
+            {% set is_current = (cfg.license_tier is defined and cfg.license_tier == t_code) %}
+            <tr data-tier="{{ t_code }}"
+                style="border-top:1px solid var(--border);
+                       {{ 'background:rgba(99,102,241,.08)' if is_current else '' }}">
               <td style="padding:6px 10px;font-weight:600">
-                {{ name }}
-                {% if cfg.license_tier == tier %}
-                <span style="font-size:.7rem;color:var(--accent);margin-left:6px">← current</span>
-                {% endif %}
+                {{ t_name }}
+                <span class="tier-current-badge"
+                      style="font-size:.7rem;color:var(--accent);margin-left:6px;
+                             display:{{ 'inline' if is_current else 'none' }}">← current</span>
               </td>
-              <td style="padding:6px 10px;text-align:center">{{ db }}</td>
-              <td style="padding:6px 10px;text-align:center">{{ sar }}</td>
+              <td style="padding:6px 10px;text-align:center">{{ t_db }}</td>
+              <td style="padding:6px 10px;text-align:center">{{ t_sar }}</td>
               <td style="padding:6px 10px;text-align:center;color:#10b981">Rules + Local AI + Cloud AI</td>
-              <td style="padding:6px 10px;text-align:center;color:var(--text2)">{{ period }}</td>
+              <td style="padding:6px 10px;text-align:center;color:var(--text2)">{{ t_per }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -841,6 +939,11 @@ function showSection(name, el) {
   document.querySelectorAll('.settings-nav a').forEach(a => a.classList.remove('active'));
   document.getElementById('s-' + name).classList.add('active');
   if (el) el.classList.add('active');
+  // Load section-specific data
+  if (name === 'license') {
+    checkLicenseStatus();
+    loadDbMaster();
+  }
   return false;
 }
 
@@ -952,6 +1055,18 @@ async function checkLicenseStatus() {
     if (el('lic-customer')) el('lic-customer').textContent = d.customer_name || '—';
     if (el('lic-mac'))      el('lic-mac').textContent      = d.mac_address   || '—';
 
+    // Update tier table — highlight current tier from live key data
+    if (d.tier) {
+      const tierMap = {T15:'Trial 15 Days',T30:'Trial 30 Days',
+                       STD:'Standard',PRO:'Professional',ENT:'Enterprise'};
+      document.querySelectorAll('#lic-tier-table tr[data-tier]').forEach(row => {
+        const isCurrent = row.dataset.tier === d.tier;
+        row.style.background = isCurrent ? 'rgba(99,102,241,.08)' : '';
+        const badge = row.querySelector('.tier-current-badge');
+        if (badge) badge.style.display = isCurrent ? 'inline' : 'none';
+      });
+    }
+
     // AI usage
     if (el('lic-ai-used'))  el('lic-ai-used').textContent  = d.ai_monthly_used ?? 0;
     if (el('lic-ai-limit')) el('lic-ai-limit').textContent = d.ai_monthly_limit ?? 200;
@@ -991,7 +1106,99 @@ async function checkLicenseStatus() {
     }
   }
 }
+// ── DB Master ──────────────────────────────────────────────────────
+async function loadDbMaster() {
+  try {
+    const r = await fetch('/api/db-master');
+    const d = await r.json();
+    const slots = document.getElementById('db-master-slots');
+    const tbody = document.getElementById('db-master-tbody');
+    if (!tbody) return;
+
+    if (slots) {
+      const free = d.slots_free ?? 0;
+      const used = d.active_count ?? 0;
+      const lim  = d.db_limit === 9999 ? '∞' : d.db_limit;
+      const col  = free === 0 ? '#ef4444' : 'var(--text2)';
+      slots.innerHTML = `<span style="color:${col}">${used} / ${lim} slots used</span>`;
+      const addBtn = document.getElementById('db-master-add-btn');
+      if (addBtn) { addBtn.disabled = (free === 0);
+        if (free === 0) addBtn.title = 'License limit reached'; }
+    }
+
+    if (!d.dbs || d.dbs.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" style="padding:14px;text-align:center;color:var(--text2)">
+        No databases registered. Add databases below to enable AWR parsing.</td></tr>`;
+      return;
+    }
+    const TYPE_BADGE = { STANDALONE:'#334155', RAC:'#1e3a5f', CDB:'#3b1f5e', PDB:'#1f3d1f' };
+    tbody.innerHTML = d.dbs.map(db => `
+      <tr style="border-top:1px solid var(--border);opacity:${db.active?1:0.5}">
+        <td style="padding:7px 10px;font-weight:600">${db.db_name}</td>
+        <td style="padding:7px 10px;color:var(--text2)">${db.instance_name||'—'}</td>
+        <td style="padding:7px 10px;text-align:center;color:var(--text2)">${db.inst_no}</td>
+        <td style="padding:7px 10px;color:var(--text2)">${db.host_name||'—'}</td>
+        <td style="padding:7px 10px">
+          <span style="font-size:.72rem;padding:2px 7px;border-radius:20px;
+            background:${TYPE_BADGE[db.db_type]||'#333'};color:#fff">${db.db_type}</span></td>
+        <td style="padding:7px 10px;color:var(--text2);font-size:.78rem">${db.description||'—'}</td>
+        <td style="padding:7px 10px;text-align:center;color:${db.active?'#10b981':'#64748b'}">
+          ${db.active?'✅ Active':'⏸ Paused'}</td>
+        <td style="padding:7px 10px;text-align:center">
+          <button class="s-btn s-btn-secondary" style="font-size:.72rem;padding:2px 8px"
+            onclick="toggleDbMaster(${db.id},${!db.active})">${db.active?'⏸ Pause':'▶ Enable'}</button>
+          <button class="s-btn" style="font-size:.72rem;padding:2px 8px;margin-left:4px;
+            background:#ef444420;color:#ef4444;border:1px solid #ef444440"
+            onclick="deleteDbMaster(${db.id},'${db.db_name}')">🗑</button>
+        </td>
+      </tr>`).join('');
+  } catch(e) { console.error('loadDbMaster:', e); }
+}
+
+async function addDbMaster() {
+  const db_name = (document.getElementById('nm-db_name').value||'').trim().toUpperCase();
+  if (!db_name) { alert('DB Name is required'); return; }
+  const body = {
+    db_name,
+    instance_name: (document.getElementById('nm-instance_name').value||'').trim(),
+    inst_no:  parseInt(document.getElementById('nm-inst_no').value)||1,
+    host_name:(document.getElementById('nm-host_name').value||'').trim(),
+    db_type:   document.getElementById('nm-db_type').value,
+    description:(document.getElementById('nm-description').value||'').trim(),
+  };
+  const msgEl = document.getElementById('db-master-add-msg');
+  try {
+    const r = await fetch('/api/db-master/add',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const d = await r.json();
+    if (d.ok) {
+      if (msgEl){msgEl.textContent=`✅ ${db_name} added successfully`;msgEl.style.color='#10b981';}
+      ['nm-db_name','nm-instance_name','nm-host_name','nm-description'].forEach(id=>{
+        const e=document.getElementById(id); if(e) e.value='';});
+      document.getElementById('nm-inst_no').value='1';
+      loadDbMaster();
+    } else {
+      if (msgEl){msgEl.textContent=`❌ ${d.error}`;msgEl.style.color='#ef4444';}
+    }
+  } catch(e){if(msgEl){msgEl.textContent=`Error: ${e.message}`;msgEl.style.color='#ef4444';}}
+}
+
+async function toggleDbMaster(id, active) {
+  const r = await fetch('/api/db-master/toggle',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({id,active})});
+  const d = await r.json();
+  if (d.ok) loadDbMaster(); else alert('Error: '+d.error);
+}
+
+async function deleteDbMaster(id, dbName) {
+  if (!confirm(`Remove '${dbName}' from licensed databases?\nExisting parsed data is retained.`)) return;
+  const r = await fetch(`/api/db-master/${id}`,{method:'DELETE'});
+  const d = await r.json();
+  if (d.ok) loadDbMaster(); else alert('Error: '+d.error);
+}
+
 setTimeout(checkLicenseStatus, 400);
+setTimeout(loadDbMaster, 600);
 
 function toggleAwrSource(val) {
   document.getElementById('awr-local-cfg').style.display   = val === 'local'     ? '' : 'none';
