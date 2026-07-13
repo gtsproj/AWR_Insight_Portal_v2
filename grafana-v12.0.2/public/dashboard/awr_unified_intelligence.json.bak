@@ -1,0 +1,1053 @@
+{
+  "id": null,
+  "uid": "awr-unified-intelligence",
+  "title": "AWR Intelligence — Wait · SQL · Segment · Correlation · Advisory",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 41,
+  "version": 1,
+  "refresh": "",
+  "tags": [
+    "awr",
+    "intelligence",
+    "correlation",
+    "advisory",
+    "recommendations"
+  ],
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "preload": false,
+  "graphTooltip": 0,
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style='padding:4px 0'><a href='${portal_url}' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomaly-detection' target='_self'>&#x1F6A8; Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a> &nbsp;|&nbsp; <a href='/d/awr-memory-advisory' target='_self'>&#x1F4BE; Memory Advisory &amp; Efficiency</a> &nbsp;|&nbsp; <a href='${portal_url}/ai-recommendations' target='_self'>&#x1F916; AI Recommendations</a></div>"
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "ℹ How to use",
+      "transparent": false,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style='font-size:.85rem;line-height:1.8;padding:4px 8px'><b>1.</b> Select <b>Database → Instance → Start Snap → End Snap</b> from the dropdowns above.<br><b>2.</b> The three rows below show <b>Wait Events · SQL · Segments</b> as donut charts + RAG tables (🔴🟠🟡🟢).<br><b>3.</b> <b>Click any row</b> in the Wait Events, SQL, or Segments table to drill in — the Correlation panel will automatically populate with linked objects + recommendation.<br><b>4.</b> The <b>Active Recommendations</b> panel shows detailed root cause + resolution steps from the rules engine.<br><b>5.</b> <b>SGA/PGA Advisory</b> shows memory sizing recommendations with OS memory safety validation.<br><b>Tip:</b> Use <b>Wait Scope</b> (All / Foreground / Background) and <b>RAG Mode</b> (normalized / percentile) to adjust scoring sensitivity.</div>"
+      }
+    },
+    {
+      "id": 3,
+      "type": "row",
+      "title": "📊 Top Issues — Wait Events · SQL · Segments (RAG Scored)",
+      "collapsed": false,
+      "panels": [],
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      }
+    },
+    {
+      "id": 4,
+      "type": "piechart",
+      "title": "⏱ Top Wait Events — % DB Time",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 6,
+        "w": 8,
+        "h": 14
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH f AS (  SELECT begin_snap, event::text AS event, SUM(pct_time) AS event_pct_snap  FROM awr_wait_summary_mv  WHERE dbname='$dbname'    AND instance='$instance'    AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int    AND ( '$wait_scope' IN ('', 'All') OR wait_scope = '$wait_scope' )  GROUP BY begin_snap, event ), t AS (  SELECT begin_snap, SUM(pct_time) AS total_pct_snap  FROM awr_wait_summary_mv  WHERE dbname='$dbname'    AND instance='$instance'    AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int    AND ( '$wait_scope' IN ('', 'All') OR wait_scope = '$wait_scope' )  GROUP BY begin_snap ) SELECT f.event AS name, ROUND(100.0 * SUM(f.event_pct_snap) / NULLIF(SUM(t.total_pct_snap),0), 2) AS value FROM f JOIN t USING (begin_snap) GROUP BY f.event ORDER BY value DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "pieType": "donut",
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "displayLabels": [
+          "name",
+          "value",
+          "percent"
+        ],
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "id": 5,
+      "type": "table",
+      "title": "Wait Events — RAG Summary",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 6,
+        "w": 16,
+        "h": 14
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH base AS (\nSELECT s.begin_snap,s.event::text AS event, COALESCE(m.wait_class, 'Other') AS wait_class, SUM(s.pct_time) AS event_pct_snap\nFROM awr_wait_summary_mv s\n LEFT JOIN awr_wait_event_master m\nON TRIM(LOWER(s.event)) = TRIM(LOWER(m.event))\nWHERE s.dbname = '$dbname' AND s.instance = '$instance'\nAND s.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND ( '$wait_scope' IN ('', 'All') OR s.wait_scope = '$wait_scope' )\nGROUP BY s.begin_snap, s.event, m.wait_class),\ntot AS (\nSELECT s.begin_snap, SUM(s.pct_time) AS total_pct_snap\nFROM awr_wait_summary_mv s\nWHERE s.dbname = '$dbname'\nAND s.instance = '$instance'\nAND s.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND ( '$wait_scope' IN ('', 'All') OR s.wait_scope = '$wait_scope' )\nGROUP BY s.begin_snap)\nSELECT b.wait_class, b.event,\nROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) AS severity_score,\nCASE\nWHEN ROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) >= 80 THEN '🔴'\nWHEN ROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) BETWEEN 41 AND 79 THEN '🟠'\nWHEN ROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) BETWEEN 11 AND 40 THEN '🟡'\nELSE '🟢'\nEND AS severity_rag\nFROM base b\nJOIN tot t USING (begin_snap)\nGROUP BY b.wait_class, b.event\nORDER BY severity_score DESC\nLIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "footer": {
+          "show": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "filterable": true
+          },
+          "links": [
+            {
+              "title": "🔗 Drill into this wait event",
+              "url": "/d/awr-unified-intelligence?var-focus_type=wait&var-focus_value=${__data.fields.event}&var-open_drawer=true&var-dbname=${dbname}&var-instance=${instance}&var-start_snap=${start_snap}&var-end_snap=${end_snap}&var-wait_scope=${wait_scope}&var-rag_mode=${rag_mode}&var-baseline_days=${baseline_days}",
+              "targetBlank": false
+            }
+          ]
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "severity_rag"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "RAG"
+              },
+              {
+                "id": "custom.width",
+                "value": 55
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "severity_score"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Score"
+              },
+              {
+                "id": "custom.width",
+                "value": 75
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 11
+                    },
+                    {
+                      "color": "orange",
+                      "value": 41
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "wait_class"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "event"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 260
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "type": "piechart",
+      "title": "🔍 Top SQL — Severity Score",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 20,
+        "w": 8,
+        "h": 14
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT sql_id::text AS name, ROUND(AVG(severity_score)::numeric,2) AS value FROM awr_sql_summary_mv WHERE '$dbname'!='' AND '$instance'!='' AND '$start_snap'!='' AND '$end_snap'!=''   AND dbname='$dbname' AND instance='$instance'   AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int GROUP BY sql_id ORDER BY value DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "pieType": "donut",
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "displayLabels": [
+          "name",
+          "value",
+          "percent"
+        ],
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "id": 7,
+      "type": "table",
+      "title": "SQL — RAG Summary",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 20,
+        "w": 16,
+        "h": 14
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH base AS (  SELECT sql_id, AVG(severity_score) AS score   FROM awr_sql_summary_mv   WHERE dbname='$dbname' AND instance='$instance'     AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int   GROUP BY sql_id ), bl AS (   SELECT     percentile_cont(0.10) WITHIN GROUP (ORDER BY s) AS p10,     percentile_cont(0.40) WITHIN GROUP (ORDER BY s) AS p40,     percentile_cont(0.70) WITHIN GROUP (ORDER BY s) AS p70,     percentile_cont(0.90) WITHIN GROUP (ORDER BY s) AS p90   FROM (     SELECT AVG(severity_score) AS s     FROM awr_sql_summary_mv     WHERE dbname='$dbname' AND instance='$instance'       AND snap_time >= now() - concat('$baseline_days',' days')::interval     GROUP BY sql_id, begin_snap   ) t ), norm AS (   SELECT b.*, GREATEST(0, LEAST(100, 100 * (b.score - bl.p10) / NULLIF(bl.p90 - bl.p10, 0))) AS score_norm   FROM base b CROSS JOIN bl ) SELECT b.sql_id, CASE WHEN '$rag_mode'='percentile' THEN   CASE WHEN b.score >= bl.p90 THEN '🔴'        WHEN b.score >= bl.p70 THEN '🟠'        WHEN b.score >= bl.p40 THEN '🟡'        ELSE '🟢' END ELSE   CASE WHEN n.score_norm >= 80 THEN '🔴'        WHEN n.score_norm >= 41 THEN '🟠'        WHEN n.score_norm >= 11 THEN '🟡'        ELSE '🟢' END END AS severity_rag FROM base b CROSS JOIN bl LEFT JOIN norm n USING (sql_id) ORDER BY b.score DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "footer": {
+          "show": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "filterable": true
+          },
+          "links": [
+            {
+              "title": "🔗 Drill into this SQL",
+              "url": "/d/awr-unified-intelligence?var-focus_type=sql&var-focus_value=${__data.fields.sql_id}&var-open_drawer=true&var-dbname=${dbname}&var-instance=${instance}&var-start_snap=${start_snap}&var-end_snap=${end_snap}&var-wait_scope=${wait_scope}&var-rag_mode=${rag_mode}&var-baseline_days=${baseline_days}",
+              "targetBlank": false
+            }
+          ]
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "severity_rag"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "RAG"
+              },
+              {
+                "id": "custom.width",
+                "value": 55
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sql_id"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              },
+              {
+                "id": "displayName",
+                "value": "SQL ID"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "type": "piechart",
+      "title": "📦 Top Segments — Severity Score",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 34,
+        "w": 8,
+        "h": 14
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT object_name::text AS name, ROUND(AVG(severity_score)::numeric,2) AS value FROM awr_segment_summary_mv WHERE '$dbname'!='' AND '$instance'!='' AND '$start_snap'!='' AND '$end_snap'!=''   AND dbname='$dbname' AND instance='$instance'   AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int GROUP BY object_name ORDER BY value DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "pieType": "donut",
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "displayLabels": [
+          "name",
+          "value",
+          "percent"
+        ],
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "id": 9,
+      "type": "table",
+      "title": "Segments — RAG Summary",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 34,
+        "w": 16,
+        "h": 14
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH base AS (  SELECT owner, object_name, obj_type, COALESCE(subobject_name,'') AS subobject_name,         AVG(severity_score) AS score   FROM awr_segment_summary_mv   WHERE dbname='$dbname' AND instance='$instance'     AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int   GROUP BY owner, object_name, obj_type, subobject_name ), bl AS (   SELECT     percentile_cont(0.10) WITHIN GROUP (ORDER BY s) AS p10,     percentile_cont(0.40) WITHIN GROUP (ORDER BY s) AS p40,     percentile_cont(0.70) WITHIN GROUP (ORDER BY s) AS p70,     percentile_cont(0.90) WITHIN GROUP (ORDER BY s) AS p90   FROM (     SELECT AVG(severity_score) AS s     FROM awr_segment_summary_mv     WHERE dbname='$dbname' AND instance='$instance'       AND snap_time >= now() - concat('$baseline_days',' days')::interval     GROUP BY owner, object_name, obj_type, COALESCE(subobject_name,'')   ) t ), norm AS (   SELECT b.*, GREATEST(0, LEAST(100, 100 * (b.score - bl.p10) / NULLIF(bl.p90 - bl.p10, 0))) AS score_norm   FROM base b CROSS JOIN bl ) SELECT b.owner, b.object_name, b.obj_type, b.subobject_name, CASE WHEN '$rag_mode'='percentile' THEN   CASE WHEN b.score >= bl.p90 THEN '🔴'        WHEN b.score >= bl.p70 THEN '🟠'        WHEN b.score >= bl.p40 THEN '🟡'        ELSE '🟢' END ELSE   CASE WHEN n.score_norm >= 80 THEN '🔴'        WHEN n.score_norm >= 41 THEN '🟠'        WHEN n.score_norm >= 11 THEN '🟡'        ELSE '🟢' END END AS severity_rag FROM base b CROSS JOIN bl LEFT JOIN norm n USING (owner, object_name, obj_type, subobject_name) ORDER BY b.score DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "footer": {
+          "show": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "filterable": true
+          },
+          "links": [
+            {
+              "title": "🔗 Drill into this segment",
+              "url": "/d/awr-unified-intelligence?var-focus_type=segment&var-focus_value=${__data.fields.object_name}&var-open_drawer=true&var-dbname=${dbname}&var-instance=${instance}&var-start_snap=${start_snap}&var-end_snap=${end_snap}&var-wait_scope=${wait_scope}&var-rag_mode=${rag_mode}&var-baseline_days=${baseline_days}",
+              "targetBlank": false
+            }
+          ]
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "severity_rag"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "RAG"
+              },
+              {
+                "id": "custom.width",
+                "value": 55
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "object_name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "type": "row",
+      "title": "🔗 Correlation & Drill-down (set Focus Type + Focus Value + Open Drawer=true)",
+      "collapsed": false,
+      "panels": [],
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      }
+    },
+    {
+      "id": 11,
+      "type": "table",
+      "title": "🔗 Correlation — Linked Segments · SQLs · Waits",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 49,
+        "w": 24,
+        "h": 12
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH params AS (\n  SELECT\n    lower(NULLIF('${open_drawer}','')) AS open_flag,\n    lower(NULLIF('${focus_type}',''))  AS ftype,\n    lower(NULLIF('${focus_value}','')) AS fval,\n    lower(NULLIF('${wait_scope}',''))  AS scope_txt,\n    '${start_snap}'                    AS s_label,\n    '${end_snap}'                      AS e_label,\n    split_part('${start_snap}',' - ',1)::int AS s_snap,\n    split_part('${end_snap}',' - ',1)::int   AS e_snap,\n    '${dbname}'                        AS dbname,\n    '${instance}'                      AS instance\n),\n\n-- Window-scoped waits\nwin_waits AS (\n  SELECT w.event, ROUND(AVG(w.pct_time),2) AS wait_pct\n  FROM awr_wait_summary_mv w\n  JOIN params p ON p.dbname=w.dbname AND p.instance=w.instance\n  WHERE w.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND ( (SELECT scope_txt FROM params) IN ('','all') OR lower(w.wait_scope) = (SELECT scope_txt FROM params) )\n  GROUP BY w.event\n),\n\n/* =========================\n   SQL focus (hybrid)\n   ========================= */\nfocus_sql AS (\n  SELECT fval AS sql_id FROM params\n  WHERE (SELECT ftype FROM params)='sql' AND fval<>''\n),\n\n-- TEXT-MAP: segments referenced by focused SQL\nsql_seg_text AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_sql_object_map_mv m\n  JOIN awr_segment_summary_mv s\n    ON ( (m.owner <> '' AND lower(s.owner)=m.owner AND lower(s.object_name)=m.object)\n      OR (m.owner = ''  AND lower(s.object_name)=m.object) )\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE m.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n),\n\n-- Co-occurrence helper views\nsql_snap AS ( SELECT * FROM awr_sql_score_by_snap ),\nseg_snap AS ( SELECT * FROM awr_seg_score_by_snap ),\n\n-- Fallback: segments that co-occur with focused SQL across snaps\nsql_seg_cooccur AS (\n  SELECT se.owner, se.object_name, se.obj_type,\n         SUM(se.seg_score_snap * sq.sql_score_snap) AS co_score\n  FROM seg_snap se\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  JOIN params p ON p.dbname=se.dbname AND p.instance=se.instance\n  WHERE sq.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND se.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY se.owner, se.object_name, se.obj_type\n),\n\n-- union with priority: text first, then co-occur\nsql_seg_union AS (\n  SELECT owner, object_name, obj_type, 1000::numeric AS rank_signal\n  FROM sql_seg_text\n  UNION\n  SELECT owner, object_name, obj_type, COALESCE(co_score,0) AS rank_signal\n  FROM sql_seg_cooccur\n),\n\n-- PRE-AGG: avoid nested aggregates in ORDER BY\nsql_seg_ranked AS (\n  SELECT\n    u.owner, u.object_name, u.obj_type,\n    MAX(u.rank_signal)            AS rank_signal_max,\n    AVG(s.severity_score)         AS seg_score_avg\n  FROM sql_seg_union u\n  JOIN awr_segment_summary_mv s\n    ON lower(s.owner)=lower(u.owner)\n   AND lower(s.object_name)=lower(u.object_name)\n   AND s.obj_type=u.obj_type\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY u.owner, u.object_name, u.obj_type\n),\n\n-- Final: Segments referenced by SQL\nblock_sql_segments AS (\n  SELECT COALESCE(\n           string_agg(\n             '• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score_avg,2)::text||']',\n             E'\\n' ORDER BY rank_signal_max DESC, seg_score_avg DESC\n           ),\n           '—'\n         ) AS txt\n  FROM sql_seg_ranked\n),\n\n-- Top waits (window) for SQL focus\nblock_sql_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n),\n\n-- Other SQLs using these objects (text first, co-occur fallback)\nblock_sql_other_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| x.sql_id, E'\\n' ORDER BY x.rank_signal DESC, x.sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT-BASED\n    SELECT DISTINCT m.sql_id,\n           1000::numeric AS rank_signal,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(r.owner) AND m.object=lower(r.object_name))\n        OR (m.owner = ''  AND m.object=lower(r.object_name)) )\n    WHERE m.sql_id <> (SELECT sql_id FROM focus_sql)\n\n    UNION ALL\n\n    -- CO-OCCURRENCE\n    SELECT sq.sql_id,\n           SUM(se.seg_score_snap * sq.sql_score_snap) AS rank_signal,\n           AVG(sq.sql_score_snap) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(r.owner) AND lower(se.object_name)=lower(r.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    WHERE sq.sql_id <> (SELECT sql_id FROM focus_sql)\n    GROUP BY sq.sql_id\n  ) x\n),\n\n/* =========================\n   WAIT focus\n   ========================= */\nfocus_wait AS (\n  SELECT fval AS event FROM params\n  WHERE (SELECT ftype FROM params)='wait' AND fval<>''\n),\n\nwait_top_segments AS (\n  SELECT s.owner, s.object_name, s.obj_type, AVG(s.severity_score) AS seg_score\n  FROM awr_segment_summary_mv s\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY s.owner, s.object_name, s.obj_type\n  ORDER BY AVG(s.severity_score) DESC\n  LIMIT 10\n),\n\nwait_seg_sql_text AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT m.sql_id, ', ' ORDER BY m.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         1 AS pref\n  FROM wait_top_segments w\n  JOIN awr_sql_object_map_mv m\n    ON ( (m.owner <> '' AND m.owner=lower(w.owner) AND m.object=lower(w.object_name))\n      OR (m.owner = ''  AND m.object=lower(w.object_name)) )\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_co AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT sq.sql_id, ', ' ORDER BY sq.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         2 AS pref\n  FROM wait_top_segments w\n  JOIN seg_snap se\n    ON lower(se.owner)=lower(w.owner) AND lower(se.object_name)=lower(w.object_name)\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_union AS (\n  SELECT * FROM wait_seg_sql_text\n  UNION\n  SELECT * FROM wait_seg_sql_co\n),\n\nblock_wait_segments AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score,2)::text||']',\n                      E'\\n' ORDER BY seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_top_segments\n),\n\nblock_wait_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' → '|| COALESCE(sql_ids,'—'),\n                      E'\\n' ORDER BY pref, seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_seg_sql_union\n),\n\n/* =========================\n   SEGMENT focus\n   ========================= */\nfocus_segment AS (\n  SELECT lower(NULLIF('${focus_value}','')) AS obj_txt\n  WHERE (SELECT ftype FROM params)='segment' AND (SELECT fval FROM params)<>'' \n),\n\nseg_obj AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_segment_summary_mv s, params p\n  WHERE p.dbname=s.dbname AND p.instance=s.instance\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND (\n         lower(s.object_name)=(SELECT obj_txt FROM focus_segment)\n         OR lower(s.owner||'.'||s.object_name)=(SELECT obj_txt FROM focus_segment)\n        )\n),\n\nblock_seg_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n),\n\nblock_seg_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| sql_id, E'\\n' ORDER BY avg_sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT MAP first\n    SELECT DISTINCT m.sql_id,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS avg_sql_score,\n           1 AS pref\n    FROM seg_obj o\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(o.owner) AND m.object=lower(o.object_name))\n        OR (m.owner = ''  AND m.object=lower(o.object_name)) )\n    UNION ALL\n    -- Fallback co-occurrence\n    SELECT sq.sql_id,\n           AVG(sq.sql_score_snap) AS avg_sql_score,\n           2 AS pref\n    FROM seg_obj o\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(o.owner) AND lower(se.object_name)=lower(o.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    GROUP BY sq.sql_id\n  ) u\n),\n\n/* =========================\n   Recommendation text (unchanged)\n   ========================= */,\n\n/* =========================\n   Final rows\n   ========================= */\nrows AS (\n  SELECT 1 AS ord, 'Focus' AS section,\n         CASE WHEN (SELECT ftype FROM params) <> ''\n              THEN (SELECT ftype FROM params)||': '||COALESCE((SELECT fval FROM params),'—')\n              ELSE '—' END AS value\n  UNION ALL\n  SELECT 2, 'Signals',\n         'Scope: '||COALESCE((SELECT scope_txt FROM params),'all')\n         ||' | Range: '||(SELECT s_label FROM params)||' → '||(SELECT e_label FROM params)\n\n  UNION ALL\n  SELECT 3, 'Top Segments', (SELECT txt FROM block_wait_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n  UNION ALL\n  SELECT 4, 'Top SQLs referencing segments', (SELECT txt FROM block_wait_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n\n  UNION ALL\n  SELECT 3, 'Segments referenced by SQL', (SELECT txt FROM block_sql_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 4, 'Other SQLs using these objects', (SELECT txt FROM block_sql_other_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 5, 'Top Waits (window)', (SELECT txt FROM block_sql_waits)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n\n  UNION ALL\n  SELECT 3, 'Top Waits (window)', (SELECT txt FROM block_seg_waits)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n  UNION ALL\n  SELECT 4, 'Top SQLs for this segment', (SELECT txt FROM block_seg_sqls)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n)\nSELECT section, value\nFROM rows, params p\nWHERE p.open_flag = 'true'\nORDER BY ord;\n",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "footer": {
+          "show": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "wrap": true,
+            "minWidth": 150
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "section"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 240
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#f59e0b",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "value"
+            },
+            "properties": [
+              {
+                "id": "custom.wrap",
+                "value": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "type": "row",
+      "title": "✅ Active Recommendations — Rules Mode Only (switch to AI Recs page for AI mode)",
+      "collapsed": false,
+      "panels": [],
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 61
+      }
+    },
+    {
+      "id": 13,
+      "type": "table",
+      "title": "✅ Active Recommendations (Rules Engine)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 62,
+        "w": 24,
+        "h": 10
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "\nSELECT\n  CASE severity\n    WHEN 'critical' THEN '🔴 CRITICAL'\n    WHEN 'high'     THEN '🟠 HIGH'\n    WHEN 'medium'   THEN '🟡 MEDIUM'\n    ELSE                 '🟢 LOW' END AS \"Severity\",\n  category AS \"Category\",\n  title AS \"Issue\",\n  event_or_object AS \"Event / Object\",\n  LEFT(root_cause, 200) AS \"Root Cause\",\n  COALESCE(\n    (SELECT string_agg(val, ' | ' ORDER BY ord)\n     FROM jsonb_array_elements_text(resolution_json::jsonb)\n          WITH ORDINALITY AS t(val, ord)),\n    resolution_json::text\n  ) AS \"Recommended Actions\"\nFROM (\n  SELECT DISTINCT ON (category, title, event_or_object)\n    severity, category, title, event_or_object,\n    root_cause, resolution_json\n  FROM awr_recommendations\n  WHERE dbname = '${dbname}'\n    AND begin_snap BETWEEN split_part('${start_snap}',' - ',1)::int\n                       AND split_part('${end_snap}',' - ',1)::int\n    AND '${dbname}' != ''\n  ORDER BY category, title, event_or_object,\n    CASE severity WHEN 'critical' THEN 1 WHEN 'high' THEN 2\n      WHEN 'medium' THEN 3 ELSE 4 END\n) deduped\nORDER BY\n  CASE severity WHEN 'critical' THEN 1 WHEN 'high' THEN 2\n    WHEN 'medium' THEN 3 ELSE 4 END,\n  category;\n",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "footer": {
+          "show": true,
+          "reducer": [],
+          "countRows": false,
+          "fields": "",
+          "enablePagination": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "filterable": true,
+            "wrap": true
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Severity"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Category"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Event / Object"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 240
+              },
+              {
+                "id": "custom.wrap",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Root Cause"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 320
+              },
+              {
+                "id": "custom.wrap",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actions / Next Step"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 350
+              },
+              {
+                "id": "custom.wrap",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 80
+              }
+            ]
+          }
+        ]
+      },
+      "description": "Shown in Rules mode only. For AI mode recommendations → Portal → 🤖 AI Recs"
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "${portal_url}",
+          "value": "${portal_url}"
+        },
+        "description": "Base URL for Portal URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "${portal_url}",
+            "value": "${portal_url}"
+          }
+        ],
+        "query": "${portal_url}",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "${grafana_url}",
+          "value": "${grafana_url}"
+        },
+        "description": "Base URL for Grafana URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "${grafana_url}",
+            "value": "${grafana_url}"
+          }
+        ],
+        "query": "${grafana_url}",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {},
+        "options": [],
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "refresh": 1
+      },
+      {
+        "name": "dbname",
+        "label": "Database",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 0,
+        "regex": "",
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT dbname AS value, dbname AS label  FROM awr_load_profile) AS t ORDER BY value;"
+      },
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 0,
+        "regex": "",
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT instance AS value, instance AS label  FROM awr_load_profile WHERE dbname='${dbname}') AS t ORDER BY value;"
+      },
+      {
+        "name": "start_snap",
+        "label": "Start Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 0,
+        "regex": "",
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI') FROM awr_load_profile WHERE dbname='${dbname}' AND instance='${instance}' ORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "end_snap",
+        "label": "End Snap",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 0,
+        "regex": "",
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI') FROM awr_load_profile WHERE dbname='${dbname}' AND instance='${instance}' ORDER BY label NULLS FIRST;"
+      },
+      {
+        "name": "wait_scope",
+        "label": "Wait Scope",
+        "type": "custom",
+        "query": "All,Foreground,Background",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "All"
+        },
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "All"
+          },
+          {
+            "selected": false,
+            "text": "Foreground",
+            "value": "Foreground"
+          },
+          {
+            "selected": false,
+            "text": "Background",
+            "value": "Background"
+          }
+        ],
+        "hide": 0,
+        "includeAll": false,
+        "multi": false
+      },
+      {
+        "name": "rag_mode",
+        "label": "RAG Mode",
+        "type": "custom",
+        "query": "normalized,percentile",
+        "current": {
+          "selected": true,
+          "text": "normalized",
+          "value": "normalized"
+        },
+        "options": [
+          {
+            "selected": true,
+            "text": "normalized",
+            "value": "normalized"
+          },
+          {
+            "selected": false,
+            "text": "percentile",
+            "value": "percentile"
+          }
+        ],
+        "hide": 0,
+        "includeAll": false,
+        "multi": false
+      },
+      {
+        "name": "baseline_days",
+        "label": "Baseline Days",
+        "type": "custom",
+        "query": "15,30,60,90",
+        "current": {
+          "selected": true,
+          "text": "30",
+          "value": "30"
+        },
+        "options": [
+          {
+            "selected": false,
+            "text": "15",
+            "value": "15"
+          },
+          {
+            "selected": true,
+            "text": "30",
+            "value": "30"
+          },
+          {
+            "selected": false,
+            "text": "60",
+            "value": "60"
+          },
+          {
+            "selected": false,
+            "text": "90",
+            "value": "90"
+          }
+        ],
+        "hide": 0,
+        "includeAll": false,
+        "multi": false
+      },
+      {
+        "name": "open_drawer",
+        "label": "Show Correlation",
+        "type": "textbox",
+        "query": "",
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "hide": 2
+      },
+      {
+        "name": "focus_type",
+        "label": "Focus Type",
+        "type": "textbox",
+        "query": "",
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "hide": 2
+      },
+      {
+        "name": "focus_value",
+        "label": "Focus Value",
+        "type": "textbox",
+        "query": "",
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "hide": 2
+      }
+    ]
+  },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "links": []
+}

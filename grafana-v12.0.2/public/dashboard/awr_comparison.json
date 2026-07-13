@@ -1,7 +1,7 @@
 {
   "id": null,
   "uid": "awr-comparison",
-  "title": "AWR \u2014 Before vs After Comparison",
+  "title": "AWR — Before vs After Comparison",
   "editable": true,
   "timezone": "Asia/Kolkata",
   "schemaVersion": 36,
@@ -13,6 +13,48 @@
   ],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:8000",
+          "value": "http://192.168.1.6:8000"
+        },
+        "description": "Base URL for Portal URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:8000",
+            "value": "http://192.168.1.6:8000"
+          }
+        ],
+        "query": "http://192.168.1.6:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:3000",
+          "value": "http://192.168.1.6:3000"
+        },
+        "description": "Base URL for Grafana URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:3000",
+            "value": "http://192.168.1.6:3000"
+          }
+        ],
+        "query": "http://192.168.1.6:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
       {
         "name": "ds",
         "label": "Data Source",
@@ -169,7 +211,7 @@
     {
       "id": 201,
       "type": "row",
-      "title": "Wait Events \u2014 Before vs After",
+      "title": "Wait Events — Before vs After",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -181,7 +223,7 @@
     {
       "id": 10,
       "type": "table",
-      "title": "Wait Events \u2014 Before vs After (Delta)",
+      "title": "Wait Events — Before vs After (Delta)",
       "datasource": {
         "type": "postgres",
         "uid": "ferwfz6k211j4b"
@@ -252,7 +294,7 @@
     {
       "id": 202,
       "type": "row",
-      "title": "SQL Performance \u2014 Before vs After",
+      "title": "SQL Performance — Before vs After",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -264,7 +306,7 @@
     {
       "id": 11,
       "type": "table",
-      "title": "Top SQL \u2014 Elapsed Time Comparison",
+      "title": "Top SQL — Elapsed Time Comparison",
       "datasource": {
         "type": "postgres",
         "uid": "ferwfz6k211j4b"
@@ -335,7 +377,7 @@
     {
       "id": 203,
       "type": "row",
-      "title": "Load Profile \u2014 Before vs After",
+      "title": "Load Profile — Before vs After",
       "gridPos": {
         "h": 1,
         "w": 24,

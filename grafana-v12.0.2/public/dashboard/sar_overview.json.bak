@@ -39,7 +39,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style='padding:4px 0'><a href='http://192.168.1.6:8000' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-problem-areas' target='_self'>&#x26A0;&#xFE0F; Problem Areas</a> &nbsp;|&nbsp; <a href='/d/sar-anomalies' target='_self'>&#x1F6A8; SAR Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a> &nbsp;|&nbsp; <a href='/d/fdv31-awr-nav' target='_self'>&#x1F4CC; Navigation Hub</a></div>",
+        "content": "<div style='padding:4px 0'><a href='${portal_url}' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-problem-areas' target='_self'>&#x26A0;&#xFE0F; Problem Areas</a> &nbsp;|&nbsp; <a href='/d/sar-anomalies' target='_self'>&#x1F6A8; SAR Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a> &nbsp;|&nbsp; <a href='/d/fdv31-awr-nav' target='_self'>&#x1F4CC; Navigation Hub</a></div>",
         "mode": "html"
       },
       "pluginVersion": "12.0.2",
@@ -2089,8 +2089,8 @@
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:8000",
-          "value": "http://192.168.1.6:8000"
+          "text": "${portal_url}",
+          "value": "${portal_url}"
         },
         "description": "Base URL for Portal URL — change to server IP for intranet access",
         "hide": 2,
@@ -2099,19 +2099,19 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:8000",
-            "value": "http://192.168.1.6:8000"
+            "text": "${portal_url}",
+            "value": "${portal_url}"
           }
         ],
-        "query": "http://192.168.1.6:8000",
+        "query": "${portal_url}",
         "skipUrlSync": false,
         "type": "textbox"
       },
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:3000",
-          "value": "http://192.168.1.6:3000"
+          "text": "${grafana_url}",
+          "value": "${grafana_url}"
         },
         "description": "Base URL for Grafana URL — change to server IP for intranet access",
         "hide": 2,
@@ -2120,11 +2120,11 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:3000",
-            "value": "http://192.168.1.6:3000"
+            "text": "${grafana_url}",
+            "value": "${grafana_url}"
           }
         ],
-        "query": "http://192.168.1.6:3000",
+        "query": "${grafana_url}",
         "skipUrlSync": false,
         "type": "textbox"
       },

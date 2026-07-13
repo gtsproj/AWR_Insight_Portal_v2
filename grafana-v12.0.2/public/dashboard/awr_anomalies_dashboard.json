@@ -1,0 +1,1256 @@
+{
+  "id": null,
+  "uid": "awr-anomalies",
+  "title": "AWR — Anomaly Detection",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "5m",
+  "tags": [
+    "awr",
+    "anomaly"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:8000",
+          "value": "http://192.168.1.6:8000"
+        },
+        "description": "Base URL for Portal URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:8000",
+            "value": "http://192.168.1.6:8000"
+          }
+        ],
+        "query": "http://192.168.1.6:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:3000",
+          "value": "http://192.168.1.6:3000"
+        },
+        "description": "Base URL for Grafana URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:3000",
+            "value": "http://192.168.1.6:3000"
+          }
+        ],
+        "query": "http://192.168.1.6:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {},
+        "options": [],
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "refresh": 1
+      },
+      {
+        "name": "dbname",
+        "label": "Database",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 1,
+        "regex": "",
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT dbname AS value, dbname AS label FROM awr_anomalies) AS t ORDER BY value;"
+      },
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 1,
+        "regex": "",
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT instance AS value, instance AS label  FROM awr_anomalies WHERE dbname='${dbname}') AS t ORDER BY value;"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Navigation",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "content": "<div style='padding:4px 0'><a href='${portal_url}' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-problem-areas' target='_self'>&#x26A0;&#xFE0F; Problem Areas</a> &nbsp;|&nbsp; <a href='/d/awr-comparison' target='_self'>&#x1F504; Comparison</a> &nbsp;|&nbsp; <a href='/d/fdv31-awr-nav' target='_self'>&#x1F4CC; Navigation Hub</a></div>",
+        "mode": "html"
+      },
+      "transparent": true
+    },
+    {
+      "id": 10,
+      "type": "stat",
+      "title": "Critical Anomalies",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM awr_anomalies WHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != '' AND instance = '${instance}' AND severity='critical'"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "background"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#d32f2f",
+            "mode": "fixed"
+          },
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "stat",
+      "title": "Alert Anomalies",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM awr_anomalies WHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != '' AND instance = '${instance}' AND severity='alert'"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "background"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#ef6c00",
+            "mode": "fixed"
+          },
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "stat",
+      "title": "Warning Anomalies",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM awr_anomalies WHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != '' AND instance = '${instance}' AND severity='warning'"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "background"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#f9a825",
+            "mode": "fixed"
+          },
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "stat",
+      "title": "Snaps with Anomalies",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(DISTINCT begin_snap) AS value FROM awr_anomalies WHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != '' AND instance = '${instance}'"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "background"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#1565c0",
+            "mode": "fixed"
+          },
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "stat",
+      "title": "Metrics Affected (Alert+)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(DISTINCT object_name) AS value FROM awr_anomalies WHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != '' AND instance = '${instance}' AND severity IN ('alert','critical')"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "background"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#4a148c",
+            "mode": "fixed"
+          },
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": "stat",
+      "title": "Max Deviation Score",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT ROUND(MAX(ABS(z_score))::numeric,1) AS value FROM awr_anomalies WHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != '' AND instance = '${instance}'"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "value"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#f9a825",
+                "value": null
+              },
+              {
+                "color": "#ef6c00",
+                "value": 3
+              },
+              {
+                "color": "#d32f2f",
+                "value": 4
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 20,
+      "type": "row",
+      "title": "Top Anomalies",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "collapsed": false
+    },
+    {
+      "id": 21,
+      "type": "table",
+      "title": "Top Anomalies by Deviation Score",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE severity\n    WHEN 'critical' THEN '🔴 CRITICAL'\n    WHEN 'alert'    THEN '🟠 ALERT'\n    ELSE                 '🟡 WARNING'\n  END AS \"Severity\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  begin_snap   AS \"Snap\",\n  metric_source AS \"Source\",\n  object_name  AS \"Object / Event\",\n  ROUND(metric_value::numeric,2)    AS \"Current Value\",\n  ROUND(baseline_mean::numeric,2)   AS \"Baseline Mean\",\n  ROUND(baseline_stddev::numeric,2) AS \"Baseline StdDev\",\n  ROUND(z_score::numeric,2)         AS \"Deviation Score\"\nFROM awr_anomalies\nWHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != ''\n  AND instance = '${instance}')\nORDER BY ABS(z_score) DESC\nLIMIT 50"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Deviation Score",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Severity"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Snap Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 145
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Snap"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 75
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Current Value"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Baseline Mean"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Baseline StdDev"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 125
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Deviation Score"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#f9a825",
+                      "value": null
+                    },
+                    {
+                      "color": "#ef6c00",
+                      "value": 3
+                    },
+                    {
+                      "color": "#d32f2f",
+                      "value": 4
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "type": "row",
+      "title": "Anomaly Timeline",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "collapsed": false
+    },
+    {
+      "id": 31,
+      "type": "barchart",
+      "title": "Anomaly Count per Snap — by Severity",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  to_char(snap_time,'MM-DD HH24:MI') AS \"Snap Time\",\n  COUNT(*) FILTER (WHERE severity='critical') AS \"Critical\",\n  COUNT(*) FILTER (WHERE severity='alert')    AS \"Alert\",\n  COUNT(*) FILTER (WHERE severity='warning')  AS \"Warning\"\nFROM awr_anomalies\nWHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != ''\n  AND instance = '${instance}'\nGROUP BY snap_time, begin_snap\nORDER BY begin_snap"
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "xField": "Snap Time",
+        "xTickLabelRotation": -45,
+        "xTickLabelMaxLength": 20,
+        "groupWidth": 0.95,
+        "barWidth": 0.95,
+        "stacking": "normal",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "showValue": "always",
+        "fillOpacity": 90,
+        "text": {
+          "valueSize": 11
+        }
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#d32f2f",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Alert"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ef6c00",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Warning"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#f9a825",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 40,
+      "type": "row",
+      "title": "Breakdown by Source",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "collapsed": false
+    },
+    {
+      "id": 41,
+      "type": "table",
+      "title": "Anomalies by Metric Source",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 28
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  metric_source AS \"Source\",\n  COUNT(*) FILTER (WHERE severity='critical') AS \"Critical\",\n  COUNT(*) FILTER (WHERE severity='alert')    AS \"Alert\",\n  COUNT(*) FILTER (WHERE severity='warning')  AS \"Warning\",\n  COUNT(*)                                    AS \"Total\"\nFROM awr_anomalies\nWHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != ''\n  AND instance = '${instance}'\nGROUP BY metric_source\nORDER BY COUNT(*) FILTER (WHERE severity='critical') DESC, COUNT(*) FILTER (WHERE severity='alert') DESC"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Critical",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 80
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    },
+                    {
+                      "color": "#d32f2f",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Alert"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 80
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    },
+                    {
+                      "color": "#ef6c00",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Warning"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 80
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    },
+                    {
+                      "color": "#f9a825",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 70
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "type": "table",
+      "title": "Top Anomalous Objects (Alert + Critical)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 28
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  metric_source            AS \"Source\",\n  object_name              AS \"Object / Event\",\n  COUNT(*)                 AS \"Times Flagged\",\n  ROUND(MAX(ABS(z_score))::numeric,2) AS \"Max Dev Score\",\n  ROUND(AVG(metric_value)::numeric,2) AS \"Avg Value\",\n  ROUND(AVG(baseline_mean)::numeric,2) AS \"Avg Baseline\"\nFROM awr_anomalies\nWHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != ''\n  AND instance = '${instance}'\n  AND severity IN ('alert','critical')\nGROUP BY metric_source, object_name\nORDER BY COUNT(*) DESC, MAX(ABS(z_score)) DESC\nLIMIT 20"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Times Flagged",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Times Flagged"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 105
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Avg Value"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Avg Baseline"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max Dev Score"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#f9a825",
+                      "value": null
+                    },
+                    {
+                      "color": "#ef6c00",
+                      "value": 3
+                    },
+                    {
+                      "color": "#d32f2f",
+                      "value": 4
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 50,
+      "type": "row",
+      "title": "Wait Event Anomalies",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "collapsed": false
+    },
+    {
+      "id": 51,
+      "type": "table",
+      "title": "Wait Event Anomalies — % DB Time",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  begin_snap  AS \"Snap\",\n  object_name AS \"Wait Event\",\n  ROUND(metric_value::numeric,2)  AS \"% DB Time\",\n  ROUND(baseline_mean::numeric,2) AS \"Baseline Mean\",\n  ROUND(z_score::numeric,2)       AS \"Deviation Score\"\nFROM awr_anomalies\nWHERE dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != ''\n  AND instance = '${instance}'\n  AND metric_source = 'wait_event')\nORDER BY ABS(z_score) DESC\nLIMIT 30"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Deviation Score",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "!"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 28
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Snap Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 145
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Snap"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 75
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Wait Event"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 280
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% DB Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Baseline Mean"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Deviation Score"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#f9a825",
+                      "value": null
+                    },
+                    {
+                      "color": "#ef6c00",
+                      "value": 3
+                    },
+                    {
+                      "color": "#d32f2f",
+                      "value": 4
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 60,
+      "type": "row",
+      "title": "SQL Anomalies",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "collapsed": false
+    },
+    {
+      "id": 61,
+      "type": "table",
+      "title": "SQL Elapsed Time Anomalies",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE a.severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(a.snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  a.begin_snap   AS \"Snap\",\n  a.object_name  AS \"SQL ID\",\n  LEFT(t.sql_text, 100) AS \"SQL Text\",\n  ROUND(a.metric_value::numeric,2)  AS \"Elapsed (s)\",\n  ROUND(a.baseline_mean::numeric,2) AS \"Baseline (s)\",\n  ROUND(a.z_score::numeric,2)       AS \"Deviation Score\"\nFROM awr_anomalies a\nLEFT JOIN LATERAL (\n  SELECT sql_text FROM awr_sql_text\n  WHERE sql_id=a.object_name AND dbname=a.dbname\n  ORDER BY snap_time DESC LIMIT 1\n) t ON true\nWHERE a.dbname='${dbname}' AND '${dbname}' != '' AND '${instance}' != ''\n  AND a.instance = '${instance}'\n  AND a.metric_source = 'sql_elapsed')\nORDER BY ABS(a.z_score) DESC\nLIMIT 20"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Deviation Score",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "!"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 28
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Snap Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 145
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Snap"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 75
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SQL ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SQL Text"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 350
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Elapsed (s)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Baseline (s)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Deviation Score"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#f9a825",
+                      "value": null
+                    },
+                    {
+                      "color": "#ef6c00",
+                      "value": 3
+                    },
+                    {
+                      "color": "#d32f2f",
+                      "value": 4
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

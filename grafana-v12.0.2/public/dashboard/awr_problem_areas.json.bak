@@ -17,8 +17,8 @@
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:8000",
-          "value": "http://192.168.1.6:8000"
+          "text": "${portal_url}",
+          "value": "${portal_url}"
         },
         "description": "Base URL for Portal URL — change to server IP for intranet access",
         "hide": 2,
@@ -27,19 +27,19 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:8000",
-            "value": "http://192.168.1.6:8000"
+            "text": "${portal_url}",
+            "value": "${portal_url}"
           }
         ],
-        "query": "http://192.168.1.6:8000",
+        "query": "${portal_url}",
         "skipUrlSync": false,
         "type": "textbox"
       },
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:3000",
-          "value": "http://192.168.1.6:3000"
+          "text": "${grafana_url}",
+          "value": "${grafana_url}"
         },
         "description": "Base URL for Grafana URL — change to server IP for intranet access",
         "hide": 2,
@@ -48,11 +48,11 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:3000",
-            "value": "http://192.168.1.6:3000"
+            "text": "${grafana_url}",
+            "value": "${grafana_url}"
           }
         ],
-        "query": "http://192.168.1.6:3000",
+        "query": "${grafana_url}",
         "skipUrlSync": false,
         "type": "textbox"
       },
@@ -153,7 +153,7 @@
         "y": 0
       },
       "options": {
-        "content": "<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap\" target=\"_self\">&#x2B05; Return to Navigation</a>",
+        "content": "<a href='${portal_url}' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomalies' target='_self'>&#x1F6A8; Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/fdv31-awr-nav' target='_self'>&#x1F4CC; Navigation Hub</a>",
         "mode": "html"
       },
       "transparent": true
@@ -246,7 +246,7 @@
     },
     {
       "id": 2,
-      "type": "bargauge",
+      "type": "barchart",
       "title": "Wait Events — % DB Time",
       "datasource": {
         "type": "postgres",
@@ -262,7 +262,7 @@
         {
           "refId": "A",
           "format": "table",
-          "rawSql": "SELECT event_name AS \"metric\",\n  ROUND(AVG(pct_db_time),1) AS \"value\"\nFROM awr_foreground_wait_events\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND pct_db_time > 1\nGROUP BY event_name\nORDER BY \"value\" DESC LIMIT 10",
+          "rawSql": "SELECT event_name AS \"Wait Event\",\n  ROUND(AVG(pct_db_time),1) AS \"% DB Time\"\nFROM awr_foreground_wait_events\nWHERE dbname = '$dbname' AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != '' AND '$instance' != ''\n  AND pct_db_time > 1\nGROUP BY event_name\nORDER BY \"% DB Time\" DESC LIMIT 10",
           "datasource": {
             "type": "postgres",
             "uid": "ferwfz6k211j4b"
@@ -270,17 +270,24 @@
         }
       ],
       "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ]
-        },
         "orientation": "horizontal",
-        "displayMode": "gradient",
-        "valueMode": "color"
+        "xTickLabelRotation": 0,
+        "xTickLabelMaxLength": 30,
+        "groupWidth": 0.7,
+        "barWidth": 0.9,
+        "fillOpacity": 80,
+        "gradientMode": "none",
+        "tooltipDisplayMode": "single",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        }
       },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -298,11 +305,17 @@
               }
             ]
           },
-          "mappings": [],
-          "color": {
-            "mode": "thresholds"
+          "custom": {
+            "fillOpacity": 80,
+            "lineWidth": 1,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
           }
-        }
+        },
+        "overrides": []
       }
     },
     {
@@ -708,7 +721,7 @@
         "uid": "ferwfz6k211j4b"
       },
       "gridPos": {
-        "h": 10,
+        "h": 12,
         "w": 24,
         "x": 0,
         "y": 39
@@ -717,7 +730,7 @@
         {
           "refId": "A",
           "format": "table",
-          "rawSql": "SELECT\n  CASE severity\n    WHEN 'critical' THEN '🔴 CRITICAL'\n    WHEN 'high'     THEN '🟠 HIGH'\n    WHEN 'medium'   THEN '🟡 MEDIUM'\n    ELSE                 '🟢 LOW' END AS \"Severity\",\n  rule_id AS \"Rule ID\",\n  category AS \"Category\",\n  title AS \"Issue\",\n  event_or_object AS \"Event / Object\",\n  LEFT(root_cause, 150) AS \"Root Cause (summary)\"\nFROM awr_recommendations\nWHERE dbname = '$dbname'\n  AND begin_snap = split_part('$start_snap',' - ',1)::int\nORDER BY\n  CASE severity WHEN 'critical' THEN 1 WHEN 'high' THEN 2 WHEN 'medium' THEN 3 ELSE 4 END,\n  category",
+          "rawSql": "SELECT\n  CASE severity\n    WHEN 'critical' THEN '🔴 CRITICAL'\n    WHEN 'high'     THEN '🟠 HIGH'\n    WHEN 'medium'   THEN '🟡 MEDIUM'\n    ELSE                 '🟢 LOW' END AS \"Severity\",\n  category AS \"Category\",\n  title AS \"Issue\",\n  event_or_object AS \"Event / Object\",\n  LEFT(root_cause, 200) AS \"Root Cause\",\n  COALESCE(\n    (SELECT string_agg(val, ' | ' ORDER BY ord)\n     FROM jsonb_array_elements_text(resolution_json::jsonb)\n          WITH ORDINALITY AS t(val, ord)),\n    resolution_json::text\n  ) AS \"Recommended Actions\"\nFROM awr_recommendations\nWHERE dbname = '$dbname'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\n                     AND split_part('$end_snap',' - ',1)::int\n  AND '$dbname' != ''\nORDER BY\n  CASE severity WHEN 'critical' THEN 1 WHEN 'high' THEN 2\n    WHEN 'medium' THEN 3 ELSE 4 END,\n  category",
           "datasource": {
             "type": "postgres",
             "uid": "ferwfz6k211j4b"
@@ -735,11 +748,19 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 120
-              },
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Category"
+            },
+            "properties": [
               {
-                "id": "custom.displayMode",
-                "value": "color-text"
+                "id": "custom.width",
+                "value": 110
               }
             ]
           },
@@ -751,19 +772,43 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 280
+                "value": 200
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Root Cause (summary)"
+              "options": "Event / Object"
             },
             "properties": [
               {
                 "id": "custom.width",
-                "value": 400
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Root Cause"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Recommended Actions"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 350
               }
             ]
           }

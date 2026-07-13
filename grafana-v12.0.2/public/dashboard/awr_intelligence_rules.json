@@ -38,7 +38,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style='padding:4px 0'><a href='http://localhost:8000' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomaly-detection' target='_self'>&#x1F6A8; Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/awr-memory-advisory' target='_self'>&#x1F4BE; Memory Advisory</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a></div>",
+        "content": "<div style='padding:4px 0'><a href='http://192.168.1.6:8000' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomaly-detection' target='_self'>&#x1F6A8; Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/awr-memory-advisory' target='_self'>&#x1F4BE; Memory Advisory</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a></div>",
         "mode": "html"
       },
       "pluginVersion": "12.0.2",
@@ -922,6 +922,48 @@
   ],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:8000",
+          "value": "http://192.168.1.6:8000"
+        },
+        "description": "Base URL for Portal URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:8000",
+            "value": "http://192.168.1.6:8000"
+          }
+        ],
+        "query": "http://192.168.1.6:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:3000",
+          "value": "http://192.168.1.6:3000"
+        },
+        "description": "Base URL for Grafana URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:3000",
+            "value": "http://192.168.1.6:3000"
+          }
+        ],
+        "query": "http://192.168.1.6:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
       {
         "current": {
           "text": "PostgreSQL",

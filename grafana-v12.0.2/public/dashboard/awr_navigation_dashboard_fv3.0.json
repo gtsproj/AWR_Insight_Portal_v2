@@ -14,6 +14,48 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:8000",
+          "value": "http://192.168.1.6:8000"
+        },
+        "description": "Base URL for Portal URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:8000",
+            "value": "http://192.168.1.6:8000"
+          }
+        ],
+        "query": "http://192.168.1.6:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.6:3000",
+          "value": "http://192.168.1.6:3000"
+        },
+        "description": "Base URL for Grafana URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.6:3000",
+            "value": "http://192.168.1.6:3000"
+          }
+        ],
+        "query": "http://192.168.1.6:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
         "name": "ds",
         "label": "Data Source",
         "type": "datasource",
@@ -99,7 +141,7 @@
     ]
   },
   "panels": [
-	 {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -131,7 +173,7 @@
       },
       "transparent": true
     },
-	    {
+    {
       "id": 2,
       "type": "text",
       "title": "",
@@ -147,7 +189,7 @@
       },
       "transparent": true
     },
-	    {
+    {
       "id": 3,
       "type": "text",
       "title": "",
@@ -163,7 +205,7 @@
       },
       "transparent": true
     },
-	    {
+    {
       "id": 4,
       "type": "text",
       "title": "",
@@ -179,7 +221,7 @@
       },
       "transparent": true
     },
-	    {
+    {
       "id": 5,
       "type": "text",
       "title": "",
@@ -190,12 +232,12 @@
         "y": 6
       },
       "options": {
-        "content": "\n<h3>SQL Statistics</h3>\n<ul>\n  <li><a href=\"/d/fdv31-sql-summary-top-10-by-severity/fdv3-1-sql-summary-top-10-by-severity-v2?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Summary Top 10 By Severity</a></li>\n <li><a href=\"/d/fdv31-sql-elapsed-v1/fdv3-1-sql-ordered-by-elapsed-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Elapsed Time - Top 10</a></li>\n <li><a href=\"/d/fdv31-sql-cpu-v1/fdv3-1-sql-ordered-by-cpu-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By CPU Time - Top 10 </a></li>\n <li><a href=\"/d/fdv31-sql-user_io-v1/fdv3-1-sql-ordered-by-user-io-wait-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By User IO Wait Time - Top 10 </a></li>\n <li><a href=\"/d/fdv31-sql-gets-v1/fdv3-1-sql-ordered-by-gets-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By Gets - Top 10 </a></li>\n<li><a href=\"/d/fdv31-sql-reads-v1/fdv3-1-sql-ordered-by-reads-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By Reads - Top 10 </a></li>\n <li><a href=\"/d/fdv31-phy=reads-unopt-v1/fdv3-1-sql-ordered-by-physical-reads-unoptimized-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Physical Reads UnOptimized - Top 10 </a></li>\n <li><a href=\"/d/fdv31-executions-v1/fdv3-1-sql-ordered-by-executions-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Executions - Top 10 </a></li>\n <li><a href=\"/d/fdv31-parse-calls-v1/fdv3-1-sql-ordered-by-parse-calls-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Parse Calls - Top 10</a></li>\n  <li><a href=\"/d/fdv31-sql-cluster-waits-v1/fdv3-1-sql-ordered-by-cluster-wait=time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Cluster Wait Time - Top 10</a></li>\n </ul>",	
+        "content": "\n<h3>SQL Statistics</h3>\n<ul>\n  <li><a href=\"/d/fdv31-sql-summary-top-10-by-severity/fdv3-1-sql-summary-top-10-by-severity-v2?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Summary Top 10 By Severity</a></li>\n <li><a href=\"/d/fdv31-sql-elapsed-v1/fdv3-1-sql-ordered-by-elapsed-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Elapsed Time - Top 10</a></li>\n <li><a href=\"/d/fdv31-sql-cpu-v1/fdv3-1-sql-ordered-by-cpu-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By CPU Time - Top 10 </a></li>\n <li><a href=\"/d/fdv31-sql-user_io-v1/fdv3-1-sql-ordered-by-user-io-wait-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By User IO Wait Time - Top 10 </a></li>\n <li><a href=\"/d/fdv31-sql-gets-v1/fdv3-1-sql-ordered-by-gets-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By Gets - Top 10 </a></li>\n<li><a href=\"/d/fdv31-sql-reads-v1/fdv3-1-sql-ordered-by-reads-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By Reads - Top 10 </a></li>\n <li><a href=\"/d/fdv31-phy=reads-unopt-v1/fdv3-1-sql-ordered-by-physical-reads-unoptimized-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Physical Reads UnOptimized - Top 10 </a></li>\n <li><a href=\"/d/fdv31-executions-v1/fdv3-1-sql-ordered-by-executions-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Executions - Top 10 </a></li>\n <li><a href=\"/d/fdv31-parse-calls-v1/fdv3-1-sql-ordered-by-parse-calls-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Parse Calls - Top 10</a></li>\n  <li><a href=\"/d/fdv31-sql-cluster-waits-v1/fdv3-1-sql-ordered-by-cluster-wait=time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Cluster Wait Time - Top 10</a></li>\n </ul>",
         "mode": "html"
       },
       "transparent": true
     },
-	 {
+    {
       "id": 6,
       "type": "text",
       "title": "",
@@ -206,10 +248,10 @@
         "y": 6
       },
       "options": {
-        "content": "\n<h3>Segment Statistics</h3>\n<ul>\n <li><a href=\"/d/fdv31-segment-summary-top-10-by-severity/fdv3-1-segment-summary-top-10-by-severity-v2?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Summary Top 10 By Severity</a></li>\n <li><a href=\"/d/fdv31-logl-reads-v1/fdv3-1-segment-statistics-logical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Logical Reads</a></li>\n <li><a href=\"/d/fdv31-phys-reads-v1/fdv3-1-segment-statistics-physical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Reads</a></li>\n <li><a href=\"/d/fdv31-phys-reads-reqs-v1/fdv3-1-segment-statistics-physical-reads-requests?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Read Requests</a></li>\n <li><a href=\"/d/fdv31-unopt-reads-v1/fdv3-1-segment-statistics-unoptimized-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By UnOptimized Reads</a></li>\n <li><a href=\"/d/fdv31-opt-reads-v1/fdv3-1-segment-statistics-optimized-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Optimized Reads</a></li>\n <li><a href=\"/d/fdv31-dir-phy-reads-v1/fdv3-1-segment-statistics-direct-physical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Direct Physical Reads</a></li>\n <li><a href=\"/d/fdv31-phy-writes-v1/fdv3-1-segment-statistics-physical-writes?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Ordered By Physical Writes</a></li>\n <li><a href=\"/d/fdv31-phy-write-req-v1/fdv3-1-segment-statistics-physical-write-requests?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Write Requests</a></li>\n <li><a href=\"/d/fdv31-dir-phy-writes-v1/fdv3-1-segment-statistics-direct-physical-writes?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Direct Physical Writes</a></li>\n <li><a href=\"/d/fdv31-table-scans-v1/fdv3-1-segment-statistics-table-scans?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Table Scans</a></li>\n <li><a href=\"/d/fdv31-db-blk-chg-v1/fdv3-1-segment-statistics-db-blk-chg?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By DB Block Changes</a></li>\n <li><a href=\"/d/fdv31-row-lck-wait-v1/fdv3-1-segment-statistics-row-lck-wait?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Row Lock Waits</a></li>\n <li><a href=\"/d/fdv31-itl-waits-v1/fdv3-1-segment-statistics-itl-waits?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By ITL Waits</a></li>\n <li><a href=\"/d/fdv31-buff-busy-waits-v1/fdv3-1-segment-statistics-buffer-busy-waits?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Buffer Busy Waits</a></li>\n <li><a href=\"/d/fdv31-gc-buff-busy-v1/fdv3-1-segment-statistics-gc-buffer-busy?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Global Cache Buffer Busy</a></li>\n <li><a href=\"/d/fdv31-cr-blk-recvd-v1/fdv3-1-segment-statistics-cr-blk-recvd?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By CR Blocks Received</a></li>\n <li><a href=\"/d/fdv31-curr-blk-recvd-v1/fdv3-1-segment-statistics-curr-blk-recvd?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Current Blocks Received</a></li>\n </ul>",	
+        "content": "\n<h3>Segment Statistics</h3>\n<ul>\n <li><a href=\"/d/fdv31-segment-summary-top-10-by-severity/fdv3-1-segment-summary-top-10-by-severity-v2?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Summary Top 10 By Severity</a></li>\n <li><a href=\"/d/fdv31-logl-reads-v1/fdv3-1-segment-statistics-logical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Logical Reads</a></li>\n <li><a href=\"/d/fdv31-phys-reads-v1/fdv3-1-segment-statistics-physical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Reads</a></li>\n <li><a href=\"/d/fdv31-phys-reads-reqs-v1/fdv3-1-segment-statistics-physical-reads-requests?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Read Requests</a></li>\n <li><a href=\"/d/fdv31-unopt-reads-v1/fdv3-1-segment-statistics-unoptimized-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By UnOptimized Reads</a></li>\n <li><a href=\"/d/fdv31-opt-reads-v1/fdv3-1-segment-statistics-optimized-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Optimized Reads</a></li>\n <li><a href=\"/d/fdv31-dir-phy-reads-v1/fdv3-1-segment-statistics-direct-physical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Direct Physical Reads</a></li>\n <li><a href=\"/d/fdv31-phy-writes-v1/fdv3-1-segment-statistics-physical-writes?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Ordered By Physical Writes</a></li>\n <li><a href=\"/d/fdv31-phy-write-req-v1/fdv3-1-segment-statistics-physical-write-requests?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Write Requests</a></li>\n <li><a href=\"/d/fdv31-dir-phy-writes-v1/fdv3-1-segment-statistics-direct-physical-writes?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Direct Physical Writes</a></li>\n <li><a href=\"/d/fdv31-table-scans-v1/fdv3-1-segment-statistics-table-scans?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Table Scans</a></li>\n <li><a href=\"/d/fdv31-db-blk-chg-v1/fdv3-1-segment-statistics-db-blk-chg?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By DB Block Changes</a></li>\n <li><a href=\"/d/fdv31-row-lck-wait-v1/fdv3-1-segment-statistics-row-lck-wait?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Row Lock Waits</a></li>\n <li><a href=\"/d/fdv31-itl-waits-v1/fdv3-1-segment-statistics-itl-waits?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By ITL Waits</a></li>\n <li><a href=\"/d/fdv31-buff-busy-waits-v1/fdv3-1-segment-statistics-buffer-busy-waits?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Buffer Busy Waits</a></li>\n <li><a href=\"/d/fdv31-gc-buff-busy-v1/fdv3-1-segment-statistics-gc-buffer-busy?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Global Cache Buffer Busy</a></li>\n <li><a href=\"/d/fdv31-cr-blk-recvd-v1/fdv3-1-segment-statistics-cr-blk-recvd?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By CR Blocks Received</a></li>\n <li><a href=\"/d/fdv31-curr-blk-recvd-v1/fdv3-1-segment-statistics-curr-blk-recvd?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Current Blocks Received</a></li>\n </ul>",
         "mode": "html"
       },
       "transparent": true
-    }	
+    }
   ]
 }

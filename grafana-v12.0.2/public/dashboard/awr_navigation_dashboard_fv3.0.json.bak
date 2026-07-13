@@ -16,8 +16,8 @@
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:8000",
-          "value": "http://192.168.1.6:8000"
+          "text": "${portal_url}",
+          "value": "${portal_url}"
         },
         "description": "Base URL for Portal URL — change to server IP for intranet access",
         "hide": 2,
@@ -26,19 +26,19 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:8000",
-            "value": "http://192.168.1.6:8000"
+            "text": "${portal_url}",
+            "value": "${portal_url}"
           }
         ],
-        "query": "http://192.168.1.6:8000",
+        "query": "${portal_url}",
         "skipUrlSync": false,
         "type": "textbox"
       },
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:3000",
-          "value": "http://192.168.1.6:3000"
+          "text": "${grafana_url}",
+          "value": "${grafana_url}"
         },
         "description": "Base URL for Grafana URL — change to server IP for intranet access",
         "hide": 2,
@@ -47,11 +47,11 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:3000",
-            "value": "http://192.168.1.6:3000"
+            "text": "${grafana_url}",
+            "value": "${grafana_url}"
           }
         ],
-        "query": "http://192.168.1.6:3000",
+        "query": "${grafana_url}",
         "skipUrlSync": false,
         "type": "textbox"
       },
@@ -165,7 +165,7 @@
         "h": 11,
         "w": 7,
         "x": 0,
-        "y": 7
+        "y": 2
       },
       "options": {
         "content": "\n<h3>Instance Performance</h3>\n<ul>\n  </li>\n <li><a href=\"/d/fdv31-instance-efficiency/fdv-3-1-instance-efficiency?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Instance Efficiency</a></li>\n <li><a href=\"/d/fdv31-instance-statistics/fdv-3-1-instance-statistics?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Instance Statistics </a></li>\n <li>Load Profile\n    <ul>\n      <li><a href=\"/d/fdv31-load-dbtimecpu/fdv-3-1-load-profile-dbtimecpu-sec-txn?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">DBTime / DBCPU Per Sec / Txn</a></li>\n <li><a href=\"/d/fdv31-load-blocks/fdv-3-1-load-profile-blocks-sec-txn?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Blocks Per Sec / Txn</a></li>\n <li><a href=\"/d/fdv31-load-io-request/fdv-3-1-load-profile-io-request-sec-txn?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">IO Request Per Sec / Txn</a></li>\n <li><a href=\"/d/fdv31-load-io-mb/fdv-3-1-load-profile-io-mb-sec-txn?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">IO MB Per Sec / Txn</a></li>\n <li><a href=\"/d/fdv31-load-user-calls/fdv-3-1-load-profile-user-calls-sec-txn?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">User Calls Per Sec / Txn</a></li>\n <li><a href=\"/d/fdv31-load-parses-sql/fdv-3-1-load-profile-parses-sql-sec-txn?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Parses SQL Per Sec / Txn</a></li>\n <li><a href=\"/d/fdv31-load-executes-sql/fdv-3-1-load-profile-executes-sql-sec-txn?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Executes SQL Per Sec / Txn</a></li>\n <li><a href=\"/d/fdv31-load-transactions/fdv-3-1-load-profile-transactions-sec?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Transactions Per Sec</a></li>\n </ul>\n </li>\n </u>\n  <li>IO Profile \n    <ul>\n      <li><a href=\"/d/fdv31-io-profile-read-write-requests/fdv-3-1-io-profile-read-write-requests-per-sec?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Read Write Requests Per Sec </a></li>\n <li><a href=\"/d/fdv31-io-profile-read-write-mb/fdv-3-1-io-profile-read-write-mb-per-sec?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Read Write MB Per Sec</a></li>\n <li><a href=\"/d/fdv31-io-profile-read-write-blocks/fdv-3-1-io-profile-read-write-mb-per-sec?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Read Write Blocks Per Sec</a></li>\n </ul>\n </li>\n </ul>",
@@ -196,8 +196,8 @@
       "gridPos": {
         "h": 4,
         "w": 7,
-        "x": 0,
-        "y": 7
+        "x": 7,
+        "y": 2
       },
       "options": {
         "content": "\n<h3>IO Statistics</h3>\n<ul>\n  <li><a href=\"/d/fdv31-tablespace-io/fdv-3-1-tablespace-io-stats?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Tablespace IO Stats</a></li>\n <li><a href=\"/d/fdv31-file-io/fdv-3-1-file-io-stats?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">File IO Stats</a></li>\n <li><a href=\"/d/fdv31-awr-iostat-consolidated/fdv-3-1-awr-iostat-function-and-filetype?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">AWR IO Stats - Function And Filetype</a></li>\n </ul>",
@@ -212,8 +212,8 @@
       "gridPos": {
         "h": 4,
         "w": 7,
-        "x": 0,
-        "y": 7
+        "x": 15,
+        "y": 2
       },
       "options": {
         "content": "\n<h3>Wait Statistics</h3>\n<ul>\n  <li><a href=\"/d/fdv31-buffer-wait-v1/fdv-3-1-buffer-wait-statistics?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Buffer Wait Statistics </a></li>\n  <li><a href=\"/d/fdv31-enqueue-v1/fdv-3-1-enqueue-statistics?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Enqueue Statistics </a></li>\n </ul>",
@@ -228,8 +228,8 @@
       "gridPos": {
         "h": 9,
         "w": 7,
-        "x": 0,
-        "y": 7
+        "x": 15,
+        "y": 6
       },
       "options": {
         "content": "\n<h3>SQL Statistics</h3>\n<ul>\n  <li><a href=\"/d/fdv31-sql-summary-top-10-by-severity/fdv3-1-sql-summary-top-10-by-severity-v2?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Summary Top 10 By Severity</a></li>\n <li><a href=\"/d/fdv31-sql-elapsed-v1/fdv3-1-sql-ordered-by-elapsed-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Elapsed Time - Top 10</a></li>\n <li><a href=\"/d/fdv31-sql-cpu-v1/fdv3-1-sql-ordered-by-cpu-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By CPU Time - Top 10 </a></li>\n <li><a href=\"/d/fdv31-sql-user_io-v1/fdv3-1-sql-ordered-by-user-io-wait-time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By User IO Wait Time - Top 10 </a></li>\n <li><a href=\"/d/fdv31-sql-gets-v1/fdv3-1-sql-ordered-by-gets-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By Gets - Top 10 </a></li>\n<li><a href=\"/d/fdv31-sql-reads-v1/fdv3-1-sql-ordered-by-reads-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered By Reads - Top 10 </a></li>\n <li><a href=\"/d/fdv31-phy=reads-unopt-v1/fdv3-1-sql-ordered-by-physical-reads-unoptimized-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Physical Reads UnOptimized - Top 10 </a></li>\n <li><a href=\"/d/fdv31-executions-v1/fdv3-1-sql-ordered-by-executions-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Executions - Top 10 </a></li>\n <li><a href=\"/d/fdv31-parse-calls-v1/fdv3-1-sql-ordered-by-parse-calls-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Parse Calls - Top 10</a></li>\n  <li><a href=\"/d/fdv31-sql-cluster-waits-v1/fdv3-1-sql-ordered-by-cluster-wait=time-top-10?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">SQL Ordered by Cluster Wait Time - Top 10</a></li>\n </ul>",
@@ -244,8 +244,8 @@
       "gridPos": {
         "h": 9,
         "w": 7,
-        "x": 0,
-        "y": 7
+        "x": 7,
+        "y": 6
       },
       "options": {
         "content": "\n<h3>Segment Statistics</h3>\n<ul>\n <li><a href=\"/d/fdv31-segment-summary-top-10-by-severity/fdv3-1-segment-summary-top-10-by-severity-v2?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Summary Top 10 By Severity</a></li>\n <li><a href=\"/d/fdv31-logl-reads-v1/fdv3-1-segment-statistics-logical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Logical Reads</a></li>\n <li><a href=\"/d/fdv31-phys-reads-v1/fdv3-1-segment-statistics-physical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Reads</a></li>\n <li><a href=\"/d/fdv31-phys-reads-reqs-v1/fdv3-1-segment-statistics-physical-reads-requests?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Read Requests</a></li>\n <li><a href=\"/d/fdv31-unopt-reads-v1/fdv3-1-segment-statistics-unoptimized-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By UnOptimized Reads</a></li>\n <li><a href=\"/d/fdv31-opt-reads-v1/fdv3-1-segment-statistics-optimized-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Optimized Reads</a></li>\n <li><a href=\"/d/fdv31-dir-phy-reads-v1/fdv3-1-segment-statistics-direct-physical-reads?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Direct Physical Reads</a></li>\n <li><a href=\"/d/fdv31-phy-writes-v1/fdv3-1-segment-statistics-physical-writes?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Ordered By Physical Writes</a></li>\n <li><a href=\"/d/fdv31-phy-write-req-v1/fdv3-1-segment-statistics-physical-write-requests?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Physical Write Requests</a></li>\n <li><a href=\"/d/fdv31-dir-phy-writes-v1/fdv3-1-segment-statistics-direct-physical-writes?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Direct Physical Writes</a></li>\n <li><a href=\"/d/fdv31-table-scans-v1/fdv3-1-segment-statistics-table-scans?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Table Scans</a></li>\n <li><a href=\"/d/fdv31-db-blk-chg-v1/fdv3-1-segment-statistics-db-blk-chg?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By DB Block Changes</a></li>\n <li><a href=\"/d/fdv31-row-lck-wait-v1/fdv3-1-segment-statistics-row-lck-wait?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Row Lock Waits</a></li>\n <li><a href=\"/d/fdv31-itl-waits-v1/fdv3-1-segment-statistics-itl-waits?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By ITL Waits</a></li>\n <li><a href=\"/d/fdv31-buff-busy-waits-v1/fdv3-1-segment-statistics-buffer-busy-waits?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Buffer Busy Waits</a></li>\n <li><a href=\"/d/fdv31-gc-buff-busy-v1/fdv3-1-segment-statistics-gc-buffer-busy?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Global Cache Buffer Busy</a></li>\n <li><a href=\"/d/fdv31-cr-blk-recvd-v1/fdv3-1-segment-statistics-cr-blk-recvd?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By CR Blocks Received</a></li>\n <li><a href=\"/d/fdv31-curr-blk-recvd-v1/fdv3-1-segment-statistics-curr-blk-recvd?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_blank\">Segment Ordered By Current Blocks Received</a></li>\n </ul>",
