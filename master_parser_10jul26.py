@@ -35,14 +35,8 @@ _SAR_MODULES = {
     "sar_disk_parser", "sar_master_parser",
     "sar_network_parser", "sar_paging_parser",
     "sar_ctxswitch_parser", "sar_loadavg_parser",
-    "sar_hugepage_parser", "sar_socket_parser",
+    "sar_hugepage_parser","sar_socket_parser",
     "plan_parser",
-    # Non-parser modules — must not be exec'd as AWR parsers
-    "license_engine",          # has argparse CLI
-    "license_engine_10jul26",  # stray backup copy — delete from modules/
-    "remote_fetch",            # remote file fetch framework
-    "recommendation_engine",   # called separately after parse
-    "ai_engine",               # AI engine
 }
 
 # ── materialized views to refresh after each file ─────────────────────
@@ -67,42 +61,28 @@ def _load_module(script_path: str):
 
 
 def _run_module(module, module_name: str, filepath: str) -> bool:
-    # Interface 1: main(filepath)
     if hasattr(module, "main"):
         module.main(filepath)
         return True
 
-    # Interface 2: parse() + insert()
     if hasattr(module, "parse") and hasattr(module, "insert"):
         records = module.parse(filepath)
         module.insert(records)
         return True
 
-    # Interface 3: exec with __name__=__main__
-    # Most parsers use: if __name__ == "__main__": ... parse/insert ...
-    # Set sys.argv = [script, filepath] so sys.argv[1] works in parsers.
-    # Also inject "filepath" global for parsers that use it directly.
-    # sys.argv override also prevents argparse CLIs (license_engine etc.)
-    # from picking up subcommand args — they'll get filepath as positional
-    # which is harmless since those modules are excluded via _SAR_MODULES.
-    file_origin = getattr(module, "__file__", None)
+    logger.debug(f"Module {module_name} has no main() or parse()/insert() — using exec fallback")
+    try:
+        spec = importlib.util.find_spec(module_name)
+        origin = spec.origin if spec else None
+    except Exception:
+        origin = None
+
+    file_origin = getattr(module, "__file__", None) or origin
     if file_origin and os.path.isfile(file_origin):
-        _orig_argv = sys.argv[:]
-        sys.argv = [file_origin, filepath]
-        try:
-            with open(file_origin, encoding="utf-8") as fh:
-                code = compile(fh.read(), file_origin, "exec")
-            exec(code, {
-                "__file__":     file_origin,
-                "__name__":     "__main__",
-                "filepath":     filepath,
-                "__builtins__": __builtins__,
-            })
-            return True
-        except SystemExit:
-            return True  # normal exit from __main__ block
-        finally:
-            sys.argv = _orig_argv
+        with open(file_origin, encoding="utf-8") as f:
+            code = compile(f.read(), file_origin, "exec")
+        exec(code, {"__file__": file_origin, "__name__": "__main__", "filepath": filepath})
+        return True
 
     logger.error(f"Cannot invoke module {module_name} — no supported interface found")
     return False
