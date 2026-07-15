@@ -38,7 +38,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style='padding:4px 0'><a href='http://192.168.1.6:8000' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomaly-detection' target='_self'>&#x1F6A8; Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/awr-memory-advisory' target='_self'>&#x1F4BE; Memory Advisory</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a></div>",
+        "content": "<div style='padding:4px 0'><a href='${portal_url}' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomalies' target='_self'>&#x1F6A8; Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/sar-awr-correlation' target='_self'>&#x1F517; AWR+SAR Correlation</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a> &nbsp;|&nbsp; <a href='/d/awr-memory-advisory' target='_self'>&#x1F4BE; Memory Advisory &amp; Efficiency</a> &nbsp;|&nbsp; <a href='${portal_url}/ai-recommendations' target='_self'>&#x1F916; AI Recommendations</a></div>",
         "mode": "html"
       },
       "pluginVersion": "12.0.2",
@@ -47,17 +47,29 @@
       "type": "text"
     },
     {
-      "collapsed": false,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
-        "h": 1,
+        "h": 3,
         "w": 24,
         "x": 0,
         "y": 2
       },
-      "id": 3,
-      "panels": [],
-      "title": "📊 Top Issues — Wait Events · SQL · Segments (RAG Scored)",
-      "type": "row"
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='font-size:.85rem;line-height:1.8;padding:4px 8px'><b>1.</b> Select <b>Database → Instance → Start Snap → End Snap</b> from the dropdowns above.<br><b>2.</b> The three rows below show <b>Wait Events · SQL · Segments</b> as donut charts + RAG tables (🔴🟠🟡🟢).<br><b>3.</b> <b>Click any row</b> in the Wait Events, SQL, or Segments table to drill in — the Correlation panel will automatically populate with linked objects + recommendation.<br><b>4.</b> The <b>Active Recommendations</b> panel shows detailed root cause + resolution steps from the rules engine.<br><b>5.</b> <b>SGA/PGA Advisory</b> shows memory sizing recommendations with OS memory safety validation.<br><b>Tip:</b> Use <b>Wait Scope</b> (All / Foreground / Background) and <b>RAG Mode</b> (normalized / percentile) to adjust scoring sensitivity.</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.2",
+      "title": "ℹ How to use",
+      "type": "text"
     },
     {
       "datasource": {
@@ -81,18 +93,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 8,
+        "h": 10,
+        "w": 12,
         "x": 0,
-        "y": 3
+        "y": 5
       },
       "id": 4,
       "options": {
-        "displayLabels": [
-          "name",
-          "value",
-          "percent"
-        ],
+        "displayLabels": [],
         "legend": {
           "displayMode": "table",
           "placement": "right",
@@ -249,10 +257,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
-        "w": 16,
-        "x": 8,
-        "y": 3
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 5
       },
       "id": 5,
       "options": {
@@ -305,18 +313,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 8,
+        "h": 12,
+        "w": 12,
         "x": 0,
-        "y": 17
+        "y": 15
       },
       "id": 6,
       "options": {
-        "displayLabels": [
-          "name",
-          "value",
-          "percent"
-        ],
+        "displayLabels": [],
         "legend": {
           "displayMode": "table",
           "placement": "right",
@@ -426,10 +430,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
-        "w": 16,
-        "x": 8,
-        "y": 17
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 15
       },
       "id": 7,
       "options": {
@@ -482,18 +486,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 8,
+        "h": 13,
+        "w": 12,
         "x": 0,
-        "y": 31
+        "y": 27
       },
       "id": 8,
       "options": {
-        "displayLabels": [
-          "name",
-          "value",
-          "percent"
-        ],
+        "displayLabels": [],
         "legend": {
           "displayMode": "table",
           "placement": "right",
@@ -599,10 +599,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
-        "w": 16,
-        "x": 8,
-        "y": 31
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 27
       },
       "id": 9,
       "options": {
@@ -639,7 +639,20 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 40
+      },
+      "id": 3,
+      "panels": [],
+      "title": "📊 Top Issues — Wait Events · SQL · Segments (RAG Scored)",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 41
       },
       "id": 10,
       "panels": [],
@@ -708,7 +721,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 42
       },
       "id": 11,
       "options": {
@@ -763,11 +776,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 54
       },
       "id": 12,
       "panels": [],
-      "title": "✅ Active Recommendations (Rules Engine)",
+      "title": "✅ Active Recommendations — Rules Mode Only (switch to AI Recs page for AI mode)",
       "type": "row"
     },
     {
@@ -879,7 +892,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 55
       },
       "id": 13,
       "options": {
@@ -917,16 +930,15 @@
     "awr",
     "intelligence",
     "correlation",
-    "recommendations",
-    "rules"
+    "advisory",
+    "recommendations"
   ],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "http://192.168.1.6:8000",
-          "value": "http://192.168.1.6:8000"
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
         },
         "description": "Base URL for Portal URL — change to server IP for intranet access",
         "hide": 2,
@@ -935,19 +947,17 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:8000",
-            "value": "http://192.168.1.6:8000"
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
           }
         ],
-        "query": "http://192.168.1.6:8000",
-        "skipUrlSync": false,
+        "query": "http://192.168.1.12:8000",
         "type": "textbox"
       },
       {
         "current": {
-          "selected": false,
-          "text": "http://192.168.1.6:3000",
-          "value": "http://192.168.1.6:3000"
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
         },
         "description": "Base URL for Grafana URL — change to server IP for intranet access",
         "hide": 2,
@@ -956,12 +966,11 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:3000",
-            "value": "http://192.168.1.6:3000"
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
           }
         ],
-        "query": "http://192.168.1.6:3000",
-        "skipUrlSync": false,
+        "query": "http://192.168.1.12:3000",
         "type": "textbox"
       },
       {
@@ -1153,8 +1162,8 @@
       },
       {
         "current": {
-          "text": "",
-          "value": ""
+          "text": "sql",
+          "value": "sql"
         },
         "hide": 2,
         "label": "Focus Type",
@@ -1162,17 +1171,17 @@
         "options": [
           {
             "selected": true,
-            "text": "",
-            "value": ""
+            "text": "sql",
+            "value": "sql"
           }
         ],
-        "query": "",
+        "query": "sql",
         "type": "textbox"
       },
       {
         "current": {
-          "text": "",
-          "value": ""
+          "text": "6274uqr732h63",
+          "value": "6274uqr732h63"
         },
         "hide": 2,
         "label": "Focus Value",
@@ -1180,11 +1189,11 @@
         "options": [
           {
             "selected": true,
-            "text": "",
-            "value": ""
+            "text": "6274uqr732h63",
+            "value": "6274uqr732h63"
           }
         ],
-        "query": "",
+        "query": "6274uqr732h63",
         "type": "textbox"
       }
     ]
@@ -1197,7 +1206,7 @@
     "hidden": true
   },
   "timezone": "Asia/Kolkata",
-  "title": "AWR Intelligence — Wait · SQL · Segment · Correlation & Recommendations",
+  "title": "AWR Intelligence — Wait · SQL · Segment · Correlation · Advisory",
   "uid": "awr-unified-intelligence",
-  "version": 2
+  "version": 35
 }
