@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 683,
+  "id": 679,
   "links": [],
   "panels": [
     {
@@ -57,7 +57,7 @@
       },
       "id": 100,
       "panels": [],
-      "title": "🖥️ CPU",
+      "title": "\ud83d\udda5\ufe0f CPU",
       "type": "row"
     },
     {
@@ -152,7 +152,7 @@
           "refId": "A"
         }
       ],
-      "title": "CPU — %user / %system / %iowait / %idle",
+      "title": "CPU \u2014 %user / %system / %iowait / %idle",
       "type": "timeseries"
     },
     {
@@ -299,7 +299,7 @@
       },
       "id": 101,
       "panels": [],
-      "title": "🧠 Memory",
+      "title": "\ud83e\udde0 Memory",
       "type": "row"
     },
     {
@@ -394,7 +394,7 @@
           "refId": "A"
         }
       ],
-      "title": "Memory — Used MB / Free MB",
+      "title": "Memory \u2014 Used MB / Free MB",
       "type": "timeseries"
     },
     {
@@ -489,7 +489,7 @@
           "refId": "A"
         }
       ],
-      "title": "Memory — Used % / Commit %",
+      "title": "Memory \u2014 Used % / Commit %",
       "type": "timeseries"
     },
     {
@@ -502,7 +502,7 @@
       },
       "id": 102,
       "panels": [],
-      "title": "💾 Swap",
+      "title": "\ud83d\udcbe Swap",
       "type": "row"
     },
     {
@@ -668,7 +668,7 @@
       },
       "id": 103,
       "panels": [],
-      "title": "💿 Disk I/O",
+      "title": "\ud83d\udcbf Disk I/O",
       "type": "row"
     },
     {
@@ -715,7 +715,7 @@
           "refId": "A"
         }
       ],
-      "title": "Disk I/O — Read MB/s + Write MB/s (all devices)",
+      "title": "Disk I/O \u2014 Read MB/s + Write MB/s (all devices)",
       "type": "timeseries"
     },
     {
@@ -775,7 +775,7 @@
       },
       "id": 104,
       "panels": [],
-      "title": "🌐 Network",
+      "title": "\ud83c\udf10 Network",
       "type": "row"
     },
     {
@@ -822,7 +822,7 @@
           "refId": "A"
         }
       ],
-      "title": "Network — Total rxkB/s + txkB/s",
+      "title": "Network \u2014 Total rxkB/s + txkB/s",
       "type": "timeseries"
     },
     {
@@ -882,7 +882,7 @@
       },
       "id": 105,
       "panels": [],
-      "title": "📊 Load & Context Switches",
+      "title": "\ud83d\udcca Load & Context Switches",
       "type": "row"
     },
     {
@@ -1033,7 +1033,7 @@
       },
       "id": 106,
       "panels": [],
-      "title": "📄 Paging",
+      "title": "\ud83d\udcc4 Paging",
       "type": "row"
     },
     {
@@ -1151,7 +1151,7 @@
       },
       "id": 107,
       "panels": [],
-      "title": "💿 Disk Detail — Per Device Analysis",
+      "title": "\ud83d\udcbf Disk Detail \u2014 Per Device Analysis",
       "type": "row"
     },
     {
@@ -1201,7 +1201,7 @@
           "refId": "A"
         }
       ],
-      "title": "Disk Throughput per Device — Read MB/s",
+      "title": "Disk Throughput per Device \u2014 Read MB/s",
       "type": "timeseries"
     },
     {
@@ -1251,7 +1251,7 @@
           "refId": "A"
         }
       ],
-      "title": "Disk Throughput per Device — Write MB/s",
+      "title": "Disk Throughput per Device \u2014 Write MB/s",
       "type": "timeseries"
     },
     {
@@ -1335,7 +1335,7 @@
           "refId": "A"
         }
       ],
-      "title": "Disk Await (ms) per Device — High = Slow / Saturated Disk",
+      "title": "Disk Await (ms) per Device \u2014 High = Slow / Saturated Disk",
       "type": "timeseries"
     },
     {
@@ -1419,7 +1419,7 @@
           "refId": "A"
         }
       ],
-      "title": "Disk %util per Device — High = I/O Bottleneck",
+      "title": "Disk %util per Device \u2014 High = I/O Bottleneck",
       "type": "timeseries"
     },
     {
@@ -1498,11 +1498,11 @@
             "uid": "ferwfz6k211j4b"
           },
           "format": "table",
-          "rawSql": "\nSELECT\n    device                                  AS \"Device\",\n    ROUND(AVG(tps)::numeric, 1)             AS \"Avg TPS\",\n    ROUND(AVG(read_mb_per_sec)::numeric, 2) AS \"Avg Read MB/s\",\n    ROUND(AVG(write_mb_per_sec)::numeric,2) AS \"Avg Write MB/s\",\n    ROUND(AVG(await_ms)::numeric, 2)        AS \"Avg Await (ms)\",\n    ROUND(AVG(svctm_ms)::numeric, 2)        AS \"Avg SvcTm (ms)\",\n    ROUND(AVG(util_pct)::numeric, 1)        AS \"Avg %util\",\n    ROUND(MAX(util_pct)::numeric, 1)        AS \"Peak %util\",\n    ROUND(MAX(await_ms)::numeric, 2)        AS \"Peak Await (ms)\",\n    CASE\n        WHEN AVG(util_pct) >= 85 THEN '🔴 SATURATED'\n        WHEN AVG(util_pct) >= 60 THEN '🟠 HIGH'\n        WHEN AVG(await_ms) >= 50 THEN '🟡 SLOW'\n        ELSE '🟢 OK'\n    END                                     AS \"Status\"\nFROM sar_disk_stats\nWHERE '${hostname}' != '' AND hostname = '${hostname}'\n  AND snap_time::date BETWEEN to_date('${from_date}','DD-Mon-YYYY') AND to_date('${to_date}','DD-Mon-YYYY')\nGROUP BY device\nORDER BY AVG(util_pct) DESC NULLS LAST\nLIMIT 20",
+          "rawSql": "\nSELECT\n    device                                  AS \"Device\",\n    ROUND(AVG(tps)::numeric, 1)             AS \"Avg TPS\",\n    ROUND(AVG(read_mb_per_sec)::numeric, 2) AS \"Avg Read MB/s\",\n    ROUND(AVG(write_mb_per_sec)::numeric,2) AS \"Avg Write MB/s\",\n    ROUND(AVG(await_ms)::numeric, 2)        AS \"Avg Await (ms)\",\n    ROUND(AVG(svctm_ms)::numeric, 2)        AS \"Avg SvcTm (ms)\",\n    ROUND(AVG(util_pct)::numeric, 1)        AS \"Avg %util\",\n    ROUND(MAX(util_pct)::numeric, 1)        AS \"Peak %util\",\n    ROUND(MAX(await_ms)::numeric, 2)        AS \"Peak Await (ms)\",\n    CASE\n        WHEN AVG(util_pct) >= 85 THEN '\ud83d\udd34 SATURATED'\n        WHEN AVG(util_pct) >= 60 THEN '\ud83d\udfe0 HIGH'\n        WHEN AVG(await_ms) >= 50 THEN '\ud83d\udfe1 SLOW'\n        ELSE '\ud83d\udfe2 OK'\n    END                                     AS \"Status\"\nFROM sar_disk_stats\nWHERE '${hostname}' != '' AND hostname = '${hostname}'\n  AND snap_time::date BETWEEN to_date('${from_date}','DD-Mon-YYYY') AND to_date('${to_date}','DD-Mon-YYYY')\nGROUP BY device\nORDER BY AVG(util_pct) DESC NULLS LAST\nLIMIT 20",
           "refId": "A"
         }
       ],
-      "title": "Top Disks by I/O — Summary (avg over selected period)",
+      "title": "Top Disks by I/O \u2014 Summary (avg over selected period)",
       "type": "table"
     },
     {
@@ -1515,7 +1515,7 @@
       },
       "id": 114,
       "panels": [],
-      "title": "🧠 HugePages — Oracle SGA Memory Allocation",
+      "title": "\ud83e\udde0 HugePages \u2014 Oracle SGA Memory Allocation",
       "type": "row"
     },
     {
@@ -1800,7 +1800,7 @@
           "refId": "A"
         }
       ],
-      "title": "HugePages Trend — Used MB vs Free MB",
+      "title": "HugePages Trend \u2014 Used MB vs Free MB",
       "type": "timeseries"
     },
     {
@@ -1880,7 +1880,7 @@
           "refId": "A"
         }
       ],
-      "title": "HugePages Used % — Alert if consistently < 0.1% free",
+      "title": "HugePages Used % \u2014 Alert if consistently < 0.1% free",
       "type": "timeseries"
     },
     {
@@ -1893,7 +1893,7 @@
       },
       "id": 121,
       "panels": [],
-      "title": "🔌 Socket Stats — Connection Activity & Session Bursts",
+      "title": "\ud83d\udd0c Socket Stats \u2014 Connection Activity & Session Bursts",
       "type": "row"
     },
     {
@@ -1939,7 +1939,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total Sockets vs TCP Sockets — Sudden rise = session burst",
+      "title": "Total Sockets vs TCP Sockets \u2014 Sudden rise = session burst",
       "type": "timeseries"
     },
     {
@@ -2026,7 +2026,7 @@
           "refId": "A"
         }
       ],
-      "title": "TCP TIME_WAIT Connections — Spike = App Server Connection Storm",
+      "title": "TCP TIME_WAIT Connections \u2014 Spike = App Server Connection Storm",
       "type": "timeseries"
     },
     {
@@ -2072,12 +2072,12 @@
           "refId": "A"
         }
       ],
-      "title": "Connection Health — Total Sockets + TIME_WAIT Correlation",
+      "title": "Connection Health \u2014 Total Sockets + TIME_WAIT Correlation",
       "type": "timeseries"
     }
   ],
   "preload": false,
-  "refresh": "30s",
+  "refresh": "",
   "schemaVersion": 41,
   "tags": [
     "sar",
@@ -2099,71 +2099,79 @@
         "type": "datasource"
       },
       {
-        "current": {
-          "text": "",
-          "value": ""
-        },
-        "datasource": {
-          "type": "postgres",
-          "uid": "ferwfz6k211j4b"
-        },
-        "includeAll": false,
-        "label": "Hostname",
         "name": "hostname",
-        "options": [],
-        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT hostname AS value, hostname AS label FROM sar_cpu_stats) AS t ORDER BY value;",
+        "label": "Hostname",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
         "refresh": 2,
-        "regex": "",
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
         "sort": 1,
-        "type": "query"
+        "regex": "",
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT hostname AS value, hostname AS label FROM sar_cpu_stats) AS t ORDER BY value;"
       },
       {
-        "current": {
-          "text": "",
-          "value": ""
-        },
-        "datasource": {
-          "type": "postgres",
-          "uid": "ferwfz6k211j4b"
-        },
-        "includeAll": false,
-        "label": "From Date",
         "name": "from_date",
-        "options": [],
-        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT    to_char(snap_time::date,'DD-Mon-YYYY') AS value,    to_char(snap_time::date,'DD-Mon-YYYY') AS label  FROM sar_cpu_stats WHERE hostname='${hostname}' AND cpu='all') AS t ORDER BY value ASC;",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "",
-          "value": ""
-        },
+        "label": "From Date",
+        "type": "query",
         "datasource": {
           "type": "postgres",
           "uid": "ferwfz6k211j4b"
         },
-        "includeAll": false,
-        "label": "To Date",
-        "name": "to_date",
-        "options": [],
-        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT    to_char(snap_time::date,'DD-Mon-YYYY') AS value,    to_char(snap_time::date,'DD-Mon-YYYY') AS label  FROM sar_cpu_stats WHERE hostname='${hostname}' AND cpu='all') AS t ORDER BY value ASC;",
         "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 0,
         "regex": "",
-        "type": "query"
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT    to_char(snap_time::date,'DD-Mon-YYYY') AS value,    to_char(snap_time::date,'DD-Mon-YYYY') AS label  FROM sar_cpu_stats WHERE hostname='${hostname}' AND cpu='all') AS t ORDER BY value ASC;"
+      },
+      {
+        "name": "to_date",
+        "label": "To Date",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 0,
+        "regex": "",
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT    to_char(snap_time::date,'DD-Mon-YYYY') AS value,    to_char(snap_time::date,'DD-Mon-YYYY') AS label  FROM sar_cpu_stats WHERE hostname='${hostname}' AND cpu='all') AS t ORDER BY value ASC;"
       }
     ]
   },
   "time": {
-    "from": "now-365d",
+    "from": "now-1d",
     "to": "now"
   },
   "timepicker": {
     "hidden": true
   },
   "timezone": "Asia/Kolkata",
-  "title": "SAR — System Resource Overview",
+  "title": "SAR \u2014 System Resource Overview",
   "uid": "sar-overview",
-  "version": 2
+  "version": 7
 }
