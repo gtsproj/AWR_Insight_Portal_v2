@@ -106,18 +106,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 8,
+        "h": 10,
+        "w": 12,
         "x": 0,
         "y": 6
       },
       "id": 4,
       "options": {
-        "displayLabels": [
-          "name",
-          "value",
-          "percent"
-        ],
+        "displayLabels": [],
         "legend": {
           "displayMode": "table",
           "placement": "right",
@@ -274,9 +270,9 @@
         ]
       },
       "gridPos": {
-        "h": 14,
-        "w": 16,
-        "x": 8,
+        "h": 10,
+        "w": 12,
+        "x": 12,
         "y": 6
       },
       "id": 5,
@@ -330,18 +326,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 8,
+        "h": 12,
+        "w": 12,
         "x": 0,
-        "y": 20
+        "y": 16
       },
       "id": 6,
       "options": {
-        "displayLabels": [
-          "name",
-          "value",
-          "percent"
-        ],
+        "displayLabels": [],
         "legend": {
           "displayMode": "table",
           "placement": "right",
@@ -451,10 +443,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
-        "w": 16,
-        "x": 8,
-        "y": 20
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 16
       },
       "id": 7,
       "options": {
@@ -507,18 +499,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 8,
+        "h": 13,
+        "w": 12,
         "x": 0,
-        "y": 34
+        "y": 27
       },
       "id": 8,
       "options": {
-        "displayLabels": [
-          "name",
-          "value",
-          "percent"
-        ],
+        "displayLabels": [],
         "legend": {
           "displayMode": "table",
           "placement": "right",
@@ -624,10 +612,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
-        "w": 16,
-        "x": 8,
-        "y": 34
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 27
       },
       "id": 9,
       "options": {
@@ -664,7 +652,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 55
       },
       "id": 10,
       "panels": [],
@@ -733,7 +721,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 56
       },
       "id": 11,
       "options": {
@@ -796,7 +784,6 @@
     "list": [
       {
         "current": {
-          "selected": false,
           "text": "http://192.168.1.12:8000",
           "value": "http://192.168.1.12:8000"
         },
@@ -812,12 +799,10 @@
           }
         ],
         "query": "http://192.168.1.12:8000",
-        "skipUrlSync": false,
         "type": "textbox"
       },
       {
         "current": {
-          "selected": false,
           "text": "http://192.168.1.12:3000",
           "value": "http://192.168.1.12:3000"
         },
@@ -833,7 +818,6 @@
           }
         ],
         "query": "http://192.168.1.12:3000",
-        "skipUrlSync": false,
         "type": "textbox"
       },
       {
@@ -1071,5 +1055,5 @@
   "timezone": "Asia/Kolkata",
   "title": "AWR Intelligence — Wait · SQL · Segment · Correlation",
   "uid": "awr-intelligence-ai",
-  "version": 16
+  "version": 22
 }
