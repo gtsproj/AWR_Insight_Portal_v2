@@ -863,15 +863,19 @@ def _log_license_event(status: str, message: str, db_used: int, sar_used: int):
 # DB-LEVEL ENFORCEMENT (per-DB parsing control)
 # ══════════════════════════════════════════════════════════════════
 
-def is_db_licensed(dbname: str, conn) -> bool:
+def is_db_licensed(dbname: str, conn, queued_dbs: set = None) -> bool:
     """
-    Check if a specific database instance is within the licensed count.
-    Uses awr_db_info as master — queries by db_name or instance name.
-    Licensed DBs = first N by created_at in awr_db_info where N = db_limit.
+    Check if a specific database is within the licensed count.
+
+    Rules:
+    - Enterprise (-1) → always True
+    - DB already in awr_db_info → it IS licensed (it got there by passing a prior check)
+    - DB not in awr_db_info but in queued_dbs (DONE/PROCESSING) → also licensed
+    - New DB never seen before → licensed only if (existing_count < db_limit)
     """
     try:
         with conn.cursor() as cur:
-            # Check explicit whitelist first
+            # Explicit whitelist
             cur.execute("""
                 SELECT 1 FROM awr_licensed_dbs
                 WHERE dbname = %s AND active = TRUE
@@ -882,32 +886,51 @@ def is_db_licensed(dbname: str, conn) -> bool:
             # Get license limit
             cur.execute("""
                 SELECT key, value FROM portal_config
-                WHERE key IN ('license_key','license_db_count')
+                WHERE key IN ('license_key', 'license_db_count')
             """)
             cfg      = {r[0]: r[1] for r in cur.fetchall()}
             key_info = validate_license_key(cfg.get("license_key", ""))
             db_limit = key_info.get("db_limit", 5)
+
             if db_limit == -1:
                 return True  # Enterprise unlimited
 
-            # Check if this db_name or instance is within the first N
-            # in awr_db_info (ordered by first created_at per db_name+instance)
-            cur.execute("""
-                WITH ranked AS (
-                    SELECT DISTINCT ON (db_name, instance)
-                        db_name, instance,
-                        MIN(created_at) OVER (PARTITION BY db_name, instance) AS first_seen
-                    FROM awr_db_info
-                    ORDER BY db_name, instance, created_at
+            # Get DBs already in awr_db_info (already parsed at least once)
+            cur.execute("SELECT DISTINCT db_name FROM awr_db_info")
+            known_dbs = {r[0].upper() for r in cur.fetchall()}
+
+            dbname_up = dbname.upper()
+
+            # If DB is already in awr_db_info → always allow
+            # It was registered when it first parsed successfully
+            if dbname_up in known_dbs:
+                return True
+
+            # If DB is in queued_dbs (currently processing/done in this session)
+            # → it already passed the license check earlier, allow continuation
+            if queued_dbs and dbname_up in {d.upper() for d in queued_dbs}:
+                return True
+
+            # New DB never seen before
+            # Count all licensed slots already consumed:
+            # = DBs in awr_db_info + DBs in queued_dbs that aren't in awr_db_info yet
+            queued_upper = {d.upper() for d in queued_dbs} if queued_dbs else set()
+            new_queued   = queued_upper - known_dbs  # queued but not yet in db_info
+            total_used   = len(known_dbs) + len(new_queued)
+
+            if total_used < db_limit:
+                logger.info(
+                    f"is_db_licensed: '{dbname_up}' is new DB #{total_used + 1} "
+                    f"of {db_limit} licensed — allowed."
                 )
-                SELECT db_name, instance
-                FROM ranked
-                ORDER BY first_seen
-                LIMIT %s
-            """, (db_limit,))
-            licensed_set = {r[0] for r in cur.fetchall()} | \
-                           {r[1] for r in cur.fetchall() if r[1]}
-            return dbname in licensed_set
+                return True
+
+            logger.warning(
+                f"is_db_licensed: '{dbname_up}' would be DB #{total_used + 1} "
+                f"but license allows only {db_limit}. "
+                f"Known DBs: {known_dbs}, Queued: {new_queued}. Blocking."
+            )
+            return False
 
     except Exception as e:
         logger.debug(f"is_db_licensed check failed: {e}")
