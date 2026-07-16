@@ -1,0 +1,690 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 684,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 99,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='padding:4px 0'><a href='${portal_url}' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-problem-areas' target='_self'>&#x26A0;&#xFE0F; Problem Areas</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a> &nbsp;|&nbsp; <a href='/d/fdv31-awr-nav' target='_self'>&#x1F4CC; Navigation Hub</a></div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 98,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<b>AWR+SAR Correlation</b> \u2014 Overlays Oracle wait events with OS metrics on the same timeline. Select DB \u2192 Instance \u2192 Start/End Snap \u2192 SAR Hostname. SAR hostname list is pre-filtered to hosts with data matching the selected snap time window.",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 200,
+      "panels": [],
+      "title": "I/O Correlation: Oracle Wait vs OS iowait",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OS iowait %"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  event AS metric, pct_db_time AS \"Oracle Wait % DB Time\"\nFROM awr_foreground_wait_events\nWHERE dbname='${dbname}' AND '${dbname}' != ''\n  AND instance='${instance}' AND '${instance}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND begin_snap BETWEEN split_part('${start_snap}',' - ',1)::int\n                     AND split_part('${end_snap}',' - ',1)::int\n  AND event IN ('db file sequential read','db file scattered read','direct path read')\nORDER BY snap_time",
+          "refId": "Oracle_IO"
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, iowait_pct AS \"OS iowait %\"\nFROM sar_cpu_stats\nWHERE hostname='${hostname}' AND '${hostname}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND snap_time BETWEEN\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${start_snap}',' - ',1)::int LIMIT 1)\n    AND\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${end_snap}',' - ',1)::int LIMIT 1)\n  AND cpu='all'\nORDER BY snap_time",
+          "refId": "SAR_IO"
+        }
+      ],
+      "title": "Oracle I/O Wait Events % DB Time  vs  OS iowait %",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 201,
+      "panels": [],
+      "title": "CPU Correlation: Oracle CPU % vs OS CPU",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  ROUND(AVG(cpu_per_exec_s)::numeric,2) AS \"Oracle CPU (s/exec)\"\nFROM awr_sql_cpu_time\nWHERE dbname='${dbname}' AND '${dbname}' != ''\n  AND instance='${instance}' AND '${instance}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND begin_snap BETWEEN split_part('${start_snap}',' - ',1)::int\n                     AND split_part('${end_snap}',' - ',1)::int\nGROUP BY snap_time ORDER BY snap_time",
+          "refId": "Oracle_CPU"
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  usr_pct AS \"OS user %\", system_pct AS \"OS system %\"\nFROM sar_cpu_stats\nWHERE hostname='${hostname}' AND '${hostname}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND snap_time BETWEEN\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${start_snap}',' - ',1)::int LIMIT 1)\n    AND\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${end_snap}',' - ',1)::int LIMIT 1)\n  AND cpu='all'\nORDER BY snap_time",
+          "refId": "SAR_CPU"
+        }
+      ],
+      "title": "Oracle CPU Time % vs OS CPU user/system %",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 202,
+      "panels": [],
+      "title": "Memory Correlation: OS Memory vs Swap",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  mem_used_pct AS \"Mem Used %\", commit_pct AS \"Commit %\"\nFROM sar_memory_stats\nWHERE hostname='${hostname}' AND '${hostname}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND snap_time BETWEEN\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${start_snap}',' - ',1)::int LIMIT 1)\n    AND\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${end_snap}',' - ',1)::int LIMIT 1)\nORDER BY snap_time",
+          "refId": "SAR_MEM"
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time, swap_used_mb AS \"Swap Used MB\"\nFROM sar_swap_stats\nWHERE hostname='${hostname}' AND '${hostname}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND snap_time BETWEEN\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${start_snap}',' - ',1)::int LIMIT 1)\n    AND\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${end_snap}',' - ',1)::int LIMIT 1)\nORDER BY snap_time",
+          "refId": "SAR_SWAP"
+        }
+      ],
+      "title": "OS Memory Used % + Swap Used MB (memory pressure indicator)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 203,
+      "panels": [],
+      "title": "Disk I/O Correlation: Oracle Segments vs OS Disk",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Oracle Physical Reads"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Oracle Physical Reads"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*util%"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Disk Utilisation %"
+              },
+              {
+                "id": "max",
+                "value": 100
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  device || ' util%' AS metric, util_pct AS value\nFROM sar_disk_stats\nWHERE hostname='${hostname}' AND '${hostname}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND snap_time BETWEEN\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${start_snap}',' - ',1)::int LIMIT 1)\n    AND\n    (SELECT snap_time FROM awr_load_profile\n     WHERE dbname='${dbname}' AND instance='${instance}'\n     AND begin_snap=split_part('${end_snap}',' - ',1)::int LIMIT 1)\nORDER BY snap_time",
+          "refId": "SAR_DISK"
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT snap_time AS time,\n  ROUND(AVG(physical_reads)::numeric,0) AS \"Oracle Physical Reads\"\nFROM awr_seg_phy_reads\nWHERE dbname='${dbname}' AND '${dbname}' != ''\n  AND instance='${instance}' AND '${instance}' != ''\n  AND '${start_snap}' != '' AND '${end_snap}' != ''\n  AND begin_snap BETWEEN split_part('${start_snap}',' - ',1)::int\n                     AND split_part('${end_snap}',' - ',1)::int\nGROUP BY snap_time ORDER BY snap_time",
+          "refId": "Oracle_PhysRead"
+        }
+      ],
+      "title": "OS Disk Utilisation % per Device",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "refresh": "2m",
+  "schemaVersion": 41,
+  "tags": [
+    "sar",
+    "awr",
+    "correlation"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "${portal_url}",
+          "value": "${portal_url}"
+        },
+        "description": "Base URL for Portal URL",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "${portal_url}",
+            "value": "${portal_url}"
+          }
+        ],
+        "query": "${portal_url}",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "${grafana_url}",
+          "value": "${grafana_url}"
+        },
+        "description": "Base URL for Grafana URL",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "${grafana_url}",
+            "value": "${grafana_url}"
+          }
+        ],
+        "query": "${grafana_url}",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "PostgreSQL",
+          "value": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Data Source",
+        "name": "ds",
+        "options": [],
+        "query": "postgres",
+        "refresh": 1,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Oracle DB",
+        "name": "dbname",
+        "options": [],
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT dbname AS value, dbname AS label FROM awr_load_profile) AS t ORDER BY value;",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Instance",
+        "name": "instance",
+        "options": [],
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT instance AS value, instance AS label  FROM awr_load_profile WHERE dbname='${dbname}') AS t ORDER BY value;",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Start Snap",
+        "name": "start_snap",
+        "options": [],
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI') FROM awr_load_profile WHERE dbname='${dbname}' AND instance='${instance}' ORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "End Snap",
+        "name": "end_snap",
+        "options": [],
+        "query": "SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI') FROM awr_load_profile WHERE dbname='${dbname}' AND instance='${instance}' ORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "SAR Hostname",
+        "name": "hostname",
+        "options": [],
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT hostname AS value, hostname AS label  FROM sar_cpu_stats) AS t ORDER BY value;",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "timezone": "Asia/Kolkata",
+  "title": "AWR+SAR \u2014 Oracle vs OS Correlation",
+  "uid": "sar-awr-correlation",
+  "version": 1
+}

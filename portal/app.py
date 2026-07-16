@@ -60,6 +60,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
+@app.on_event("startup")
+async def on_startup():
+    """On portal start — auto-patch Grafana dashboard URLs from portal_config."""
+    import asyncio
+    # Run in background so startup isn't delayed
+    asyncio.create_task(asyncio.to_thread(_auto_patch_grafana_dashboards))
+
 # Static files and templates
 _static_dir    = os.path.join(_PORTAL_DIR, "static")
 _templates_dir = os.path.join(_PORTAL_DIR, "templates")
@@ -115,6 +122,99 @@ def _url_context(request: Request = None) -> dict:
 def _refresh_url_globals():
     """No-op — kept for compatibility. URL context now read fresh per request."""
     pass
+
+
+def _auto_patch_grafana_dashboards():
+    """
+    Automatically patch Grafana dashboard JSON files on portal startup.
+    Reads portal_url and grafana_url from portal_config (source of truth).
+    Updates the variable defaults in all dashboard JSON files.
+    Runs silently — never blocks startup if it fails.
+
+    Triggered by:
+    - Portal service start/restart
+    - Settings save (when grafana_url or portal_url changes)
+    """
+    try:
+        cfg         = _get_config()
+        portal_url  = cfg.get("portal_url",  "").strip().rstrip("/")
+        grafana_url = cfg.get("grafana_url", "").strip().rstrip("/")
+
+        if not portal_url or not grafana_url:
+            logger.debug("auto_patch_dashboards: URLs not configured yet — skipping")
+            return
+
+        if "localhost" in portal_url and "localhost" in grafana_url:
+            logger.debug("auto_patch_dashboards: Both URLs are localhost — skipping patch")
+            return
+
+        # Find dashboard directories
+        dashboard_dirs = [
+            os.path.join(_PROJECT_ROOT, "grafana-v12.0.2", "public", "dashboard"),
+            os.path.join(_PROJECT_ROOT, "portal", "static"),
+        ]
+
+        patched_total = 0
+        for dash_dir in dashboard_dirs:
+            if not os.path.isdir(dash_dir):
+                continue
+
+            import glob
+            json_files = glob.glob(os.path.join(dash_dir, "*.json"))
+            patched = 0
+
+            for fpath in json_files:
+                try:
+                    with open(fpath, encoding="utf-8") as f:
+                        data = json.load(f)
+
+                    if "templating" not in data:
+                        data["templating"] = {"list": []}
+
+                    modified = False
+                    for v in data["templating"].get("list", []):
+                        if v.get("name") == "portal_url":
+                            if v.get("query") != portal_url:
+                                v["query"]            = portal_url
+                                v["current"]["text"]  = portal_url
+                                v["current"]["value"] = portal_url
+                                if v.get("options"):
+                                    v["options"][0]["text"]  = portal_url
+                                    v["options"][0]["value"] = portal_url
+                                modified = True
+                        elif v.get("name") == "grafana_url":
+                            if v.get("query") != grafana_url:
+                                v["query"]            = grafana_url
+                                v["current"]["text"]  = grafana_url
+                                v["current"]["value"] = grafana_url
+                                if v.get("options"):
+                                    v["options"][0]["text"]  = grafana_url
+                                    v["options"][0]["value"] = grafana_url
+                                modified = True
+
+                    if modified:
+                        with open(fpath, "w", encoding="utf-8") as f:
+                            json.dump(data, f, indent=2, ensure_ascii=False)
+                        patched += 1
+
+                except Exception as e:
+                    logger.debug(f"auto_patch_dashboards: skip {os.path.basename(fpath)}: {e}")
+
+            if patched:
+                logger.info(f"auto_patch_dashboards: updated {patched} files in {dash_dir}")
+            patched_total += patched
+
+        if patched_total:
+            logger.info(
+                f"auto_patch_dashboards: {patched_total} dashboard(s) updated "
+                f"with portal_url={portal_url}, grafana_url={grafana_url}. "
+                f"Re-import dashboards in Grafana to apply."
+            )
+        else:
+            logger.debug("auto_patch_dashboards: all dashboards already up to date")
+
+    except Exception as e:
+        logger.warning(f"auto_patch_dashboards failed (non-fatal): {e}")
 
 # Public routes — never require login
 _PUBLIC_PATHS = {"/login", "/logout", "/forgot-password", "/reset-password"}
@@ -1791,6 +1891,15 @@ async def api_settings_save(request: Request):
     updated_by = session.get("username", "admin")
     _set_config(fields, updated_by)
     _refresh_url_globals()
+
+    # Auto-patch Grafana dashboards if URL config changed
+    if "portal_url" in fields or "grafana_url" in fields:
+        import threading
+        threading.Thread(
+            target=_auto_patch_grafana_dashboards,
+            daemon=True
+        ).start()
+        logger.info("Settings saved — Grafana dashboard URLs will be updated automatically")
 
     # If a license key was saved, extract and store tier + counts from the key
     if "license_key" in fields and fields["license_key"].strip():
