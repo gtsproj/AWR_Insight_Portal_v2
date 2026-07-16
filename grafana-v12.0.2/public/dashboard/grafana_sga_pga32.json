@@ -4,10 +4,56 @@
   "schemaVersion": 40,
   "version": 1,
   "refresh": "30s",
-  "tags": ["awr", "sga", "pga", "advisory"],
-
+  "tags": [
+    "awr",
+    "sga",
+    "pga",
+    "advisory"
+  ],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
       {
         "name": "ds",
         "label": "Data Source",
@@ -98,7 +144,12 @@
       "type": "table",
       "title": "SGA Advisory – Detailed View",
       "id": 41,
-      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 4 },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 4
+      },
       "targets": [
         {
           "refId": "A",
@@ -113,20 +164,151 @@
       },
       "fieldConfig": {
         "defaults": {
-          "custom": { "align": "left" }
+          "custom": {
+            "align": "left"
+          }
         },
         "overrides": [
-		  {"matcher": { "id": "byName", "options": "current_sga_mb" },"properties": [{ "id": "unit", "value": "MB" }] },
-		  {"matcher": { "id": "byName", "options": "recommended_sga_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "db_time_improvement_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "current_physical_reads" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "estimated_physical_reads" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "reduced_physical_reads" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "reduced_physical_reads_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "confidence_score" },"properties": [{ "id": "unit", "value": "percent" }]},
-		  {"matcher": { "id": "byName", "options": "total_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "free_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "safe_ram_headroom_mb" },"properties": [{ "id": "unit", "value": "MB" }]}
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "db_time_improvement_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
         ]
       }
     },
@@ -134,8 +316,13 @@
       "type": "gauge",
       "title": "SGA Recommendation Overview",
       "id": 42,
-      "gridPos": { "x": 0, "y": 8, "w": 24, "h": 10 },
-	  "targets": [
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 24,
+        "h": 10
+      },
+      "targets": [
         {
           "refId": "A",
           "format": "table",
@@ -149,20 +336,151 @@
       },
       "fieldConfig": {
         "defaults": {
-          "custom": { "align": "left" }
+          "custom": {
+            "align": "left"
+          }
         },
         "overrides": [
-		  {"matcher": { "id": "byName", "options": "current_sga_mb" },"properties": [{ "id": "unit", "value": "MB" }] },
-		  {"matcher": { "id": "byName", "options": "recommended_sga_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "db_time_improvement_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "current_physical_reads" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "estimated_physical_reads" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "reduced_physical_reads" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "reduced_physical_reads_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "confidence_score" },"properties": [{ "id": "unit", "value": "percent" }]},
-		  {"matcher": { "id": "byName", "options": "total_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "free_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "safe_ram_headroom_mb" },"properties": [{ "id": "unit", "value": "MB" }]}
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "db_time_improvement_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
         ]
       }
     },
@@ -170,7 +488,12 @@
       "type": "table",
       "title": "PGA Advisory – Detailed View",
       "id": 43,
-      "gridPos": { "x": 0, "y": 12, "w": 24, "h": 4 },
+      "gridPos": {
+        "x": 0,
+        "y": 12,
+        "w": 24,
+        "h": 4
+      },
       "targets": [
         {
           "refId": "B",
@@ -185,20 +508,151 @@
       },
       "fieldConfig": {
         "defaults": {
-          "custom": { "align": "left" }
+          "custom": {
+            "align": "left"
+          }
         },
         "overrides": [
-		  {"matcher": { "id": "byName", "options": "current_pga_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "recommended_pga_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "cache_hit_gain_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "current_disk_writes" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "estimated_disk_writes" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "disk_write_reduction" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "reduced_disk_write_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "confidence_score" },"properties": [{ "id": "unit", "value": "percent" }]},
-		  {"matcher": { "id": "byName", "options": "total_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "free_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "safe_ram_headroom_mb" },"properties": [{ "id": "unit", "value": "MB" }]}
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cache_hit_gain_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "disk_write_reduction"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_disk_write_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
         ]
       }
     },
@@ -206,7 +660,12 @@
       "type": "gauge",
       "title": "PGA Recommendation Overview",
       "id": 44,
-      "gridPos": { "x": 0, "y": 16, "w": 24, "h": 10 },
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 24,
+        "h": 10
+      },
       "targets": [
         {
           "refId": "B",
@@ -221,24 +680,153 @@
       },
       "fieldConfig": {
         "defaults": {
-          "custom": { "align": "left" }
+          "custom": {
+            "align": "left"
+          }
         },
         "overrides": [
-		  {"matcher": { "id": "byName", "options": "current_pga_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "recommended_pga_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "cache_hit_gain_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "current_disk_writes" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "estimated_disk_writes" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "disk_write_reduction" },"properties": [{ "id": "unit", "value": "none" }]},
-		  {"matcher": { "id": "byName", "options": "reduced_disk_write_pct" },"properties": [{ "id": "unit", "value": "percent" }, { "id": "decimals", "value": 1 }]},
-		  {"matcher": { "id": "byName", "options": "confidence_score" },"properties": [{ "id": "unit", "value": "percent" }]},
-		  {"matcher": { "id": "byName", "options": "total_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "free_ram_mb" },"properties": [{ "id": "unit", "value": "MB" }]},
-		  {"matcher": { "id": "byName", "options": "safe_ram_headroom_mb" },"properties": [{ "id": "unit", "value": "MB" }]}
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cache_hit_gain_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "disk_write_reduction"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_disk_write_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
         ]
       }
-    }	  
+    }
   ]
 }
-
-

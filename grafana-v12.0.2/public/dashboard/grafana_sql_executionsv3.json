@@ -13,6 +13,48 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
         "name": "ds",
         "label": "Data Source",
         "type": "datasource",
@@ -98,7 +140,7 @@
     ]
   },
   "panels": [
-        {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -135,7 +177,7 @@
         "x": 0,
         "y": 8
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -169,13 +211,13 @@
           "rawSql": "WITH top_sql AS \n(  SELECT sql_id  \nFROM awr_sql_executions  \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''    \nAND dbname = '$dbname'     AND instance = '$instance'     \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int \nAND executions > 10000    \nGROUP BY sql_id   \nORDER BY     CASE       WHEN split_part('$start_snap',' - ',1)::int = split_part('$end_snap',' - ',1)::int         \nTHEN MAX(rows_processed)       \nELSE AVG(rows_processed)     END DESC   LIMIT 10 ) \nSELECT DISTINCT ON (t.sql_id)   t.sql_id,  x.sql_text \nFROM top_sql t \nJOIN awr_sql_text x ON x.sql_id = t.sql_id \nWHERE x.dbname = '$dbname' \nORDER BY t.sql_id, x.id DESC;"
         }
       ],
-	    "gridPos": {
+      "gridPos": {
         "h": 6,
         "w": 24,
         "x": 0,
         "y": 16
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"

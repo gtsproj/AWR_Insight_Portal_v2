@@ -13,6 +13,48 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
         "name": "ds",
         "label": "Data Source",
         "type": "datasource",
@@ -98,7 +140,7 @@
     ]
   },
   "panels": [
-        {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -114,18 +156,22 @@
       },
       "transparent": true
     },
-	{
-	  "id": 10,
-	  "type": "text",
-	  "title": "Severity Score Calculation",
-	  "gridPos": { "h": 6, "w": 24, "x": 0, "y": 0 },
-	  "options": {
-		"mode": "markdown",
-		"content": "The score is a composite metric combining: **IO Group  and Contention Group** \n\n **Weightage for IO Group - 60% and Weightage for Contention Group - 40%** | \n\n **IO Group [ Physical Reads 15%** | **Direct IO (Reads + Writes) 10%** | **Logical Reads 10%** | **CR + Current Blocks Received 10%** | **Table Scans 5%** | **UnOptimized Reads 5%** | **Read / Write Requests 3%** | **Optimized Reads 2%**    ]**\n\n **Contention Group [ **DB Block Changes 10%** | **Row Lock Waits 10%** | **ITL Waits 5%** | **Buffer Busy Waits 10%** | **Global Cache Buffer Busy 5%** ]**\n\n> Higher score indicates greater severity (performance issue)."
-	  },
-	  "transparent": true
-	},
-
+    {
+      "id": 10,
+      "type": "text",
+      "title": "Severity Score Calculation",
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "The score is a composite metric combining: **IO Group  and Contention Group** \n\n **Weightage for IO Group - 60% and Weightage for Contention Group - 40%** | \n\n **IO Group [ Physical Reads 15%** | **Direct IO (Reads + Writes) 10%** | **Logical Reads 10%** | **CR + Current Blocks Received 10%** | **Table Scans 5%** | **UnOptimized Reads 5%** | **Read / Write Requests 3%** | **Optimized Reads 2%**    ]**\n\n **Contention Group [ **DB Block Changes 10%** | **Row Lock Waits 10%** | **ITL Waits 5%** | **Buffer Busy Waits 10%** | **Global Cache Buffer Busy 5%** ]**\n\n> Higher score indicates greater severity (performance issue)."
+      },
+      "transparent": true
+    },
     {
       "id": 1,
       "type": "table",
@@ -166,7 +212,6 @@
         },
         "overrides": []
       }
-     }
-	]
-  }
-	
+    }
+  ]
+}

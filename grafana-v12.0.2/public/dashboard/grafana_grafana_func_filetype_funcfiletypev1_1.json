@@ -13,6 +13,48 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
         "name": "ds",
         "label": "Data Source",
         "type": "datasource",
@@ -98,7 +140,7 @@
     ]
   },
   "panels": [
-        {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -135,7 +177,7 @@
         "x": 0,
         "y": 0
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -145,7 +187,13 @@
         }
       },
       "fieldConfig": {
-        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0}
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "unit": "megabytes",
+            "decimals": 0
+          }
         },
         "overrides": []
       }
@@ -171,7 +219,7 @@
         "x": 12,
         "y": 0
       },
-	        "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -181,7 +229,13 @@
         }
       },
       "fieldConfig": {
-        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "unit": "megabytes",
+            "decimals": 0
+          }
         },
         "overrides": []
       }
@@ -217,7 +271,13 @@
         }
       },
       "fieldConfig": {
-        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1, "unit": "megabytes", "decimals": 0 }
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "unit": "megabytes",
+            "decimals": 0
+          }
         },
         "overrides": []
       }
@@ -253,12 +313,18 @@
         }
       },
       "fieldConfig": {
-        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "unit": "megabytes",
+            "decimals": 0
+          }
         },
         "overrides": []
       }
     },
-	    {
+    {
       "id": 5,
       "type": "barchart",
       "title": "Top Filetypes — Reads (MB)",
@@ -289,12 +355,18 @@
         }
       },
       "fieldConfig": {
-        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "unit": "megabytes",
+            "decimals": 0
+          }
         },
         "overrides": []
       }
     },
-	 {
+    {
       "id": 6,
       "type": "timeseries",
       "title": "Function/Filetype — Heat (reads+writes MB)",
@@ -325,12 +397,18 @@
         }
       },
       "fieldConfig": {
-        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"unit": "megabytes", "decimals": 0 }
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "unit": "megabytes",
+            "decimals": 0
+          }
         },
         "overrides": []
       }
     },
-	{
+    {
       "id": 7,
       "type": "table",
       "title": "IOStat — Combined Details (Function & Filetype)",
@@ -361,21 +439,144 @@
         }
       },
       "fieldConfig": {
-        "defaults": {"custom": {"drawStyle": "line","lineWidth": 1,"decimals": 0 }
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "decimals": 0
+          }
         },
-        "overrides": [          
-		  { "matcher": { "id":"byName","options":"avg_reads_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
-		  { "matcher": { "id":"byName","options":"avg_reads_reqs" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
-		  { "matcher": { "id":"byName","options":"avg_reads_per_sec_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
-          { "matcher": { "id":"byName","options":"avg_writes_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
-          { "matcher": { "id":"byName","options":"avg_writes_reqs" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
-          { "matcher": { "id":"byName","options":"avg_writes_per_sec_mb" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
-          { "matcher": { "id":"byName","options":"avg_waits" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] },
-          { "matcher": { "id":"byName","options":"avg_time_ms" }, "properties":[{"id":"unit","value":"none"},{"id":"decimals","value":0}] }
-		  ]
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_reads_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_reads_reqs"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_reads_per_sec_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_writes_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_writes_reqs"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_writes_per_sec_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_waits"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_time_ms"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          }
+        ]
       }
     }
-   ]
+  ]
 }
-	  
-	  

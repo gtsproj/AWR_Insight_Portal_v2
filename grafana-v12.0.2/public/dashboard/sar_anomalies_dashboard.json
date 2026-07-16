@@ -1,56 +1,140 @@
 {
-  "annotations": {
+  "id": null,
+  "uid": "sar-anomalies",
+  "title": "SAR — Anomaly Detection",
+  "editable": true,
+  "timezone": "Asia/Kolkata",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "5m",
+  "tags": [
+    "sar",
+    "anomaly"
+  ],
+  "templating": {
     "list": [
       {
-        "builtIn": 1,
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
         },
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
+        "description": "Base URL for Portal URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Base URL for Grafana URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "name": "ds",
+        "label": "Data Source",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {},
+        "options": [],
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "refresh": 1
+      },
+      {
+        "name": "hostname",
+        "label": "Hostname",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "refresh": 2,
+        "multi": false,
+        "includeAll": false,
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "options": [],
+        "sort": 1,
+        "regex": "",
+        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT hostname AS value, hostname AS label FROM sar_cpu_stats) AS t ORDER BY value;"
       }
     ]
   },
-  "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 682,
-  "links": [],
   "panels": [
     {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
+      "id": 1,
+      "type": "text",
+      "title": "Navigation",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 1,
       "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style='padding:4px 0'><a href='http://192.168.1.6:8000' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomalies' target='_self'>&#x26A0;&#xFE0F; AWR Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a> &nbsp;|&nbsp; <a href='/d/fdv31-awr-nav' target='_self'>&#x1F4CC; Navigation Hub</a></div>",
+        "content": "<div style='padding:4px 0'><a href='${portal_url}' target='_self'>&#x2B05; Portal Home</a> &nbsp;|&nbsp; <a href='/d/awr-anomalies' target='_self'>&#x26A0;&#xFE0F; AWR Anomaly Detection</a> &nbsp;|&nbsp; <a href='/d/sar-overview' target='_self'>&#x1F5A5;&#xFE0F; SAR Overview</a> &nbsp;|&nbsp; <a href='/d/fdv31-awr-nav' target='_self'>&#x1F4CC; Navigation Hub</a></div>",
         "mode": "html"
       },
-      "pluginVersion": "12.0.2",
-      "title": "Navigation",
-      "transparent": true,
-      "type": "text"
+      "transparent": true
     },
     {
+      "id": 10,
+      "type": "stat",
+      "title": "Critical Anomalies",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity='critical'"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "background"
       },
       "fieldConfig": {
         "defaults": {
@@ -58,85 +142,17 @@
             "fixedColor": "#d32f2f",
             "mode": "fixed"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 0,
-        "y": 2
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT COUNT(*) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity='critical'",
-          "refId": "A"
         }
-      ],
-      "title": "Critical Anomalies",
-      "type": "stat"
+      }
     },
     {
+      "id": 11,
+      "type": "stat",
+      "title": "Alert Anomalies",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "#ef6c00",
-            "mode": "fixed"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -144,62 +160,38 @@
         "x": 4,
         "y": 2
       },
-      "id": 11,
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity='alert'"
+        }
+      ],
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+          ]
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT COUNT(*) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity='alert'",
-          "refId": "A"
-        }
-      ],
-      "title": "Alert Anomalies",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "${ds}"
+        "colorMode": "background"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "#f9a825",
+            "fixedColor": "#ef6c00",
             "mode": "fixed"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "short"
-        },
-        "overrides": []
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "stat",
+      "title": "Warning Anomalies",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
       },
       "gridPos": {
         "h": 4,
@@ -207,62 +199,38 @@
         "x": 8,
         "y": 2
       },
-      "id": 12,
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(*) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity='warning'"
+        }
+      ],
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+          ]
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT COUNT(*) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity='warning'",
-          "refId": "A"
-        }
-      ],
-      "title": "Warning Anomalies",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "${ds}"
+        "colorMode": "background"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "#1565c0",
+            "fixedColor": "#f9a825",
             "mode": "fixed"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "short"
-        },
-        "overrides": []
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "stat",
+      "title": "Days with Anomalies",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
       },
       "gridPos": {
         "h": 4,
@@ -270,62 +238,38 @@
         "x": 12,
         "y": 2
       },
-      "id": 13,
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(DISTINCT snap_time::date) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\n"
+        }
+      ],
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+          ]
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT COUNT(DISTINCT snap_time::date) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\n",
-          "refId": "A"
-        }
-      ],
-      "title": "Days with Anomalies",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "${ds}"
+        "colorMode": "background"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "#4a148c",
+            "fixedColor": "#1565c0",
             "mode": "fixed"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "short"
-        },
-        "overrides": []
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "stat",
+      "title": "Servers Affected",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
       },
       "gridPos": {
         "h": 4,
@@ -333,48 +277,69 @@
         "x": 16,
         "y": 2
       },
-      "id": 14,
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT COUNT(DISTINCT hostname) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\n"
+        }
+      ],
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+          ]
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "colorMode": "background"
       },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT COUNT(DISTINCT hostname) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\n",
-          "refId": "A"
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#4a148c",
+            "mode": "fixed"
+          },
+          "unit": "short"
         }
-      ],
-      "title": "Servers Affected",
-      "type": "stat"
+      }
     },
     {
+      "id": 15,
+      "type": "stat",
+      "title": "Max Deviation Score",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
       },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT ROUND(MAX(ABS(z_score))::numeric,1) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\n"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "value"
+      },
       "fieldConfig": {
         "defaults": {
-          "mappings": [],
+          "unit": "short",
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#f9a825"
+                "color": "#f9a825",
+                "value": null
               },
               {
                 "color": "#ef6c00",
@@ -385,87 +350,53 @@
                 "value": 4
               }
             ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 2
-      },
-      "id": 15,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT ROUND(MAX(ABS(z_score))::numeric,1) AS value FROM sar_anomalies WHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\n",
-          "refId": "A"
+          }
         }
-      ],
-      "title": "Max Deviation Score",
-      "type": "stat"
+      }
     },
     {
-      "collapsed": false,
+      "id": 20,
+      "type": "row",
+      "title": "Top Anomalies",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 6
       },
-      "id": 20,
-      "panels": [],
-      "title": "Top Anomalies",
-      "type": "row"
+      "collapsed": false
     },
     {
+      "id": 21,
+      "type": "table",
+      "title": "Top SAR Anomalies by Deviation Score",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
       },
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE severity\n    WHEN 'critical' THEN '🔴 CRITICAL'\n    WHEN 'alert'    THEN '🟠 ALERT'\n    ELSE                 '🟡 WARNING'\n  END AS \"Severity\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_source AS \"Source\",\n  metric_name   AS \"Metric\",\n  object_name   AS \"Object\",\n  ROUND(metric_value::numeric,3)    AS \"Current Value\",\n  ROUND(baseline_mean::numeric,3)   AS \"Baseline Mean\",\n  ROUND(baseline_stddev::numeric,4) AS \"Baseline StdDev\",\n  ROUND(z_score::numeric,2)         AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nORDER BY ABS(z_score) DESC\nLIMIT 50"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Deviation Score",
+            "desc": true
           }
-        },
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
         "overrides": [
           {
             "matcher": {
@@ -586,11 +517,8 @@
                 "value": 120
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -598,7 +526,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "#f9a825"
+                      "color": "#f9a825",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -614,99 +543,66 @@
             ]
           }
         ]
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 7
-      },
-      "id": 21,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Deviation Score"
-          }
-        ]
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT\n  CASE severity\n    WHEN 'critical' THEN '🔴 CRITICAL'\n    WHEN 'alert'    THEN '🟠 ALERT'\n    ELSE                 '🟡 WARNING'\n  END AS \"Severity\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_source AS \"Source\",\n  metric_name   AS \"Metric\",\n  object_name   AS \"Object\",\n  ROUND(metric_value::numeric,3)    AS \"Current Value\",\n  ROUND(baseline_mean::numeric,3)   AS \"Baseline Mean\",\n  ROUND(baseline_stddev::numeric,4) AS \"Baseline StdDev\",\n  ROUND(z_score::numeric,2)         AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nORDER BY ABS(z_score) DESC\nLIMIT 50",
-          "refId": "A"
-        }
-      ],
-      "title": "Top SAR Anomalies by Deviation Score",
-      "type": "table"
+      }
     },
     {
-      "collapsed": false,
+      "id": 30,
+      "type": "row",
+      "title": "Anomaly Timeline",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 17
       },
-      "id": 30,
-      "panels": [],
-      "title": "Anomaly Timeline",
-      "type": "row"
+      "collapsed": false
     },
     {
+      "id": 31,
+      "type": "barchart",
+      "title": "Anomaly Count per Day — by Severity",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
       },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  to_char(snap_time::date,'YYYY-MM-DD') AS \"Date\",\n  NULLIF(COUNT(*) FILTER (WHERE severity='critical'),0) AS \"Critical\",\n  NULLIF(COUNT(*) FILTER (WHERE severity='alert'),0)    AS \"Alert\",\n  COUNT(*) FILTER (WHERE severity='warning')            AS \"Warning\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nGROUP BY snap_time::date\nORDER BY snap_time::date"
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "xField": "Date",
+        "xTickLabelRotation": -45,
+        "xTickLabelMaxLength": 12,
+        "groupWidth": 0.7,
+        "barWidth": 0.9,
+        "stacking": "normal",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "showValue": "always",
+        "bar": {
+          "valueDisplayMode": "auto"
+        }
+      },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
           "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "fillOpacity": 80,
-            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
-            },
-            "lineWidth": 1,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
             }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
           }
         },
         "overrides": [
@@ -756,69 +652,48 @@
             ]
           }
         ]
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 18
-      },
-      "id": 31,
-      "options": {
-        "bar": {
-          "valueDisplayMode": "auto"
-        },
-        "barRadius": 0,
-        "barWidth": 0.9,
-        "fullHighlight": false,
-        "groupWidth": 0.7,
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "orientation": "auto",
-        "showValue": "always",
-        "stacking": "normal",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        },
-        "xField": "Date",
-        "xTickLabelMaxLength": 12,
-        "xTickLabelRotation": -45,
-        "xTickLabelSpacing": 0
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT\n  to_char(snap_time::date,'YYYY-MM-DD') AS \"Date\",\n  NULLIF(COUNT(*) FILTER (WHERE severity='critical'),0) AS \"Critical\",\n  NULLIF(COUNT(*) FILTER (WHERE severity='alert'),0)    AS \"Alert\",\n  COUNT(*) FILTER (WHERE severity='warning')            AS \"Warning\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nGROUP BY snap_time::date\nORDER BY snap_time::date",
-          "refId": "A"
-        }
-      ],
-      "title": "Anomaly Count per Day — by Severity",
-      "type": "barchart"
+      }
     },
     {
-      "collapsed": false,
+      "id": 40,
+      "type": "row",
+      "title": "Breakdown by Source",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 27
       },
-      "id": 40,
-      "panels": [],
-      "title": "Breakdown by Source",
-      "type": "row"
+      "collapsed": false
     },
     {
+      "id": 41,
+      "type": "table",
+      "title": "Anomalies by Metric Source",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 28
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  metric_source AS \"Source\",\n  COUNT(*) FILTER (WHERE severity='critical') AS \"Critical\",\n  COUNT(*) FILTER (WHERE severity='alert')    AS \"Alert\",\n  COUNT(*) FILTER (WHERE severity='warning')  AS \"Warning\",\n  COUNT(*)                                    AS \"Total\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nGROUP BY metric_source\nORDER BY COUNT(*) FILTER (WHERE severity='critical') DESC,\n         COUNT(*) FILTER (WHERE severity='alert') DESC"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Total",
+            "desc": true
+          }
+        ]
       },
       "fieldConfig": {
         "defaults": {},
@@ -846,11 +721,8 @@
                 "value": 80
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -858,7 +730,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "transparent"
+                      "color": "transparent",
+                      "value": null
                     },
                     {
                       "color": "#d32f2f",
@@ -880,11 +753,8 @@
                 "value": 80
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -892,7 +762,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "transparent"
+                      "color": "transparent",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -914,11 +785,8 @@
                 "value": 80
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -926,7 +794,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "transparent"
+                      "color": "transparent",
+                      "value": null
                     },
                     {
                       "color": "#f9a825",
@@ -950,36 +819,36 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": 42,
+      "type": "table",
+      "title": "Top Anomalous Metrics (Alert + Critical)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
       },
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 0,
+        "x": 12,
         "y": 28
-      },
-      "id": 41,
-      "options": {
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Total"
-          }
-        ]
       },
       "targets": [
         {
+          "refId": "A",
           "format": "table",
-          "rawSql": "SELECT\n  metric_source AS \"Source\",\n  COUNT(*) FILTER (WHERE severity='critical') AS \"Critical\",\n  COUNT(*) FILTER (WHERE severity='alert')    AS \"Alert\",\n  COUNT(*) FILTER (WHERE severity='warning')  AS \"Warning\",\n  COUNT(*)                                    AS \"Total\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nGROUP BY metric_source\nORDER BY COUNT(*) FILTER (WHERE severity='critical') DESC,\n         COUNT(*) FILTER (WHERE severity='alert') DESC",
-          "refId": "A"
+          "rawSql": "SELECT\n  metric_source AS \"Source\",\n  metric_name   AS \"Metric\",\n  object_name   AS \"Object\",\n  COUNT(*)      AS \"Times Flagged\",\n  ROUND(MAX(ABS(z_score))::numeric,2)  AS \"Max Dev Score\",\n  ROUND(AVG(metric_value)::numeric,3)  AS \"Avg Value\",\n  ROUND(AVG(baseline_mean)::numeric,3) AS \"Avg Baseline\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity IN ('alert','critical')\nGROUP BY metric_source, metric_name, object_name\nORDER BY COUNT(*) DESC, MAX(ABS(z_score)) DESC\nLIMIT 20"
         }
       ],
-      "title": "Anomalies by Metric Source",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "${ds}"
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Times Flagged",
+            "desc": true
+          }
+        ]
       },
       "fieldConfig": {
         "defaults": {},
@@ -995,11 +864,8 @@
                 "value": 115
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -1007,7 +873,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "#f9a825"
+                      "color": "#f9a825",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -1059,49 +926,48 @@
             ]
           }
         ]
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 28
-      },
-      "id": 42,
-      "options": {
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Times Flagged"
-          }
-        ]
-      },
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT\n  metric_source AS \"Source\",\n  metric_name   AS \"Metric\",\n  object_name   AS \"Object\",\n  COUNT(*)      AS \"Times Flagged\",\n  ROUND(MAX(ABS(z_score))::numeric,2)  AS \"Max Dev Score\",\n  ROUND(AVG(metric_value)::numeric,3)  AS \"Avg Value\",\n  ROUND(AVG(baseline_mean)::numeric,3) AS \"Avg Baseline\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND severity IN ('alert','critical')\nGROUP BY metric_source, metric_name, object_name\nORDER BY COUNT(*) DESC, MAX(ABS(z_score)) DESC\nLIMIT 20",
-          "refId": "A"
-        }
-      ],
-      "title": "Top Anomalous Metrics (Alert + Critical)",
-      "type": "table"
+      }
     },
     {
-      "collapsed": false,
+      "id": 50,
+      "type": "row",
+      "title": "CPU Anomalies",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 37
       },
-      "id": 50,
-      "panels": [],
-      "title": "CPU Anomalies",
-      "type": "row"
+      "collapsed": false
     },
     {
+      "id": 51,
+      "type": "table",
+      "title": "CPU Anomalies (sar_cpu)",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  object_name   AS \"CPU\",\n  metric_name   AS \"Metric\",\n  ROUND(metric_value::numeric,2)  AS \"Current Value\",\n  ROUND(baseline_mean::numeric,2) AS \"Baseline Mean\",\n  ROUND(z_score::numeric,2)       AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_cpu'\nORDER BY ABS(z_score) DESC\nLIMIT 30"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Deviation Score",
+            "desc": true
+          }
+        ]
       },
       "fieldConfig": {
         "defaults": {},
@@ -1189,11 +1055,8 @@
                 "value": 120
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -1201,7 +1064,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "#f9a825"
+                      "color": "#f9a825",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -1217,49 +1081,48 @@
             ]
           }
         ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 38
-      },
-      "id": 51,
-      "options": {
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Deviation Score"
-          }
-        ]
-      },
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  object_name   AS \"CPU\",\n  metric_name   AS \"Metric\",\n  ROUND(metric_value::numeric,2)  AS \"Current Value\",\n  ROUND(baseline_mean::numeric,2) AS \"Baseline Mean\",\n  ROUND(z_score::numeric,2)       AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_cpu'\nORDER BY ABS(z_score) DESC\nLIMIT 30",
-          "refId": "A"
-        }
-      ],
-      "title": "CPU Anomalies (sar_cpu)",
-      "type": "table"
+      }
     },
     {
-      "collapsed": false,
+      "id": 60,
+      "type": "row",
+      "title": "Memory Anomalies",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 46
       },
-      "id": 60,
-      "panels": [],
-      "title": "Memory Anomalies",
-      "type": "row"
+      "collapsed": false
     },
     {
+      "id": 61,
+      "type": "table",
+      "title": "Memory Anomalies (sar_mem)",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_name   AS \"Metric\",\n  ROUND(metric_value::numeric,2)    AS \"Current Value\",\n  ROUND(baseline_mean::numeric,2)   AS \"Baseline Mean\",\n  ROUND(baseline_stddev::numeric,4) AS \"Baseline StdDev\",\n  ROUND(z_score::numeric,2)         AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_mem'\nORDER BY ABS(z_score) DESC\nLIMIT 30"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Deviation Score",
+            "desc": true
+          }
+        ]
       },
       "fieldConfig": {
         "defaults": {},
@@ -1347,11 +1210,8 @@
                 "value": 120
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -1359,7 +1219,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "#f9a825"
+                      "color": "#f9a825",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -1375,49 +1236,48 @@
             ]
           }
         ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 47
-      },
-      "id": 61,
-      "options": {
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Deviation Score"
-          }
-        ]
-      },
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_name   AS \"Metric\",\n  ROUND(metric_value::numeric,2)    AS \"Current Value\",\n  ROUND(baseline_mean::numeric,2)   AS \"Baseline Mean\",\n  ROUND(baseline_stddev::numeric,4) AS \"Baseline StdDev\",\n  ROUND(z_score::numeric,2)         AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_mem'\nORDER BY ABS(z_score) DESC\nLIMIT 30",
-          "refId": "A"
-        }
-      ],
-      "title": "Memory Anomalies (sar_mem)",
-      "type": "table"
+      }
     },
     {
-      "collapsed": false,
+      "id": 70,
+      "type": "row",
+      "title": "Disk Anomalies",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 55
       },
-      "id": 70,
-      "panels": [],
-      "title": "Disk Anomalies",
-      "type": "row"
+      "collapsed": false
     },
     {
+      "id": 71,
+      "type": "table",
+      "title": "Disk Anomalies (sar_disk) — per Device",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  object_name   AS \"Device\",\n  metric_name   AS \"Metric\",\n  ROUND(metric_value::numeric,2)  AS \"Current Value\",\n  ROUND(baseline_mean::numeric,2) AS \"Baseline Mean\",\n  ROUND(z_score::numeric,2)       AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_disk'\nORDER BY ABS(z_score) DESC\nLIMIT 30"
+        }
+      ],
+      "options": {
+        "sortBy": [
+          {
+            "displayName": "Deviation Score",
+            "desc": true
+          }
+        ]
       },
       "fieldConfig": {
         "defaults": {},
@@ -1505,11 +1365,8 @@
                 "value": 120
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -1517,7 +1374,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "#f9a825"
+                      "color": "#f9a825",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -1533,88 +1391,27 @@
             ]
           }
         ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 56
-      },
-      "id": 71,
-      "options": {
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Deviation Score"
-          }
-        ]
-      },
-      "targets": [
-        {
-          "format": "table",
-          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  hostname AS \"Hostname\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  object_name   AS \"Device\",\n  metric_name   AS \"Metric\",\n  ROUND(metric_value::numeric,2)  AS \"Current Value\",\n  ROUND(baseline_mean::numeric,2) AS \"Baseline Mean\",\n  ROUND(z_score::numeric,2)       AS \"Deviation Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_disk'\nORDER BY ABS(z_score) DESC\nLIMIT 30",
-          "refId": "A"
-        }
-      ],
-      "title": "Disk Anomalies (sar_disk) — per Device",
-      "type": "table"
+      }
     },
     {
-      "collapsed": false,
+      "id": 80,
+      "type": "row",
+      "title": "Paging, Load & Network Anomalies",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 64
       },
-      "id": 80,
-      "panels": [],
-      "title": "Paging, Load & Network Anomalies",
-      "type": "row"
+      "collapsed": false
     },
     {
+      "id": 81,
+      "type": "table",
+      "title": "Paging Anomalies (sar_paging)",
       "datasource": {
         "type": "postgres",
         "uid": "${ds}"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Dev Score"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "#f9a825"
-                    },
-                    {
-                      "color": "#ef6c00",
-                      "value": 3
-                    },
-                    {
-                      "color": "#d32f2f",
-                      "value": 4
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
       },
       "gridPos": {
         "h": 8,
@@ -1622,23 +1419,14 @@
         "x": 0,
         "y": 65
       },
-      "id": 81,
-      "options": {},
       "targets": [
         {
+          "refId": "A",
           "format": "table",
-          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_name AS \"Metric\",\n  ROUND(metric_value::numeric,3) AS \"Current\",\n  ROUND(baseline_mean::numeric,3) AS \"Baseline\",\n  ROUND(z_score::numeric,2) AS \"Dev Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_paging'\nORDER BY ABS(z_score) DESC LIMIT 20",
-          "refId": "A"
+          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_name AS \"Metric\",\n  ROUND(metric_value::numeric,3) AS \"Current\",\n  ROUND(baseline_mean::numeric,3) AS \"Baseline\",\n  ROUND(z_score::numeric,2) AS \"Dev Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_paging'\nORDER BY ABS(z_score) DESC LIMIT 20"
         }
       ],
-      "title": "Paging Anomalies (sar_paging)",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "${ds}"
-      },
+      "options": {},
       "fieldConfig": {
         "defaults": {},
         "overrides": [
@@ -1649,11 +1437,8 @@
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -1661,7 +1446,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "#f9a825"
+                      "color": "#f9a825",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -1677,6 +1463,15 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": 82,
+      "type": "table",
+      "title": "Load Average Anomalies (sar_load)",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
       },
       "gridPos": {
         "h": 8,
@@ -1684,23 +1479,14 @@
         "x": 8,
         "y": 65
       },
-      "id": 82,
-      "options": {},
       "targets": [
         {
+          "refId": "A",
           "format": "table",
-          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_name AS \"Metric\",\n  ROUND(metric_value::numeric,3) AS \"Current\",\n  ROUND(baseline_mean::numeric,3) AS \"Baseline\",\n  ROUND(z_score::numeric,2) AS \"Dev Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_load'\nORDER BY ABS(z_score) DESC LIMIT 20",
-          "refId": "A"
+          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  metric_name AS \"Metric\",\n  ROUND(metric_value::numeric,3) AS \"Current\",\n  ROUND(baseline_mean::numeric,3) AS \"Baseline\",\n  ROUND(z_score::numeric,2) AS \"Dev Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_load'\nORDER BY ABS(z_score) DESC LIMIT 20"
         }
       ],
-      "title": "Load Average Anomalies (sar_load)",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "${ds}"
-      },
+      "options": {},
       "fieldConfig": {
         "defaults": {},
         "overrides": [
@@ -1711,11 +1497,8 @@
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               },
               {
                 "id": "thresholds",
@@ -1723,7 +1506,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "#f9a825"
+                      "color": "#f9a825",
+                      "value": null
                     },
                     {
                       "color": "#ef6c00",
@@ -1739,6 +1523,15 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": 83,
+      "type": "table",
+      "title": "Network Anomalies (sar_net) — per Interface",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
       },
       "gridPos": {
         "h": 8,
@@ -1746,113 +1539,54 @@
         "x": 16,
         "y": 65
       },
-      "id": 83,
-      "options": {},
       "targets": [
         {
+          "refId": "A",
           "format": "table",
-          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  object_name AS \"Interface\",\n  metric_name AS \"Metric\",\n  ROUND(metric_value::numeric,3) AS \"Current\",\n  ROUND(baseline_mean::numeric,3) AS \"Baseline\",\n  ROUND(z_score::numeric,2) AS \"Dev Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_net'\nORDER BY ABS(z_score) DESC LIMIT 20",
-          "refId": "A"
+          "rawSql": "SELECT\n  CASE severity WHEN 'critical' THEN '🔴' WHEN 'alert' THEN '🟠' ELSE '🟡' END AS \"!\",\n  to_char(snap_time,'YYYY-MM-DD HH24:MI') AS \"Snap Time\",\n  object_name AS \"Interface\",\n  metric_name AS \"Metric\",\n  ROUND(metric_value::numeric,3) AS \"Current\",\n  ROUND(baseline_mean::numeric,3) AS \"Baseline\",\n  ROUND(z_score::numeric,2) AS \"Dev Score\"\nFROM sar_anomalies\nWHERE hostname = '${hostname}'\n  AND '${hostname}' != ''\nAND metric_source = 'sar_net'\nORDER BY ABS(z_score) DESC LIMIT 20"
         }
       ],
-      "title": "Network Anomalies (sar_net) — per Interface",
-      "type": "table"
+      "options": {},
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Dev Score"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#f9a825",
+                      "value": null
+                    },
+                    {
+                      "color": "#ef6c00",
+                      "value": 3
+                    },
+                    {
+                      "color": "#d32f2f",
+                      "value": 4
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
-  "preload": false,
-  "refresh": "5m",
-  "schemaVersion": 41,
-  "tags": [
-    "sar",
-    "anomaly"
-  ],
-  "templating": {
-    "list": [
-      {
-        "current": {
-          "selected": false,
-          "text": "http://192.168.1.6:8000",
-          "value": "http://192.168.1.6:8000"
-        },
-        "description": "Base URL for Portal URL — change to server IP for intranet access",
-        "hide": 2,
-        "label": "Portal URL",
-        "name": "portal_url",
-        "options": [
-          {
-            "selected": true,
-            "text": "http://192.168.1.6:8000",
-            "value": "http://192.168.1.6:8000"
-          }
-        ],
-        "query": "http://192.168.1.6:8000",
-        "skipUrlSync": false,
-        "type": "textbox"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "http://192.168.1.6:3000",
-          "value": "http://192.168.1.6:3000"
-        },
-        "description": "Base URL for Grafana URL — change to server IP for intranet access",
-        "hide": 2,
-        "label": "Grafana URL",
-        "name": "grafana_url",
-        "options": [
-          {
-            "selected": true,
-            "text": "http://192.168.1.6:3000",
-            "value": "http://192.168.1.6:3000"
-          }
-        ],
-        "query": "http://192.168.1.6:3000",
-        "skipUrlSync": false,
-        "type": "textbox"
-      },
-      {
-        "current": {
-          "text": "PostgreSQL",
-          "value": "ferwfz6k211j4b"
-        },
-        "includeAll": false,
-        "label": "Data Source",
-        "name": "ds",
-        "options": [],
-        "query": "postgres",
-        "refresh": 1,
-        "type": "datasource"
-      },
-      {
-        "current": {
-          "text": "",
-          "value": ""
-        },
-        "datasource": {
-          "type": "postgres",
-          "uid": "ferwfz6k211j4b"
-        },
-        "includeAll": false,
-        "label": "Hostname",
-        "name": "hostname",
-        "options": [],
-        "query": "SELECT value, label FROM (  SELECT '' AS value, '' AS label  UNION ALL  SELECT DISTINCT hostname AS value, hostname AS label FROM sar_cpu_stats) AS t ORDER BY value;",
-        "refresh": 2,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      }
-    ]
-  },
-  "time": {
-    "from": "now-6h",
-    "to": "now"
-  },
   "timepicker": {
     "hidden": true
-  },
-  "timezone": "Asia/Kolkata",
-  "title": "SAR — Anomaly Detection",
-  "uid": "sar-anomalies",
-  "version": 31
+  }
 }

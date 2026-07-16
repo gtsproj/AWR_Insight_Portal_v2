@@ -1,4 +1,4 @@
- {
+{
   "id": null,
   "uid": "fdv31-sql-elapsed-v1",
   "title": "fdv3.1 SQL Ordered by Elapsed Time - Top 10",
@@ -12,6 +12,48 @@
   ],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
       {
         "name": "ds",
         "label": "Data Source",
@@ -98,7 +140,7 @@
     ]
   },
   "panels": [
-        {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -135,7 +177,7 @@
         "x": 0,
         "y": 8
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -175,7 +217,7 @@
         "x": 0,
         "y": 16
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"

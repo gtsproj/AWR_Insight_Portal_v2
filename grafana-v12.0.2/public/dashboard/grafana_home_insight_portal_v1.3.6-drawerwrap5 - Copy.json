@@ -30,22 +30,32 @@
         "content": "<div style='width:100%;border-radius:10px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);'><div style=\"display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(90deg,#00897B,#009688,#4DB6AC);color:white;\"><div style=\"display:flex;align-items:center;gap:12px;\"><img src=\"/public/img/logo.jpg\" alt=\"Logo\" style=\"width:226px;height:75px;object-fit:contain;\" /></div><div style=\"flex:1;text-align:center;font-weight:800;font-size:22px;letter-spacing:.3px;\">AWR Insight Portal</div><div><a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" style=\"color:white;margin-right:14px;text-decoration:none;\">📊 AWR Analysis</a><a href=\"/d/awr-home-v13/awr-insight-portal-v1-3?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&var-wait_scope=&from=now-6h&to=now\" style=\"color:white;text-decoration:none;\">🔄 Reset Filters</a></div></div></div>"
       }
     },
-	{
-  "id": 201,
-  "type": "text",
-  "title": "",
-  "transparent": true,
-  "gridPos": { "h": 2, "w": 24, "x": 0, "y": 4 },
-  "options": {
-    "mode": "markdown",
-    "content": "<span style=\"font-size:12px\">**Legend — Waits (% DB time)** &nbsp;•&nbsp; 🔴 **≥ 80%** &nbsp;|&nbsp; 🟠 **41–79%** &nbsp;|&nbsp; 🟡 **11–40%** &nbsp;|&nbsp; 🟢 **< 10%**</span>"
-  }
-},	
+    {
+      "id": 201,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "<span style=\"font-size:12px\">**Legend — Waits (% DB time)** &nbsp;•&nbsp; 🔴 **≥ 80%** &nbsp;|&nbsp; 🟠 **41–79%** &nbsp;|&nbsp; 🟡 **11–40%** &nbsp;|&nbsp; 🟢 **< 10%**</span>"
+      }
+    },
     {
       "id": 10,
       "type": "piechart",
       "title": "Top Wait Events (by % DB time)",
-      "gridPos": {"h": 10,"w": 12,"x": 0,"y": 5},
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
       "datasource": {
         "type": "postgres",
         "uid": "ferwfz6k211j4b"
@@ -88,22 +98,32 @@
         }
       ]
     },
-{
+    {
       "id": 202,
       "type": "text",
       "title": "",
       "transparent": true,
-      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 15 },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
       "options": {
         "mode": "markdown",
         "content": "<span style=\"font-size:12px\">**Legend — SQL (Severity)** &nbsp;&nbsp;**RAG Mode:** `${rag_mode}`<br/>• **percentile:** 🔴 **≥ P90** | 🟠 **P70–P89** | 🟡 **P40–P69** | 🟢 **< P40** &nbsp;&nbsp;• **normalized:** 🔴 **≥ 80** | 🟠 **41–79** | 🟡 **11–40** | 🟢 **< 10**</span>"
       }
-    },	
+    },
     {
       "id": 20,
       "type": "piechart",
       "title": "Top SQL by Severity (avg score)",
-      "gridPos": {"h": 10,"w": 12,"x": 0,"y": 16},
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
       "datasource": {
         "type": "postgres",
         "uid": "ferwfz6k211j4b"
@@ -146,22 +166,32 @@
         }
       ]
     },
-{
+    {
       "id": 203,
       "type": "text",
       "title": "",
       "transparent": true,
-      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 26 },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
       "options": {
         "mode": "markdown",
         "content": "<span style=\"font-size:12px\">**Legend — Segments (Severity)** &nbsp;&nbsp;**RAG Mode:** `${rag_mode}`<br/>• **percentile:** 🔴 **≥ P90** | 🟠 **P70–P89** | 🟡 **P40–P69** | 🟢 **< P40** &nbsp;&nbsp;• **normalized:** 🔴 **≥ 80** | 🟠 **41–79** | 🟡 **11–40** | 🟢 **< 10**</span>"
       }
-    },	
+    },
     {
       "id": 30,
       "type": "piechart",
       "title": "Top Segments by Severity (avg score)",
-      "gridPos": {"h": 10,"w": 12,"x": 0,"y": 27},
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
       "datasource": {
         "type": "postgres",
         "uid": "ferwfz6k211j4b"
@@ -208,7 +238,12 @@
       "id": 11,
       "type": "table",
       "title": "Wait Events – Summary",
-      "gridPos": {"h": 10,"w": 12,"x": 12,"y": 5},
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
       "datasource": {
         "type": "postgres",
         "uid": "ferwfz6k211j4b"
@@ -340,62 +375,145 @@
         ]
       }
     },
-{
-  "id": 90,
-  "type": "table",
-  "title": "Correlation & Recommendations",
-  "gridPos": { "h": 16, "w": 24, "x": 0, "y": 37 },
-  "transparent": false,
-  "datasource": { "type": "postgres", "uid": "ferwfz6k211j4b" },
-  "options": {
-    "showHeader": true,
-    "footer": { "fields": "", "reducer": ["sum"] },
-    "cellHeight": "sm"
-  },
-  "fieldConfig": {
-    "defaults": {
-      "custom": {
-        "align": "left",
-        "displayMode": "auto",
-        "cellOptions": { "type": "auto" },
-        "inspect": false,
-        "filterable": false,
-        "minWidth": 120
-      },
-      "mappings": [],
-      "thresholds": {
-        "mode": "absolute",
-        "steps": [{ "color": "green", "value": null }]
-      }
-    },
-    "overrides": [
-      {
-        "matcher": { "id": "byName", "options": "section" },
-        "properties": [
-          { "id": "custom.width", "value": 180 }
-        ]
-      },
-      {
-        "matcher": { "id": "byName", "options": "value" },
-        "properties": [
-          { "id": "custom.width", "value": 1200 },
-          { "id": "custom.cellOptions", "value": { "type": "text", "wrap": true } },
-          { "id": "custom.align", "value": "left" }
-        ]
-      }
-    ]
-  },
-  "targets": [
     {
-      "refId": "A",
-      "format": "table",
-      "rawSql": "WITH params AS (\n  SELECT\n    lower(NULLIF('$open_drawer','')) AS open_flag,\n    lower(NULLIF('$focus_type',''))  AS ftype,\n    lower(NULLIF('$focus_value','')) AS fval,\n    lower(NULLIF('$wait_scope',''))  AS scope_txt,\n    '$start_snap'                    AS s_label,\n    '$end_snap'                      AS e_label,\n    split_part('$start_snap',' - ',1)::int AS s_snap,\n    split_part('$end_snap',' - ',1)::int   AS e_snap,\n    '$dbname'                        AS dbname,\n    '$instance'                      AS instance\n),\n\n-- Window-scoped waits\nwin_waits AS (\n  SELECT w.event, ROUND(AVG(w.pct_time),2) AS wait_pct\n  FROM awr_wait_summary_mv w\n  JOIN params p ON p.dbname=w.dbname AND p.instance=w.instance\n  WHERE w.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND ( (SELECT scope_txt FROM params) IN ('','all') OR lower(w.wait_scope) = (SELECT scope_txt FROM params) )\n  GROUP BY w.event\n),\n\n/* =========================\n   SQL focus (hybrid)\n   ========================= */\nfocus_sql AS (\n  SELECT fval AS sql_id FROM params\n  WHERE (SELECT ftype FROM params)='sql' AND fval<>''\n),\n\n-- TEXT-MAP: segments referenced by focused SQL\nsql_seg_text AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_sql_object_map_mv m\n  JOIN awr_segment_summary_mv s\n    ON ( (m.owner <> '' AND lower(s.owner)=m.owner AND lower(s.object_name)=m.object)\n      OR (m.owner = ''  AND lower(s.object_name)=m.object) )\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE m.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n),\n\n-- Co-occurrence helper views\nsql_snap AS ( SELECT * FROM awr_sql_score_by_snap ),\nseg_snap AS ( SELECT * FROM awr_seg_score_by_snap ),\n\n-- Fallback: segments that co-occur with focused SQL across snaps\nsql_seg_cooccur AS (\n  SELECT se.owner, se.object_name, se.obj_type,\n         SUM(se.seg_score_snap * sq.sql_score_snap) AS co_score\n  FROM seg_snap se\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  JOIN params p ON p.dbname=se.dbname AND p.instance=se.instance\n  WHERE sq.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND se.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY se.owner, se.object_name, se.obj_type\n),\n\n-- union with priority: text first, then co-occur\nsql_seg_union AS (\n  SELECT owner, object_name, obj_type, 1000::numeric AS rank_signal\n  FROM sql_seg_text\n  UNION\n  SELECT owner, object_name, obj_type, COALESCE(co_score,0) AS rank_signal\n  FROM sql_seg_cooccur\n),\n\n-- PRE-AGG: avoid nested aggregates in ORDER BY\nsql_seg_ranked AS (\n  SELECT\n    u.owner, u.object_name, u.obj_type,\n    MAX(u.rank_signal)            AS rank_signal_max,\n    AVG(s.severity_score)         AS seg_score_avg\n  FROM sql_seg_union u\n  JOIN awr_segment_summary_mv s\n    ON lower(s.owner)=lower(u.owner)\n   AND lower(s.object_name)=lower(u.object_name)\n   AND s.obj_type=u.obj_type\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY u.owner, u.object_name, u.obj_type\n),\n\n-- Final: Segments referenced by SQL\nblock_sql_segments AS (\n  SELECT COALESCE(\n           string_agg(\n             '• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score_avg,2)::text||']',\n             E'\\n' ORDER BY rank_signal_max DESC, seg_score_avg DESC\n           ),\n           '—'\n         ) AS txt\n  FROM sql_seg_ranked\n),\n\n-- Top waits (window) for SQL focus\nblock_sql_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n),\n\n-- Other SQLs using these objects (text first, co-occur fallback)\nblock_sql_other_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| x.sql_id, E'\\n' ORDER BY x.rank_signal DESC, x.sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT-BASED\n    SELECT DISTINCT m.sql_id,\n           1000::numeric AS rank_signal,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(r.owner) AND m.object=lower(r.object_name))\n        OR (m.owner = ''  AND m.object=lower(r.object_name)) )\n    WHERE m.sql_id <> (SELECT sql_id FROM focus_sql)\n\n    UNION ALL\n\n    -- CO-OCCURRENCE\n    SELECT sq.sql_id,\n           SUM(se.seg_score_snap * sq.sql_score_snap) AS rank_signal,\n           AVG(sq.sql_score_snap) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(r.owner) AND lower(se.object_name)=lower(r.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    WHERE sq.sql_id <> (SELECT sql_id FROM focus_sql)\n    GROUP BY sq.sql_id\n  ) x\n),\n\n/* =========================\n   WAIT focus\n   ========================= */\nfocus_wait AS (\n  SELECT fval AS event FROM params\n  WHERE (SELECT ftype FROM params)='wait' AND fval<>''\n),\n\nwait_top_segments AS (\n  SELECT s.owner, s.object_name, s.obj_type, AVG(s.severity_score) AS seg_score\n  FROM awr_segment_summary_mv s\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY s.owner, s.object_name, s.obj_type\n  ORDER BY AVG(s.severity_score) DESC\n  LIMIT 10\n),\n\nwait_seg_sql_text AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT m.sql_id, ', ' ORDER BY m.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         1 AS pref\n  FROM wait_top_segments w\n  JOIN awr_sql_object_map_mv m\n    ON ( (m.owner <> '' AND m.owner=lower(w.owner) AND m.object=lower(w.object_name))\n      OR (m.owner = ''  AND m.object=lower(w.object_name)) )\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_co AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT sq.sql_id, ', ' ORDER BY sq.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         2 AS pref\n  FROM wait_top_segments w\n  JOIN seg_snap se\n    ON lower(se.owner)=lower(w.owner) AND lower(se.object_name)=lower(w.object_name)\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_union AS (\n  SELECT * FROM wait_seg_sql_text\n  UNION\n  SELECT * FROM wait_seg_sql_co\n),\n\nblock_wait_segments AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score,2)::text||']',\n                      E'\\n' ORDER BY seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_top_segments\n),\n\nblock_wait_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' → '|| COALESCE(sql_ids,'—'),\n                      E'\\n' ORDER BY pref, seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_seg_sql_union\n),\n\n/* =========================\n   SEGMENT focus\n   ========================= */\nfocus_segment AS (\n  SELECT lower(NULLIF('$focus_value','')) AS obj_txt\n  WHERE (SELECT ftype FROM params)='segment' AND (SELECT fval FROM params)<>'' \n),\n\nseg_obj AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_segment_summary_mv s, params p\n  WHERE p.dbname=s.dbname AND p.instance=s.instance\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND (\n         lower(s.object_name)=(SELECT obj_txt FROM focus_segment)\n         OR lower(s.owner||'.'||s.object_name)=(SELECT obj_txt FROM focus_segment)\n        )\n),\n\nblock_seg_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n),\n\nblock_seg_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| sql_id, E'\\n' ORDER BY avg_sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT MAP first\n    SELECT DISTINCT m.sql_id,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS avg_sql_score,\n           1 AS pref\n    FROM seg_obj o\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(o.owner) AND m.object=lower(o.object_name))\n        OR (m.owner = ''  AND m.object=lower(o.object_name)) )\n    UNION ALL\n    -- Fallback co-occurrence\n    SELECT sq.sql_id,\n           AVG(sq.sql_score_snap) AS avg_sql_score,\n           2 AS pref\n    FROM seg_obj o\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(o.owner) AND lower(se.object_name)=lower(o.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    GROUP BY sq.sql_id\n  ) u\n),\n\n/* =========================\n   Recommendation text (unchanged)\n   ========================= */\npick_rule AS (\n  SELECT r.rule_text\n  FROM awr_recommendation_rules r\n  JOIN params p ON r.category = p.ftype\n  WHERE r.rule_key = (SELECT fval FROM params) OR r.rule_key='*'\n  ORDER BY CASE WHEN r.rule_key=(SELECT fval FROM params) THEN 1 ELSE 2 END\n  LIMIT 1\n),\n\n/* =========================\n   Final rows\n   ========================= */\nrows AS (\n  SELECT 1 AS ord, 'Focus' AS section,\n         CASE WHEN (SELECT ftype FROM params) <> ''\n              THEN (SELECT ftype FROM params)||': '||COALESCE((SELECT fval FROM params),'—')\n              ELSE '—' END AS value\n  UNION ALL\n  SELECT 2, 'Signals',\n         'Scope: '||COALESCE((SELECT scope_txt FROM params),'all')\n         ||' | Range: '||(SELECT s_label FROM params)||' → '||(SELECT e_label FROM params)\n\n  UNION ALL\n  SELECT 3, 'Top Segments', (SELECT txt FROM block_wait_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n  UNION ALL\n  SELECT 4, 'Top SQLs referencing segments', (SELECT txt FROM block_wait_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n\n  UNION ALL\n  SELECT 3, 'Segments referenced by SQL', (SELECT txt FROM block_sql_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 4, 'Other SQLs using these objects', (SELECT txt FROM block_sql_other_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 5, 'Top Waits (window)', (SELECT txt FROM block_sql_waits)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n\n  UNION ALL\n  SELECT 3, 'Top Waits (window)', (SELECT txt FROM block_seg_waits)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n  UNION ALL\n  SELECT 4, 'Top SQLs for this segment', (SELECT txt FROM block_seg_sqls)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n\n  UNION ALL\n  SELECT 9, 'Recommendation',\n         COALESCE((SELECT rule_text FROM pick_rule), 'No recommendation found for this selection.')\n)\nSELECT section, value\nFROM rows, params p\nWHERE p.open_flag = 'true'\nORDER BY ord;\n"
+      "id": 90,
+      "type": "table",
+      "title": "Correlation & Recommendations",
+      "gridPos": {
+        "h": 16,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "transparent": false,
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "options": {
+        "showHeader": true,
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ]
+        },
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false,
+            "filterable": false,
+            "minWidth": 120
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "section"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "value"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1200
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "text",
+                  "wrap": true
+                }
+              },
+              {
+                "id": "custom.align",
+                "value": "left"
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "WITH params AS (\n  SELECT\n    lower(NULLIF('$open_drawer','')) AS open_flag,\n    lower(NULLIF('$focus_type',''))  AS ftype,\n    lower(NULLIF('$focus_value','')) AS fval,\n    lower(NULLIF('$wait_scope',''))  AS scope_txt,\n    '$start_snap'                    AS s_label,\n    '$end_snap'                      AS e_label,\n    split_part('$start_snap',' - ',1)::int AS s_snap,\n    split_part('$end_snap',' - ',1)::int   AS e_snap,\n    '$dbname'                        AS dbname,\n    '$instance'                      AS instance\n),\n\n-- Window-scoped waits\nwin_waits AS (\n  SELECT w.event, ROUND(AVG(w.pct_time),2) AS wait_pct\n  FROM awr_wait_summary_mv w\n  JOIN params p ON p.dbname=w.dbname AND p.instance=w.instance\n  WHERE w.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND ( (SELECT scope_txt FROM params) IN ('','all') OR lower(w.wait_scope) = (SELECT scope_txt FROM params) )\n  GROUP BY w.event\n),\n\n/* =========================\n   SQL focus (hybrid)\n   ========================= */\nfocus_sql AS (\n  SELECT fval AS sql_id FROM params\n  WHERE (SELECT ftype FROM params)='sql' AND fval<>''\n),\n\n-- TEXT-MAP: segments referenced by focused SQL\nsql_seg_text AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_sql_object_map_mv m\n  JOIN awr_segment_summary_mv s\n    ON ( (m.owner <> '' AND lower(s.owner)=m.owner AND lower(s.object_name)=m.object)\n      OR (m.owner = ''  AND lower(s.object_name)=m.object) )\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE m.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n),\n\n-- Co-occurrence helper views\nsql_snap AS ( SELECT * FROM awr_sql_score_by_snap ),\nseg_snap AS ( SELECT * FROM awr_seg_score_by_snap ),\n\n-- Fallback: segments that co-occur with focused SQL across snaps\nsql_seg_cooccur AS (\n  SELECT se.owner, se.object_name, se.obj_type,\n         SUM(se.seg_score_snap * sq.sql_score_snap) AS co_score\n  FROM seg_snap se\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  JOIN params p ON p.dbname=se.dbname AND p.instance=se.instance\n  WHERE sq.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND se.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY se.owner, se.object_name, se.obj_type\n),\n\n-- union with priority: text first, then co-occur\nsql_seg_union AS (\n  SELECT owner, object_name, obj_type, 1000::numeric AS rank_signal\n  FROM sql_seg_text\n  UNION\n  SELECT owner, object_name, obj_type, COALESCE(co_score,0) AS rank_signal\n  FROM sql_seg_cooccur\n),\n\n-- PRE-AGG: avoid nested aggregates in ORDER BY\nsql_seg_ranked AS (\n  SELECT\n    u.owner, u.object_name, u.obj_type,\n    MAX(u.rank_signal)            AS rank_signal_max,\n    AVG(s.severity_score)         AS seg_score_avg\n  FROM sql_seg_union u\n  JOIN awr_segment_summary_mv s\n    ON lower(s.owner)=lower(u.owner)\n   AND lower(s.object_name)=lower(u.object_name)\n   AND s.obj_type=u.obj_type\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY u.owner, u.object_name, u.obj_type\n),\n\n-- Final: Segments referenced by SQL\nblock_sql_segments AS (\n  SELECT COALESCE(\n           string_agg(\n             '• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score_avg,2)::text||']',\n             E'\\n' ORDER BY rank_signal_max DESC, seg_score_avg DESC\n           ),\n           '—'\n         ) AS txt\n  FROM sql_seg_ranked\n),\n\n-- Top waits (window) for SQL focus\nblock_sql_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n),\n\n-- Other SQLs using these objects (text first, co-occur fallback)\nblock_sql_other_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| x.sql_id, E'\\n' ORDER BY x.rank_signal DESC, x.sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT-BASED\n    SELECT DISTINCT m.sql_id,\n           1000::numeric AS rank_signal,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(r.owner) AND m.object=lower(r.object_name))\n        OR (m.owner = ''  AND m.object=lower(r.object_name)) )\n    WHERE m.sql_id <> (SELECT sql_id FROM focus_sql)\n\n    UNION ALL\n\n    -- CO-OCCURRENCE\n    SELECT sq.sql_id,\n           SUM(se.seg_score_snap * sq.sql_score_snap) AS rank_signal,\n           AVG(sq.sql_score_snap) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(r.owner) AND lower(se.object_name)=lower(r.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    WHERE sq.sql_id <> (SELECT sql_id FROM focus_sql)\n    GROUP BY sq.sql_id\n  ) x\n),\n\n/* =========================\n   WAIT focus\n   ========================= */\nfocus_wait AS (\n  SELECT fval AS event FROM params\n  WHERE (SELECT ftype FROM params)='wait' AND fval<>''\n),\n\nwait_top_segments AS (\n  SELECT s.owner, s.object_name, s.obj_type, AVG(s.severity_score) AS seg_score\n  FROM awr_segment_summary_mv s\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY s.owner, s.object_name, s.obj_type\n  ORDER BY AVG(s.severity_score) DESC\n  LIMIT 10\n),\n\nwait_seg_sql_text AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT m.sql_id, ', ' ORDER BY m.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         1 AS pref\n  FROM wait_top_segments w\n  JOIN awr_sql_object_map_mv m\n    ON ( (m.owner <> '' AND m.owner=lower(w.owner) AND m.object=lower(w.object_name))\n      OR (m.owner = ''  AND m.object=lower(w.object_name)) )\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_co AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT sq.sql_id, ', ' ORDER BY sq.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         2 AS pref\n  FROM wait_top_segments w\n  JOIN seg_snap se\n    ON lower(se.owner)=lower(w.owner) AND lower(se.object_name)=lower(w.object_name)\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_union AS (\n  SELECT * FROM wait_seg_sql_text\n  UNION\n  SELECT * FROM wait_seg_sql_co\n),\n\nblock_wait_segments AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score,2)::text||']',\n                      E'\\n' ORDER BY seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_top_segments\n),\n\nblock_wait_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' → '|| COALESCE(sql_ids,'—'),\n                      E'\\n' ORDER BY pref, seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_seg_sql_union\n),\n\n/* =========================\n   SEGMENT focus\n   ========================= */\nfocus_segment AS (\n  SELECT lower(NULLIF('$focus_value','')) AS obj_txt\n  WHERE (SELECT ftype FROM params)='segment' AND (SELECT fval FROM params)<>'' \n),\n\nseg_obj AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_segment_summary_mv s, params p\n  WHERE p.dbname=s.dbname AND p.instance=s.instance\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND (\n         lower(s.object_name)=(SELECT obj_txt FROM focus_segment)\n         OR lower(s.owner||'.'||s.object_name)=(SELECT obj_txt FROM focus_segment)\n        )\n),\n\nblock_seg_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n),\n\nblock_seg_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| sql_id, E'\\n' ORDER BY avg_sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT MAP first\n    SELECT DISTINCT m.sql_id,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS avg_sql_score,\n           1 AS pref\n    FROM seg_obj o\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(o.owner) AND m.object=lower(o.object_name))\n        OR (m.owner = ''  AND m.object=lower(o.object_name)) )\n    UNION ALL\n    -- Fallback co-occurrence\n    SELECT sq.sql_id,\n           AVG(sq.sql_score_snap) AS avg_sql_score,\n           2 AS pref\n    FROM seg_obj o\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(o.owner) AND lower(se.object_name)=lower(o.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    GROUP BY sq.sql_id\n  ) u\n),\n\n/* =========================\n   Recommendation text (unchanged)\n   ========================= */\npick_rule AS (\n  SELECT r.rule_text\n  FROM awr_recommendation_rules r\n  JOIN params p ON r.category = p.ftype\n  WHERE r.rule_key = (SELECT fval FROM params) OR r.rule_key='*'\n  ORDER BY CASE WHEN r.rule_key=(SELECT fval FROM params) THEN 1 ELSE 2 END\n  LIMIT 1\n),\n\n/* =========================\n   Final rows\n   ========================= */\nrows AS (\n  SELECT 1 AS ord, 'Focus' AS section,\n         CASE WHEN (SELECT ftype FROM params) <> ''\n              THEN (SELECT ftype FROM params)||': '||COALESCE((SELECT fval FROM params),'—')\n              ELSE '—' END AS value\n  UNION ALL\n  SELECT 2, 'Signals',\n         'Scope: '||COALESCE((SELECT scope_txt FROM params),'all')\n         ||' | Range: '||(SELECT s_label FROM params)||' → '||(SELECT e_label FROM params)\n\n  UNION ALL\n  SELECT 3, 'Top Segments', (SELECT txt FROM block_wait_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n  UNION ALL\n  SELECT 4, 'Top SQLs referencing segments', (SELECT txt FROM block_wait_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n\n  UNION ALL\n  SELECT 3, 'Segments referenced by SQL', (SELECT txt FROM block_sql_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 4, 'Other SQLs using these objects', (SELECT txt FROM block_sql_other_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 5, 'Top Waits (window)', (SELECT txt FROM block_sql_waits)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n\n  UNION ALL\n  SELECT 3, 'Top Waits (window)', (SELECT txt FROM block_seg_waits)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n  UNION ALL\n  SELECT 4, 'Top SQLs for this segment', (SELECT txt FROM block_seg_sqls)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n\n  UNION ALL\n  SELECT 9, 'Recommendation',\n         COALESCE((SELECT rule_text FROM pick_rule), 'No recommendation found for this selection.')\n)\nSELECT section, value\nFROM rows, params p\nWHERE p.open_flag = 'true'\nORDER BY ord;\n"
+        }
+      ]
     }
-  ]
-}
   ],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
       {
         "type": "query",
         "name": "dbname",

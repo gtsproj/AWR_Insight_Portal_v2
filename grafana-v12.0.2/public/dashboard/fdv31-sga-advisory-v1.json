@@ -7,9 +7,55 @@
   "schemaVersion": 36,
   "version": 1,
   "refresh": "5m",
-  "tags": ["awr","advisory","sga"],
+  "tags": [
+    "awr",
+    "advisory",
+    "sga"
+  ],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
       {
         "name": "ds",
         "label": "Data Source",
@@ -36,8 +82,8 @@
           "selected": false,
           "text": "",
           "value": ""
-        },        
-		"query": "SELECT value, label FROM ( SELECT '' AS value, '' AS label UNION ALL SELECT DISTINCT dbname AS value, dbname AS label FROM awr_advisory_sga) AS combined_results ORDER BY value;"
+        },
+        "query": "SELECT value, label FROM ( SELECT '' AS value, '' AS label UNION ALL SELECT DISTINCT dbname AS value, dbname AS label FROM awr_advisory_sga) AS combined_results ORDER BY value;"
       },
       {
         "name": "instance",
@@ -82,8 +128,16 @@
       "id": 10,
       "type": "table",
       "title": "SGA Advisory — Raw values",
-      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 9},
-      "datasource": {"type":"postgres","uid":"ferwfz6k211j4b"},
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 9
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
       "targets": [
         {
           "refId": "A",
@@ -91,15 +145,24 @@
           "rawSql": "SELECT sga_target_size_m, sga_size_factor, est_db_time_s, est_physical_reads, snap_time FROM awr_advisory_sga WHERE dbname = '$dbname' AND instance = '$instance' AND begin_snap = split_part('$start_snap',' - ',1)::int ORDER BY sga_target_size_m;"
         }
       ],
-      "options": {"showHeader": true}
+      "options": {
+        "showHeader": true
+      }
     },
-
     {
       "id": 11,
       "type": "timeseries",
       "title": "Estimated DB Time vs SGA Size",
-      "gridPos": {"x": 0, "y": 9, "w": 12, "h": 9},
-      "datasource": {"type":"postgres","uid":"ferwfz6k211j4b"},
+      "gridPos": {
+        "x": 0,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
       "targets": [
         {
           "refId": "A",
@@ -111,8 +174,16 @@
       "id": 12,
       "type": "barchart",
       "title": "Estimated Physical Reads vs SGA Size",
-      "gridPos": {"x": 12, "y": 9, "w": 12, "h": 9},
-      "datasource": {"type":"postgres","uid":"ferwfz6k211j4b"},
+      "gridPos": {
+        "x": 12,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
       "targets": [
         {
           "refId": "A",
@@ -120,13 +191,20 @@
         }
       ]
     },
-
     {
       "id": 13,
       "type": "stat",
       "title": "Recommended SGA (current vs recommended + improvement%)",
-      "gridPos": {"x": 0, "y": 18, "w": 24, "h": 6},
-      "datasource": {"type":"postgres","uid":"ferwfz6k211j4b"},
+      "gridPos": {
+        "x": 0,
+        "y": 18,
+        "w": 24,
+        "h": 6
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
       "targets": [
         {
           "refId": "A",
@@ -136,7 +214,11 @@
       ],
       "options": {
         "orientation": "auto",
-        "reduceOptions": {"calcs":["lastNotNull"]}
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        }
       }
     }
   ],

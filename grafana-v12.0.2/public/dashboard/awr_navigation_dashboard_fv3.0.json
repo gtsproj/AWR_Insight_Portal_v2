@@ -16,8 +16,8 @@
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:8000",
-          "value": "http://192.168.1.6:8000"
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
         },
         "description": "Base URL for Portal URL — change to server IP for intranet access",
         "hide": 2,
@@ -26,19 +26,19 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:8000",
-            "value": "http://192.168.1.6:8000"
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
           }
         ],
-        "query": "http://192.168.1.6:8000",
+        "query": "http://192.168.1.12:8000",
         "skipUrlSync": false,
         "type": "textbox"
       },
       {
         "current": {
           "selected": false,
-          "text": "http://192.168.1.6:3000",
-          "value": "http://192.168.1.6:3000"
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
         },
         "description": "Base URL for Grafana URL — change to server IP for intranet access",
         "hide": 2,
@@ -47,11 +47,11 @@
         "options": [
           {
             "selected": true,
-            "text": "http://192.168.1.6:3000",
-            "value": "http://192.168.1.6:3000"
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
           }
         ],
-        "query": "http://192.168.1.6:3000",
+        "query": "http://192.168.1.12:3000",
         "skipUrlSync": false,
         "type": "textbox"
       },

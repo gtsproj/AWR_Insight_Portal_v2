@@ -1,7 +1,7 @@
 {
   "id": null,
   "uid": "fdv31-foreground-wait-events",
-  "title": "fdv3.1 Foreground Wait Events \u2013 Pct of DB Time",
+  "title": "fdv3.1 Foreground Wait Events – Pct of DB Time",
   "editable": true,
   "timezone": "Asia/Kolkata",
   "schemaVersion": 36,
@@ -12,6 +12,48 @@
   ],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
       {
         "name": "ds",
         "label": "Data Source",
@@ -98,7 +140,7 @@
     ]
   },
   "panels": [
-        {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -114,7 +156,7 @@
       },
       "transparent": true
     },
-	{
+    {
       "id": 1,
       "type": "timeseries",
       "title": "% of DB Time",
@@ -127,7 +169,6 @@
           "refId": "A",
           "format": "time_series",
           "rawSql": "SELECT\n  snap_time AT TIME ZONE 'Asia/Kolkata' AS \"time\",\n  event,\n  pct_db_time\nFROM awr_foreground_wait_events\nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n  AND dbname = '$dbname'\n  AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  AND pct_db_time > 10\nORDER BY snap_time;"
-
         }
       ],
       "gridPos": {

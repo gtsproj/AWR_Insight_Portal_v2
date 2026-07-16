@@ -13,6 +13,48 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
         "name": "ds",
         "label": "Data Source",
         "type": "datasource",
@@ -98,7 +140,7 @@
     ]
   },
   "panels": [
-        {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -128,14 +170,14 @@
           "format": "time_series",
           "rawSql": "WITH top_files AS (\n  SELECT filename\n  FROM awr_file_io_stats\n  WHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n    AND dbname = '$dbname'\n    AND instance = '$instance'\n    AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  GROUP BY filename\n  ORDER BY SUM(reads) DESC\n  LIMIT 10\n)\nSELECT\n  f.snap_time AT TIME ZONE 'Asia/Kolkata' AS \"time\",\n  f.filename,\n  f.reads::numeric AS reads_ops\nFROM awr_file_io_stats f\nJOIN top_files x ON x.filename = f.filename\nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n  AND f.dbname = '$dbname'\n  AND f.instance = '$instance'\n  AND f.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nORDER BY \"time\";"
         }
-      ],	  
+      ],
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 0,
         "y": 2
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -153,7 +195,7 @@
         },
         "overrides": []
       }
-    },	  
+    },
     {
       "id": 3,
       "type": "timeseries",
@@ -168,14 +210,14 @@
           "format": "time_series",
           "rawSql": "WITH top_files AS (\n  SELECT filename\n  FROM awr_file_io_stats\n  WHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n    AND dbname = '$dbname'\n    AND instance = '$instance'\n    AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\n  GROUP BY filename\n  ORDER BY SUM(writes) DESC\n  LIMIT 10\n)\nSELECT\n  f.snap_time AT TIME ZONE 'Asia/Kolkata' AS \"time\",\n  f.filename,\n  f.writes::numeric AS writes_ops\nFROM awr_file_io_stats f\nJOIN top_files x ON x.filename = f.filename\nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n  AND f.dbname = '$dbname'\n  AND f.instance = '$instance'\n  AND f.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nORDER BY \"time\";"
         }
-      ],	  
+      ],
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 12,
         "y": 2
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -193,7 +235,7 @@
         },
         "overrides": []
       }
-    },	  	  
+    },
     {
       "id": 4,
       "type": "barchart",
@@ -201,21 +243,21 @@
       "datasource": {
         "type": "postgres",
         "uid": "ferwfz6k211j4b"
-      },	  
+      },
       "targets": [
         {
           "refId": "A",
           "format": "table",
           "rawSql": "SELECT filename AS metric, avg_read_ms\nFROM awr_file_io_stats\nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n  AND dbname = '$dbname'\n  AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nORDER BY avg_read_ms DESC\nLIMIT 10;"
         }
-      ],	  
+      ],
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 0,
         "y": 10
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -248,7 +290,7 @@
           "format": "table",
           "rawSql": "SELECT filename AS metric, (write_avg_sec * 1000.0) AS write_avg_ms\nFROM awr_file_io_stats\nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n  AND dbname = '$dbname'\n  AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nORDER BY write_avg_ms DESC\nLIMIT 10;"
         }
-      ],	  
+      ],
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -275,4 +317,4 @@
       }
     }
   ]
-}	
+}

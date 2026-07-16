@@ -13,6 +13,48 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
         "name": "ds",
         "label": "Data Source",
         "type": "datasource",
@@ -98,7 +140,7 @@
     ]
   },
   "panels": [
-        {
+    {
       "id": 99,
       "type": "text",
       "title": "Navigation Links",
@@ -114,17 +156,22 @@
       },
       "transparent": true
     },
-		{
-	  "id": 10,
-	  "type": "text",
-	  "title": "Severity Score Calculation",
-	  "gridPos": { "h": 6, "w": 24, "x": 0, "y": 0 },
-	  "options": {
-		"mode": "markdown",
-		"content": "### Severity Score Calculation\n\nThe score is a composite metric combining:\n- **Elapsed Time per Exec (s)** (weight 25%) | **CPU Time per Exec (s)** (weight 25%) | **Buffer Gets per Exec** (weight 15%) | **Disk Reads per Exec** (weight 10%) | **User I/O Wait per Exec (s)** (weight 10%)\n- **Unoptimized Reads per Exec** (weight 5%) | **Parse Calls** (weight 5%) | **Cluster Wait Time per Exec (s)** (weight 5%)\n\n> Higher score indicates greater severity (performance issue)."
-	  },
-	  "transparent": true
-	},
+    {
+      "id": 10,
+      "type": "text",
+      "title": "Severity Score Calculation",
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "### Severity Score Calculation\n\nThe score is a composite metric combining:\n- **Elapsed Time per Exec (s)** (weight 25%) | **CPU Time per Exec (s)** (weight 25%) | **Buffer Gets per Exec** (weight 15%) | **Disk Reads per Exec** (weight 10%) | **User I/O Wait per Exec (s)** (weight 10%)\n- **Unoptimized Reads per Exec** (weight 5%) | **Parse Calls** (weight 5%) | **Cluster Wait Time per Exec (s)** (weight 5%)\n\n> Higher score indicates greater severity (performance issue)."
+      },
+      "transparent": true
+    },
     {
       "id": 1,
       "type": "table",
@@ -146,7 +193,7 @@
         "x": 0,
         "y": 0
       },
-	    "options": {
+      "options": {
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
