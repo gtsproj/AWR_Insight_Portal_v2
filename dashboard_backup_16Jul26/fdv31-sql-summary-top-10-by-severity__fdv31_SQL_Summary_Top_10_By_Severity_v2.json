@@ -1,0 +1,216 @@
+{
+  "editable": true,
+  "id": 596,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 99,
+      "options": {
+        "content": "\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Navigation</a>&nbsp;&nbsp;|&nbsp;&nbsp, \n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters, \n<a href=\"/d/fdv31-sql-text-viewer/fdv3-1-sql-text-viewer?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ SQL Text Viewer</a>&nbsp;&nbsp;|&nbsp;&nbsp</a>",
+        "mode": "html"
+      },
+      "title": "Navigation Links",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "content": "### Severity Score Calculation\n\nThe score is a composite metric combining:\n- **Elapsed Time per Exec (s)** (weight 25%) | **CPU Time per Exec (s)** (weight 25%) | **Buffer Gets per Exec** (weight 15%) | **Disk Reads per Exec** (weight 10%) | **User I/O Wait per Exec (s)** (weight 10%)\n- **Unoptimized Reads per Exec** (weight 5%) | **Parse Calls** (weight 5%) | **Cluster Wait Time per Exec (s)** (weight 5%)\n\n> Higher score indicates greater severity (performance issue).",
+        "mode": "markdown"
+      },
+      "title": "Severity Score Calculation",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "SELECT sql_id,severity_score,\n       executions,\n       elapsed_time_per_exec_s,\n       cpu_per_exec_s,\n       user_io_wait_per_exec_s,\n       buffer_gets_per_exec,\n       disk_reads_per_exec,\n       unoptimized_reqs_per_exec,\n       parse_calls,\n       cluster_wait_time_per_exec_s\nFROM awr_sql_summary_mv\nWHERE dbname = '$dbname'\n  AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nORDER BY severity_score DESC\nLIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top 10 SQLs Across Subsections",
+      "type": "table"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 36,
+  "tags": [
+    "awr"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:8000",
+          "value": "http://localhost:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:8000",
+            "value": "http://localhost:8000"
+          }
+        ],
+        "query": "http://localhost:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:3000",
+          "value": "http://localhost:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:3000",
+            "value": "http://localhost:3000"
+          }
+        ],
+        "query": "http://localhost:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "Data Source",
+        "name": "ds",
+        "query": "postgres",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Database",
+        "multi": false,
+        "name": "dbname",
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT dbname AS value, dbname AS label\n  FROM awr_sql_summary_mv\n) AS combined_results\nORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT instance AS value, instance AS label\n  FROM awr_sql_summary_mv\n  WHERE dbname = '$dbname'\n) AS combined_results\nORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Start Snap",
+        "multi": false,
+        "name": "start_snap",
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_sql_summary_mv\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "End Snap",
+        "multi": false,
+        "name": "end_snap",
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_sql_summary_mv\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "timezone": "Asia/Kolkata",
+  "title": "fdv3.1 SQL Summary Top 10 By Severity v2",
+  "uid": "fdv31-sql-summary-top-10-by-severity",
+  "version": 12
+}

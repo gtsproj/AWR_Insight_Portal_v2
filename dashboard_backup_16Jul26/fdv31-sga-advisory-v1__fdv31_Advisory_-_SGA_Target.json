@@ -1,0 +1,226 @@
+{
+  "description": "SGA Target Advisory dashboard (fdv3.1 style). Uses awr_advisory_sga and split_part('$start_snap',' - ',1) for snapshot.",
+  "editable": true,
+  "id": 634,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "SELECT sga_target_size_m, sga_size_factor, est_db_time_s, est_physical_reads, snap_time FROM awr_advisory_sga WHERE dbname = '$dbname' AND instance = '$instance' AND begin_snap = split_part('$start_snap',' - ',1)::int ORDER BY sga_target_size_m;",
+          "refId": "A"
+        }
+      ],
+      "title": "SGA Advisory — Raw values",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 11,
+      "targets": [
+        {
+          "rawSql": "SELECT sga_target_size_m::float AS metric_x, est_db_time_s::float AS metric_y FROM awr_advisory_sga WHERE dbname = '$dbname' AND instance = '$instance' AND begin_snap = split_part('$start_snap',' - ',1)::int ORDER BY sga_target_size_m;",
+          "refId": "A"
+        }
+      ],
+      "title": "Estimated DB Time vs SGA Size",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 12,
+      "targets": [
+        {
+          "rawSql": "SELECT sga_target_size_m::float AS \"SGA Size (MB)\", est_physical_reads::bigint AS \"Est Physical Reads\" FROM awr_advisory_sga WHERE dbname = '$dbname' AND instance = '$instance' AND begin_snap = split_part('$start_snap',' - ',1)::int ORDER BY sga_target_size_m;",
+          "refId": "A"
+        }
+      ],
+      "title": "Estimated Physical Reads vs SGA Size",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 13,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH adv AS ( SELECT sga_target_size_m, sga_size_factor, est_db_time_s FROM awr_advisory_sga WHERE dbname = '$dbname' AND instance = '$instance' AND begin_snap = split_part('$start_snap',' - ',1)::int ) SELECT (SELECT sga_target_size_m FROM adv WHERE sga_size_factor = 1 LIMIT 1) AS current_sga, (SELECT sga_target_size_m FROM adv ORDER BY est_db_time_s ASC LIMIT 1) AS recommended_sga, CASE WHEN (SELECT sga_target_size_m FROM adv WHERE sga_size_factor = 1 LIMIT 1) IS NULL THEN NULL ELSE ROUND(( ( (SELECT est_db_time_s FROM adv WHERE sga_size_factor = 1 LIMIT 1) - (SELECT est_db_time_s FROM adv ORDER BY est_db_time_s ASC LIMIT 1) ) / NULLIF((SELECT est_db_time_s FROM adv WHERE sga_size_factor = 1 LIMIT 1),0) ) * 100.0, 2) END AS improvement_pct;",
+          "refId": "A"
+        }
+      ],
+      "title": "Recommended SGA (current vs recommended + improvement%)",
+      "type": "stat"
+    }
+  ],
+  "refresh": "5m",
+  "schemaVersion": 36,
+  "tags": [
+    "awr",
+    "advisory",
+    "sga"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:8000",
+          "value": "http://localhost:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:8000",
+            "value": "http://localhost:8000"
+          }
+        ],
+        "query": "http://localhost:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:3000",
+          "value": "http://localhost:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:3000",
+            "value": "http://localhost:3000"
+          }
+        ],
+        "query": "http://localhost:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "Data Source",
+        "name": "ds",
+        "query": "postgres",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Database",
+        "multi": false,
+        "name": "dbname",
+        "query": "SELECT value, label FROM ( SELECT '' AS value, '' AS label UNION ALL SELECT DISTINCT dbname AS value, dbname AS label FROM awr_advisory_sga) AS combined_results ORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "query": "SELECT value, label FROM ( SELECT '' AS value, '' AS label UNION ALL SELECT DISTINCT instance AS value, instance AS label FROM awr_advisory_sga WHERE dbname = '$dbname' ) AS combined_results ORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Start Snap",
+        "multi": false,
+        "name": "start_snap",
+        "query": "SELECT label FROM ( SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label FROM awr_advisory_sga WHERE dbname = '$dbname' AND instance = '$instance' ) AS combined_results ORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "timezone": "Asia/Kolkata",
+  "title": "fdv3.1 Advisory - SGA Target",
+  "uid": "fdv31-sga-advisory-v1",
+  "version": 20
+}

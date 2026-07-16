@@ -1,0 +1,199 @@
+{
+  "id": 607,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "content": "\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Navigation</a>&nbsp;&nbsp;|&nbsp;&nbsp,\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters</a>",
+        "mode": "html"
+      },
+      "title": "Navigation Links",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH top_segments AS \n(  SELECT object_name,obj_type, subobject_name, avg(logical_reads) \nFROM awr_seg_logical_reads  \nWHERE '$dbanme' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''    \nAND dbname = '$dbname'    AND instance = '$instance'    \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int \nAND split_part('$end_snap',' - ',1)::int  \nAND pcttotal >= 10  \nGROUP BY object_name, obj_type,subobject_name  \nORDER BY    CASE      WHEN split_part('$start_snap',' - ',1)::int = split_part('$end_snap',' - ',1)::int \nTHEN MAX(logical_reads) \nELSE AVG(logical_reads)    \nEND DESC)    \nSELECT   s.object_name, s.obj_type,s.subobject_name,  Avg(s.logical_reads) AS logical_reads,  ROUND(AVG(s.pcttotal),2) AS pct_total \nFROM awr_seg_logical_reads s \nJOIN top_segments t ON t.object_name = s.object_name \nWHERE dbname = '$dbname'  AND instance = '$instance'  \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int \nAND split_part('$end_snap',' - ',1)::int \nGROUP BY s.object_name,s.obj_type,s.subobject_name  \nORDER BY logical_reads DESC;",
+          "refId": "B"
+        }
+      ],
+      "title": "Segment Details - Logical Reads",
+      "type": "table"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 36,
+  "tags": [
+    "awr"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:8000",
+          "value": "http://localhost:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:8000",
+            "value": "http://localhost:8000"
+          }
+        ],
+        "query": "http://localhost:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:3000",
+          "value": "http://localhost:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:3000",
+            "value": "http://localhost:3000"
+          }
+        ],
+        "query": "http://localhost:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "Data Source",
+        "name": "ds",
+        "query": "postgres",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Database",
+        "multi": false,
+        "name": "dbname",
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT dbname AS value, dbname AS label\n  FROM awr_load_profile\n) AS combined_results\nORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT instance AS value, instance AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname'\n) AS combined_results\nORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Start Snap",
+        "multi": false,
+        "name": "start_snap",
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "End Snap",
+        "multi": false,
+        "name": "end_snap",
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_load_profile\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "timezone": "Asia/Kolkata",
+  "title": "fdv3.1 Segment Statistics Logical Reads",
+  "uid": "fdv31-logl-reads-v1",
+  "version": 12
+}

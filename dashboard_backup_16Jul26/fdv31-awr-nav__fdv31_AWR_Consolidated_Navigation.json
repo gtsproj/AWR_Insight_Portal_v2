@@ -1,0 +1,321 @@
+{
+  "editable": true,
+  "id": 674,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 99,
+      "options": {
+        "content": "<a href=\"/d/awr-home-v13/awr-insight-portal-v1-3?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"/d/awr-home-v13/awr-insight-portal-v1-3?from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters</a>",
+        "mode": "html"
+      },
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 2
+      },
+      "id": 101,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "Instance Performance",
+          "url": "/d/fdv31-instance-efficiency/fdv3-1-instance-efficiency?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to"
+        },
+        {
+          "targetBlank": false,
+          "title": "Instance Statistics",
+          "url": "/d/fdv31-instance-statistics/fdv-3-1-instance-statistics?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to"
+        }
+      ],
+      "options": {
+        "graphMode": "none",
+        "justifyMode": "center",
+        "textMode": "name"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT 1",
+          "refId": "A"
+        }
+      ],
+      "title": "Instance Performance",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 2
+      },
+      "id": 102,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "Open Load Profile",
+          "url": "/d/fdv31-load-landing/fdv3-1-load-profile-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to"
+        }
+      ],
+      "options": {
+        "graphMode": "none",
+        "justifyMode": "center",
+        "textMode": "name"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT 1",
+          "refId": "A"
+        }
+      ],
+      "title": "Load Profile",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 2
+      },
+      "id": 103,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "Open IO Statistics",
+          "url": "/d/fdv31-io-landing/fdv3-1-io-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to"
+        }
+      ],
+      "options": {
+        "graphMode": "none",
+        "justifyMode": "center",
+        "textMode": "name"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT 1",
+          "refId": "A"
+        }
+      ],
+      "title": "IO Statistics",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 8
+      },
+      "id": 104,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "Open Wait Statistics",
+          "url": "/d/fdv31-wait-landing/fdv3-1-wait-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to"
+        }
+      ],
+      "options": {
+        "graphMode": "none",
+        "justifyMode": "center",
+        "textMode": "name"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT 1",
+          "refId": "A"
+        }
+      ],
+      "title": "Wait Event Statistics",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 8
+      },
+      "id": 105,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "Open SQL Statistics",
+          "url": "/d/fdv31-sql-landing/fdv3-1-sql-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to"
+        }
+      ],
+      "options": {
+        "graphMode": "none",
+        "justifyMode": "center",
+        "textMode": "name"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT 1",
+          "refId": "A"
+        }
+      ],
+      "title": "SQL Statistics",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 8
+      },
+      "id": 106,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "Open Segment Statistics",
+          "url": "/d/fdv31-segment-landing/fdv3-1-segment-statistics-landing?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to"
+        }
+      ],
+      "options": {
+        "graphMode": "none",
+        "justifyMode": "center",
+        "textMode": "name"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "ferwfz6k211j4b"
+          },
+          "rawSql": "SELECT 1",
+          "refId": "A"
+        }
+      ],
+      "title": "Segment Statistics",
+      "type": "stat"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 36,
+  "tags": [
+    "awr",
+    "navigation"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:8000",
+          "value": "http://192.168.1.12:8000"
+        },
+        "description": "Base URL for Portal URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:8000",
+            "value": "http://192.168.1.12:8000"
+          }
+        ],
+        "query": "http://192.168.1.12:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.1.12:3000",
+          "value": "http://192.168.1.12:3000"
+        },
+        "description": "Base URL for Grafana URL — change to server IP for intranet access",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.1.12:3000",
+            "value": "http://192.168.1.12:3000"
+          }
+        ],
+        "query": "http://192.168.1.12:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "label": "Database",
+        "name": "dbname",
+        "query": "SELECT DISTINCT dbname FROM awr_load_profile ORDER BY 1",
+        "type": "query"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "label": "Instance",
+        "name": "instance",
+        "query": "SELECT DISTINCT instance FROM awr_load_profile WHERE dbname='$dbname' ORDER BY 1",
+        "type": "query"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "label": "Start Snap",
+        "name": "start_snap",
+        "query": "SELECT DISTINCT begin_snap FROM awr_load_profile WHERE dbname='$dbname' AND instance='$instance' ORDER BY 1",
+        "type": "query"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "label": "End Snap",
+        "name": "end_snap",
+        "query": "SELECT DISTINCT begin_snap FROM awr_load_profile WHERE dbname='$dbname' AND instance='$instance' ORDER BY 1",
+        "type": "query"
+      }
+    ]
+  },
+  "timezone": "Coordinated Universal Time",
+  "title": "fdv3.1 AWR Consolidated Navigation",
+  "uid": "fdv31-awr-nav",
+  "version": 62
+}

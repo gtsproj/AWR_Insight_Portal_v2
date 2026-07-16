@@ -1,0 +1,217 @@
+{
+  "editable": true,
+  "id": 606,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 99,
+      "options": {
+        "content": "\n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Navigation</a>&nbsp;&nbsp;|&nbsp;&nbsp, \n<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters, \n<a href=\"/d/fdv31-sql-text-viewer/fdv3-1-sql-text-viewer?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ SQL Text Viewer</a>&nbsp;&nbsp;|&nbsp;&nbsp</a>",
+        "mode": "html"
+      },
+      "title": "Navigation Links",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "content": "The score is a composite metric combining: **IO Group  and Contention Group** \n\n **Weightage for IO Group - 60% and Weightage for Contention Group - 40%** | \n\n **IO Group [ Physical Reads 15%** | **Direct IO (Reads + Writes) 10%** | **Logical Reads 10%** | **CR + Current Blocks Received 10%** | **Table Scans 5%** | **UnOptimized Reads 5%** | **Read / Write Requests 3%** | **Optimized Reads 2%**    ]**\n\n **Contention Group [ **DB Block Changes 10%** | **Row Lock Waits 10%** | **ITL Waits 5%** | **Buffer Busy Waits 10%** | **Global Cache Buffer Busy 5%** ]**\n\n> Higher score indicates greater severity (performance issue).",
+        "mode": "markdown"
+      },
+      "title": "Severity Score Calculation",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "severity_score"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "SELECT   owner,   tablespace_name,  object_name,  obj_type,  subobject_name,\n   ROUND(AVG(severity_score), 2) AS severity_score,\n   ROUND(AVG(logical_reads), 2) AS logical_reads,\n  ROUND(AVG(physical_reads), 2) AS physical_reads,\n  ROUND(AVG(physical_writes), 2) AS physical_writes,\n  ROUND(AVG(direct_reads), 2) AS direct_reads,\n  ROUND(AVG(direct_writes), 2) AS direct_writes,\n  ROUND(AVG(phys_read_requests), 2) AS phys_read_requests,\n  ROUND(AVG(phys_write_requests), 2) AS phys_write_requests,\n  ROUND(AVG(cr_blocks_received), 2) AS cr_blocks_received,\n  ROUND(AVG(current_blocks_received), 2) AS current_blocks_received,\n  ROUND(AVG(unoptimized_reads), 2) AS unoptimized_reads,\n  ROUND(AVG(optimized_reads), 2) AS optimized_reads,\n  ROUND(AVG(table_scans), 2) AS table_scans,\n  ROUND(AVG(db_block_changes), 2) AS db_block_changes,\n  ROUND(AVG(row_lock_waits), 2) AS row_lock_waits,\n  ROUND(AVG(itl_waits), 2) AS itl_waits,\n   ROUND(AVG(buffer_busy_waits), 2) AS buffer_busy_waits,\n  ROUND(AVG(gc_buffer_busy), 2) AS gc_buffer_busy\n FROM awr_segment_summary_mv\nWHERE '$dbname' != ''   AND '$instance' != '' \n  AND '$start_snap' != ''   AND '$end_snap' != '' \n   AND dbname = '$dbname'  AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int \n                      AND split_part('$end_snap',' - ',1)::int\n GROUP BY owner, tablespace_name, object_name, obj_type, subobject_name\nORDER BY severity_score DESC\n LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top 10 Segments by Severity Score",
+      "type": "table"
+    }
+  ],
+  "refresh": "5m",
+  "schemaVersion": 36,
+  "tags": [
+    "awr"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:8000",
+          "value": "http://localhost:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:8000",
+            "value": "http://localhost:8000"
+          }
+        ],
+        "query": "http://localhost:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:3000",
+          "value": "http://localhost:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:3000",
+            "value": "http://localhost:3000"
+          }
+        ],
+        "query": "http://localhost:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Postgres",
+          "value": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "Data Source",
+        "name": "ds",
+        "query": "postgres",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Database",
+        "multi": false,
+        "name": "dbname",
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT dbname AS value, dbname AS label\n  FROM awr_sql_summary_mv\n) AS combined_results\nORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "query": "SELECT value, label FROM (\n  SELECT '' AS value, '' AS label\n  UNION ALL\n  SELECT DISTINCT instance AS value, instance AS label\n  FROM awr_sql_summary_mv\n  WHERE dbname = '$dbname'\n) AS combined_results\nORDER BY value;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "Start Snap",
+        "multi": false,
+        "name": "start_snap",
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_sql_summary_mv\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "includeAll": false,
+        "label": "End Snap",
+        "multi": false,
+        "name": "end_snap",
+        "query": "SELECT label FROM (\n  SELECT '' AS label\n  UNION ALL\n  SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label\n  FROM awr_sql_summary_mv\n  WHERE dbname = '$dbname' AND instance = '$instance'\n) AS combined_results\nORDER BY label NULLS FIRST;",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "timezone": "Asia/Kolkata",
+  "title": "fdv3.1 Segment Summary - Top 10 by Severity v2",
+  "uid": "fdv31-segment-summary-top-10-by-severity",
+  "version": 12
+}

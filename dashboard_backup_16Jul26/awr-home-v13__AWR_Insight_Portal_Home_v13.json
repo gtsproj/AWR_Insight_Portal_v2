@@ -1,0 +1,1336 @@
+{
+  "editable": true,
+  "id": 659,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "content": "<div style='width:100%;border-radius:10px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);'><div style=\"display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(90deg,#00897B,#009688,#4DB6AC);color:white;\"><div style=\"display:flex;align-items:center;gap:12px;\"><img src=\"/public/img/logo.jpg\" alt=\"Logo\" style=\"width:226px;height:75px;object-fit:contain;\" /></div><div style=\"flex:1;text-align:center;font-weight:800;font-size:22px;letter-spacing:.3px;\">AWR Insight Portal</div><div><a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" style=\"color:white;margin-right:14px;text-decoration:none;\">📊 AWR Analysis</a><a href=\"/d/awr-home-v13/awr-insight-portal-v1-3?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&var-wait_scope=&from=now-6h&to=now\" style=\"color:white;text-decoration:none;\">🔄 Reset Filters</a></div></div></div>",
+        "mode": "html"
+      },
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "db_time_improvement_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 41,
+      "options": {
+        "cellHeight": "lg",
+        "fontSize": 18,
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH sga_base AS (\nSELECT sga_target_size_m, sga_size_factor, AVG(est_db_time_s) AS  avg_db_time,  AVG(est_physical_reads) AS avg_reads\nFROM awr_advisory_sga \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nGROUP BY sga_target_size_m, sga_size_factor), \ncurrent_sga AS (\nSELECT AVG(sga_target_size_m) AS cur_sga_mb, AVG(avg_db_time) AS cur_db_time, AVG(avg_reads) AS cur_reads \nFROM sga_base \nWHERE sga_size_factor = 1), \nplateau_calc AS (\nSELECT *, LAG(avg_db_time) OVER (ORDER BY sga_target_size_m) AS prev_time, \nLAG(avg_reads) OVER (ORDER BY sga_target_size_m) AS prev_reads \nFROM sga_base WHERE sga_size_factor > 1), \noptimal_sga AS ( \nSELECT sga_target_size_m, avg_db_time AS opt_db_time, avg_reads AS opt_reads\nFROM plateau_calc \nWHERE   (prev_time - avg_db_time) / NULLIF(prev_time,0) < 0.01 OR (prev_reads - avg_reads) / NULLIF(prev_reads,0) < 0.01 \nORDER BY sga_target_size_m LIMIT 1), \nos_memory AS (\nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb,\nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb  \nFROM awr_os_statistics  \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int) \nSELECT \nROUND(c.cur_sga_mb) AS current_sga_mb, \nROUND(o.sga_target_size_m) AS recommended_sga_mb, \nROUND(((c.cur_db_time - o.opt_db_time) / c.cur_db_time) * 100, 2) AS db_time_improvement_pct, \nROUND(c.cur_reads) AS current_physical_reads,\nROUND(o.opt_reads) AS estimated_physical_reads,\nROUND(c.cur_reads - o.opt_reads) AS reduced_physical_reads, \nROUND(((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) * 100, 2) AS reduced_physical_reads_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.15 \nAND ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.05 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.30 THEN 'HIGH' \nWHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb)  AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb, \nCASE WHEN (m.free_ram_mb - o.sga_target_size_m) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nELSE 'OK TO IMPLEMENT' \nEND AS memory_validation_status \nFROM current_sga c \nJOIN optimal_sga o ON 1=1 \nJOIN os_memory m ON 1=1;",
+          "refId": "A"
+        }
+      ],
+      "title": "SGA Advisory – Detailed View",
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_sga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "db_time_improvement_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_physical_reads_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 42,
+      "options": {
+        "cellHeight": "lg",
+        "fontSize": 18,
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH sga_base AS (\nSELECT sga_target_size_m, sga_size_factor, AVG(est_db_time_s) AS  avg_db_time,  AVG(est_physical_reads) AS avg_reads\nFROM awr_advisory_sga \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nGROUP BY sga_target_size_m, sga_size_factor), \ncurrent_sga AS (\nSELECT AVG(sga_target_size_m) AS cur_sga_mb, AVG(avg_db_time) AS cur_db_time, AVG(avg_reads) AS cur_reads \nFROM sga_base \nWHERE sga_size_factor = 1), \nplateau_calc AS (\nSELECT *, LAG(avg_db_time) OVER (ORDER BY sga_target_size_m) AS prev_time, \nLAG(avg_reads) OVER (ORDER BY sga_target_size_m) AS prev_reads \nFROM sga_base WHERE sga_size_factor > 1), \noptimal_sga AS ( \nSELECT sga_target_size_m, avg_db_time AS opt_db_time, avg_reads AS opt_reads\nFROM plateau_calc \nWHERE   (prev_time - avg_db_time) / NULLIF(prev_time,0) < 0.01 OR (prev_reads - avg_reads) / NULLIF(prev_reads,0) < 0.01 \nORDER BY sga_target_size_m LIMIT 1), \nos_memory AS (\nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb,\nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb  \nFROM awr_os_statistics  \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance'\nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int) \nSELECT \nROUND(c.cur_sga_mb) AS current_sga_mb, \nROUND(o.sga_target_size_m) AS recommended_sga_mb, \nROUND(((c.cur_db_time - o.opt_db_time) / c.cur_db_time) * 100, 2) AS db_time_improvement_pct, \nROUND(c.cur_reads) AS current_physical_reads,\nROUND(o.opt_reads) AS estimated_physical_reads,\nROUND(c.cur_reads - o.opt_reads) AS reduced_physical_reads, \nROUND(((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) * 100, 2) AS reduced_physical_reads_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.15 \nAND ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN ((c.cur_db_time - o.opt_db_time) / NULLIF(c.cur_db_time,0)) > 0.05 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.30 THEN 'HIGH' \nWHEN ((c.cur_reads - o.opt_reads) / NULLIF(c.cur_reads,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb)  AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb, \nCASE WHEN (m.free_ram_mb - o.sga_target_size_m) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nELSE 'OK TO IMPLEMENT' \nEND AS memory_validation_status \nFROM current_sga c \nJOIN optimal_sga o ON 1=1 \nJOIN os_memory m ON 1=1;",
+          "refId": "A"
+        }
+      ],
+      "title": "SGA Recommendation Overview",
+      "type": "gauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cache_hit_gain_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "disk_write_reduction"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_disk_write_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 43,
+      "options": {
+        "cellHeight": "lg",
+        "fontSize": 18,
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH pga_base AS (\nSELECT pga_target_est_mb, size_factor, AVG(estd_pga_cache_hit_pct) AS avg_cache_hit, \nAVG(estd_extra_written_to_disk) AS avg_disk_writes \nFROM awr_advisory_pga \nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int \nGROUP BY pga_target_est_mb, size_factor), \ncurrent_pga AS ( \nSELECT AVG(pga_target_est_mb) AS cur_pga_mb, AVG(avg_cache_hit) AS cur_cache_hit, AVG(avg_disk_writes)   AS cur_disk_writes \nFROM pga_base \nWHERE size_factor = 1), \nplateau_calc AS ( \nSELECT *, \nLAG(avg_cache_hit)  OVER (ORDER BY pga_target_est_mb) AS prev_hit, \nLAG(avg_disk_writes) OVER (ORDER BY pga_target_est_mb) AS prev_disk \nFROM pga_base WHERE size_factor > 1), \noptimal_pga AS ( \nSELECT pga_target_est_mb,avg_cache_hit AS opt_cache_hit, avg_disk_writes AS opt_disk_writes \nFROM plateau_calc \nWHERE (avg_cache_hit - prev_hit) / NULLIF(prev_hit,0) < 0.01 OR (prev_disk - avg_disk_writes) / NULLIF(prev_disk,0) < 0.01 \nORDER BY pga_target_est_mb LIMIT 1), \nos_memory AS ( \nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb, \nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb \nFROM awr_os_statistics \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int), \npga_safety AS (\nSELECT *, \nCASE WHEN free_ram_mb > 8192 THEN 1.2 \nWHEN free_ram_mb > 4096 THEN 1.5 \nELSE 2.0 END AS risk_multiplier FROM os_memory) \nSELECT \nROUND(c.cur_pga_mb) AS current_pga_mb, \nROUND(o.pga_target_est_mb) AS recommended_pga_mb, \nROUND((o.opt_cache_hit - c.cur_cache_hit), 2) AS cache_hit_gain_pct, \nROUND(c.cur_disk_writes) AS current_disk_writes, \nROUND(o.opt_disk_writes) AS estimated_disk_writes, \nROUND(c.cur_disk_writes - o.opt_disk_writes) AS disk_write_reduction, \nROUND(((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) * 100,2) AS reduced_disk_write_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN (o.opt_cache_hit - c.cur_cache_hit) > 5 AND ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN (o.opt_cache_hit - c.cur_cache_hit) > 1 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.30 \nTHEN 'HIGH' \nWHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb) AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb,\nROUND(m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier),2) AS safe_ram_headroom_mb, \nCASE WHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 2048 THEN 'HIGH MEMORY PRESSURE' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 8192 THEN 'MODERATE MEMORY PRESSURE'\nELSE 'SAFE' END AS pga_memory_risk_status \nFROM current_pga c \nJOIN optimal_pga o ON 1=1 \nJOIN os_memory m   ON 1=1 \nJOIN pga_safety s  ON 1=1;",
+          "refId": "B"
+        }
+      ],
+      "title": "PGA Advisory – Detailed View",
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "recommended_pga_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cache_hit_gain_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "current_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estimated_disk_writes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "disk_write_reduction"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reduced_disk_write_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "confidence_score"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "free_ram_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "safe_ram_headroom_mb"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "MB"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 44,
+      "options": {
+        "cellHeight": "lg",
+        "fontSize": 18,
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH pga_base AS (\nSELECT pga_target_est_mb, size_factor, AVG(estd_pga_cache_hit_pct) AS avg_cache_hit, \nAVG(estd_extra_written_to_disk) AS avg_disk_writes \nFROM awr_advisory_pga \nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''  \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int \nGROUP BY pga_target_est_mb, size_factor), \ncurrent_pga AS ( \nSELECT AVG(pga_target_est_mb) AS cur_pga_mb, AVG(avg_cache_hit) AS cur_cache_hit, AVG(avg_disk_writes)   AS cur_disk_writes \nFROM pga_base \nWHERE size_factor = 1), \nplateau_calc AS ( \nSELECT *, \nLAG(avg_cache_hit)  OVER (ORDER BY pga_target_est_mb) AS prev_hit, \nLAG(avg_disk_writes) OVER (ORDER BY pga_target_est_mb) AS prev_disk \nFROM pga_base WHERE size_factor > 1), \noptimal_pga AS ( \nSELECT pga_target_est_mb,avg_cache_hit AS opt_cache_hit, avg_disk_writes AS opt_disk_writes \nFROM plateau_calc \nWHERE (avg_cache_hit - prev_hit) / NULLIF(prev_hit,0) < 0.01 OR (prev_disk - avg_disk_writes) / NULLIF(prev_disk,0) < 0.01 \nORDER BY pga_target_est_mb LIMIT 1), \nos_memory AS ( \nSELECT MAX(CASE WHEN statistic ILIKE '%FREE_MEMORY%' THEN value END)/1024/1024 AS free_ram_mb, \nMAX(CASE WHEN statistic ILIKE '%PHYSICAL_MEMORY%' THEN value END)/1024/1024 AS total_ram_mb \nFROM awr_os_statistics \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != '' \nAND dbname = '$dbname'  AND instance = '$instance' \nAND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int), \npga_safety AS (\nSELECT *, \nCASE WHEN free_ram_mb > 8192 THEN 1.2 \nWHEN free_ram_mb > 4096 THEN 1.5 \nELSE 2.0 END AS risk_multiplier FROM os_memory) \nSELECT \nROUND(c.cur_pga_mb) AS current_pga_mb, \nROUND(o.pga_target_est_mb) AS recommended_pga_mb, \nROUND((o.opt_cache_hit - c.cur_cache_hit), 2) AS cache_hit_gain_pct, \nROUND(c.cur_disk_writes) AS current_disk_writes, \nROUND(o.opt_disk_writes) AS estimated_disk_writes, \nROUND(c.cur_disk_writes - o.opt_disk_writes) AS disk_write_reduction, \nROUND(((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) * 100,2) AS reduced_disk_write_pct, \nCASE WHEN COUNT(*) OVER() >= 10 THEN 95 \nWHEN COUNT(*) OVER() >= 5  THEN 85 \nELSE 70 END AS confidence_score, \nCASE WHEN (o.opt_cache_hit - c.cur_cache_hit) > 5 AND ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.20 THEN 'HIGHLY STABLE' \nWHEN (o.opt_cache_hit - c.cur_cache_hit) > 1 THEN 'MODERATELY STABLE' \nELSE 'LOW STABILITY' END AS trend_stability, \nCASE WHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.30 \nTHEN 'HIGH' \nWHEN ((c.cur_disk_writes - o.opt_disk_writes) / NULLIF(c.cur_disk_writes,0)) > 0.10 THEN 'MEDIUM' \nELSE 'LOW' END AS undersize_risk, \nROUND(m.free_ram_mb) AS free_ram_mb,\nROUND(m.total_ram_mb) AS total_ram_mb,\nROUND(m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier),2) AS safe_ram_headroom_mb, \nCASE WHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 0 THEN 'INSUFFICIENT MEMORY – DO NOT APPLY' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 2048 THEN 'HIGH MEMORY PRESSURE' \nWHEN (m.free_ram_mb - (o.pga_target_est_mb * s.risk_multiplier)) < 8192 THEN 'MODERATE MEMORY PRESSURE'\nELSE 'SAFE' END AS pga_memory_risk_status \nFROM current_pga c \nJOIN optimal_pga o ON 1=1 \nJOIN os_memory m   ON 1=1 \nJOIN pga_safety s  ON 1=1;",
+          "refId": "B"
+        }
+      ],
+      "title": "PGA Recommendation Overview",
+      "type": "gauge"
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 201,
+      "options": {
+        "content": "<span style=\"font-size:12px\">**Legend — Waits (% DB time)** &nbsp;•&nbsp; 🔴 **≥ 80%** &nbsp;|&nbsp; 🟠 **41–79%** &nbsp;|&nbsp; 🟡 **11–40%** &nbsp;|&nbsp; 🟢 **< 10%**</span>",
+        "mode": "markdown"
+      },
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 2,
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 34
+      },
+      "id": 10,
+      "options": {
+        "categoryField": "name",
+        "displaylabels": [
+          "percent"
+        ],
+        "legend": {
+          "calcs": [
+            "percent"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "values": true
+        },
+        "showlabels": "auto",
+        "tooltip": {
+          "mode": "single"
+        },
+        "valueField": "value"
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH f AS (  SELECT begin_snap, event::text AS event, SUM(pct_time) AS event_pct_snap  FROM awr_wait_summary_mv  WHERE dbname='$dbname'    AND instance='$instance'    AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int    AND ( '$wait_scope' IN ('', 'All') OR wait_scope = '$wait_scope' )  GROUP BY begin_snap, event ), t AS (  SELECT begin_snap, SUM(pct_time) AS total_pct_snap  FROM awr_wait_summary_mv  WHERE dbname='$dbname'    AND instance='$instance'    AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int    AND ( '$wait_scope' IN ('', 'All') OR wait_scope = '$wait_scope' )  GROUP BY begin_snap ) SELECT f.event AS name, ROUND(100.0 * SUM(f.event_pct_snap) / NULLIF(SUM(t.total_pct_snap),0), 2) AS value FROM f JOIN t USING (begin_snap) GROUP BY f.event ORDER BY value DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Wait Events (by % DB time)",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "event"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "Open Drawer",
+                    "url": "${__url.path}?var-open_drawer=true&var-focus_type=wait&var-focus_value=${__value:uri}&var-dbname=${dbname}&var-instance=${instance}&var-start_snap=${start_snap}&var-end_snap=${end_snap}&var-wait_scope=${wait_scope}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 34
+      },
+      "id": 11,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH base AS (\nSELECT s.begin_snap,s.event::text AS event, COALESCE(m.wait_class, 'Other') AS wait_class, SUM(s.pct_time) AS event_pct_snap\nFROM awr_wait_summary_mv s\n LEFT JOIN awr_wait_event_master m\nON TRIM(LOWER(s.event)) = TRIM(LOWER(m.event))\nWHERE s.dbname = '$dbname' AND s.instance = '$instance'\nAND s.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND ( '$wait_scope' IN ('', 'All') OR s.wait_scope = '$wait_scope' )\nGROUP BY s.begin_snap, s.event, m.wait_class),\ntot AS (\nSELECT s.begin_snap, SUM(s.pct_time) AS total_pct_snap\nFROM awr_wait_summary_mv s\nWHERE s.dbname = '$dbname'\nAND s.instance = '$instance'\nAND s.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int\nAND split_part('$end_snap',' - ',1)::int\nAND ( '$wait_scope' IN ('', 'All') OR s.wait_scope = '$wait_scope' )\nGROUP BY s.begin_snap)\nSELECT b.wait_class, b.event,\nROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) AS severity_score,\nCASE\nWHEN ROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) >= 80 THEN '🔴'\nWHEN ROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) BETWEEN 41 AND 79 THEN '🟠'\nWHEN ROUND( 100.0 * SUM(b.event_pct_snap) / NULLIF(SUM(t.total_pct_snap), 0), 2 ) BETWEEN 11 AND 40 THEN '🟡'\nELSE '🟢'\nEND AS severity_rag\nFROM base b\nJOIN tot t USING (begin_snap)\nGROUP BY b.wait_class, b.event\nORDER BY severity_score DESC\nLIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Wait Events – Summary",
+      "type": "table"
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 202,
+      "options": {
+        "content": "<span style=\"font-size:12px\">**Legend — SQL (Severity)** &nbsp;&nbsp;**RAG Mode:** `${rag_mode}`<br/>• **percentile:** 🔴 **≥ P90** | 🟠 **P70–P89** | 🟡 **P40–P69** | 🟢 **< P40** &nbsp;&nbsp;• **normalized:** 🔴 **≥ 80** | 🟠 **41–79** | 🟡 **11–40** | 🟢 **< 10**</span>",
+        "mode": "markdown"
+      },
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 2,
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      },
+      "id": 20,
+      "options": {
+        "categoryField": "name",
+        "displaylabels": [
+          "percent"
+        ],
+        "legend": {
+          "calcs": [
+            "percent"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "values": true
+        },
+        "showlabels": "auto",
+        "tooltip": {
+          "mode": "single"
+        },
+        "valueField": "value"
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "SELECT sql_id::text AS name, ROUND(AVG(severity_score)::numeric,2) AS value FROM awr_sql_summary_mv WHERE '$dbname'!='' AND '$instance'!='' AND '$start_snap'!='' AND '$end_snap'!=''   AND dbname='$dbname' AND instance='$instance'   AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int GROUP BY sql_id ORDER BY value DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top SQL by Severity (avg score)",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sql_id"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "Open Drawer",
+                    "url": "${__url.path}?var-open_drawer=true&var-focus_type=sql&var-focus_value=${__value:uri}&var-dbname=${dbname}&var-instance=${instance}&var-start_snap=${start_snap}&var-end_snap=${end_snap}&var-wait_scope=${wait_scope}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "id": 21,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH base AS (  SELECT sql_id, AVG(severity_score) AS score   FROM awr_sql_summary_mv   WHERE dbname='$dbname' AND instance='$instance'     AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int   GROUP BY sql_id ), bl AS (   SELECT     percentile_cont(0.10) WITHIN GROUP (ORDER BY s) AS p10,     percentile_cont(0.40) WITHIN GROUP (ORDER BY s) AS p40,     percentile_cont(0.70) WITHIN GROUP (ORDER BY s) AS p70,     percentile_cont(0.90) WITHIN GROUP (ORDER BY s) AS p90   FROM (     SELECT AVG(severity_score) AS s     FROM awr_sql_summary_mv     WHERE dbname='$dbname' AND instance='$instance'       AND snap_time >= now() - concat('$baseline_days',' days')::interval     GROUP BY sql_id, begin_snap   ) t ), norm AS (   SELECT b.*, GREATEST(0, LEAST(100, 100 * (b.score - bl.p10) / NULLIF(bl.p90 - bl.p10, 0))) AS score_norm   FROM base b CROSS JOIN bl ) SELECT b.sql_id, CASE WHEN '$rag_mode'='percentile' THEN   CASE WHEN b.score >= bl.p90 THEN '🔴'        WHEN b.score >= bl.p70 THEN '🟠'        WHEN b.score >= bl.p40 THEN '🟡'        ELSE '🟢' END ELSE   CASE WHEN n.score_norm >= 80 THEN '🔴'        WHEN n.score_norm >= 41 THEN '🟠'        WHEN n.score_norm >= 11 THEN '🟡'        ELSE '🟢' END END AS severity_rag FROM base b CROSS JOIN bl LEFT JOIN norm n USING (sql_id) ORDER BY b.score DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "SQL – Summary",
+      "type": "table"
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": 203,
+      "options": {
+        "content": "<span style=\"font-size:12px\">**Legend — Segments (Severity)** &nbsp;&nbsp;**RAG Mode:** `${rag_mode}`<br/>• **percentile:** 🔴 **≥ P90** | 🟠 **P70–P89** | 🟡 **P40–P69** | 🟢 **< P40** &nbsp;&nbsp;• **normalized:** 🔴 **≥ 80** | 🟠 **41–79** | 🟡 **11–40** | 🟢 **< 10**</span>",
+        "mode": "markdown"
+      },
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 2,
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 58
+      },
+      "id": 30,
+      "options": {
+        "categoryField": "name",
+        "displaylabels": [
+          "percent"
+        ],
+        "legend": {
+          "calcs": [
+            "percent"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "values": true
+        },
+        "showlabels": "auto",
+        "tooltip": {
+          "mode": "single"
+        },
+        "valueField": "value"
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "SELECT object_name::text AS name, ROUND(AVG(severity_score)::numeric,2) AS value FROM awr_segment_summary_mv WHERE '$dbname'!='' AND '$instance'!='' AND '$start_snap'!='' AND '$end_snap'!=''   AND dbname='$dbname' AND instance='$instance'   AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int GROUP BY object_name ORDER BY value DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Segments by Severity (avg score)",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "object_name"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "Open Drawer",
+                    "url": "${__url.path}?var-open_drawer=true&var-focus_type=segment&var-focus_value=${__value:uri}&var-dbname=${dbname}&var-instance=${instance}&var-start_snap=${start_snap}&var-end_snap=${end_snap}&var-wait_scope=${wait_scope}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 58
+      },
+      "id": 31,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH base AS (  SELECT owner, object_name, obj_type, COALESCE(subobject_name,'') AS subobject_name,         AVG(severity_score) AS score   FROM awr_segment_summary_mv   WHERE dbname='$dbname' AND instance='$instance'     AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int   GROUP BY owner, object_name, obj_type, subobject_name ), bl AS (   SELECT     percentile_cont(0.10) WITHIN GROUP (ORDER BY s) AS p10,     percentile_cont(0.40) WITHIN GROUP (ORDER BY s) AS p40,     percentile_cont(0.70) WITHIN GROUP (ORDER BY s) AS p70,     percentile_cont(0.90) WITHIN GROUP (ORDER BY s) AS p90   FROM (     SELECT AVG(severity_score) AS s     FROM awr_segment_summary_mv     WHERE dbname='$dbname' AND instance='$instance'       AND snap_time >= now() - concat('$baseline_days',' days')::interval     GROUP BY owner, object_name, obj_type, COALESCE(subobject_name,'')   ) t ), norm AS (   SELECT b.*, GREATEST(0, LEAST(100, 100 * (b.score - bl.p10) / NULLIF(bl.p90 - bl.p10, 0))) AS score_norm   FROM base b CROSS JOIN bl ) SELECT b.owner, b.object_name, b.obj_type, b.subobject_name, CASE WHEN '$rag_mode'='percentile' THEN   CASE WHEN b.score >= bl.p90 THEN '🔴'        WHEN b.score >= bl.p70 THEN '🟠'        WHEN b.score >= bl.p40 THEN '🟡'        ELSE '🟢' END ELSE   CASE WHEN n.score_norm >= 80 THEN '🔴'        WHEN n.score_norm >= 41 THEN '🟠'        WHEN n.score_norm >= 11 THEN '🟡'        ELSE '🟢' END END AS severity_rag FROM base b CROSS JOIN bl LEFT JOIN norm n USING (owner, object_name, obj_type, subobject_name) ORDER BY b.score DESC LIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Segments – Summary",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "ferwfz6k211j4b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false,
+            "minWidth": 120
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "section"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "value"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1200
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "text",
+                  "wrap": true
+                }
+              },
+              {
+                "id": "custom.align",
+                "value": "left"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 24,
+        "x": 0,
+        "y": 68
+      },
+      "id": 90,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ]
+        },
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "WITH params AS (\n  SELECT\n    lower(NULLIF('$open_drawer','')) AS open_flag,\n    lower(NULLIF('$focus_type',''))  AS ftype,\n    lower(NULLIF('$focus_value','')) AS fval,\n    lower(NULLIF('$wait_scope',''))  AS scope_txt,\n    '$start_snap'                    AS s_label,\n    '$end_snap'                      AS e_label,\n    split_part('$start_snap',' - ',1)::int AS s_snap,\n    split_part('$end_snap',' - ',1)::int   AS e_snap,\n    '$dbname'                        AS dbname,\n    '$instance'                      AS instance\n),\n\n-- Window-scoped waits\nwin_waits AS (\n  SELECT w.event, ROUND(AVG(w.pct_time),2) AS wait_pct\n  FROM awr_wait_summary_mv w\n  JOIN params p ON p.dbname=w.dbname AND p.instance=w.instance\n  WHERE w.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND ( (SELECT scope_txt FROM params) IN ('','all') OR lower(w.wait_scope) = (SELECT scope_txt FROM params) )\n  GROUP BY w.event\n),\n\n/* =========================\n   SQL focus (hybrid)\n   ========================= */\nfocus_sql AS (\n  SELECT fval AS sql_id FROM params\n  WHERE (SELECT ftype FROM params)='sql' AND fval<>''\n),\n\n-- TEXT-MAP: segments referenced by focused SQL\nsql_seg_text AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_sql_object_map_mv m\n  JOIN awr_segment_summary_mv s\n    ON ( (m.owner <> '' AND lower(s.owner)=m.owner AND lower(s.object_name)=m.object)\n      OR (m.owner = ''  AND lower(s.object_name)=m.object) )\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE m.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n),\n\n-- Co-occurrence helper views\nsql_snap AS ( SELECT * FROM awr_sql_score_by_snap ),\nseg_snap AS ( SELECT * FROM awr_seg_score_by_snap ),\n\n-- Fallback: segments that co-occur with focused SQL across snaps\nsql_seg_cooccur AS (\n  SELECT se.owner, se.object_name, se.obj_type,\n         SUM(se.seg_score_snap * sq.sql_score_snap) AS co_score\n  FROM seg_snap se\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  JOIN params p ON p.dbname=se.dbname AND p.instance=se.instance\n  WHERE sq.sql_id = (SELECT sql_id FROM focus_sql LIMIT 1)\n    AND se.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY se.owner, se.object_name, se.obj_type\n),\n\n-- union with priority: text first, then co-occur\nsql_seg_union AS (\n  SELECT owner, object_name, obj_type, 1000::numeric AS rank_signal\n  FROM sql_seg_text\n  UNION\n  SELECT owner, object_name, obj_type, COALESCE(co_score,0) AS rank_signal\n  FROM sql_seg_cooccur\n),\n\n-- PRE-AGG: avoid nested aggregates in ORDER BY\nsql_seg_ranked AS (\n  SELECT\n    u.owner, u.object_name, u.obj_type,\n    MAX(u.rank_signal)            AS rank_signal_max,\n    AVG(s.severity_score)         AS seg_score_avg\n  FROM sql_seg_union u\n  JOIN awr_segment_summary_mv s\n    ON lower(s.owner)=lower(u.owner)\n   AND lower(s.object_name)=lower(u.object_name)\n   AND s.obj_type=u.obj_type\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY u.owner, u.object_name, u.obj_type\n),\n\n-- Final: Segments referenced by SQL\nblock_sql_segments AS (\n  SELECT COALESCE(\n           string_agg(\n             '• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score_avg,2)::text||']',\n             E'\\n' ORDER BY rank_signal_max DESC, seg_score_avg DESC\n           ),\n           '—'\n         ) AS txt\n  FROM sql_seg_ranked\n),\n\n-- Top waits (window) for SQL focus\nblock_sql_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n),\n\n-- Other SQLs using these objects (text first, co-occur fallback)\nblock_sql_other_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| x.sql_id, E'\\n' ORDER BY x.rank_signal DESC, x.sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT-BASED\n    SELECT DISTINCT m.sql_id,\n           1000::numeric AS rank_signal,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(r.owner) AND m.object=lower(r.object_name))\n        OR (m.owner = ''  AND m.object=lower(r.object_name)) )\n    WHERE m.sql_id <> (SELECT sql_id FROM focus_sql)\n\n    UNION ALL\n\n    -- CO-OCCURRENCE\n    SELECT sq.sql_id,\n           SUM(se.seg_score_snap * sq.sql_score_snap) AS rank_signal,\n           AVG(sq.sql_score_snap) AS sql_score\n    FROM sql_seg_ranked r\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(r.owner) AND lower(se.object_name)=lower(r.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    WHERE sq.sql_id <> (SELECT sql_id FROM focus_sql)\n    GROUP BY sq.sql_id\n  ) x\n),\n\n/* =========================\n   WAIT focus\n   ========================= */\nfocus_wait AS (\n  SELECT fval AS event FROM params\n  WHERE (SELECT ftype FROM params)='wait' AND fval<>''\n),\n\nwait_top_segments AS (\n  SELECT s.owner, s.object_name, s.obj_type, AVG(s.severity_score) AS seg_score\n  FROM awr_segment_summary_mv s\n  JOIN params p ON p.dbname=s.dbname AND p.instance=s.instance\n  WHERE s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n  GROUP BY s.owner, s.object_name, s.obj_type\n  ORDER BY AVG(s.severity_score) DESC\n  LIMIT 10\n),\n\nwait_seg_sql_text AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT m.sql_id, ', ' ORDER BY m.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         1 AS pref\n  FROM wait_top_segments w\n  JOIN awr_sql_object_map_mv m\n    ON ( (m.owner <> '' AND m.owner=lower(w.owner) AND m.object=lower(w.object_name))\n      OR (m.owner = ''  AND m.object=lower(w.object_name)) )\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_co AS (\n  SELECT w.owner, w.object_name, w.obj_type,\n         string_agg(DISTINCT sq.sql_id, ', ' ORDER BY sq.sql_id) AS sql_ids,\n         MAX(w.seg_score) AS seg_score,\n         2 AS pref\n  FROM wait_top_segments w\n  JOIN seg_snap se\n    ON lower(se.owner)=lower(w.owner) AND lower(se.object_name)=lower(w.object_name)\n  JOIN sql_snap sq\n    ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n  GROUP BY w.owner, w.object_name, w.obj_type\n),\n\nwait_seg_sql_union AS (\n  SELECT * FROM wait_seg_sql_text\n  UNION\n  SELECT * FROM wait_seg_sql_co\n),\n\nblock_wait_segments AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' ('||obj_type||') [score='||ROUND(seg_score,2)::text||']',\n                      E'\\n' ORDER BY seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_top_segments\n),\n\nblock_wait_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| owner||'.'||object_name||' → '|| COALESCE(sql_ids,'—'),\n                      E'\\n' ORDER BY pref, seg_score DESC),\n           '—'\n         ) AS txt\n  FROM wait_seg_sql_union\n),\n\n/* =========================\n   SEGMENT focus\n   ========================= */\nfocus_segment AS (\n  SELECT lower(NULLIF('$focus_value','')) AS obj_txt\n  WHERE (SELECT ftype FROM params)='segment' AND (SELECT fval FROM params)<>'' \n),\n\nseg_obj AS (\n  SELECT DISTINCT s.owner, s.object_name, s.obj_type\n  FROM awr_segment_summary_mv s, params p\n  WHERE p.dbname=s.dbname AND p.instance=s.instance\n    AND s.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n    AND (\n         lower(s.object_name)=(SELECT obj_txt FROM focus_segment)\n         OR lower(s.owner||'.'||s.object_name)=(SELECT obj_txt FROM focus_segment)\n        )\n),\n\nblock_seg_waits AS (\n  SELECT COALESCE(\n           string_agg('• '|| event || ' ['|| ROUND(wait_pct,2)::text || '%]',\n                      E'\\n' ORDER BY wait_pct DESC),\n           '—'\n         ) AS txt\n  FROM win_waits\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n),\n\nblock_seg_sqls AS (\n  SELECT COALESCE(\n           string_agg('• '|| sql_id, E'\\n' ORDER BY avg_sql_score DESC NULLS LAST),\n           '—'\n         ) AS txt\n  FROM (\n    -- TEXT MAP first\n    SELECT DISTINCT m.sql_id,\n           (SELECT AVG(severity_score)\n              FROM awr_sql_summary_mv q\n              JOIN params p ON p.dbname=q.dbname AND p.instance=q.instance\n             WHERE lower(q.sql_id)=m.sql_id\n               AND q.begin_snap BETWEEN (SELECT s_snap FROM params) AND (SELECT e_snap FROM params)\n           ) AS avg_sql_score,\n           1 AS pref\n    FROM seg_obj o\n    JOIN awr_sql_object_map_mv m\n      ON ( (m.owner <> '' AND m.owner=lower(o.owner) AND m.object=lower(o.object_name))\n        OR (m.owner = ''  AND m.object=lower(o.object_name)) )\n    UNION ALL\n    -- Fallback co-occurrence\n    SELECT sq.sql_id,\n           AVG(sq.sql_score_snap) AS avg_sql_score,\n           2 AS pref\n    FROM seg_obj o\n    JOIN seg_snap se\n      ON lower(se.owner)=lower(o.owner) AND lower(se.object_name)=lower(o.object_name)\n    JOIN sql_snap sq\n      ON sq.dbname=se.dbname AND sq.instance=se.instance AND sq.begin_snap=se.begin_snap\n    GROUP BY sq.sql_id\n  ) u\n),\n\n/* =========================\n   Recommendation text (unchanged)\n   ========================= */\npick_rule AS (\n  SELECT r.rule_text\n  FROM awr_recommendation_rules r\n  JOIN params p ON r.category = p.ftype\n  WHERE r.rule_key = (SELECT fval FROM params) OR r.rule_key='*'\n  ORDER BY CASE WHEN r.rule_key=(SELECT fval FROM params) THEN 1 ELSE 2 END\n  LIMIT 1\n),\n\n/* =========================\n   Final rows\n   ========================= */\nrows AS (\n  SELECT 1 AS ord, 'Focus' AS section,\n         CASE WHEN (SELECT ftype FROM params) <> ''\n              THEN (SELECT ftype FROM params)||': '||COALESCE((SELECT fval FROM params),'—')\n              ELSE '—' END AS value\n  UNION ALL\n  SELECT 2, 'Signals',\n         'Scope: '||COALESCE((SELECT scope_txt FROM params),'all')\n         ||' | Range: '||(SELECT s_label FROM params)||' → '||(SELECT e_label FROM params)\n\n  UNION ALL\n  SELECT 3, 'Top Segments', (SELECT txt FROM block_wait_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n  UNION ALL\n  SELECT 4, 'Top SQLs referencing segments', (SELECT txt FROM block_wait_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_wait)\n\n  UNION ALL\n  SELECT 3, 'Segments referenced by SQL', (SELECT txt FROM block_sql_segments)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 4, 'Other SQLs using these objects', (SELECT txt FROM block_sql_other_sqls)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n  UNION ALL\n  SELECT 5, 'Top Waits (window)', (SELECT txt FROM block_sql_waits)\n  WHERE EXISTS (SELECT 1 FROM focus_sql)\n\n  UNION ALL\n  SELECT 3, 'Top Waits (window)', (SELECT txt FROM block_seg_waits)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n  UNION ALL\n  SELECT 4, 'Top SQLs for this segment', (SELECT txt FROM block_seg_sqls)\n  WHERE EXISTS (SELECT 1 FROM seg_obj)\n\n  UNION ALL\n  SELECT 9, 'Recommendation',\n         COALESCE((SELECT rule_text FROM pick_rule), 'No recommendation found for this selection.')\n)\nSELECT section, value\nFROM rows, params p\nWHERE p.open_flag = 'true'\nORDER BY ord;\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Correlation & Recommendations",
+      "transparent": false,
+      "type": "table"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 39,
+  "style": "light",
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:8000",
+          "value": "http://localhost:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:8000",
+            "value": "http://localhost:8000"
+          }
+        ],
+        "query": "http://localhost:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:3000",
+          "value": "http://localhost:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:3000",
+            "value": "http://localhost:3000"
+          }
+        ],
+        "query": "http://localhost:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "DB Name",
+        "name": "dbname",
+        "query": "SELECT value, label FROM ( SELECT '' AS value, '' AS label UNION ALL SELECT DISTINCT dbname AS value, dbname AS label FROM awr_load_profile ) AS combined_results ORDER BY value",
+        "refresh": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "Instance",
+        "name": "instance",
+        "query": "SELECT value, label FROM ( SELECT '' AS value, '' AS label UNION ALL SELECT DISTINCT instance AS value, instance AS label FROM awr_load_profile WHERE dbname = '$dbname' ) AS combined_results ORDER BY value",
+        "refresh": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "Start Snap",
+        "name": "start_snap",
+        "query": "SELECT label FROM ( SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label FROM awr_load_profile WHERE dbname = '$dbname' AND instance = '$instance' ) AS combined_results ORDER BY label NULLS FIRST",
+        "refresh": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "ferwfz6k211j4b"
+        },
+        "hide": 0,
+        "label": "End Snap",
+        "name": "end_snap",
+        "query": "SELECT label FROM ( SELECT '' AS label UNION ALL SELECT DISTINCT begin_snap::int || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') AS label FROM awr_load_profile WHERE dbname = '$dbname' AND instance = '$instance' ) AS combined_results ORDER BY label NULLS FIRST",
+        "refresh": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "All"
+        },
+        "includeAll": false,
+        "label": "Wait Scope",
+        "multi": false,
+        "name": "wait_scope",
+        "query": "All,Foreground,Background",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "normalized",
+          "value": "normalized"
+        },
+        "label": "RAG Mode",
+        "name": "rag_mode",
+        "query": "normalized,percentile",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "30",
+          "value": "30"
+        },
+        "label": "Baseline (days)",
+        "name": "baseline_days",
+        "query": "15,30,60,90",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "hide": 2,
+        "name": "open_drawer",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "hide": 2,
+        "name": "focus_type",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "hide": 2,
+        "name": "focus_value",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "title": "AWR Insight Portal – Home (v1.3)",
+  "uid": "awr-home-v13",
+  "version": 34
+}

@@ -1,0 +1,169 @@
+{
+  "editable": true,
+  "id": 595,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "content": "<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=$dbname&var-instance=$instance&var-start_snap=$start_snap&var-end_snap=$end_snap&from=$__from&to=$__to\" target=\"_self\">⬅ Return to Navigation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"/d/fdv31-awr-nav/fdv3-1-awr-consolidated-navigation?var-dbname=&var-instance=&var-start_snap=&var-end_snap=&from=now-6h&to=now\" target=\"_self\">🔄 Reset Filters</a>",
+        "mode": "html"
+      },
+      "title": "Navigation Links",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 2,
+      "targets": [
+        {
+          "format": "time_series",
+          "rawSql": "WITH top_enq AS (  SELECT e.enqueue_type_request_reason  \nFROM awr_enqueue_statistics e  \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''    \nAND e.dbname = '$dbname'    AND e.instance = '$instance' \nAND e.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int  \nGROUP BY e.enqueue_type_request_reason  \nORDER BY SUM(e.waits) DESC   LIMIT 10) \nSELECT  e.snap_time AT TIME ZONE 'Asia/Kolkata' AS time,  e.enqueue_type_request_reason,  e.waits \nFROM awr_enqueue_statistics e \nJOIN top_enq t ON t.enqueue_type_request_reason = e.enqueue_type_request_reason \nWHERE '$dbname' != '' AND '$instance' != '' \nAND '$start_snap' != '' AND '$end_snap' != ''  \nAND e.dbname = '$dbname'  AND e.instance = '$instance'  \nAND e.begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int \nORDER BY time;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top 10 Enqueue Types by Waits",
+      "type": "timeseries"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 3,
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "SELECT enqueue_type_request_reason AS metric, AVG(av_wt_time_ms) AS avg_wait_time_ms\nFROM awr_enqueue_statistics\nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n  AND dbname = '$dbname'\n  AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nGROUP BY enqueue_type_request_reason\nORDER BY avg_wait_time_ms DESC\nLIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Avg Wait Time (ms) by Enqueue Type (Top 10)",
+      "type": "barchart"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 4,
+      "targets": [
+        {
+          "format": "table",
+          "rawSql": "SELECT enqueue_type_request_reason, SUM(requests) AS requests, SUM(succ_gets) AS succ_gets,\n       SUM(failed_gets) AS failed_gets, SUM(waits) AS waits, SUM(wt_time_s) AS total_wait_time_s\nFROM awr_enqueue_statistics\nWHERE '$dbname' != '' AND '$instance' != '' AND '$start_snap' != '' AND '$end_snap' != ''\n  AND dbname = '$dbname'\n  AND instance = '$instance'\n  AND begin_snap BETWEEN split_part('$start_snap',' - ',1)::int AND split_part('$end_snap',' - ',1)::int\nGROUP BY enqueue_type_request_reason\nORDER BY requests DESC\nLIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Enqueue Requests and Outcomes",
+      "type": "table"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 36,
+  "tags": [
+    "awr"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:8000",
+          "value": "http://localhost:8000"
+        },
+        "description": "Portal URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Portal URL",
+        "name": "portal_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:8000",
+            "value": "http://localhost:8000"
+          }
+        ],
+        "query": "http://localhost:8000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://localhost:3000",
+          "value": "http://localhost:3000"
+        },
+        "description": "Grafana URL — set automatically from portal Settings → Access Control",
+        "hide": 2,
+        "label": "Grafana URL",
+        "name": "grafana_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://localhost:3000",
+            "value": "http://localhost:3000"
+          }
+        ],
+        "query": "http://localhost:3000",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "label": "Data Source",
+        "name": "ds",
+        "query": "postgres",
+        "type": "datasource"
+      },
+      {
+        "datasource": "$ds",
+        "label": "Database",
+        "name": "dbname",
+        "query": "SELECT DISTINCT dbname FROM awr_enqueue_statistics ORDER BY dbname",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "datasource": "$ds",
+        "label": "Instance",
+        "name": "instance",
+        "query": "SELECT DISTINCT instance FROM awr_enqueue_statistics WHERE dbname = '$dbname' ORDER BY instance",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "datasource": "$ds",
+        "label": "Start Snap",
+        "name": "start_snap",
+        "query": "SELECT begin_snap::text || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') FROM awr_enqueue_statistics WHERE dbname = '$dbname' AND instance = '$instance' ORDER BY begin_snap",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "datasource": "$ds",
+        "label": "End Snap",
+        "name": "end_snap",
+        "query": "SELECT begin_snap::text || ' - ' || to_char(snap_time,'YYYY-MM-DD HH24:MI:SS') FROM awr_enqueue_statistics WHERE dbname = '$dbname' AND instance = '$instance' ORDER BY begin_snap",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "timezone": "Asia/Kolkata",
+  "title": "fdv3.1 Enqueue Statistics",
+  "uid": "fdv31-enqueue-v1",
+  "version": 12
+}
