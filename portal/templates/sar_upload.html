@@ -2,6 +2,7 @@
 {% block title %} — SAR Upload{% endblock %}
 {% block content %}
 <h1 style="font-size:1.2rem;margin-bottom:16px">📊 Upload SAR Files</h1>
+{% if message %}<div class="msg {{ 'ok' if '✅' in message else 'err' }}">{{ message }}</div>{% endif %}
 
 <div class="card">
   <h2>Upload SAR Files</h2>
