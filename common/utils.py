@@ -11,7 +11,36 @@ import math
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
 # --- Helper to compute row hash for uniqueness ---
-def row_hash(record: dict) -> str:
+def get_col(row, column_name, logger=None, context=""):
+    """
+    Look up a pandas Series/row value by column name, tolerating the AWR
+    HTML quirks that cause exact-match KeyErrors:
+      - non-breaking spaces (\\xa0) instead of regular spaces
+      - leading/trailing whitespace
+      - repeated internal whitespace collapsed differently
+
+    Falls back to a normalized-whitespace match across the row's index if
+    the exact key isn't found. Returns None (and logs a warning, if a
+    logger is given) rather than raising, so one unexpected/renamed
+    column degrades that single field instead of failing the whole file.
+    """
+    if column_name in row.index:
+        return row[column_name]
+
+    def _norm(s):
+        return " ".join(str(s).replace("\xa0", " ").split()).strip().lower()
+
+    target = _norm(column_name)
+    for col in row.index:
+        if _norm(col) == target:
+            return row[col]
+
+    if logger:
+        logger.warning(f"⚠️ Column '{column_name}' not found{f' ({context})' if context else ''} — got columns: {list(row.index)}")
+    return None
+
+
+
     """
     Compute an MD5 hash from the concatenated values of a record dict.
     """
