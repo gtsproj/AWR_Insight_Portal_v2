@@ -193,26 +193,32 @@ def _process_next(queues_dir: str, name: str, parser_script: str,
     finally:
         _release_lock(queues_dir, name)
 
-    # ── DB Master Table check (AWR only) ────────────────────────────
-    # Simple lookup — if DB not registered in awr_db_master, skip
-    if queue_type == "AWR":
+    # ── DB Master Table check (AWR: by db_name / SAR: by host_name) ──
+    # Simple lookup — if not registered in awr_db_master, skip.
+    # awr_db_master.host_name doubles as the SAR host registry: a SAR
+    # queue's "name" is the hostname, so this blocks any unregistered
+    # host from ever being parsed, instead of only catching it after
+    # the fact via the aggregate sar_exceeded count.
+    if queue_type in ("AWR", "SAR"):
+        _match_col = "db_name" if queue_type == "AWR" else "host_name"
         try:
             sys.path.insert(0, os.path.join(_PROJECT_ROOT, "common"))
             _db = __import__("db")
             conn_m = _db.get_db_connection()
             with conn_m.cursor() as cur:
-                cur.execute("""
+                cur.execute(f"""
                     SELECT id FROM awr_db_master
-                    WHERE UPPER(db_name) = UPPER(%s) AND active = TRUE
+                    WHERE UPPER({_match_col}) = UPPER(%s) AND active = TRUE
                     LIMIT 1
                 """, (name,))
                 registered = cur.fetchone()
             conn_m.close()
 
             if not registered:
+                _label = "DB" if queue_type == "AWR" else "Host"
                 logger.warning(
-                    f"[AWR/{name}] ⛔ DB not in awr_db_master — skipping. "
-                    f"Register this DB in Settings → License → Licensed Databases."
+                    f"[{queue_type}/{name}] ⛔ {_label} not in awr_db_master — skipping. "
+                    f"Register this {_label.lower()} in Settings → License → Licensed Databases."
                 )
                 if _acquire_lock(queues_dir, name):
                     try:
@@ -221,7 +227,7 @@ def _process_next(queues_dir: str, name: str, parser_script: str,
                             if it.get("filepath") == filepath:
                                 it["status"] = "FAILED"
                                 it["error"]  = (
-                                    f"DB '{name}' is not registered in the licensed "
+                                    f"{_label} '{name}' is not registered in the licensed "
                                     f"database list. Go to Settings → License → "
                                     f"Licensed Databases to register it."
                                 )
@@ -244,7 +250,8 @@ def _process_next(queues_dir: str, name: str, parser_script: str,
         lic    = get_license_status(conn_l)
         conn_l.close()
 
-        if not lic.get("allow_parse", True):
+        _parse_flag_key = "allow_parse_awr" if queue_type == "AWR" else "allow_parse_sar"
+        if not lic.get(_parse_flag_key, lic.get("allow_parse", True)):
             logger.warning(
                 f"[{queue_type}/{name}] ⛔ License block: {lic.get('status_msg','')}."
             )

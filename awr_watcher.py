@@ -131,6 +131,32 @@ def _lock_path(db_name: str) -> str:
     return queue_path(db_name) + ".lock"
 
 
+def _all_queue_items() -> list:
+    """
+    Load every item from every queue_*.json in QUEUES_DIR.
+    Used by enqueue_file() to do a cross-queue dedup check — prevents
+    a duplicate entry when the upload endpoint and the periodic watcher
+    scan derive different db_name keys for the same file (e.g. case
+    difference or override vs filename-inferred) and therefore look in
+    different queue files.
+    """
+    all_items = []
+    try:
+        for fname in os.listdir(QUEUES_DIR):
+            if fname.startswith("queue_") and fname.endswith(".json"):
+                fpath = os.path.join(QUEUES_DIR, fname)
+                try:
+                    with open(fpath, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                        if isinstance(data, list):
+                            all_items.extend(data)
+                except (json.JSONDecodeError, OSError):
+                    pass
+    except OSError:
+        pass
+    return all_items
+
+
 def enqueue_file(filepath: str) -> bool:
     """
     Add filepath to the correct DB queue.
@@ -156,18 +182,24 @@ def enqueue_file(filepath: str) -> bool:
         with open(lock, "w") as lf:
             lf.write(str(os.getpid()))
 
-        items = _load_queue(db_name)
-
-        # Dedup: skip if this exact path OR same file hash already queued
-        fhash = file_hash(filepath)
-        for item in items:
+        # ── Cross-queue dedup ─────────────────────────────────────────
+        # Check ALL queue files, not just this db_name's queue.
+        # Prevents a duplicate entry when the upload endpoint and the
+        # periodic watcher scan derive different db_name keys (e.g.
+        # a dbname_override vs filename-inferred name) and therefore
+        # read/write different queue_<DBNAME>.json files.
+        fhash    = file_hash(filepath)
+        all_items = _all_queue_items()
+        for item in all_items:
             if item.get("filepath") == filepath:
                 logger.info(f"⏭  Already queued (path match): {filepath}")
                 return False
             if item.get("file_hash") == fhash and item.get("status") != "FAILED":
-                logger.info(f"⏭  Already queued (hash match): {filepath}")
+                logger.info(f"⏭  Already queued (hash match across queues): {filepath}")
                 return False
 
+        # ── Enqueue into this db's queue ──────────────────────────────
+        items = _load_queue(db_name)
         entry = {
             "filepath":   filepath,
             "db_name":    db_name,

@@ -154,10 +154,10 @@ def _fetch_sql_metrics(conn, dbname: str, begin_snap: int, end_snap: int) -> dic
             logger.warning(f"SQL parse metrics fetch failed: {e}")
 
         for r in rows.values():
-            elapsed = r.get("elapsed_time_s") or 0
-            cpu     = r.get("cpu_time_s") or 0
-            execs   = r.get("executions") or 1
-            parses  = r.get("parse_calls") or 0
+            elapsed = float(r.get("elapsed_time_s") or 0)
+            cpu     = float(r.get("cpu_time_s") or 0)
+            execs   = float(r.get("executions") or 1)
+            parses  = float(r.get("parse_calls") or 0)
 
             if elapsed > 60:
                 results["top_elapsed"].append(r)
