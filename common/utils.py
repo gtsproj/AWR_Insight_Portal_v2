@@ -40,7 +40,7 @@ def get_col(row, column_name, logger=None, context=""):
     return None
 
 
-
+def row_hash(record: dict) -> str:
     """
     Compute an MD5 hash from the concatenated values of a record dict.
     """
