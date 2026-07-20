@@ -700,6 +700,10 @@ def get_license_status(conn=None, config: dict = None) -> dict:
     expiry_warn   = (0 <= days_left <= 30)
 
     # Determine overall status
+    # Resource-specific flags default to the overall flag; only db_exceeded /
+    # sar_exceeded (below) narrow them to a single resource. Kept alongside
+    # the original allow_parse/allow_ai_new (unchanged) for callers that
+    # care which resource — AWR vs SAR — actually triggered the block.
     if not license_key:
         status = "no_key"
         status_msg = "No license key. The portal requires a license key to operate. Contact Avekshaa Technologies."
@@ -707,6 +711,10 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         allow_grafana    = False
         allow_ai_new     = False
         allow_ai_past    = False
+        allow_parse_awr  = False
+        allow_parse_sar  = False
+        allow_ai_new_awr = False
+        allow_ai_new_sar = False
     elif mac_mismatch:
         status = "mac_mismatch"
         status_msg = f"License not valid for this server (MAC mismatch). Contact Avekshaa to re-key for server MAC: {get_mac_address()}"
@@ -714,6 +722,10 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         allow_grafana = False
         allow_ai_new  = False
         allow_ai_past = False
+        allow_parse_awr  = False
+        allow_parse_sar  = False
+        allow_ai_new_awr = False
+        allow_ai_new_sar = False
     elif hard_expired:
         status = "expired"
         status_msg = f"License expired {abs(days_left)} days ago (grace period ended). Portal is in read-only mode. Contact Avekshaa to renew."
@@ -721,6 +733,10 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         allow_grafana = False
         allow_ai_new  = False
         allow_ai_past = True   # show past recommendations only
+        allow_parse_awr  = False
+        allow_parse_sar  = False
+        allow_ai_new_awr = False
+        allow_ai_new_sar = False
     elif in_grace:
         status = "grace"
         status_msg = f"License expired — {GRACE_DAYS + days_left} days of grace period remaining. Please renew urgently."
@@ -728,6 +744,10 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         allow_grafana = True
         allow_ai_new  = True
         allow_ai_past = True
+        allow_parse_awr  = True
+        allow_parse_sar  = True
+        allow_ai_new_awr = True
+        allow_ai_new_sar = True
     elif db_exceeded:
         status = "db_exceeded"
         status_msg = f"DB limit exceeded: {db_used} instances in use, {db_limit} licensed. New AWR parsing blocked for unlicensed DBs. Upgrade your license."
@@ -735,6 +755,11 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         allow_grafana = True
         allow_ai_new  = False
         allow_ai_past = True
+        # Only the AWR (DB) resource is over limit — SAR is unaffected.
+        allow_parse_awr  = False
+        allow_parse_sar  = not sar_exceeded
+        allow_ai_new_awr = False
+        allow_ai_new_sar = not sar_exceeded
     elif sar_exceeded:
         status = "sar_exceeded"
         status_msg = f"SAR server limit exceeded: {sar_used} servers, {sar_limit} licensed. New SAR parsing blocked. Upgrade your license."
@@ -742,6 +767,11 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         allow_grafana = True
         allow_ai_new  = False
         allow_ai_past = True
+        # Only the SAR resource is over limit — AWR is unaffected.
+        allow_parse_awr  = True
+        allow_parse_sar  = False
+        allow_ai_new_awr = True
+        allow_ai_new_sar = False
     else:
         status = "ok" if not expiry_warn else "expiry_warning"
         if key_info.get("is_trial"):
@@ -758,6 +788,10 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         allow_grafana = True
         allow_ai_new  = True
         allow_ai_past = True
+        allow_parse_awr  = True
+        allow_parse_sar  = True
+        allow_ai_new_awr = True
+        allow_ai_new_sar = True
 
     # Monthly AI usage
     monthly_ai = _get_monthly_ai_usage(conn)
@@ -794,6 +828,12 @@ def get_license_status(conn=None, config: dict = None) -> dict:
         "allow_grafana":    allow_grafana,
         "allow_ai_new":     allow_ai_new and not ai_cap_reached,
         "allow_ai_past":    allow_ai_past,
+        # Resource-specific enforcement flags (AWR vs SAR) — use these to
+        # avoid a SAR-only overage blocking AWR parsing/AI-recs, or vice versa.
+        "allow_parse_awr":  allow_parse_awr,
+        "allow_parse_sar":  allow_parse_sar,
+        "allow_ai_new_awr": allow_ai_new_awr and not ai_cap_reached,
+        "allow_ai_new_sar": allow_ai_new_sar and not ai_cap_reached,
         # AI usage
         "ai_monthly_used":  monthly_ai,
         "ai_monthly_limit": ai_monthly_limit,

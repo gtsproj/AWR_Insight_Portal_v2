@@ -16,7 +16,7 @@ warnings.simplefilter(action="ignore", category=FutureWarning)
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "common"))
 from db import get_db_connection
 from config_loader import load_config
-from utils import row_hash, extract_workload_repo_metadata, clean_number, convert_to_ms, sanitize_record
+from utils import row_hash, extract_workload_repo_metadata, clean_number, convert_to_ms, sanitize_record, get_col
 from logger_utils import get_logger
 
 
@@ -58,10 +58,10 @@ def parse_sga_target_advisory(filepath):
             "instnum": metadata["instnum"],
             "snap_time": metadata["snap_time"],
             "begin_snap": metadata["begin_snap"],
-            "sga_target_size_m": clean_number(row["SGA Target Size (M)"]),
-            "sga_size_factor": clean_number(row["SGA Size Factor"]),
-            "est_db_time_s": clean_number(row["Est DB Time (s)"]),
-            "est_physical_reads": clean_number(row["Est Physical Reads"]),
+            "sga_target_size_m": clean_number(get_col(row, "SGA Target Size (M)", logger, "SGA Target Advisory")),
+            "sga_size_factor": clean_number(get_col(row, "SGA Size Factor", logger, "SGA Target Advisory")),
+            "est_db_time_s": clean_number(get_col(row, "Est DB Time (s)", logger, "SGA Target Advisory")),
+            "est_physical_reads": clean_number(get_col(row, "Est Physical Reads", logger, "SGA Target Advisory")),
         }
         rec["row_hash"] = row_hash(rec)
         records.append(rec)
