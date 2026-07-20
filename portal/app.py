@@ -300,19 +300,34 @@ async def enforce_license(request: Request, call_next):
 
     lic = app.state._lic_cache
 
-    # Block AWR/SAR upload/parse APIs when not allowed
-    _parse_paths = ["/upload", "/api/queue", "/api/requeue", "/api/reprocess"]
-    if not lic.get("allow_parse", True):
-        if any(path.startswith(p) for p in _parse_paths):
-            if path.startswith("/api/"):
-                from fastapi.responses import JSONResponse as _JR
-                return _JR({
-                    "ok": False,
-                    "error": f"License: {lic.get('status_msg', 'License error')}. Parsing is blocked."
-                }, status_code=403)
+    # Block AWR/SAR upload/parse APIs when not allowed.
+    # Resource is inferred from the path so a SAR-only (or AWR-only) overage
+    # blocks only that resource's upload/parse endpoints, not both.
+    _awr_parse_paths = ["/upload/awr", "/api/queue", "/api/requeue", "/api/reprocess"]
+    _sar_parse_paths = ["/upload/sar"]
+    _is_awr_parse_path = any(path.startswith(p) for p in _awr_parse_paths)
+    _is_sar_parse_path = any(path.startswith(p) for p in _sar_parse_paths)
 
-    # Block new AI recommendations when not allowed
-    if not lic.get("allow_ai_new", True):
+    if _is_awr_parse_path and not lic.get("allow_parse_awr", lic.get("allow_parse", True)):
+        from fastapi.responses import JSONResponse as _JR
+        _msg = f"License: {lic.get('status_msg', 'License error')}. Parsing is blocked."
+        if path.startswith("/api/"):
+            return _JR({"ok": False, "error": _msg}, status_code=403)
+        return templates.TemplateResponse(request, "awr_upload.html",
+            context={"page": "upload", "message": _msg}, status_code=403)
+
+    if _is_sar_parse_path and not lic.get("allow_parse_sar", lic.get("allow_parse", True)):
+        from fastapi.responses import JSONResponse as _JR
+        _msg = f"License: {lic.get('status_msg', 'License error')}. Parsing is blocked."
+        if path.startswith("/api/"):
+            return _JR({"ok": False, "error": _msg}, status_code=403)
+        return templates.TemplateResponse(request, "sar_upload.html",
+            context={"page": "sar", "message": _msg}, status_code=403)
+
+    # Block new AI recommendations when not allowed.
+    # /api/ai/recommend is AWR-only (dbname/instance/snap range), so it's
+    # gated on the AWR-specific flag — a SAR overage must not block it.
+    if not lic.get("allow_ai_new_awr", lic.get("allow_ai_new", True)):
         if path == "/api/ai/recommend":
             from fastapi.responses import JSONResponse as _JR
             return _JR({
@@ -523,14 +538,16 @@ async def sar_upload_post(request: Request,
         with open(dest_path, "wb") as f:
             f.write(content)
 
-        # Trigger SAR parsing inline for immediate feedback
+        # Enqueue via the same watcher module SARWatcher uses, so this file
+        # shows in the queue monitor and goes through the same license /
+        # retry handling as files dropped in the watch folder.
         try:
-            sys.path.insert(0, os.path.join(_PROJECT_ROOT, "modules", "sar"))
-            from sar_master_parser import process_sar_file
-            ok     = process_sar_file(dest_path)
-            status = "✅ Parsed" if ok else "⚠ Parsed with warnings"
+            sys.path.insert(0, os.path.join(_PROJECT_ROOT, "sar_watcher"))
+            from sar_watcher import enqueue_and_archive
+            enqueue_and_archive(host, dest_path, original_file=upload.filename, file_type="text")
+            status = "✅ Enqueued"
         except Exception as e:
-            status = f"⚠ Saved but parsing failed: {e}"
+            status = f"⚠ Saved but enqueue failed: {e}"
 
         results.append({"file": upload.filename, "host": host, "status": status})
 
