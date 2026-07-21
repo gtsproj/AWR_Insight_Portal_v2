@@ -781,7 +781,7 @@
           </div>
           <label class="toggle">
             <input type="checkbox" id="portal_login_required"
-                   {% if cfg.portal_login_required=='true' %}checked{% endif %}>
+                   {% if cfg.portal_login_required in ('true','on','1','yes') %}checked{% endif %}>
             <span class="toggle-slider"></span>
           </label>
         </div>

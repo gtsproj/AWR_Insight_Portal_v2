@@ -394,15 +394,10 @@ function card(r) {
               {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
   const body = (r.revised_response||r.recommendation||r.root_cause||'—').substring(0,600);
   const fb   = r.dba_feedback ? `<div style="font-size:.75rem;color:var(--text2);margin-top:4px">DBA: <em>${escHtml(r.dba_feedback)}</em></div>` : '';
-  // Revise only applies to AI-generated recommendations (local_ai / cloud_ai).
-  // Rules-mode findings are deterministic rule matches — there is no AI prompt
-  // to re-send with additional context, and their IDs live in awr_recommendations
-  // not awr_ai_recommendations, so /api/ai/feedback cannot look them up.
-  const canRevise = r.ai_provider && r.ai_provider !== 'rules';
   const btns = r.status==='pending'
     ? `<button class="btn-accept" onclick="doFeedback(${r.id},'accept','')">✅ Accept</button>
        <button class="btn-reject" onclick="openFb('fb-${r.id}','reject',${r.id})">❌ Reject</button>
-       ${canRevise ? `<button class="btn-revise" onclick="openFb('fb-${r.id}','revise',${r.id})">✏️ Revise</button>` : ''}`
+       <button class="btn-revise" onclick="openFb('fb-${r.id}','revise',${r.id})">✏️ Revise</button>`
     : r.status==='accepted' ? '<span style="color:#10b981;font-size:.78rem">✅ Accepted — in AI learning</span>'
     : r.status==='rejected' ? '<span style="color:#ef4444;font-size:.78rem">❌ Rejected</span>'
     : '<span style="color:#4a90d9;font-size:.78rem">✏️ Revised</span>';

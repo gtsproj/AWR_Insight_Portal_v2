@@ -98,13 +98,32 @@
       {% set pair_key = b.dbname ~ '|' ~ b.instance %}
       {% if pair_key not in seen.pairs %}
         {% set _ = seen.pairs.append(pair_key) %}
+        {#
+          Build the full Grafana URL with ALL required variables pre-populated
+          from the stored tag data so the dashboard loads directly without
+          asking the user to re-select dbname / instance / snap range.
+          Using portal_url/grafana/ proxy path avoids the intermittent Grafana
+          session issue that occurs when hitting the Grafana URL directly.
+        #}
+        {% set cmp_url = grafana_url
+            ~ '/d/awr-comparison'
+            ~ '?var-dbname='        ~ b.dbname
+            ~ '&var-instance='      ~ (b.instance or '')
+            ~ '&var-start_snap='    ~ b.snap_start
+            ~ '&var-end_snap='      ~ b.snap_end
+            ~ '&var-baseline_tag='  ~ b.tag_name
+            ~ '&var-current_tag='   ~ c.tag_name
+            ~ '&orgId=1'
+            ~ '&kiosk' %}
         <div style="margin-top:10px;padding:10px;background:var(--surface2,#1e2130);border-radius:6px;font-size:.85rem">
           <strong>{{ b.dbname }}</strong> / {{ b.instance }} &nbsp;—&nbsp;
           <span style="color:var(--primary,#4f8ef7)">Baseline:</span> {{ b.tag_name }}
+          (snaps {{ b.snap_start }}–{{ b.snap_end }})
           &nbsp;vs&nbsp;
           <span style="color:#81c784">Current:</span> {{ c.tag_name }}
+          (snaps {{ c.snap_start }}–{{ c.snap_end }})
           &nbsp;&nbsp;
-          <a href="{{ grafana_url }}/d/awr-comparison?var-baseline_tag={{ b.tag_name }}&var-current_tag={{ c.tag_name }}"
+          <a href="{{ cmp_url }}"
              target="_blank" class="btn btn-sm btn-primary"
              style="font-size:.75rem;padding:3px 10px;text-decoration:none">
             📊 Open Comparison Dashboard ↗
