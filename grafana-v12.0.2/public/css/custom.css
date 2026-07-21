@@ -1,0 +1,53 @@
+/*
+ * AWR Insight Portal — Grafana custom CSS
+ * Hides dashboard export/download and snapshot sharing options from
+ * the Grafana UI for all users (Viewer / anonymous).
+ *
+ * IMPORTANT: This is a visual restriction only. It removes the UI
+ * affordance but does not block the underlying Grafana API. This is
+ * sufficient to prevent accidental/casual export by non-technical users.
+ *
+ * Placement: copy this file to your Grafana installation at:
+ *   grafana-v12.0.2\public\css\custom.css
+ *
+ * Then add to grafana-v12.0.2\conf\custom.ini under [server]:
+ *   router_logging = false
+ * (no ini change needed for CSS — Grafana 12 loads custom.css
+ *  automatically from public/css/custom.css if present)
+ */
+
+/* ── Hide Export / Download JSON from Share menu ── */
+[aria-label="Export dashboard"],
+[data-testid="export-dashboard-button"],
+button[aria-label="Export"],
+.share-modal-tabs-content [aria-label="Export"],
+[class*="export-dashboard"],
+[class*="ExportDashboard"] {
+    display: none !important;
+}
+
+/* ── Hide Snapshot / Publish options from Share menu ── */
+[aria-label="Publish snapshot"],
+[data-testid="snapshot-share-button"],
+[aria-label="Share snapshot"],
+button[aria-label="Snapshot"],
+[class*="snapshot"],
+[class*="Snapshot"] {
+    display: none !important;
+}
+
+/* ── Hide "Inspect > Panel JSON" menu item ── */
+[aria-label="Inspect"],
+[data-testid="panel-menu-inspect"],
+li[role="menuitem"]:has(span:contains("Inspect")),
+[class*="panel-menu"] [aria-label="Inspect"] {
+    display: none !important;
+}
+
+/* ── Hide the three-dot panel menu "More > Download" options ── */
+[aria-label="Download CSV"],
+[aria-label="Download XLSX"],
+[data-testid="download-logs"],
+[aria-label="Download logs"] {
+    display: none !important;
+}
