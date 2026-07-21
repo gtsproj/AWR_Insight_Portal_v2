@@ -219,12 +219,24 @@ def _auto_patch_grafana_dashboards():
 # Public routes — never require login
 _PUBLIC_PATHS = {"/login", "/logout", "/forgot-password", "/reset-password"}
 
+# Read-only API endpoints called automatically by the status bar and home
+# page on every load. These must remain accessible without a session even
+# when portal_login_required=true, so the UI renders correctly on the
+# login page itself and immediately after redirect.
+_PUBLIC_API_PATHS = {
+    "/api/portal-info",
+    "/api/license/status",
+    "/api/queue-stats",
+    "/api/services/status",
+    "/api/metadata/refresh-status",
+}
+
 @app.middleware("http")
 async def enforce_login(request: Request, call_next):
     """Redirect to login page if portal_login_required=true and no valid session."""
     path = request.url.path
-    # Always allow static files and public paths
-    if path.startswith("/static") or path in _PUBLIC_PATHS:
+    # Always allow static files, public paths, and read-only status API calls
+    if path.startswith("/static") or path in _PUBLIC_PATHS or path in _PUBLIC_API_PATHS:
         return await call_next(request)
     # Check config — cache for 60s to avoid DB hit on every request
     import time
@@ -241,7 +253,7 @@ async def enforce_login(request: Request, call_next):
         except Exception:
             app.state._login_cache    = 'false'
             app.state._login_cache_ts = now
-    if app.state._login_cache != 'true':
+    if not _is_truthy(app.state._login_cache):
         return await call_next(request)
     # Validate session
     token = request.cookies.get('portal_session')
@@ -300,34 +312,19 @@ async def enforce_license(request: Request, call_next):
 
     lic = app.state._lic_cache
 
-    # Block AWR/SAR upload/parse APIs when not allowed.
-    # Resource is inferred from the path so a SAR-only (or AWR-only) overage
-    # blocks only that resource's upload/parse endpoints, not both.
-    _awr_parse_paths = ["/upload/awr", "/api/queue", "/api/requeue", "/api/reprocess"]
-    _sar_parse_paths = ["/upload/sar"]
-    _is_awr_parse_path = any(path.startswith(p) for p in _awr_parse_paths)
-    _is_sar_parse_path = any(path.startswith(p) for p in _sar_parse_paths)
+    # Block AWR/SAR upload/parse APIs when not allowed
+    _parse_paths = ["/upload", "/api/queue", "/api/requeue", "/api/reprocess"]
+    if not lic.get("allow_parse", True):
+        if any(path.startswith(p) for p in _parse_paths):
+            if path.startswith("/api/"):
+                from fastapi.responses import JSONResponse as _JR
+                return _JR({
+                    "ok": False,
+                    "error": f"License: {lic.get('status_msg', 'License error')}. Parsing is blocked."
+                }, status_code=403)
 
-    if _is_awr_parse_path and not lic.get("allow_parse_awr", lic.get("allow_parse", True)):
-        from fastapi.responses import JSONResponse as _JR
-        _msg = f"License: {lic.get('status_msg', 'License error')}. Parsing is blocked."
-        if path.startswith("/api/"):
-            return _JR({"ok": False, "error": _msg}, status_code=403)
-        return templates.TemplateResponse(request, "awr_upload.html",
-            context={"page": "upload", "message": _msg}, status_code=403)
-
-    if _is_sar_parse_path and not lic.get("allow_parse_sar", lic.get("allow_parse", True)):
-        from fastapi.responses import JSONResponse as _JR
-        _msg = f"License: {lic.get('status_msg', 'License error')}. Parsing is blocked."
-        if path.startswith("/api/"):
-            return _JR({"ok": False, "error": _msg}, status_code=403)
-        return templates.TemplateResponse(request, "sar_upload.html",
-            context={"page": "sar", "message": _msg}, status_code=403)
-
-    # Block new AI recommendations when not allowed.
-    # /api/ai/recommend is AWR-only (dbname/instance/snap range), so it's
-    # gated on the AWR-specific flag — a SAR overage must not block it.
-    if not lic.get("allow_ai_new_awr", lic.get("allow_ai_new", True)):
+    # Block new AI recommendations when not allowed
+    if not lic.get("allow_ai_new", True):
         if path == "/api/ai/recommend":
             from fastapi.responses import JSONResponse as _JR
             return _JR({
@@ -453,6 +450,24 @@ def _queue_stats() -> dict:
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
+    # Enforce portal login at the root URL explicitly.
+    # The enforce_login middleware handles all other paths, but we read
+    # portal_login_required fresh here so the redirect works correctly
+    # even before the middleware cache is populated (e.g. first request
+    # after portal start), and regardless of Grafana anonymous access.
+    try:
+        _root_cfg = _get_config()
+        _login_required = _is_truthy(_root_cfg.get('portal_login_required', 'false'))
+    except Exception:
+        _login_required = False
+    if _login_required:
+        token = request.cookies.get('portal_session')
+        sess  = _sessions.get(token, {}) if token else {}
+        if sess and sess.get('expires') and datetime.now() > sess['expires']:
+            _sessions.pop(token, None)
+            sess = {}
+        if not sess:
+            return RedirectResponse("/login?next=/", status_code=303)
     _refresh_url_globals()
     stats = _queue_stats()
     cfg   = _get_config("ai")
@@ -538,16 +553,14 @@ async def sar_upload_post(request: Request,
         with open(dest_path, "wb") as f:
             f.write(content)
 
-        # Enqueue via the same watcher module SARWatcher uses, so this file
-        # shows in the queue monitor and goes through the same license /
-        # retry handling as files dropped in the watch folder.
+        # Trigger SAR parsing inline for immediate feedback
         try:
-            sys.path.insert(0, os.path.join(_PROJECT_ROOT, "sar_watcher"))
-            from sar_watcher import enqueue_and_archive
-            enqueue_and_archive(host, dest_path, original_file=upload.filename, file_type="text")
-            status = "✅ Enqueued"
+            sys.path.insert(0, os.path.join(_PROJECT_ROOT, "modules", "sar"))
+            from sar_master_parser import process_sar_file
+            ok     = process_sar_file(dest_path)
+            status = "✅ Parsed" if ok else "⚠ Parsed with warnings"
         except Exception as e:
-            status = f"⚠ Saved but enqueue failed: {e}"
+            status = f"⚠ Saved but parsing failed: {e}"
 
         results.append({"file": upload.filename, "host": host, "status": status})
 
@@ -1299,181 +1312,6 @@ async def exec_plan_page(request: Request):
 
 @app.post("/api/plans/compare")
 async def api_plans_compare(request: Request):
-    """Parse two plans, compare them, save to exec_plan_headers + awr_execution_plans."""
-    parse_plan, compare_plans = _load_plan_parser()
-
-    body   = await request.json()
-    plan_a = parse_plan(body.get("plan_a", ""))
-    plan_b = parse_plan(body.get("plan_b", ""))
-    comp   = compare_plans(plan_a, plan_b)
-
-    conn = get_db_connection()
-    try:
-        with conn.cursor() as cur:
-            for plan, label, ptype, key in [
-                (plan_a, body.get("label_a"), "baseline",  "a"),
-                (plan_b, body.get("label_b"), "optimized", "b"),
-            ]:
-                sql_id  = body.get(f"sql_id_{key}") or plan.sql_id or None
-                dbname  = body.get(f"dbname_{key}") or None
-                tags    = body.get(f"tags_{key}") or None
-
-                # ── Save header ───────────────────────────────────────
-                cur.execute("""
-                    INSERT INTO exec_plan_headers
-                      (sql_id, dbname, plan_hash_value, plan_label, plan_type,
-                       plan_text_raw, sql_text, total_cost, step_count,
-                       has_full_scan, has_nested_loop, tags)
-                    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-                    RETURNING id
-                """, (
-                    sql_id, dbname,
-                    plan.plan_hash or None,
-                    label, ptype,
-                    body.get(f"plan_{key}"),
-                    plan.sql_text or None,
-                    plan.total_cost,
-                    len(plan.steps),
-                    plan.has_full_scan,
-                    plan.has_nested_loop,
-                    tags,
-                ))
-                header_id = cur.fetchone()[0]
-
-                # ── Save steps to awr_execution_plans ─────────────────
-                for step in plan.steps:
-                    cur.execute("""
-                        INSERT INTO awr_execution_plans
-                          (dbname, sql_id, plan_hash_value, step_id,
-                           operation, object_name, cost, cardinality, bytes,
-                           filter_predicates, has_full_scan, plan_warning,
-                           upload_source, note)
-                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-                        ON CONFLICT (dbname, sql_id, plan_hash_value, step_id)
-                        DO UPDATE SET
-                          cost = EXCLUDED.cost,
-                          cardinality = EXCLUDED.cardinality,
-                          has_full_scan = EXCLUDED.has_full_scan
-                    """, (
-                        dbname or '',
-                        sql_id or '',
-                        plan.plan_hash or '',
-                        step.step_id,
-                        step.operation,
-                        step.object_name or None,
-                        step.cost,
-                        step.rows_est,
-                        step.bytes_est,
-                        step.predicates or None,
-                        step.is_problem and 'FULL' in step.operation.upper(),
-                        step.problem_reason or None,
-                        'compare',
-                        None,
-                    ))
-        conn.commit()
-    finally:
-        conn.close()
-
-    def plan_to_dict(p):
-        return {
-            "sql_id":          p.sql_id,
-            "plan_hash":       p.plan_hash,
-            "sql_text":        p.sql_text,
-            "plan_text":       p.plan_text,
-            "total_cost":      p.total_cost,
-            "total_rows":      p.total_rows,
-            "step_count":      len(p.steps),
-            "has_full_scan":   p.has_full_scan,
-            "has_nested_loop": p.has_nested_loop,
-            "notes":           p.notes,
-            "steps": [{
-                "step_id":        s.step_id,
-                "operation":      s.operation,
-                "object_name":    s.object_name,
-                "rows_est":       s.rows_est,
-                "bytes_est":      s.bytes_est,
-                "cost":           s.cost,
-                "predicates":     s.predicates,
-                "is_problem":     s.is_problem,
-                "problem_reason": s.problem_reason,
-            } for s in p.steps],
-        }
-
-    return JSONResponse({
-        "plan_a":     plan_to_dict(plan_a),
-        "plan_b":     plan_to_dict(plan_b),
-        "comparison": comp,
-    })
-
-
-@app.get("/api/plans/list")
-async def api_plans_list(q: str = ""):
-    conn = get_db_connection()
-    try:
-        with conn.cursor() as cur:
-            if q:
-                cur.execute("""
-                    SELECT id, plan_label, sql_id, dbname, plan_type,
-                           total_cost, step_count, has_full_scan, tags, created_at
-                    FROM exec_plan_headers
-                    WHERE plan_label ILIKE %s OR sql_id ILIKE %s OR tags ILIKE %s
-                    ORDER BY created_at DESC LIMIT 100
-                """, (f"%{q}%", f"%{q}%", f"%{q}%"))
-            else:
-                cur.execute("""
-                    SELECT id, plan_label, sql_id, dbname, plan_type,
-                           total_cost, step_count, has_full_scan, tags, created_at
-                    FROM exec_plan_headers
-                    ORDER BY created_at DESC LIMIT 100
-                """)
-            cols = [d[0] for d in cur.description]
-            rows = [dict(zip(cols, r)) for r in cur.fetchall()]
-            for r in rows:
-                if r.get("created_at"):
-                    r["created_at"] = r["created_at"].isoformat()
-        return JSONResponse({"plans": rows})
-    finally:
-        conn.close()
-
-
-@app.get("/api/plans/{plan_id}")
-async def api_plan_get(plan_id: int):
-    conn = get_db_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute("""
-                SELECT id, plan_label, sql_id, dbname, plan_type,
-                       plan_text_raw AS plan_text, sql_text, total_cost,
-                       step_count, has_full_scan, has_nested_loop,
-                       tags, notes, created_at
-                FROM exec_plan_headers WHERE id=%s
-            """, (plan_id,))
-            cols = [d[0] for d in cur.description]
-            row  = cur.fetchone()
-            if not row:
-                raise HTTPException(404, "Plan not found")
-            d = dict(zip(cols, row))
-            if d.get("created_at"):
-                d["created_at"] = d["created_at"].isoformat()
-        return JSONResponse(d)
-    finally:
-        conn.close()
-
-
-@app.delete("/api/plans/{plan_id}")
-async def api_plan_delete(plan_id: int):
-    conn = get_db_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute("DELETE FROM exec_plan_headers WHERE id=%s", (plan_id,))
-        conn.commit()
-        return JSONResponse({"deleted": plan_id})
-    finally:
-        conn.close()
-
-
-@app.post("/api/plans/compare")
-async def api_plans_compare(request: Request):
     """Parse two plans, compare them, save both to DB, return diff."""
     try:
         from plan_parser import parse_plan, compare_plans
@@ -1489,91 +1327,88 @@ async def api_plans_compare(request: Request):
         parse_plan    = mod.parse_plan
         compare_plans = mod.compare_plans
 
-    body = await request.json()
-
-    plan_a = parse_plan(body.get("plan_a", ""))
-    plan_b = parse_plan(body.get("plan_b", ""))
-    comp   = compare_plans(plan_a, plan_b)
-
-    # Save both plans to DB
-    conn = get_db_connection()
     try:
-        with conn.cursor() as cur:
-            for plan, label, ptype, key in [
-                (plan_a, body.get("label_a"), "baseline",  "a"),
-                (plan_b, body.get("label_b"), "optimized", "b"),
-            ]:
-                cur.execute("""
-                    INSERT INTO exec_plan_headers
-                      (plan_hash, sql_id, dbname, plan_label, plan_type,
-                       sql_text, plan_text, total_cost, total_rows, step_count,
-                       has_full_scan, has_nested_loop, tags)
-                    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-                    RETURNING id
-                """, (
-                    plan.plan_hash or None,
-                    body.get(f"sql_id_{key}") or plan.sql_id or None,
-                    body.get(f"dbname_{key}") or None,
-                    label,
-                    ptype,
-                    plan.sql_text or None,
-                    body.get(f"plan_{key}"),
-                    plan.total_cost,
-                    plan.total_rows,
-                    len(plan.steps),
-                    plan.has_full_scan,
-                    plan.has_nested_loop,
-                    body.get(f"tags_{key}") or None,
-                ))
-                plan_id = cur.fetchone()[0]
+        body = await request.json()
 
-                # Save steps
-                for step in plan.steps:
+        plan_a = parse_plan(body.get("plan_a", ""))
+        plan_b = parse_plan(body.get("plan_b", ""))
+        comp   = compare_plans(plan_a, plan_b)
+
+        # Save both plans to DB
+        # Column names match exec_plan_headers schema exactly:
+        #   plan_hash_value, plan_text_raw (not plan_hash / plan_text / total_rows)
+        conn = get_db_connection()
+        try:
+            with conn.cursor() as cur:
+                for plan, label, ptype, key in [
+                    (plan_a, body.get("label_a"), "baseline",  "a"),
+                    (plan_b, body.get("label_b"), "optimized", "b"),
+                ]:
                     cur.execute("""
-                        INSERT INTO exec_plan_steps
-                          (plan_id, step_id, operation, object_name, rows_est,
-                           bytes_est, cost, time_est, predicates, is_problem, problem_reason)
-                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                        INSERT INTO exec_plan_headers
+                          (plan_hash_value, sql_id, dbname, plan_label, plan_type,
+                           sql_text, plan_text_raw, total_cost, step_count,
+                           has_full_scan, has_nested_loop, tags)
+                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                        RETURNING id
                     """, (
-                        plan_id, step.step_id, step.operation, step.object_name,
-                        step.rows_est, step.bytes_est, step.cost, step.time_est,
-                        step.predicates, step.is_problem, step.problem_reason,
+                        plan.plan_hash or None,
+                        body.get(f"sql_id_{key}") or plan.sql_id or None,
+                        body.get(f"dbname_{key}") or None,
+                        label,
+                        ptype,
+                        plan.sql_text or None,
+                        body.get(f"plan_{key}"),
+                        plan.total_cost,
+                        len(plan.steps),
+                        plan.has_full_scan,
+                        plan.has_nested_loop,
+                        body.get(f"tags_{key}") or None,
                     ))
-        conn.commit()
-    finally:
-        conn.close()
+            conn.commit()
+        except Exception as db_err:
+            conn.rollback()
+            logger.error(f"exec_plan_headers insert failed: {db_err}")
+            return JSONResponse({"ok": False, "error": f"DB save failed: {db_err}"}, status_code=500)
+        finally:
+            conn.close()
 
-    # Serialise response
-    def plan_to_dict(p):
-        return {
-            "sql_id":       p.sql_id,
-            "plan_hash":    p.plan_hash,
-            "sql_text":     p.sql_text,
-            "plan_text":    p.plan_text,
-            "total_cost":   p.total_cost,
-            "total_rows":   p.total_rows,
-            "step_count":   len(p.steps),
-            "has_full_scan": p.has_full_scan,
-            "has_nested_loop": p.has_nested_loop,
-            "notes":        p.notes,
-            "steps": [{
-                "step_id":      s.step_id,
-                "operation":    s.operation,
-                "object_name":  s.object_name,
-                "rows_est":     s.rows_est,
-                "bytes_est":    s.bytes_est,
-                "cost":         s.cost,
-                "predicates":   s.predicates,
-                "is_problem":   s.is_problem,
-                "problem_reason": s.problem_reason,
-            } for s in p.steps],
-        }
+        # Serialise response
+        def plan_to_dict(p):
+            return {
+                "sql_id":        p.sql_id,
+                "plan_hash":     p.plan_hash,
+                "sql_text":      p.sql_text,
+                "plan_text":     p.plan_text,
+                "total_cost":    p.total_cost,
+                "total_rows":    p.total_rows,
+                "step_count":    len(p.steps),
+                "has_full_scan": p.has_full_scan,
+                "has_nested_loop": p.has_nested_loop,
+                "notes":         p.notes,
+                "steps": [{
+                    "step_id":        s.step_id,
+                    "operation":      s.operation,
+                    "object_name":    s.object_name,
+                    "rows_est":       s.rows_est,
+                    "bytes_est":      s.bytes_est,
+                    "cost":           s.cost,
+                    "predicates":     s.predicates,
+                    "is_problem":     s.is_problem,
+                    "problem_reason": s.problem_reason,
+                } for s in p.steps],
+            }
 
-    return JSONResponse({
-        "plan_a":     plan_to_dict(plan_a),
-        "plan_b":     plan_to_dict(plan_b),
-        "comparison": comp,
-    })
+        return JSONResponse({
+            "ok":         True,
+            "plan_a":     plan_to_dict(plan_a),
+            "plan_b":     plan_to_dict(plan_b),
+            "comparison": comp,
+        })
+
+    except Exception as e:
+        logger.error(f"api_plans_compare error: {e}", exc_info=True)
+        return JSONResponse({"ok": False, "error": str(e)}, status_code=500)
 
 
 @app.get("/api/plans/list")
@@ -1600,9 +1435,13 @@ async def api_plans_list(q: str = ""):
             for r in rows:
                 if r.get("created_at"):
                     r["created_at"] = r["created_at"].isoformat()
+                # psycopg2 returns NUMERIC as decimal.Decimal — convert to float
+                # so JSONResponse can serialise without a 500
+                if r.get("total_cost") is not None:
+                    r["total_cost"] = float(r["total_cost"])
         return JSONResponse({"plans": rows})
     except Exception as e:
-        logger.error(f"api_plans_list error: {e}")
+        logger.error(f"api_plans_list error: {e}", exc_info=True)
         return JSONResponse({"error": str(e), "plans": []}, status_code=500)
     finally:
         conn.close()
@@ -1621,7 +1460,14 @@ async def api_plan_get(plan_id: int):
             d = dict(zip(cols, row))
             if d.get("created_at"):
                 d["created_at"] = d["created_at"].isoformat()
+            if d.get("total_cost") is not None:
+                d["total_cost"] = float(d["total_cost"])
         return JSONResponse(d)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"api_plan_get error: {e}", exc_info=True)
+        return JSONResponse({"error": str(e)}, status_code=500)
     finally:
         conn.close()
 
@@ -1707,9 +1553,14 @@ def _get_session(request: Request) -> dict:
     return sess
 
 
+def _is_truthy(value) -> bool:
+    """Normalise portal_config boolean values — accepts 'true', 'on', '1' (case-insensitive)."""
+    return str(value).strip().lower() in ('true', 'on', '1', 'yes')
+
+
 def _is_admin(request: Request) -> bool:
     cfg = _get_config('access')
-    if cfg.get('portal_login_required', 'false') != 'true':
+    if not _is_truthy(cfg.get('portal_login_required', 'false')):
         return True  # login not required — treat as admin for settings
     return _get_session(request).get('role') == 'admin'
 
@@ -1904,6 +1755,10 @@ async def api_settings_save(request: Request):
         raise HTTPException(403, "Admin access required")
     body       = await request.json()
     fields     = body.get("fields", {})
+    # Normalise boolean config values — HTML checkboxes can submit 'on'/'off'
+    # depending on browser/JS path; always store as 'true'/'false' for consistency.
+    if 'portal_login_required' in fields:
+        fields['portal_login_required'] = 'true' if _is_truthy(fields['portal_login_required']) else 'false'
     session    = _get_session(request)
     updated_by = session.get("username", "admin")
     _set_config(fields, updated_by)
@@ -2060,7 +1915,7 @@ async def api_change_password(request: Request):
     sess     = _get_session(request)
     username = sess.get("username")
     cfg      = _get_config('access')
-    if cfg.get('portal_login_required','false') != 'true':
+    if not _is_truthy(cfg.get('portal_login_required', 'false')):
         raise HTTPException(400, "Login not enabled — password change not applicable")
     if not username:
         raise HTTPException(401, "Not logged in")
